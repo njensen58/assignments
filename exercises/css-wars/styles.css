@@ -1,0 +1,35 @@
+body {
+    background-color: #111;
+    margin: auto 15%;
+}
+
+h1 {
+    color: #E2E80F;
+    text-align: center;
+    font-size: 33px;
+}
+
+h1:hover {
+    font-size: 45px;
+    background-color: white;
+    color: black;
+    transition: .6s;
+    border: 1px solid red;
+    border-radius: 30%;
+}
+
+p {
+    color: #eee;
+    font-size: 25px;
+    line-height: 1.5;
+}
+
+p span.credits {
+    text-decoration: underline;
+    color: cornflowerblue;
+}
+
+#film-description {
+    font-size: 18px;
+    font-style: italic;
+}

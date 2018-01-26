@@ -1,0 +1,40 @@
+body {
+ margin: 10px 15% 10px 15%;
+}
+
+h1 {
+  color: darkgreen;
+}
+
+h1, h2 {
+  text-align: center;
+  font-family: georgia;
+}
+
+p {
+  line-height: 25px;
+  font-weight: 600;
+  font-size: 22px;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+img {
+  float: left;
+  margin-right: 15px;
+  border-radius: 50%;
+}
+
+.linkTxt {
+  text-transform: uppercase;
+}
+
+.div1 {
+  display: inline-block;
+}

@@ -1,0 +1,103 @@
+body {
+    margin: 10px 10%;
+    background-color: lightgrey;
+}
+
+h1 {
+    font-size: 45px;
+    text-transform: uppercase;
+}
+
+h2 {
+    font-size: 32px;
+}
+
+h2, h3 {
+    text-decoration: underline;
+    font-family: 'Muli', sans-serif;
+}
+
+h3 {
+    font-family: sans-serif;
+    font-size: 20px;
+}
+
+img {
+    border-radius: 20%;
+    border: 2px solid black;
+    width: 100%;
+}
+
+a:visited {
+    color: black;
+}
+
+.foot {
+    text-align: center;
+    padding-top: 20px;
+}
+
+.date {
+    font-size: 12px;
+    float: right;
+    text-decoration: underline;
+}
+
+.header {
+    text-align: center;
+}
+
+.mainStoryText {
+    font-size: 20px;
+    font-family: 'Muli', sans-serif;
+}
+
+p.mainStoryText span {
+    font-weight: bold;
+    color: dodgerblue;
+}
+
+.cols {
+    display: inline-block;
+    width: 28%;
+    padding: 0 10px;
+    text-align: center;
+    font-family: 'Muli', sans-serif;
+}
+
+.middleCol {
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+    padding: 0 15px;
+}
+
+.classifieds {
+    text-align: center;
+}
+
+.icons {
+    float: right;
+    padding: 0 20px 20px 0;
+    font-size: 30px;
+    display: inline-block;
+    width: 25px;
+}
+
+.i1:hover,
+.i2:hover,
+.i3:hover {
+    font-size: 35px;
+    transition: .4s;
+}
+
+.i3:hover {
+    color: red;
+}
+
+.i2:hover {
+    color: blue;
+}
+
+.i1:hover {
+    color: #4c68d7;
+}
