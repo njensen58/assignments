@@ -70,16 +70,16 @@
 // 3
 //Write a function that accepts a string as a parameter. Return the most frequently occuring letter in that string.
 
-var getMax = function(str){
-     var max = 0;
-     var maxChar = '';
-     str.split('').forEach(function(char){
-         if(str.split(char).length > max) {
-             max = str.split(char).length;
-             maxChar = char;
-         }
-     });
-     return maxChar;
-};
-
-console.log(getMax('Happy Happy Joy Joy Joy'));
+// var getMax = function(str){
+//      var max = 0;
+//      var maxChar = '';
+//      str.split('').forEach(function(char){
+//          if(str.split(char).length > max) {
+//              max = str.split(char).length;
+//              maxChar = char;
+//          }
+//      });
+//      return maxChar;
+// };
+//
+// console.log(getMax('Happy Happy Joy Joy Joy'));
