@@ -196,20 +196,42 @@
 .tRed1 {
     background-color: #C20C0A;
     width: 20px;
-    height: 55px;
+    height: 63px;
     position: absolute;
     top: 0;
     left: 0;
-    transform: translate(50px, 16px);
-
+    transform: translate(50px, 12px);
 
 }
 
 .tRed2 {
     background-color: #C20C0A;
-    width: 55px;
+    width: 65px;
     height: 20px;
     position: absolute;
     top: 0;
-    transform: translate(33px, 34px);
+    transform: translate(28px, 34px);
+}
+
+
+/* JAPAN */
+
+.panBox {
+    width: 300px;
+    height: 200px;
+    border: 2px solid black;
+    position: relative;
+    margin-top: 5px;
+}
+
+.redDot {
+    height: 50%;
+    width: 35%;
+    background-color: #A10D25;
+    top: 50%;
+    right: 0;
+    position: absolute;
+    transform: translate(-84%, -50%);
+    border: 5px solid #A10D25;
+    border-radius: 50%;
 }
