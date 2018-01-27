@@ -1,0 +1,138 @@
+
+body {
+    margin: 0;
+    margin-top: -16px;
+    width: 100%;
+}
+
+
+  /* ------ NAVBAR ------ */
+.navBar {
+    background-color: #367799;
+    width: 100%;
+    height: 50px;
+    line-height: 2.5;
+}
+
+nav a {
+    text-decoration: none;
+    color: #382B2A;
+    font-family: 'Montserrat', sans-serif;
+}
+
+nav a:hover {
+    text-decoration: overline;
+    transition: .5s;
+    color: white;
+}
+
+nav a:visted {
+    color: #382B2A;
+}
+
+nav ul li {
+    float: right;
+    display: inline-block;
+    margin-right: 20px;
+    font-size: 20px;
+}
+
+.iconSmile {
+    float: left;
+    font-size: 40px;
+    transform: translate(-93%, -23%);
+    color: white;
+}
+
+
+    /* BLOG TITLE / MAIN IMAGE */
+h1 {
+    text-align: center;
+    position: relative;
+    top: 20%;
+    color: white;
+    font-size: 50px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+}
+
+.blogTitle {
+    background: url(https://static.pexels.com/photos/531880/pexels-photo-531880.jpeg) no-repeat;
+    height: 400px;
+    background-size: cover;
+    border-top: .1px solid white;
+}
+
+.subtitle {
+    color: white;
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+    padding-top: 50px;
+}
+
+.overlay {
+    background-color: rgba(42, 52, 56, 0.5);
+    position: absolute;
+    width: 100%;
+    height: 400px;
+}
+
+
+
+    /* FIRST BLOG POST */
+main {
+    margin: 0 20px;
+    font-family: 'Montserrat',sans-serif;
+}
+
+.date1 {
+    float: right;
+    font-size: 15px;
+    text-decoration: underline;
+}
+
+.blog1Title {
+    font-size: 30px;
+    font-weight: 300;
+}
+
+.firstLetter {
+    font-weight: 400;
+    font-size: 1.7em;
+}
+
+.post1 {
+    padding-bottom: 10px;
+}
+
+/* FOOTER */
+
+footer p {
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+    font-size: .7em;
+}
+
+.iconRed,
+.iconInst,
+.iconFace {
+    display: inline-block;
+    float: right;
+    font-size: 30px;
+    padding-bottom: 10px;
+    color: #367799;
+    padding-right: 30px;
+}
+
+
+.iconRed:hover {
+    color: red;
+}
+
+.iconInst:hover {
+    color: purple;
+}
+
+.iconFace:hover {
+    color: darkblue;
+}

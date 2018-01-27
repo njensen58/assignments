@@ -235,3 +235,147 @@
     border: 5px solid #A10D25;
     border-radius: 50%;
 }
+
+
+/* GREECE */
+
+.greece {
+    background-color: #154BB5;
+    width: 300px;
+    height: 200px;
+    border: 2px solid black;
+    position: relative;
+    margin-top: 5px;
+}
+
+.greeceBox { /* For nested box background */
+    background-color: #154BB5;
+    width: 40%;
+    height: 56.1%;
+    position: absolute;
+}
+
+.whiteStripe1 {
+    background-color: white;
+    width: 300px;
+    height: 11%;
+    position: absolute;
+    transform: translateY(98%);
+}
+
+.whiteStripe2 {
+    background-color: white;
+    width: 300px;
+    height: 11%;
+    position: absolute;
+    bottom: 0;
+    transform: translateY(-98%);
+}
+.whiteStripe3 {
+    background-color: white;
+    width: 300px;
+    height: 11%;
+    position: absolute;
+    transform: translateY(300%);
+}
+.whiteStripe4 {
+    background-color: white;
+    width: 300px;
+    height: 22px;
+    position: absolute;
+    bottom: 0;
+    transform: translateY(-302%);
+}
+.whiteStripe5 {
+    width: 100%;
+    height: 20px;
+    background-color: white;
+    position: absolute;
+    transform: translateY(224%);
+}
+
+.whiteStripe6 {
+    height: 100%;
+    width: 20px;
+    background-color: white;
+    position: absolute;
+        transform: translateX(238%);
+}
+
+
+/* NIGER */
+
+.niger {
+    width: 300px;
+    height: 200px;
+    border: 2px solid black;
+    position: relative;
+    margin-top: 5px;
+}
+
+.nOrange {
+    width: 100%;
+    height: 33%;
+    position: absolute;
+    background-color: #E34C16;
+}
+
+.nOrangeSpot {
+    height: 30%;
+    width: 21%;
+    position: absolute;
+    background-color: #E34C16;
+    border: 1px solid #E34C16;
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.nGreen {
+    width: 100%;
+    height: 33%;
+    position: absolute;
+    background-color: #16A100;
+    bottom: 0;
+}
+
+
+/* MALDIVES */
+
+.maldives {
+    width: 300px;
+    height: 200px;
+    border: 2px solid black;
+    position: relative;
+    margin-top: 5px;
+    background-color: #C40038;
+}
+
+.gMalBox {
+    position: relative;
+    height: 50%;
+    width: 66%;
+    background-color: #297828;
+    transform: translate(26%, 50%);
+}
+
+.moon {
+    background-color: white;
+    position: absolute;
+    height: 65px;
+    width: 65px;
+    transform: translate(97%, 27%);
+    border: 1px solid white;
+    border-radius: 50%;
+}
+
+.gCres {
+    background-color: #297828;
+    position: absolute;
+    height: 65px;
+    width: 65px;
+    transform: translate(15%, -2%);
+    border: 1px solid #297828;
+    border-radius: 50%;
+}

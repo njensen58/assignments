@@ -1,4 +1,4 @@
-var removeA = function(str) {
+var removeA = function(str){
     var newStr = str.toLowerCase();
     var result = '';
     var firstAIndex = newStr.indexOf('a');
