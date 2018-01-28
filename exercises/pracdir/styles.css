@@ -1,0 +1,17 @@
+.div1 {
+    text-align: center;
+    color: blue;
+    font-size: 30px;
+    width: 150px;
+    height: 150px;
+    margin: 0 auto;
+    position: relative;
+    background-color: beige;
+    border: 1px solid black;
+    border-radius: 50%;
+}
+
+.button {
+    position: absolute;
+    transform: translate(-50%, 200%);
+}

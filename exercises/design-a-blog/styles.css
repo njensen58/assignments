@@ -7,11 +7,17 @@ body {
 
 
   /* ------ NAVBAR ------ */
+
+header {
+    position: fixed;
+}
+
 .navBar {
     background-color: #367799;
-    width: 100%;
+    width: 100vw;
     height: 50px;
     line-height: 2.5;
+    z-index: 2;
 }
 
 nav a {
@@ -46,6 +52,7 @@ nav ul li {
 
 
     /* BLOG TITLE / MAIN IMAGE */
+
 h1 {
     text-align: center;
     position: relative;
@@ -61,6 +68,9 @@ h1 {
     height: 400px;
     background-size: cover;
     border-top: .1px solid white;
+    padding-top: 66px;
+    z-index: -1;
+    position: relative;
 }
 
 .subtitle {
@@ -78,8 +88,8 @@ h1 {
 }
 
 
-
     /* FIRST BLOG POST */
+
 main {
     margin: 0 20px;
     font-family: 'Montserrat',sans-serif;
@@ -105,7 +115,13 @@ main {
     padding-bottom: 10px;
 }
 
+
+
 /* FOOTER */
+
+footer {
+    margin: 0 20px;
+}
 
 footer p {
     text-align: center;
@@ -124,7 +140,6 @@ footer p {
     padding-right: 30px;
 }
 
-
 .iconRed:hover {
     color: red;
 }
@@ -134,5 +149,5 @@ footer p {
 }
 
 .iconFace:hover {
-    color: darkblue;
+    color: blue;
 }
