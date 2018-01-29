@@ -1,20 +1,69 @@
-// Given an array of ints, we'll say that a triple is a value appearing
-// 3 times in a row in the array. Return true if the array does not contain
-// any triples.
+//var button1 = document.getElementById("button1");
+//button1.addEventListener("click", function(){
+//    animateMe();
+//})
 
-var noTriples = function(nums) {
-	var counter = 0;
-  	if(nums.length < 3) {
-    	return true;
-    }
-  	// loop through the array
-  	for(var i = 0; i < nums.length; i++) {
-  		// locate the most used number
-        if(nums[i] === nums[i + 1] && nums[i + 2]) {
-  			// if that number was used at least 3 times return false;
-            return false;
+function animateMe(){
+    var ball = document.getElementById('box2');
+    var pos = 0;
+    var id = setInterval(frame, 5);
+    
+    function frame(){
+        if(pos === 378){
+            clearInterval(id);
         } else {
-            return true;
+            pos++;
+            ball.style.top = pos + 'px';
+            ball.style.left = pos + 'px';
         }
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//function animateMe(){ 
+//    var ball = document.getElementById('box2');
+//    var pos = 0;
+//    var neg = 0;
+//    var vid = setInterval(frame, 5);
+//    
+//    function frame(){
+//        if(pos === 378){
+//            pos = 0;
+//            if(pos === 378) {
+//                clearInterval(vid);
+//            } else {
+//                pos++;
+//                neg--;
+//                ball.style.right = pos + 'px';
+////                ball.style.right = neg + 'px';         
+//            }
+//        } else {
+//            pos++;
+//            ball.style.top = pos + 'px';
+//            ball.style.left = pos + 'px';
+//        }
+//    }
+//}
