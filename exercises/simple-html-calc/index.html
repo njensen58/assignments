@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="styles.css">
+        <title>Simple HTML Calculator</title>
+    </head>
+    <body>
+        <h1>Simple Calculator</h1>
+        
+        <br/>
+    
+        <div class="box" id="addBox">
+            <input type="number" name="add" value="add1" id="a1">
+            <span class="sign">+</span>
+            <input type="number" name="add" value="add2" id="a2">
+            <button type="button" name="button" id="addSub">ADD</button>
+            <br/>
+            <span class="spanR">Result</span>
+            <h2 id="addRes"></h2>
+        </div>
+        
+        <br/>
+        <br/>
+        
+        <div class="box" id="subtractBox">
+            <input type="number" name="subtract" value="sub1" id="s1">
+            <span class="sign">-</span> 
+            <input type="number" name="subtract" value="sub2" id="s2">
+            <button type="button" name="button" id="subSub">SUBTRACT</button>
+            <br/>
+            <span class="spanR">Result</span>
+            <h2 id="subRes"></h2>
+        </div>
+               
+        <br/>
+        <br/>
+        
+        <div class="box" id="multiplyBox">
+            <input type="number" name="multiply" value="mult1" id="m1">
+            <span class="sign">*</span>
+            <input type="number" name="multiply" value="mult2" id="m2">
+            <button type="button" name="button" id="multSub">MULTIPLY</button>
+            <br/>
+            <span class="spanR">Result</span>
+            <h2 id="multRes"></h2>
+        </div>
+    
+        <script type="text/javascript" src="app.js"></script>
+    </body>
+</html>
