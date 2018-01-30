@@ -2,12 +2,12 @@
 <html>
     <head>
         <meta charset="utf-8">
+        <link href="https://fonts.googleapis.com/css?family=Libre+Franklin:300,400,500,700" rel="stylesheet">
         <link rel="stylesheet" href="styles.css">
 
         <title>Mario Pest Control</title>
     </head>
     <body>
-
         <header>
             <nav>
                 <!-- <ul>
@@ -15,42 +15,64 @@
                     <li></li>
                 </ul> -->
             </nav>
-            <h1>Mario Pest Control</h1>
+            <h1>~ Mario Pest Control ~</h1>
         </header>
-
+        
+       
         <main>
             <div class="goombasDiv">
-                <h2>Goomba</h2><span>5 Coins</span>
-                <img src="https://vignette.wikia.nocookie.net/fantendo/images/4/4e/Goomba.png/revision/latest?cb=20160623150623" alt="" height="200px">
-                <input type="text" name="baddies" id="goombaInput">
+                <div class="goombaImageDiv">
+                    <img src="https://vignette.wikia.nocookie.net/fantendo/images/4/4e/Goomba.png/revision/latest?cb=20160623150623" alt="" height="150px">
+                    <div class="nameDiv">
+                        <h2 class="baddieName">Goomba</h2>
+                    </div>
+                    <span class="cost">5 Coins</span>
+                    <input type="text" name="baddies" id="goombaInput">
+                </div>    
             </div>
 
             <div class="bombsDiv">
-                <h2>Bob-ombs</h2><span>7 Coins</span>
-                <img src="https://vignette.wikia.nocookie.net/nintendo/images/8/86/Bob-omb_%28MKWii%29.png/revision/latest?cb=20120819225302&path-prefix=en" alt="" height="200px">
-                <input type="text" name="baddies" value="" id="bombInput">
+                <div class="bombsImageDiv">
+                    <img src="https://vignette.wikia.nocookie.net/nintendo/images/8/86/Bob-omb_%28MKWii%29.png/revision/latest?cb=20120819225302&path-prefix=en" alt="" height="150px">
+                    <div class="nameDiv">
+                        <h2 class="baddieName">Bob-ombs</h2>
+                    </div>
+                    <span class="cost">7 Coins</span>
+                    <input type="text" name="baddies" value="" id="bombInput">
+                </div>
             </div>
 
             <div class="cheepsDiv">
-                <h2>Cheep-cheeps</h2><span>11 Coins</span>
-                <img src="https://www.mariowiki.com/images/thumb/6/63/CheepCheepNSMBU.png/200px-CheepCheepNSMBU.png" alt="" height="200px">
-                <input type="text" name="baddies" value="" id="cheepsInput">
+                <div class="cheepsImageDiv">
+                    <img src="https://www.mariowiki.com/images/thumb/6/63/CheepCheepNSMBU.png/200px-CheepCheepNSMBU.png" alt="" height="150px">
+                    <div class="nameDiv">
+                        <h2 class="baddieName">Cheep-cheeps</h2>
+                    </div>
+                    <span class="cost">11 Coins</span>
+                    <input type="text" name="baddies" value="" id="cheepsInput">
+                </div>
             </div>
 
-            <div class="">
+            <div class="myBtn">
                 <input type="submit" id="totalSub">
             </div>
 
-            <div class="">
-                <div id="totalCost"></div>
+            <div class="totCostDiv">
+                <div><span id="totalCost">0 Coins</span><img src="https://www.mariowiki.com/images/thumb/1/17/CoinMK8.png/150px-CoinMK8.png" alt="" height="50px" ></div>
             </div>
+            
 
         </main>
+        
+        <br/>
+    
 
         <footer>
-            <p>Mario Email</p>
-            <a href="#">www.Mario-Pest-Control.com</a>
-            <p>Mario's address</p>
+            <span id="p1">HotForPrincess@plumbers.net</span>
+            <span id="p2">123 Castle Lane, <br/> Mushroom Kindgom</span>
+            <span id="www">
+                <a href="https://www.mariowiki.com/">www.Mario-Pest-Control.com</a>
+            </span>
         </footer>
 
 

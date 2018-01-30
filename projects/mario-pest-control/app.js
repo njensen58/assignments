@@ -9,7 +9,8 @@ totalSubmit.addEventListener("click", function(){
     var bombTotal = bombCount.value * 7;
     var cheepTotal = cheepCount.value * 11;
     var totCost = Number(goombaTotal) + Number(bombTotal) + Number(cheepTotal);
-    totalCostBox.innerHTML = totCost;
-
-    // goombaCount.value = '';
+    totalCostBox.textContent = totCost + ' Coins';
+    goombaCount.value = '';
+    bombCount.value = '';
+    cheepCount.value = '';
 })

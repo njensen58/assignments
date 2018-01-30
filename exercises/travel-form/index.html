@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="styles.css">
+        <title>Travel Form</title>
+    </head>
+    <body>
+
+        <h1>Passenger Information</h1>
+
+        <div class="container">
+            <form class="travelForm" name="travelForm">
+                <p> Personal Information </p>
+                <label> First Name <input type="text" name="firstName" class="name"></label>
+                <label> Last Name <input type="text" name="lastName" class="name"></label>
+                <label> Age <input type="number" name="age" class="age"></label>
+                <p> Gender </p>
+                <label> Male <input type="radio" name="gender" value="Male"></label>
+                <label> Female <input type="radio" name="gender" value="Female"></label>
+                <label> Other <input type="radio" name="gender" value="Other"></label>
+                <p> Location </p>
+                <label> Amsterdam <input type="radio" name="locations" value="Amsterdam"></label>
+                <label> Paris <input type="radio" name="locations" value="Paris"></label>
+                <label> New York City <input type="radio" name="locations" value="New York City"></label>
+                <label> Dubai <input type="radio" name="locations" value="Dubai"></label>
+                <p> Dietary Restrictions </p>
+                <label> Kosher <input type="checkbox" name="diets" value="Kosher"></label>
+                <label> Vegan <input type="checkbox" name="diets" value="Vegan"></label>
+                <label> Peanut Allergy <input type="checkbox" name="diets" value="Peanut Allergy"></label>
+                <label> Carnivore <input type="checkbox" name="diets" value="Carnivore"></label>
+                <input type="submit" id="subBtn">
+            </form>
+        </div>
+
+        <script type="text/javascript" src="app.js"></script>
+    </body>
+</html>

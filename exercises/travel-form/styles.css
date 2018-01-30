@@ -1,0 +1,44 @@
+body {
+    margin: 0 20%;
+    background-color: #ddd;
+}
+
+h1 {
+    text-align: center;
+    font-size: 45px;
+    text-decoration: underline;
+    color: dodgerblue;
+    text-shadow: -1px 2px 3px #5a5a5a;
+}
+
+.container {
+    background-color: white;
+    padding: 15px;
+    border: 1px solid white;
+    border-radius: 10px;
+    box-shadow: -9px 11px 20px 0px #737373;
+}
+
+p {
+    font-size: 25px;
+    font-weight: lighter;
+}
+
+label {
+    font-size: 18px;
+    font-weight: lighter;
+}
+
+.name {
+    width: 100px;
+    height: 20px;
+    font-size: .8em;
+    font-weight: lighter;
+}
+
+.age {
+    height: 20px;
+    width: 50px;
+    font-size: .8em;
+    font-weight: lighter;
+}
