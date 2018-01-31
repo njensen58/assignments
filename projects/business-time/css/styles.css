@@ -1,0 +1,163 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: "Lato", sans-serif;
+}
+
+body {
+    background-color: #eee;
+}
+
+/*----------------------*/
+/* -----  NAV BAR ----- */
+/*----------------------*/
+
+.navContainer {
+    position: fixed;
+    width: 100%;
+}
+
+.navDiv {
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: row;
+    background-color: rgba(100, 100, 100, .5);
+    height: 50px;
+    align-items: center;
+}
+
+nav {
+    display: flex;
+    font-size: 22px;
+    font-weight: 300;
+}
+
+nav a {
+    text-decoration: none;
+}
+
+nav a:visited {
+    color: black;
+}
+
+nav a:hover,
+nav a:active,
+.navIcon:hover {
+    color: white;
+}
+
+li {
+    list-style: none;
+    margin: 15px;
+}
+
+nav li:hover {
+    text-decoration: underline;
+}
+
+.navIcon {
+    font-size: 30px;
+}
+
+
+
+/* ---------------------- */
+/* ------- HEADER ------- */
+/* ---------------------- */
+
+header {
+    height: 775px;
+    display: flex;
+    background-image: url(https://images.unsplash.com/photo-1484429791456-7762873ce0f9?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=5b20ddd265963872979c82f5929bac70&auto=format&fit=crop&w=1650&q=80);
+    background-size: cover;
+    justify-content: center;
+    align-items: center;
+}
+
+.headerDiv {
+    margin-top: 70px;
+}
+
+header h1 {
+    font-size: 70px;
+    color: white;
+    font-weight: 300;
+}
+
+header h2 {
+    color: white;
+    font-weight: lighter;
+    margin-left: 125px;
+    margin-top: 10px;
+}
+
+header span {
+    font-size: 18px;
+    display: inline-block;
+    position: relative;
+    bottom: 35px;
+}
+
+
+/*---------------*/
+/*---- MAIN -----*/
+
+.mainContainer {
+    margin: 0 5%;
+}
+
+
+/*--------------*/
+/*--- CITIES ---*/
+/*--------------*/
+
+.citiesDiv {
+    text-align: center;
+    margin: 40px 0;
+    font-size: 30px;
+    text-decoration: underline;
+}
+
+.threeCitiesContainer {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: nowrap;
+    height: 400px;
+}
+
+.threeCitiesContainer h3 {
+    margin-bottom: 10px;
+    font-size: 23px;
+}
+
+.threeCitiesContainer img {
+    border: 1px solid black;
+    border-radius: 5px;
+}
+
+.threeCitiesContainer p {
+    margin: 10px 20px;
+    padding: 0 10px;
+    text-align: left;
+    font-size: 19px;
+}
+
+#city1Div,
+#city2Div,
+#city3Div {
+    text-align: center;
+    border: 1px solid white;
+    margin: 0 15px;
+    background-color: white;
+    border-radius: 8px;
+    padding-top: 10px;
+    -webkit-box-shadow: -3px 9px 16px 1px #bfbfbf;
+    -moz-box-shadow: -3px 9px 16px 1px #bfbfbf;
+}
+
+
+
+
+
+/**/

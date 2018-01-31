@@ -1,38 +1,81 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
-    <link rel="stylesheet" href="styles.css">
-    <title>Photograph Workshops</title>
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700" rel="stylesheet">
+    <link rel="stylesheet" href="resources/webfonts/fontawesome-all.css">
+    <link rel="stylesheet" href="css/styles.css">
+
+    <title>Photography Workshops</title>
 </head>
 <body>
 
-    <header>
-        <div>
+    <div class="navContainer">
+        <div class="navDiv">
             <nav>
+                <li><i class="fa fa-camera-retro navIcon"></i></li>
                 <li>Home</li>
                 <li><a href="gallery.html">Gallery</a></li>
                 <li><a href="workshops.html">Workshops</a></li>
             </nav>
         </div>
-        <div>
-            <h1>Capture Photography</h1>
-            <h2>workshops for hobbists & professionals</h2>
-        </div>
+    </div>
+
+    <header>
+            <div class="headerDiv">
+                <h1>Capture<span>&copy</span> Photography</h1>
+                <h2>workshops for hobbists & professionals</h2>
+            </div>
     </header>
 
-    <main>
-        <div>
-        <!-- Section with short explanation and 4 photo colums across of different cities I have my workshops in -->
-        </div>
-        <div>
-            <!-- Section of Testimonials, 3 across with "here what previous attendees had to say" and a blockquote. -->
-        </div>
+    <main class="mainContainer">
+        <br/>
+        <hr/>
+        <hr/>
+        <section>
+            <div class="citiesDiv">
+                <h3>Join us in a city near you!</h3>
+            </div>
+            <div class="threeCitiesContainer">
+                <div id="city1Div">
+                    <h3>Montreal</h3>
+                    <img src="https://images.unsplash.com/photo-1445296608114-4b8fabe48256?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=f7aa0003944f7bd9371d48ea24ea29b5&auto=format&fit=crop&w=1955&q=80" alt="" height="150px">
+                    <p>
+                        Tofu plaid you probably haven't heard of them, bushwick intelligentsia hammock squid poke green juice locavore etsy kogi.
+                    </p>
+                </div>
+                <div id="city2Div">
+                    <h3>Amsterdam</h3>
+                    <img src="https://images.unsplash.com/photo-1516572023378-85c3f0c051cf?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=f5b50360fc165813d59d642a387ce332&auto=format&fit=crop&w=2100&q=80" alt="" height="150px">
+                    <p>
+                        Tofu plaid you probably haven't heard of them, bushwick intelligentsia hammock squid poke green juice locavore etsy kogi.
+                    </p>
+                </div>
+                <div id="city3Div">
+                    <h3>Seattle</h3>
+                    <img src="https://images.unsplash.com/photo-1516901632977-d141a38d469b?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=62dad561537cef792083eeada8644f6e&auto=format&fit=crop&w=2100&q=80" alt="" height="150px">
+                    <p>
+                        Tofu plaid you probably haven't heard of them, bushwick intelligentsia hammock squid poke green juice locavore etsy kogi.
+                    </p>
+                </div>
+            </div>
+        </section>
+        <section>
+            <div class="testimonialsDiv">
+                <div>
+
+                </div>
+                <div>
+
+                </div>
+            </div>
+            <!-- Section of Testimonials, 2 across with "here what previous attendees had to say" and a blockquote. -->
+        </section>
     </main>
 
     <footer>
         <!-- legal contact information and social media icons. -->
     </footer>
+
 
     <script type="text/javascript" src="app.js"></script>
 </body>
