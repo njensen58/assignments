@@ -1,4 +1,33 @@
 body {
+    text-align: center;
+    margin: 0;
+}
+
+.container {
+    margin-left: 20%
+}
+
+form {
+
+}
+
+fieldset {
+    width: 70%;
+    height: 100px;
+}
+
+#sub {
+    width: 25%;
+    margin-right: 25%;
+    background-color: d
+}
+
+input {
+    width: 100px;
+    height: 25px
+}
+
+/* body {
     margin: 0 20%;
     background-color: #ddd;
 }
@@ -41,4 +70,4 @@ label {
     width: 50px;
     font-size: .8em;
     font-weight: lighter;
-}
+} */

@@ -4,13 +4,42 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <button onclick="animateMe()">Click Me</button>
-    
-    <div id="box1">
-        <div id="box2"></div>
+   
+    <div class="container">
+        <form name="flightPlan">
+            <fieldset>
+                <legend>Personal Information</legend>
+                <input type="text" name="firstName" placeholder="First Name">
+                <input type="text" name="lastName" placeholder="Last Name">
+                <input type="number" name="age" placeholder="Age">
+            </fieldset>
+            <fieldset>
+                <legend>Gender</legend>
+                <label>Female<input type="radio" name="gender" value="Male"></label>
+                <label>Male<input type="radio" name="gender" value="Female"></label>
+                <label>Other<input type="radio" name="gender" value="Other"></label>
+            </fieldset>
+            <fieldset>
+                <legend>Destinations</legend>
+                <select name="destinations">
+                    <option value="Amsterdam">Amsterdam</option>
+                    <option value="Paris">Paris</option>
+                    <option value="New York City">New York City</option>
+                    <option value="Quebec">Quebec</option>
+                    <option value="Iceland">Iceland</option>
+                </select>
+            </fieldset>
+            <fieldset>
+                <legend>Amenities</legend>
+                <label>Headphones<input type="checkbox" name="amenities" value="Headphones"></label>
+                <label>Blanket<input type="checkbox" name="amenities" value="Blanket"></label>
+                <label>In-Flight Movie<input type="checkbox" name="amenities" value="In-Flight Movie"></label>
+                <label>Pillow<input type="checkbox" name="amenities" value="Pillow"></label>
+                <label>Earplugs<input type="checkbox" name="amenities" value="Earplugs"></label>
+            </fieldset>
+            <input type="submit" id="sub">
+        </form>
     </div>
-    
-    
     
     <script src="app.js" type="text/javascript"></script>
 </body>
