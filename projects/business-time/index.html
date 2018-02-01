@@ -3,7 +3,8 @@
 <head>
     <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700" rel="stylesheet">
     <link rel="stylesheet" href="resources/webfonts/fontawesome-all.css">
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/stylesheets/styles.css">
+    <link rel="stylesheet" href="css/queries/queries.css">
 
     <title>Photography Workshops</title>
 </head>
@@ -59,21 +60,72 @@
                 </div>
             </div>
         </section>
+
+        <br/>
+        <hr/>
+
         <section>
             <div class="testimonialsDiv">
-                <div>
-
-                </div>
-                <div>
-
+                <div class="overlay">
+                    <div class="testimonialHeader">
+                        <h3>Hear what past participants have to say!</h3>
+                    </div>
+                    <div class="testyBox">
+                        <div id="testimonial1">
+                            <p>
+                                <span class="capLetter">L</span>iterally hot chicken VHS poke, truffaut letterpress tumeric. Letterpress raw denim truffaut, franzen pok pok marfa unicorn live-edge celiac ugh skateboard. Keytar pabst seitan before they sold out. Small batch neutra dreamcatcher glossier plaid gastropub tbh bushwick franzen kale chips shoreditch man braid. Brunch
+                            </p>
+                            <div class="testImgDiv">
+                                <img src="https://images.unsplash.com/photo-1499651681375-8afc5a4db253?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=f9f43ca802159f80c4b1715a80477441&auto=format&fit=crop&w=1887&q=80" alt="" height="65px">
+                                <span> Katie - Austin TX</span>
+                            </div>
+                        </div>
+                        <div id="testimonial2">
+                            <p>
+                                <span class="capLetter">F</span>ranzen pok pok marfa unicorn live-edge celiac ugh skateboard. Keytar pabst seitan before they sold out literally hot chicken VHS poke, truffaut letterpress tumeric. Letterpress raw denim truffaut. Small batch neutra dreamcatcher glossier plaid gastropub tbh bushwick franzen kale chips shoreditch.
+                            </p>
+                            <div class="testImgDiv">
+                                <img src="https://images.unsplash.com/photo-1511623785848-021573a3a04f?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=c3dc14cb7621dbb159141b39c3251ac6&auto=format&fit=crop&w=2250&q=80" alt="" height="65px">
+                                <span> Tim - Portland OR</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <!-- Section of Testimonials, 2 across with "here what previous attendees had to say" and a blockquote. -->
         </section>
+        <br/>
     </main>
 
+    <br/>
+    <hr/>
+
     <footer>
-        <!-- legal contact information and social media icons. -->
+        <div class="footerContainer">
+            <div id="submitted"></div>
+            <form name="socialForm">
+                <fieldset>
+                    <legend>Join our mailing list!</legend>
+                    <input type="text" name="firstName" placeholder="First Name" required/>
+                    <input type="text" name="lastName" placeholder="Last Name" required/>
+                    <input type="email" name="email" placeholder="Email Address" />
+                    <input type="submit" class="subBtn">
+                </fieldset>
+            </form>
+            <div>
+                <h3 class="socialMediaHeader">Find us on Social Media!</h3>
+                <div class="socialIcons">
+                    <ul class="iconList">
+                        <li><a href="http://www.facebook.com" class="fbl"><i class="fab fa-facebook-square fb"></i></a></li>
+                        <li><a href="https://www.google.com" class="gpl"><i class="fab fa-google-plus-square gp"></i></a></li>
+                        <li><a href="https://www.twitter.com" class="tsl"><i class="fab fa-twitter-square tw"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <hr/>
+        <div class="legal">
+            <p>Copyright&copy - Capture  2018</p>
+        </div>
     </footer>
 
 

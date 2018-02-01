@@ -45,6 +45,7 @@ nav a:hover,
 nav a:active,
 .navIcon:hover {
     color: white;
+    transition: .5s;
 }
 
 li {
@@ -104,7 +105,7 @@ header span {
 /*---- MAIN -----*/
 
 .mainContainer {
-    margin: 0 5%;
+/* no styling for now*/
 }
 
 
@@ -124,6 +125,7 @@ header span {
     justify-content: space-around;
     flex-wrap: nowrap;
     height: 400px;
+    margin-bottom: 20px;
 }
 
 .threeCitiesContainer h3 {
@@ -140,7 +142,7 @@ header span {
     margin: 10px 20px;
     padding: 0 10px;
     text-align: left;
-    font-size: 19px;
+    font-size: 17px;
 }
 
 #city1Div,
@@ -148,16 +150,164 @@ header span {
 #city3Div {
     text-align: center;
     border: 1px solid white;
-    margin: 0 15px;
+    margin: 0 15px 10px 15px;
     background-color: white;
     border-radius: 8px;
-    padding-top: 10px;
+    padding: 10px 0;
     -webkit-box-shadow: -3px 9px 16px 1px #bfbfbf;
     -moz-box-shadow: -3px 9px 16px 1px #bfbfbf;
 }
 
+#city1Div:hover,
+#city2Div:hover,
+#city3Div:hover {
+    background-color: #555;
+    color: white;
+    transition: .3s;
+}
 
 
 
+/*------------------*/
+/*-- TESTIMONIALS --*/
+/*------------------*/
+
+.testimonialsDiv {
+    margin-top: 35px;
+    height: 500px;
+    background-image: url(https://images.unsplash.com/photo-1459539235056-5045ca20e525?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=42ace4ed912d7d494a4385258572a682&auto=format&fit=crop&w=1950&q=80);
+    background-size: cover;
+}
+
+.overlay {
+    height: 500px;
+    background-color: rgba(20, 20, 20, 0.8);
+}
+
+.testyBox {
+    display: flex;
+    justify-content: space-around;
+}
+
+.testimonialHeader {
+    text-align: center;
+    color: white;
+    font-size: 24px;
+}
+
+.testimonialHeader h3 {
+    margin: 10px 0;
+    padding-top: 30px;
+    font-size: 35px;
+}
+
+.capLetter {
+    font-size: 50px;
+}
+
+div.testyBox p {
+    font-weight: lighter;
+}
+
+#testimonial1,
+#testimonial2 {
+    align-self: center;
+    color: white;
+    font-size: 22px;
+    padding: 10px;
+    margin: 20px;
+}
+
+.testImgDiv {
+    margin-top: 26px;
+}
+
+.testImgDiv img {
+    border: 1px solid white;
+    border-radius: 50%;
+}
+
+
+
+/*------------------------*/
+/*-- FOOTER/FORM/SOCIAL --*/
+/*------------------------*/
+
+.footerContainer {
+    display: flex;
+    justify-content: space-around;
+    height: 230px;
+    margin-top: 20px;
+}
+
+fieldset {
+    height: 200px;
+    width: 300px;
+    background-color: white;
+    border-radius: 10px;
+    text-align: center;
+}
+
+legend {
+    font-size: 22px;
+    font-weight: 700;
+}
+
+input {
+    display: block;
+    height: 35px;
+    width: 250px;
+    margin: 10px;
+    font-size: 16px;
+}
+
+.subBtn {
+
+}
+
+.socialMediaHeader {
+    font-size: 22px;
+    font-weight: 300;
+}
+
+
+.iconList {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 50px;
+}
+
+ul.iconList li i {
+    font-size: 40px;
+}
+
+.fb:hover {
+    color: #3b5998;
+}
+
+.gp:hover {
+    color: #dd4b39;
+}
+
+.tw:hover {
+    color: #00aced;
+}
+
+.fbl:visited,
+.gpl:visited,
+.tsl:visited {
+    color: black;
+}
+
+.legal {
+    text-align: center;
+    margin: 5px;
+    font-size: 13px;
+}
+
+#submitted {
+    font-size: 30px;
+    margin-top: 20px;
+}
 
 /**/

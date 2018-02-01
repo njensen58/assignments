@@ -1,0 +1,101 @@
+@media only screen and (max-width: 850px) {
+header h1 {
+    font-size: 65px;
+    text-align: center;
+}
+
+header h2 {
+    text-align: center;
+    margin-right: 120px;
+}
+
+.threeCitiesContainer {
+    flex-direction: column;
+    height: 900px;
+}
+
+#city1Div,
+#city2Div,
+#city3Div {
+    width: 80%;
+    align-self: center;
+}
+
+.overlay,
+.testimonialsDiv {
+    height: 690px;
+}
+
+.testimonialHeader h3 {
+    font-size: 29px;
+}
+
+#testimonial1,
+#testimonial2 {
+    font-size: 19px;
+    margin: 10px;
+    padding: 5px;
+}
+
+.testyBox {
+    flex-direction: column;
+    margin: 0 20px;
+}
+
+.capLetter {
+    font-size: 35px;
+}
+
+}
+
+
+
+
+@media only screen and (max-width: 590px) {
+.footerContainer {
+    flex-direction: column;
+    height: 375px;
+    margin-top: 0;
+    text-align: center;
+    align-items: center;
+    }
+
+.socialMediaHeader {
+    margin-top: 20px;
+}
+
+.socialIcons {
+    margin-bottom: 10px;
+}
+
+nav {
+    font-size: 20px;
+}
+
+nav li {
+    margin-top: 17px;
+    margin-right: 5px;
+}
+
+}
+
+
+
+
+@media only screen and (max-width: 502px) {
+
+#testimonial1,
+#testimonial2 {
+    font-size: 17px;
+    margin: 5px;
+}
+
+.testImgDiv {
+    margin-top: 13px;
+}
+
+.threeCitiesContainer {
+    height: 1000px;
+}
+
+}

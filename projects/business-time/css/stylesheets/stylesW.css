@@ -41,6 +41,7 @@ nav a:hover,
 nav a:active,
 .navIcon:hover {
     color: white;
+    transition: .5s;
 }
 
 li {
@@ -50,10 +51,6 @@ li {
 
 nav li:hover {
     text-decoration: underline;
-}
-
-.navIcon {
-    align-self: flex-start;
 }
 
 .navIcon {
