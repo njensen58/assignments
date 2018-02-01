@@ -1,0 +1,33 @@
+@media only screen and (min-width: 0px) and (max-width: 505px) {
+
+
+.navDiv {
+    border: 1px solid #bbb;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+}
+
+.navContainer {
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    border: 1px solid #bbb;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+}
+
+
+
+}
+
+
+@media only screen and (min-width: 506px) {
+main {
+    padding-top: 50px;
+}
+
+.galleryTitleDiv h1 {
+    font-size: 50px;
+}
+}

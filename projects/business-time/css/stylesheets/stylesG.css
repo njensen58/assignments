@@ -5,6 +5,10 @@
     font-family: "Lato", sans-serif;
 }
 
+body {
+    background-color: #aaa;
+}
+
 /*----------------------*/
 /* -----  NAV BAR ----- */
 /*----------------------*/
@@ -59,4 +63,48 @@ nav li:hover {
 
 .navIcon {
     font-size: 30px;
+}
+
+
+
+/*----------------*/
+/*-----TITLE------*/
+/*----------------*/
+
+.galleryTitleDiv {
+    text-align: center;
+    padding: 10px;
+    background-color: #ddd;
+}
+
+.galleryTitleDiv h1 {
+    font-size: 30px;
+    letter-spacing: 3px;
+    font-weight: lighter;
+}
+
+
+/*-------------*/
+/*---GALLERY---*/
+/*-------------*/
+
+.galleryBox {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    margin-bottom: 50px;
+}
+
+.galleryDiv {
+    flex: 25%;
+    max-width: 90%;
+}
+
+.galleryDiv img {
+    margin-top: 10px;
+    vertical-align: center;
+    border: 1px solid #aaa;
+    box-shadow: -2px 5px 20px 0px #464646;
 }

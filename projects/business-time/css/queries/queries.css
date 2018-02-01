@@ -1,3 +1,12 @@
+@media only screen and (max-width: 995px){
+fieldset {
+    transform: translateX(-45%)
+}
+
+
+
+
+
 @media only screen and (max-width: 850px) {
 header h1 {
     font-size: 65px;
@@ -46,6 +55,33 @@ header h2 {
     font-size: 35px;
 }
 
+fieldset {
+    transform: none;
+    transform: translateX(-30%);
+}
+
+}
+
+
+
+
+@media only screen and (max-width: 750px) {
+fieldset {
+    transform: translateX(-20%);
+}
+}
+
+
+
+
+@media only screen and (max-width: 680px){
+fieldset {
+    transform: translateX(-8%);
+}
+
+.overlay, .testimonialsDiv {
+    height: 686px;
+}
 }
 
 
@@ -77,12 +113,40 @@ nav li {
     margin-right: 5px;
 }
 
+fieldset {
+    transform: translate(0%);
+}
+
 }
 
 
 
 
-@media only screen and (max-width: 502px) {
+@media only screen and (max-width: 505px) {
+
+header {
+    height: 735px;
+}
+
+.headerDiv {
+    margin-top: 0;
+}
+
+.navDiv {
+    border: 1px solid #bbb;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+}
+
+.navContainer {
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    border: 1px solid #bbb;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+}
 
 #testimonial1,
 #testimonial2 {
@@ -96,6 +160,10 @@ nav li {
 
 .threeCitiesContainer {
     height: 1000px;
+}
+
+.footerContainer {
+    height: 400px;
 }
 
 }
