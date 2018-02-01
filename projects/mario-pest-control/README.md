@@ -1,0 +1,1 @@
+This project helped solidify the basics of CSS and DOM manipulation.  The project was to create a web app that mario could use to find how much Coin he was owed for exterminating certain mario world baddies.  

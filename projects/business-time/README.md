@@ -1,0 +1,1 @@
+This was the first go at creating a 'professional' looking static website for a fake business.  I taught myself CSS Flexible box in order to make layout that was easier to work with.  This assignment required me to use media queries with a 'mobile first' design method, and some simple Javascript for the website's form.
