@@ -1,3 +1,21 @@
+@media only screen and (min-width: 768px){
+    .galleryDiv {
+        flex: 50%;
+        max-width: 90%;
+        text-align: center;
+    }
+
+    .galleryDiv img {
+        width: 30%;
+        height: 20%;
+        margin: 10px;
+    }
+}
+
+
+
+
+
 @media only screen and (min-width: 0px) and (max-width: 505px) {
 
 
