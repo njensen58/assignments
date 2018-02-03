@@ -14,8 +14,8 @@ var currentEnemy;
 ////////////////////
 
 function walk(){
-    var enemy = Math.floor(Math.random() * 3);
-    // if(enemy === 2){
+    var enemyChance = Math.floor(Math.random() * 3);
+    // if(enemyChance === 2){
         encounter();
     // } else {
         //count ++ ?
@@ -23,13 +23,10 @@ function walk(){
     // }
 };
 
-//     // The enemy is random (can be chosen out of a minimum of 3 different enemy names)
-
 
 function encounter(){
     var attackOptions = ['Attack', 'Flee'];
-    var enemySelect = Math.floor(Math.random() * 3);
-    currentEnemy = enemies[enemySelect];
+    enemySelect();
     console.log("\nA " + currentEnemy.type + " has appeared out of the shadows.")
     while(currentEnemy.health > 0){
         var fightChoiceIndex = ask.keyInSelect(attackOptions, "What will you do? ");
@@ -43,6 +40,17 @@ function encounter(){
     }
 };
 
+function enemySelect(){
+    var enemySelect = Math.floor(Math.random() * 3);
+    if(enemySelect === 0){
+        currentEnemy = new EnemyGenerator(orc[0], orc[1], orc[2]);
+    } else if(enemySelect === 1){
+        currentEnemy = new EnemyGenerator(demon[0], demon[1], demon[2]);
+    } else if(enemySelect === 2){
+        currentEnemy = new EnemyGenerator(dragon[0], dragon[1], dragon[2]);
+    }
+    return currentEnemy;
+}
 
 function attack(){
     var attackPow = Math.floor(Math.random() * 25);
@@ -57,54 +65,39 @@ function attack(){
 
 };
 
-// // If the player kills the enemy you can give the Player some HP and a special item that is stored in the inventory
-//     // When the player kills enemies, they are awarded with items
-// // If the enemy kills the player the console prints an cool death message and the game ends
-//
+ // If the player kills the enemy you can give the Player some HP and a special item that is stored in the inventory
+     // When the player kills enemies, they are awarded with items
+ // If the enemy kills the player the console prints an cool death message and the game ends
+
 // var flee = function(){};
-// // If running, you will choose a random number between 1 and 2 - meaning a 50% chance of escaping
+ // If running, you will choose a random number between 1 and 2 - meaning a 50% chance of escaping
 //
 
 
-//
-// //////////////////////
-// // PLAYER & ENEMIES //
-// //////////////////////
-//
+
+ //////////////////////
+ // PLAYER & ENEMIES //
+ //////////////////////
+
 var player = {
     health: 100,
     loot: [''] || "Your bag is currently empty"
 };
 
-var enemies = [
-    {
-        type: "Orc",
-        health: 20,
-        loot: "Axe",
-        attackPow: function(){
-            attackPowerE = Math.floor(Math.random() * 10);
-            return attackPowerE;
-        }
-    },
-    {
-        type: "Demon",
-        health: 30,
-        loot: "Soul Shard",
-        attackPow: function(){
-            attackPowerE = Math.floor(Math.random() * 15);
-            return attackPowerE;
-        }
-    },
-    {
-        type: "Dragon",
-        health: 40,
-        loot: "Dragon Bone",
-        attackPow: function(){
-            attackPowerE = Math.floor(Math.random() * 25);
-            return attackPowerE;
-        }
+function EnemyGenerator(type, health, loot, attackPow){
+    this.type = type;
+    this.health = health;
+    this.loot = loot;
+    this.attackPow = function(){
+        attackPowerE = Math.floor(Math.random() * 10);
+        return attackPowerE;
     }
-];
+}
+
+// Enemy Options //
+var orc = ["Orc", 20,"Small Potion"];
+var demon = ["Demon", 30, "Soul Shard"];
+var dragon = ["Dragon", 40, "Dragon Bone"];
 
 
 
