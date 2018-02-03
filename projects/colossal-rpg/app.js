@@ -1,94 +1,108 @@
 
 var ask = require('readline-sync');
 
+ // GAME RULES - Each time the user beats the encounter, count++.  Game ends once count gets to 10 and player wins, or players health reaches 0.
+
+ // GAME SWITCHES //
+var gameOver = false;
+var playerOptions = ["w", "print"];
+var count = 0;
+var currentEnemy;
 
 ////////////////////
 // GAME FUNCTIONS //
 ////////////////////
 
-// GAME RULES - Each time the user beats the encounter, count++.  Game ends once count gets to 10 and player wins, or players health reaches 0.
-
-// GAME SWITCHES //
-var gameOver = false;
-var playerOptions = ["w", "print"];
-var count = 0;
-
-var walk = function(){
+function walk(){
     var enemy = Math.floor(Math.random() * 3);
-    if(enemy === 2){
+    // if(enemy === 2){
         encounter();
-    } else {
-        return;
-    }
+    // } else {
+        //count ++ ?
+    //     return;
+    // }
 };
-// the console will ask the user to enter a "W" to walk.
-// Every time the player walks, a random algorithm will be run that determines if a wild enemy has appeared (A 1/3 or 1/4 chance of being attacked)
-    // The enemy is random (can be chosen out of a minimum of 3 different enemy names)
 
-var encounter = function(){
+//     // The enemy is random (can be chosen out of a minimum of 3 different enemy names)
+
+
+function encounter(){
     var attackOptions = ['Attack', 'Flee'];
     var enemySelect = Math.floor(Math.random() * 3);
-    var currentEnemy = enemies[enemySelect].type;
-    while(//something about the fight){
-    var fightChoiceIndex = ask.keyInSelect(attackOptions, "\nA " + currentEnemy + " has appeared out of the shadows.  What will you do?");
+    currentEnemy = enemies[enemySelect];
+    console.log("\nA " + currentEnemy.type + " has appeared out of the shadows.")
+    while(currentEnemy.health > 0){
+        var fightChoiceIndex = ask.keyInSelect(attackOptions, "What will you do? ");
         if(attackOptions[fightChoiceIndex] === 'Attack'){
-            attack();
-        } else if(attackOptions[fightChoiceIndex] === 'Flee'){
-            flee();
-        } else if(fightChoiceIndex === -1){
-            console.log("One cannot simply cancel a battle you nitwit.");
+             attack();
+        // } else if(attackOptions[fightChoiceIndex] === 'Flee'){
+        //     flee();
+        // } else if(fightChoiceIndex === -1){
+        //     console.log("One cannot simply cancel a battle you nitwit.");
         }
     }
 };
-// The user can decide to attack or run
-// After the player attacks or runs the enemy attacks back for a random damage amount
 
-var attack = function(){};
-// If attacking, you will choose a random attack power between a min and max = attackPower function.
-// If the player kills the enemy you can give the Player some HP and a special item that is stored in the inventory
-    // When the player kills enemies, they are awarded with items
-// If the enemy kills the player the console prints an cool death message and the game ends
 
-var run = function(){};
-// If running, you will choose a random number between 1 and 2 - meaning a 50% chance of escaping
-
-var printStats = function(){};
-// If the user enters 'Print' in the console, the console will print the players name, HP, and each item in their inventory
-
-var attackPower = function(){
-    var attack = Math.floor(Math.random() * 25);
-    if(attack < 10){
-        attack = 10;
+function attack(){
+    var attackPow = Math.floor(Math.random() * 25);
+    if(attackPow < 10){
+        attackPow = 10;
     }
-    return attack;
+    currentEnemy.health -= attackPow;
+    console.log("\n\t" + player.name + " hits the " + currentEnemy.type + " for " + attackPow);
+    enemyAttack = currentEnemy.attackPow();
+    player.health -= enemyAttack;
+    console.log("\n\t\tThe " + currentEnemy.type + " hits back for " + enemyAttack);
+
 };
-// Random attack value between a min and a max
+
+// // If the player kills the enemy you can give the Player some HP and a special item that is stored in the inventory
+//     // When the player kills enemies, they are awarded with items
+// // If the enemy kills the player the console prints an cool death message and the game ends
+//
+// var flee = function(){};
+// // If running, you will choose a random number between 1 and 2 - meaning a 50% chance of escaping
+//
 
 
-//////////////////////
-// PLAYER & ENEMIES //
-//////////////////////
-
+//
+// //////////////////////
+// // PLAYER & ENEMIES //
+// //////////////////////
+//
 var player = {
     health: 100,
-    loot: '' || "Your bag is currently empty"
+    loot: [''] || "Your bag is currently empty"
 };
 
 var enemies = [
     {
         type: "Orc",
         health: 20,
-        loot: "Axe"
+        loot: "Axe",
+        attackPow: function(){
+            attackPowerE = Math.floor(Math.random() * 10);
+            return attackPowerE;
+        }
     },
     {
         type: "Demon",
         health: 30,
-        loot: "Soul Shard"
+        loot: "Soul Shard",
+        attackPow: function(){
+            attackPowerE = Math.floor(Math.random() * 15);
+            return attackPowerE;
+        }
     },
     {
         type: "Dragon",
         health: 40,
-        loot: "Dragon Bone"
+        loot: "Dragon Bone",
+        attackPow: function(){
+            attackPowerE = Math.floor(Math.random() * 25);
+            return attackPowerE;
+        }
     }
 ];
 
@@ -121,7 +135,17 @@ var enemies = [
         var choice = ask.question("\n\n\tWhen you are ready to continue, type 'w' to continue walking, or 'print' to check your stats: ");
         if(choice === 'w'){
             walk();
-            break;
+            if(currentEnemy.health <= 0){
+                console.log("You defeated the " + currentEnemy.type);
+                player.loot.push(currentEnemy.loot);
+                console.log("You acquired the " + currentEnemy.loot);
+                count++;
+            }
+            if(player.health <= 0){
+                console.log("At least you died doing what you loved...");
+                gameOver = true;
+                break;
+            }
         }
         if(choice === 'print'){
             console.log("\tPlayer Name: " + player.name + "\n\tPlayer Health: " + player.health + "\n\tPlayer Loot: " + player.loot);
@@ -135,6 +159,10 @@ var enemies = [
         //     return;
         // }
 
+    }
+
+    if(gameOver === true && player.health > 0){
+        console.log("Congrats, you win!");
     }
 
 
