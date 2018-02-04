@@ -8,6 +8,7 @@ var stage1 = false;
 var stage2 = false;
 var playerOptions = ["w", "print"];
 var count = 0;
+var score = 0;
 var currentEnemy;
 var currentEvent;
 var fleeSwitch = false;
@@ -32,7 +33,7 @@ function walk(){
 
 function encounter(){
     enemySelect();
-        console.log("\n\n\n\n\n\t\tA " + currentEnemy.type + " has appeared out of the shadows.");
+        console.log("\n\n\n\n\n\n\n\n\t\tA " + currentEnemy.type + " has appeared out of the shadows.");
     battleEngine();
 
 };
@@ -122,7 +123,7 @@ function battleSequence(){
         } else if(fightChoiceIndex === -1){
             console.log("\n\n\n\n\tBoromir says, 'One cannot simply cancel a battle...''");
         } else if(fightChoiceIndex === 2) {
-            console.log("\n\n\t\t\t\tPlayer 1\n\t\t\t\tName: " + player.name + "\n\t\t\t\tHealth: " + player.health + "\n\t\t\t\tLoot: " + player.loot);
+            console.log("\n\n\n\n\n\n\t\t\t\tPlayer 1\n\t\t\t\tName: " + player.name + "\n\t\t\t\tHealth: " + player.health + "\n\t\t\t\tLoot: " + player.loot);
         }
     }
 }
@@ -136,7 +137,7 @@ function attack(){
     currentEnemy.health -= attackPow;
     enemyAttack = currentEnemy.attackPow();
     player.health -= enemyAttack;
-        console.log("\n\n\n\n\n\t\t" + player.name + " hits the " + currentEnemy.type + " for " + attackPow);
+        console.log("\n\n\n\n\n\n\n\t\t" + player.name + " hits the " + currentEnemy.type + " for " + attackPow);
         console.log("\t\t\tThe " + currentEnemy.type + " hits back for " + enemyAttack);
 };
 
@@ -218,7 +219,8 @@ function HardEnemyGenerator(type, health, loot, attackPow){
     }
 }
 
-// ENEMY OPTIONS //
+
+    // ENEMY OPTIONS //
 var goblinScout = ["Goblin Scout"];
 var vampireBats = ["Gang of Vampire Bats", 10];
 var orc = ["Orc", 20];
@@ -238,11 +240,12 @@ function EventGenerator(sideStory, eventBool){
     this.eventBool = eventBool;
 };
 
-/// EVENT OPTIONS ///
+
+    /// EVENT OPTIONS ///
 var event1 = ['\n\n\n\n\n\n\tYou found a potion while walking!', true];
-var event2 = ['\n\n\n\n\n\n\tYou stumble on some debris and fall down a very long flight of stone stairs...', false];
+var event2 = ['\n\n\n\n\n\n\tYou stumble on some debris and fall down a very long flight of stairs...', false];
 var event3 = ['\n\n\n\n\n\n\tThere is something on the ground you nearly trip over.\n\t\tYou pick it up to discover it\'s a health tonic.', true];
-var event4 = ['\n\n\n\n\n\n\tIn the dark you can\'t see it, but you feel it when you walk directly into a wall', false];
+var event4 = ['\n\n\n\n\n\n\tIn the dark you can\'t see it, but you definitely feel it when you walk directly into a wall...', false];
 
 
 
@@ -260,10 +263,13 @@ var event4 = ['\n\n\n\n\n\n\tIn the dark you can\'t see it, but you feel it when
 
 
     player.name = ask.question('\n\n\tHello Traveler, this is the voice of your GUIDE.\n\t\tI apologize we have to meet under such conditions, but I assure you I can be trusted.\n\t\t\tMay I have your first name as we begin this adventure?: ');
-    console.log("\n\n\t\tThank you " + player.name + ', let us start at the beginning.');
+    console.log("\n\n\t\tThank you " + player.name + '.');
 
-    ask.keyInYN("\n\n\tGoing forward you will be asked to choose what to do.\n\tTyping the word 'print' will present your Name, current health, and any items you have accumulated on your journey.\n\t\tPressing 'w' will make you walk.\n\n\t\tAre you ready to begin your adventure?");
+    ask.keyInYN("\n\n\tGoing forward you will be asked to choose what to do.\n\tTyping the word 'print' will present your Name, current health, and any items you have accumulated on your journey.\n\t\tPressing 'w' will make you walk.\n\n\t\tIf you feel you are up to the task, I will give you some advice... \n\t\t\t(press any key to continue)");
 
+    console.log("\n\n\n\n\n\n\n\tWonderful, you are quite brave.\n\t\tYou are in the deepest tunnels of this Mountain.\n\t\t\tIn order to escape to a higher level you will need to obtain the 'Lair Key' which unlocks access to the path out of here.'");
+
+    ask.keyInYN("\n\tThe Dragon King rules these depths, and there are many other creatures that live down here.\n\t\tSome creatures you encounter will drop a special item, which will count towards your final score if you make it out of this mountain alive.\n\t\t\tThat should be all you need to know to begin, so when you are ready to start your journey, press any key.");
         //   Introduction to goals of the game.  Dragon King unlocks second level.  Certain enemies drop loot that will go towards your final score.
 
     ask.setDefaultOptions({
@@ -273,10 +279,10 @@ var event4 = ['\n\n\n\n\n\n\tIn the dark you can\'t see it, but you feel it when
 
 
 
-////// STAGE 1 ///////
+////// STAGE 1 /////// - Goal is to kill dragonKing to get lair key, which unlocks the final stage 2.
 
     while(stage1 === false){
-        var choice = ask.question("\n\n\n\n\tWhen you are ready to continue, type 'w' to continue walking, or 'print' to check your stats: ");
+        var choice = ask.question("\n\n\n\n\tType 'w' to continue walking, or 'print' to check your status: ");
         if(choice === 'w'){
             walk();
             if(currentEnemy.health <= 0 && player.health > 0){
@@ -288,24 +294,42 @@ var event4 = ['\n\n\n\n\n\n\tIn the dark you can\'t see it, but you feel it when
         }
 
         if(player.loot.includes("Lair Key")){
-            ask.keyInYN("\n\n\n\n\n\n\n\t\tUpon defeat of the Dragon King, a key falls from it's scales.\n\t\t\tYou see behind the dragon's carcas a large doorway.\n\t\t\t\t(press y or n to use the 'Lair Key')");
-            player.loot.splice(0);
+            ask.keyInYN("\n\n\n\n\t\tUpon defeat of the Dragon King, a key falls from it's scales.\n\t\t\tYou see behind the dragon's carcas a large doorway.\n\t\t\t\t(press y or n to use the 'Lair Key')");
             console.log("\n\t\tYou use the 'Lair Key' to open the door, a fresh gust of air greets you.\n\t\t\tThis must be the way out of here!");
             stage1 = true;
            }
 
         if(choice === 'print'){
-            console.log("\n\n\t\t\t\tPlayer 1\n\t\t\t\tName: " + player.name + "\n\t\t\t\tHealth: " + player.health + "\n\t\t\t\tLoot: " + player.loot);
+            console.log("\n\n\n\n\n\n\t\t\t\tPlayer 1\n\t\t\t\tName: " + player.name + "\n\t\t\t\tHealth: " + player.health + "\n\t\t\t\tLoot: " + player.loot);
         }
     }
 
+    /// INTRO TO STAGE 2 ///
+
+    ask.keyInYN('\n' + player.name + '! I can barely believe you destroyed the Dragon King!\n\t\tWhile you have made it this far, you still have a little ways to go (press any key to continue)');
+
+    ask.keyInYN('\n\n\n\n\n\n\n\n\tThere is still a ways to walk to get out of here.\n\t\tI imagine you will need to defeat 5 more enemies to reach the exit.\n\t\t\tGood Luck! (Press anykey to continue)');
 
 
 ////// STAGE 2 ///////
 
     while(stage2 === false){
         console.log("STAGE 2 SON!");
-        var choice = ask.question("\n\n\tWhen you are ready to continue, type 'w' to continue walking, or 'print' to check your stats: ");
+        var choice = ask.question("\n\n\tType 'w' to continue walking, or 'print' to check your status: ");
+
+        if(choice === 'w'){
+            walk();
+            if(currentEnemy.health <= 0 && player.health > 0){
+                battleResolution();
+                count++;
+            } else if(player.health <= 0){
+                stage2 = true;
+            }
+        }
+
+        if(count >= 5){
+            stage2 = true;
+        }
     }
 
 
@@ -315,10 +339,13 @@ var event4 = ['\n\n\n\n\n\n\tIn the dark you can\'t see it, but you feel it when
     // Check players loot and give a final score upon Victory.
 
     if(player.health <= 0){
-        console.log("Really cool death message...\n\tGame over son.");
+        console.log("\n\n\nReally cool death message...\n\tGame over son.");
     } else {
-        console.log("catch me");
+        console.log("\n\n\n\n\t\tCongratulations traveler, you successfully escaped the Dragon's Lair.\n\n\n");
+        console.log("After tallying up all of your 'LOOT', your final score is ");
     }
+
+
 
 
 
