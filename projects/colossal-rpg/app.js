@@ -2,8 +2,8 @@
 var ask = require('readline-sync');
 
 
+ // GAME SWITCHES & GLOBAL VARIABLES //
 
- // GAME SWITCHES //
 var stage1 = false;
 var stage2 = false;
 var playerOptions = ["w", "print"];
@@ -14,8 +14,6 @@ var currentEvent;
 var fleeSwitch = false;
 var playerHealthPlus;
 var playerHealthMinus;
-
-
 
         ////////////////////
         // GAME FUNCTIONS //
@@ -87,7 +85,7 @@ function enemySelect(){
 }
 
 function eventSelect(){
-    var eventSelect = Math.floor(Math.random() * 4);
+    var eventSelect = Math.floor(Math.random() * 6);
     switch(eventSelect){
         case 0:
             currentEvent = new EventGenerator(event1[0], event1[1]);
@@ -100,6 +98,12 @@ function eventSelect(){
             break;
         case 3:
             currentEvent = new EventGenerator(event4[0], event4[1]);
+            break;
+        case 4:
+            currentEvent = new EventGenerator(event5[0], event5[1]);
+            break;
+        case 5:
+            currentEvent = new EventGenerator(event6[0], event6[1]);
             break;
     }
     return currentEvent;
@@ -145,7 +149,7 @@ function attack(){
 function flee(){
     var chance = Math.floor(Math.random() * 2);
     if(chance === 0){
-        console.log("\n\n\n\n\n\n\tYou escaped just in the nick of time.");
+        console.log("\n\n\n\n\n\n\n\n\n\n\tYou escaped just in the nick of time.");
         fleeSwitch = true;
         return fleeSwitch;
     } else if(chance === 1){
@@ -183,6 +187,21 @@ function healthMinus(){
         }
         return playerHealthMinus;
 };
+
+function lootCounter(){
+    for(var i = 0; i < player.loot.length; i++){
+        if(player.loot[i] === 'Lair Key'){
+            score += 100;
+        }
+        if(player.loot[i] === 'Bone Necklace'){
+            score += 25;
+        }
+        if(player.loot[i] === 'Soul Shard'){
+            score += 50;
+        }
+    }
+    return score;
+}
 
 
 
@@ -246,6 +265,8 @@ var event1 = ['\n\n\n\n\n\n\tYou found a potion while walking!', true];
 var event2 = ['\n\n\n\n\n\n\tYou stumble on some debris and fall down a very long flight of stairs...', false];
 var event3 = ['\n\n\n\n\n\n\tThere is something on the ground you nearly trip over.\n\t\tYou pick it up to discover it\'s a health tonic.', true];
 var event4 = ['\n\n\n\n\n\n\tIn the dark you can\'t see it, but you definitely feel it when you walk directly into a wall...', false];
+var event5 = ['\n\n\n\n\n\n\tYou found a source of fresh water.', true];
+var event6 = ['\n\n\n\n\n\n\tYou walked right into a fire trap!\n\tYou\'re a little crisy, but alive...', false];
 
 
 
@@ -267,7 +288,7 @@ var event4 = ['\n\n\n\n\n\n\tIn the dark you can\'t see it, but you definitely f
 
     ask.keyInYN("\n\n\tGoing forward you will be asked to choose what to do.\n\tTyping the word 'print' will present your Name, current health, and any items you have accumulated on your journey.\n\t\tPressing 'w' will make you walk.\n\n\t\tIf you feel you are up to the task, I will give you some advice... \n\t\t\t(press any key to continue)");
 
-    console.log("\n\n\n\n\n\n\n\tWonderful, you are quite brave.\n\t\tYou are in the deepest tunnels of this Mountain.\n\t\t\tIn order to escape to a higher level you will need to obtain the 'Lair Key' which unlocks access to the path out of here.'");
+    console.log("\n\n\n\n\n\n\n\tWonderful, you are quite brave.\n\t\tYou are in the deepest tunnels of the Mystic Mountain.\n\t\t\tIn order to escape to a higher level you will need to obtain the 'Lair Key' which unlocks access to the path out of here.'");
 
     ask.keyInYN("\n\tThe Dragon King rules these depths, and there are many other creatures that live down here.\n\t\tSome creatures you encounter will drop a special item, which will count towards your final score if you make it out of this mountain alive.\n\t\t\tThat should be all you need to know to begin, so when you are ready to start your journey, press any key.");
         //   Introduction to goals of the game.  Dragon King unlocks second level.  Certain enemies drop loot that will go towards your final score.
@@ -279,7 +300,7 @@ var event4 = ['\n\n\n\n\n\n\tIn the dark you can\'t see it, but you definitely f
 
 
 
-////// STAGE 1 /////// - Goal is to kill dragonKing to get lair key, which unlocks the final stage 2.
+    ////// STAGE 1 /////// - Goal is to kill dragonKing to get lair key, which unlocks the final stage 2.
 
     while(stage1 === false){
         var choice = ask.question("\n\n\n\n\tType 'w' to continue walking, or 'print' to check your status: ");
@@ -304,14 +325,17 @@ var event4 = ['\n\n\n\n\n\n\tIn the dark you can\'t see it, but you definitely f
         }
     }
 
+
     /// INTRO TO STAGE 2 ///
 
-    ask.keyInYN('\n' + player.name + '! I can barely believe you destroyed the Dragon King!\n\t\tWhile you have made it this far, you still have a little ways to go (press any key to continue)');
+    ask.keyInYN('\n\n\n\n\n\t' + player.name + '! I can barely believe you destroyed the Dragon King!\n\t\tWhile you have made it this far, you still have a little ways to go (press any key to continue)');
 
-    ask.keyInYN('\n\n\n\n\n\n\n\n\tThere is still a ways to walk to get out of here.\n\t\tI imagine you will need to defeat 5 more enemies to reach the exit.\n\t\t\tGood Luck! (Press anykey to continue)');
+    ask.keyInYN('\n\n\n\n\n\n\n\n\t\tThere is still a ways to walk to get out of here.\n\t\tI imagine you will need to defeat 5 more enemies to reach the exit.\n\t\t\tGood Luck! (Press anykey to continue)');
 
 
-////// STAGE 2 ///////
+
+
+    ////// STAGE 2 ///////
 
     while(stage2 === false){
         console.log("STAGE 2 SON!");
@@ -330,6 +354,10 @@ var event4 = ['\n\n\n\n\n\n\tIn the dark you can\'t see it, but you definitely f
         if(count >= 5){
             stage2 = true;
         }
+
+        if(choice === 'print'){
+            console.log("\n\n\n\n\n\n\t\t\t\tPlayer 1\n\t\t\t\tName: " + player.name + "\n\t\t\t\tHealth: " + player.health + "\n\t\t\t\tLoot: " + player.loot);
+        }
     }
 
 
@@ -341,10 +369,10 @@ var event4 = ['\n\n\n\n\n\n\tIn the dark you can\'t see it, but you definitely f
     if(player.health <= 0){
         console.log("\n\n\nReally cool death message...\n\tGame over son.");
     } else {
+        lootCounter();
         console.log("\n\n\n\n\t\tCongratulations traveler, you successfully escaped the Dragon's Lair.\n\n\n");
-        console.log("After tallying up all of your 'LOOT', your final score is ");
+        console.log("\t\t\tAfter tallying up all of your 'LOOT', your final score is " + score + '\n\n\n');
     }
-
 
 
 
