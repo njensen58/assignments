@@ -3,11 +3,14 @@ var ask = require('readline-sync');
 
  // GAME RULES - Each time the user beats the encounter, count++.  Game ends once count gets to 10 and player wins, or players health reaches 0.
 
+
+
  // GAME SWITCHES //
-var gameOver = false;
+var stage1 = false;
 var playerOptions = ["w", "print"];
 var count = 0;
 var currentEnemy;
+var fleeSwitch = false;
 
 ////////////////////
 // GAME FUNCTIONS //
@@ -18,28 +21,36 @@ function walk(){
     // if(enemyChance === 2){
         encounter();
     // } else {
-        //count ++ ?
+        // a random event happens (RandomEventGenrator) that gives a health+ or health- to player.
     //     return;
     // }
 };
 
 
 function encounter(){
-    var attackOptions = ['Attack', 'Flee'];
     enemySelect();
-    console.log("\nA " + currentEnemy.type + " has appeared out of the shadows.")
-    while(currentEnemy.health > 0){
-        var fightChoiceIndex = ask.keyInSelect(attackOptions, "What will you do? ");
-        if(attackOptions[fightChoiceIndex] === 'Attack'){
-             attack();
-        // } else if(attackOptions[fightChoiceIndex] === 'Flee'){
-        //     flee();
-        // } else if(fightChoiceIndex === -1){
-        //     console.log("One cannot simply cancel a battle you nitwit.");
-        }
-    }
+        console.log("\nA " + currentEnemy.type + " has appeared out of the shadows.");
+    battleEngine();
+
 };
 
+function battleEngine(){
+    var attackOptions = ['Attack', 'Flee', 'print'];
+    while(currentEnemy.health > 0 && fleeSwitch === false){
+        var fightChoiceIndex = ask.keyInSelect(attackOptions, "\n\n\tWhat will you do? ");
+        if(attackOptions[fightChoiceIndex] === 'Attack'){
+             attack();
+        } else if(attackOptions[fightChoiceIndex] === 'Flee'){
+            flee();
+        } else if(fightChoiceIndex === -1){
+            console.log("\n\n\tOne cannot simply cancel a battle...");
+        } else if(fightChoiceIndex === 2) {
+            console.log("\n\n\t\t\t\tPlayer 1\n\t\t\t\tName: " + player.name + "\n\t\t\t\tHealth: " + player.health + "\n\t\t\t\tLoot: " + player.loot);
+        }
+    }
+}
+
+// 3 keys required to win the game,
 function enemySelect(){
     var enemySelect = Math.floor(Math.random() * 3);
     if(enemySelect === 0){
@@ -62,16 +73,27 @@ function attack(){
     enemyAttack = currentEnemy.attackPow();
     player.health -= enemyAttack;
     console.log("\n\t\tThe " + currentEnemy.type + " hits back for " + enemyAttack);
-
 };
 
  // If the player kills the enemy you can give the Player some HP and a special item that is stored in the inventory
      // When the player kills enemies, they are awarded with items
  // If the enemy kills the player the console prints an cool death message and the game ends
 
-// var flee = function(){};
- // If running, you will choose a random number between 1 and 2 - meaning a 50% chance of escaping
-//
+var flee = function(){
+    var chance = Math.floor(Math.random() * 2);
+    if(chance === 0){
+        console.log("\n\n\tYou escaped just in the nick of time.");
+        fleeSwitch = true;
+        return fleeSwitch;
+    }else {
+        // Battle sequence continues just like if I did attack, but did not hurt enemy.
+        console.log("\n\n\n\t\tYou failed to escape!!")
+        enemyAttack = currentEnemy.attackPow();
+        player.health -= enemyAttack;
+        console.log("\n\t\tThe " + currentEnemy.type + " hits back for " + enemyAttack);
+    }
+};
+
 
 
 
@@ -80,8 +102,8 @@ function attack(){
  //////////////////////
 
 var player = {
-    health: 100,
-    loot: [''] || "Your bag is currently empty"
+    health: 50,
+    loot: [' '] || "Your bag is currently empty"
 };
 
 function EnemyGenerator(type, health, loot, attackPow){
@@ -98,6 +120,9 @@ function EnemyGenerator(type, health, loot, attackPow){
 var orc = ["Orc", 20,"Small Potion"];
 var demon = ["Demon", 30, "Soul Shard"];
 var dragon = ["Dragon", 40, "Dragon Bone"];
+// RANDOM LOOT //
+var random = ['Rock', ''];
+
 
 
 
@@ -124,7 +149,9 @@ var dragon = ["Dragon", 40, "Dragon Bone"];
     });
 
 
-    while(gameOver === false){
+// Make a stage 1 and a stage 2.  Stage one completes after 5 enemies have been defeated using count++;
+
+    while(stage1 === false){
         var choice = ask.question("\n\n\tWhen you are ready to continue, type 'w' to continue walking, or 'print' to check your stats: ");
         if(choice === 'w'){
             walk();
@@ -132,31 +159,40 @@ var dragon = ["Dragon", 40, "Dragon Bone"];
                 console.log("You defeated the " + currentEnemy.type);
                 player.loot.push(currentEnemy.loot);
                 console.log("You acquired the " + currentEnemy.loot);
+                var healthPlus = Math.floor(Math.random() * 11);
+                player.health += healthPlus;
+                console.log(player.name + " receives + " + healthPlus + " health.");
                 count++;
             }
+
             if(player.health <= 0){
-                console.log("At least you died doing what you loved...");
-                gameOver = true;
+                // game over , player is dead. skip stage1.
+                // stage1 === true;
+                // stage 2 === true;
+                // return stage 2;
+            }
+
+            if(player.loot.length > 5){ // Maybe chance this to being finding a key that is generated randomly 1 - 20 times.(Flee or attack.);
+                console.log("You have found a door, this must be what that key is for.");
+                stage1 = true;
                 break;
             }
         }
         if(choice === 'print'){
-            console.log("\tPlayer Name: " + player.name + "\n\tPlayer Health: " + player.health + "\n\tPlayer Loot: " + player.loot);
+            console.log("\n\n\t\t\t\tPlayer 1\n\t\t\t\tName: " + player.name + "\n\t\t\t\tHealth: " + player.health + "\n\t\t\t\tLoot: " + player.loot);
         }
-
-        // if(count === 10){
-        //     return;
-        // }
-
-        // if(player.health <= 0){
-        //     return;
-        // }
-
     }
 
-    if(gameOver === true && player.health > 0){
-        console.log("Congrats, you win!");
-    }
+
+    // while(stage2 === false){
+    //
+    // }
+
+
+
+
+    // final conditional to check if player health is <= 0, or if game has been won.
+
 
 
 
