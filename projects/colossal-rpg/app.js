@@ -28,10 +28,9 @@ function walk(){
     // }
 };
 
-
 function encounter(){
     enemySelect();
-        console.log("\nA " + currentEnemy.type + " has appeared out of the shadows.");
+        console.log("\n\n\n\n\n\t\tA " + currentEnemy.type + " has appeared out of the shadows.");
     battleEngine();
 
 };
@@ -49,6 +48,10 @@ function enemySelect(){
 }
 
 function battleEngine(){
+        battleSequence();
+}
+
+function battleSequence(){
     fleeSwitch = false;
     var attackOptions = ['Attack', 'Flee', 'print'];
     while((currentEnemy.health > 0 && player.health > 0) && fleeSwitch === false){
@@ -58,13 +61,12 @@ function battleEngine(){
         } else if(attackOptions[fightChoiceIndex] === 'Flee'){
             flee();
         } else if(fightChoiceIndex === -1){
-            console.log("\n\n\tOne cannot simply cancel a battle...");
+            console.log("\n\n\n\n\tBoromir says, 'One cannot simply cancel a battle...''");
         } else if(fightChoiceIndex === 2) {
             console.log("\n\n\t\t\t\tPlayer 1\n\t\t\t\tName: " + player.name + "\n\t\t\t\tHealth: " + player.health + "\n\t\t\t\tLoot: " + player.loot);
         }
     }
 }
-
 
 function attack(){
     var attackPow = Math.floor(Math.random() * 25);
@@ -78,22 +80,16 @@ function attack(){
     console.log("\n\t\tThe " + currentEnemy.type + " hits back for " + enemyAttack);
 };
 
-
- // If the player kills the enemy you can give the Player some HP and a special item that is stored in the inventory
-     // When the player kills enemies, they are awarded with items
-        // If the enemy kills the player the console prints an cool death message and the game ends
-
-
 function flee(){
     var chance = Math.floor(Math.random() * 2);
     if(chance === 0){
-        console.log("\n\n\tYou escaped just in the nick of time.");
+        console.log("\n\n\n\n\n\n\tYou escaped just in the nick of time.");
         fleeSwitch = true;
         return fleeSwitch;
     } else if(chance === 1){
         enemyAttack = currentEnemy.attackPow();
         player.health -= enemyAttack;
-            console.log("\n\n\n\t\tYou failed to escape!!");
+            console.log("\n\n\n\n\n\t\tYou failed to escape!!");
             console.log("\n\t\tThe " + currentEnemy.type + " hits back for " + enemyAttack);
     }
 };
@@ -115,7 +111,7 @@ function battleResolution(){
      //////////////////////
 
 var player = {
-    health: 5,
+    health: 50,
     loot: [] || "Your bag is currently empty"
 };
 
@@ -132,7 +128,7 @@ function EnemyGenerator(type, health, loot, attackPow){
 // Enemy Options //
 var orc = ["Orc", 20,"Small Potion"];
 var demon = ["Demon", 30, "Soul Shard"];
-var dragon = ["Dragon", 40, "Dragon Bone"];
+var dragon = ["Dragon", 40, "Lair Key"];
 
 // RANDOM LOOT //
 var random = ['Rock', ''];
@@ -185,11 +181,10 @@ function EventGenerator(){};
             }
         }
 
-//            if(player.loot.length > 5 /*Or if it's player.loot.indexOf("key") !== -1*/){ // Maybe chance this to being finding a key that is generated randomly 1 - 20 times.(Flee or attack.);
-//                console.log("You have found a door, this must be what that key is for.");
-//                stage1 = true;
-//                break;
-//            }
+        if(player.loot.includes("Lair Key")){
+            ask.keyInYN("\n\n\n\n\n\n\n\t\tUpon defeat of the mighty dragon, a key falls from it's scales.\n\t\t\tYou see behind the dragon's carcas a large doorway.\n");
+            stage1 = true;
+           }
 
         if(choice === 'print'){
             console.log("\n\n\t\t\t\tPlayer 1\n\t\t\t\tName: " + player.name + "\n\t\t\t\tHealth: " + player.health + "\n\t\t\t\tLoot: " + player.loot);
@@ -201,12 +196,15 @@ function EventGenerator(){};
 ////// STAGE 2 ///////
 
     while(stage2 === false){
-        console.log("You made it to stage 2!!");
-        break;
+        console.log("You use the key to open the door, a fresh gust of air greets you.\n\tThis must be the way out of here!");
+
+        if(player.health <= 0){
+            stage2 = true;
+        }
     }
 
 
-
+///// END GAME SEQUENCE /////
 
     // final conditional to check if player health is <= 0, or if game has been won.
 
