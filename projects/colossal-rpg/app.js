@@ -45,12 +45,12 @@ function randomEvent(){
         healthPlus();
         player.health += playerHealthPlus;
             console.log('\n\n\n\n\n\t' + currentEvent.sideStory);
-            console.log('\t' + player.name + ' gains +' + playerHealthPlus + ' health');
+            console.log('\t\t' + player.name + ' gains ' + playerHealthPlus + ' health');
     } else if(currentEvent.eventBool === false){
         healthMinus();
         player.health -= playerHealthMinus;
             console.log('\n\n\n\n\n\t' + currentEvent.sideStory);
-            console.log('\t' + player.name + ' loses -' + playerHealthMinus + ' health');
+            console.log('\t\t' + player.name + ' loses ' + playerHealthMinus + ' health');
     }
 }
 
@@ -86,7 +86,7 @@ function enemySelect(){
 }
 
 function eventSelect(){
-    var eventSelect = Math.floor(Math.random() * 3);
+    var eventSelect = Math.floor(Math.random() * 4);
     switch(eventSelect){
         case 0:
             currentEvent = new EventGenerator(event1[0], event1[1]);
@@ -96,6 +96,10 @@ function eventSelect(){
             break;
         case 2:
             currentEvent = new EventGenerator(event3[0], event3[1]);
+            break;
+        case 3:
+            currentEvent = new EventGenerator(event4[0], event4[1]);
+            break;
     }
     return currentEvent;
 }
@@ -133,7 +137,7 @@ function attack(){
     enemyAttack = currentEnemy.attackPow();
     player.health -= enemyAttack;
         console.log("\n\n\n\n\n\t\t" + player.name + " hits the " + currentEnemy.type + " for " + attackPow);
-        console.log("\n\t\t\tThe " + currentEnemy.type + " hits back for " + enemyAttack);
+        console.log("\t\t\tThe " + currentEnemy.type + " hits back for " + enemyAttack);
 };
 
 
@@ -155,18 +159,18 @@ function flee(){
 function battleResolution(){
     healthPlus();
     player.health += playerHealthPlus;
-        console.log("You defeated the " + currentEnemy.type);
+        console.log("\n\t\t\tYou defeated the " + currentEnemy.type);
         if(currentEnemy.loot !== undefined){
             player.loot.push(currentEnemy.loot);
-            console.log("You acquired the " + currentEnemy.loot);
+            console.log("\t\t\t\tYou acquired the " + currentEnemy.loot);
         }
-        console.log(player.name + " receives + " + playerHealthPlus + " health.");
+        console.log('\t\t\t\t\t' + player.name + " receives + " + playerHealthPlus + " health.");
 }
 
 function healthPlus(){
     playerHealthPlus = Math.floor(Math.random() * 16);
-        if(playerHealthPlus < 10){
-            playerHealthPlus = 10;
+        if(playerHealthPlus < 5){
+            playerHealthPlus = 5;
         }
         return playerHealthPlus;
 };
@@ -238,6 +242,7 @@ function EventGenerator(sideStory, eventBool){
 var event1 = ['\n\n\n\n\n\n\tYou found a potion while walking!', true];
 var event2 = ['\n\n\n\n\n\n\tYou stumble on some debris and fall down a very long flight of stone stairs...', false];
 var event3 = ['\n\n\n\n\n\n\tThere is something on the ground you nearly trip over.\n\t\tYou pick it up to discover it\'s a health tonic.', true];
+var event4 = ['\n\n\n\n\n\n\tIn the dark you can\'t see it, but you feel it when you walk directly into a wall', false];
 
 
 
@@ -258,6 +263,8 @@ var event3 = ['\n\n\n\n\n\n\tThere is something on the ground you nearly trip ov
     console.log("\n\n\t\tThank you " + player.name + ', let us start at the beginning.');
 
     ask.keyInYN("\n\n\tGoing forward you will be asked to choose what to do.\n\tTyping the word 'print' will present your Name, current health, and any items you have accumulated on your journey.\n\t\tPressing 'w' will make you walk.\n\n\t\tAre you ready to begin your adventure?");
+
+        //   Introduction to goals of the game.  Dragon King unlocks second level.  Certain enemies drop loot that will go towards your final score.
 
     ask.setDefaultOptions({
         limit: ['w', 'print']
@@ -281,7 +288,7 @@ var event3 = ['\n\n\n\n\n\n\tThere is something on the ground you nearly trip ov
         }
 
         if(player.loot.includes("Lair Key")){
-            ask.keyInYN("\n\n\n\n\n\n\n\t\tUpon defeat of the mighty dragon, a key falls from it's scales.\n\t\t\tYou see behind the dragon's carcas a large doorway.\n");
+            ask.keyInYN("\n\n\n\n\n\n\n\t\tUpon defeat of the Dragon King, a key falls from it's scales.\n\t\t\tYou see behind the dragon's carcas a large doorway.\n\t\t\t\t(press y or n to use the 'Lair Key')");
             player.loot.splice(0);
             console.log("\n\t\tYou use the 'Lair Key' to open the door, a fresh gust of air greets you.\n\t\t\tThis must be the way out of here!");
             stage1 = true;
@@ -299,13 +306,13 @@ var event3 = ['\n\n\n\n\n\n\tThere is something on the ground you nearly trip ov
     while(stage2 === false){
         console.log("STAGE 2 SON!");
         var choice = ask.question("\n\n\tWhen you are ready to continue, type 'w' to continue walking, or 'print' to check your stats: ");
-
     }
 
 
 ///// END GAME SEQUENCE /////
 
     // final conditional to check if player health is <= 0, or if game has been won.
+    // Check players loot and give a final score upon Victory.
 
     if(player.health <= 0){
         console.log("Really cool death message...\n\tGame over son.");
