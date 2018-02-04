@@ -9,7 +9,10 @@ var stage2 = false;
 var playerOptions = ["w", "print"];
 var count = 0;
 var currentEnemy;
+var currentEvent;
 var fleeSwitch = false;
+var playerHealthPlus;
+var playerHealthMinus;
 
 
 
@@ -19,13 +22,12 @@ var fleeSwitch = false;
 
 
 function walk(){
-    var enemyChance = Math.floor(Math.random() * 3);
-    // if(enemyChance === 2){
+    var enemyChance = Math.floor(Math.random() * 2);
+     if(enemyChance === 1){
         encounter();
-    // } else {
-        // a random event happens (RandomEventGenerator) that gives a health+ or health- to player and an item.
-    //     return;
-    // }
+    } else if(enemyChance === 0){
+        randomEvent();
+     }
 };
 
 function encounter(){
@@ -35,21 +37,74 @@ function encounter(){
 
 };
 
+function randomEvent(){
+    enemySelect();
+    currentEnemy.health = 1;
+    eventSelect();
+    if(currentEvent.eventBool === true){
+        healthPlus();
+        player.health += playerHealthPlus;
+            console.log('\n\n\n\n\n\t' + currentEvent.sideStory);
+            console.log('\t' + player.name + ' gains +' + playerHealthPlus + ' health');
+    } else if(currentEvent.eventBool === false){
+        healthMinus();
+        player.health -= playerHealthMinus;
+            console.log('\n\n\n\n\n\t' + currentEvent.sideStory);
+            console.log('\t' + player.name + ' loses -' + playerHealthMinus + ' health');
+    }
+}
+
 function enemySelect(){
-    var enemySelect = Math.floor(Math.random() * 3);
-    if(enemySelect === 0){
-        currentEnemy = new EnemyGenerator(orc[0], orc[1], orc[2]);
-    } else if(enemySelect === 1){
-        currentEnemy = new EnemyGenerator(demon[0], demon[1], demon[2]);
-    } else if(enemySelect === 2){
-        currentEnemy = new EnemyGenerator(dragon[0], dragon[1], dragon[2]);
+    var enemySelect = Math.floor(Math.random() * 8);
+    switch(enemySelect) {
+        case 0:
+            currentEnemy = new EasyEnemyGenerator(orc[0], orc[1]);
+            break;
+        case 1:
+            currentEnemy = new EasyEnemyGenerator(demon[0], demon[1]);
+            break;
+        case 2:
+            currentEnemy = new EasyEnemyGenerator(dragon[0], dragon[1]);
+            break;
+        case 3:
+            currentEnemy = new HardEnemyGenerator(orcM[0], orcM[1], orcM[2]);
+            break;
+        case 4:
+            currentEnemy = new HardEnemyGenerator(demonM[0], demonM[1], demonM[2]);
+            break;
+        case 5:
+            currentEnemy = new HardEnemyGenerator(dragonM[0], dragonM[1], dragonM[2]);
+            break;
+        case 6:
+            currentEnemy = new EasyEnemyGenerator(vampireBats[0], vampireBats[1]);
+            break;
+        case 7:
+            currentEnemy = new EasyEnemyGenerator(goblinScout[0], vampireBats[1]);
+            break;
     }
     return currentEnemy;
 }
 
+function eventSelect(){
+    var eventSelect = Math.floor(Math.random() * 3);
+    switch(eventSelect){
+        case 0:
+            currentEvent = new EventGenerator(event1[0], event1[1]);
+            break;
+        case 1:
+            currentEvent = new EventGenerator(event2[0], event2[1]);
+            break;
+        case 2:
+            currentEvent = new EventGenerator(event3[0], event3[1]);
+    }
+    return currentEvent;
+}
+
+
 function battleEngine(){
         battleSequence();
 }
+
 
 function battleSequence(){
     fleeSwitch = false;
@@ -68,6 +123,7 @@ function battleSequence(){
     }
 }
 
+
 function attack(){
     var attackPow = Math.floor(Math.random() * 25);
     if(attackPow < 10){
@@ -76,9 +132,10 @@ function attack(){
     currentEnemy.health -= attackPow;
     enemyAttack = currentEnemy.attackPow();
     player.health -= enemyAttack;
-    console.log("\n\t" + player.name + " hits the " + currentEnemy.type + " for " + attackPow);
-    console.log("\n\t\tThe " + currentEnemy.type + " hits back for " + enemyAttack);
+        console.log("\n\n\n\n\n\t\t" + player.name + " hits the " + currentEnemy.type + " for " + attackPow);
+        console.log("\n\t\t\tThe " + currentEnemy.type + " hits back for " + enemyAttack);
 };
+
 
 function flee(){
     var chance = Math.floor(Math.random() * 2);
@@ -94,15 +151,33 @@ function flee(){
     }
 };
 
+
 function battleResolution(){
-    var healthPlus = Math.floor(Math.random() * 11);
-    player.loot.push(currentEnemy.loot);
-    player.health += healthPlus;
+    healthPlus();
+    player.health += playerHealthPlus;
         console.log("You defeated the " + currentEnemy.type);
-        console.log("You acquired the " + currentEnemy.loot);
-        console.log(player.name + " receives + " + healthPlus + " health.");
-            count++;
+        if(currentEnemy.loot !== undefined){
+            player.loot.push(currentEnemy.loot);
+            console.log("You acquired the " + currentEnemy.loot);
+        }
+        console.log(player.name + " receives + " + playerHealthPlus + " health.");
 }
+
+function healthPlus(){
+    playerHealthPlus = Math.floor(Math.random() * 16);
+        if(playerHealthPlus < 10){
+            playerHealthPlus = 10;
+        }
+        return playerHealthPlus;
+};
+
+function healthMinus(){
+    playerHealthMinus = Math.floor(Math.random() * 10);
+        if(playerHealthMinus < 5){
+            playerHealthMinus = 5;
+        }
+        return playerHealthMinus;
+};
 
 
 
@@ -110,35 +185,59 @@ function battleResolution(){
      // PLAYER & ENEMIES //
      //////////////////////
 
+
 var player = {
-    health: 50,
+    health: 100,
     loot: [] || "Your bag is currently empty"
 };
 
-function EnemyGenerator(type, health, loot, attackPow){
+function EasyEnemyGenerator(type, health, attackPow){
     this.type = type;
     this.health = health;
-    this.loot = loot;
     this.attackPow = function(){
         attackPowerE = Math.floor(Math.random() * 10);
         return attackPowerE;
     }
 }
 
-// Enemy Options //
-var orc = ["Orc", 20,"Small Potion"];
-var demon = ["Demon", 30, "Soul Shard"];
-var dragon = ["Dragon", 40, "Lair Key"];
 
-// RANDOM LOOT //
-var random = ['Rock', ''];
+function HardEnemyGenerator(type, health, loot, attackPow){
+    this.type = type;
+    this.health = health;
+    this.loot = loot;
+    this.attackPow = function(){
+        attackPowerE = Math.floor(Math.random() * 20);
+        if(attackPowerE < 10){
+            attackPowerE = 10;
+        }
+        return attackPowerE;
+    }
+}
+
+// ENEMY OPTIONS //
+var goblinScout = ["Goblin Scout"];
+var vampireBats = ["Gang of Vampire Bats", 10];
+var orc = ["Orc", 20];
+var orcM = ["Orc Cheiftan", 25, "Bone Necklace"];
+var demon = ["Demon", 25];
+var demonM = ["ArcDemon", 35, "Soul Shard"];
+var dragon = ["Dragon", 30];
+var dragonM = ["Dragon King", 50, "Lair Key"];
 
 
         /////////////////////
         //  RANDOM EVENTS  //
         /////////////////////
 
-function EventGenerator(){};
+function EventGenerator(sideStory, eventBool){
+    this.sideStory = sideStory;
+    this.eventBool = eventBool;
+};
+
+/// EVENT OPTIONS ///
+var event1 = ['\n\n\n\n\n\n\tYou found a potion while walking!', true];
+var event2 = ['\n\n\n\n\n\n\tYou stumble on some debris and fall down a very long flight of stone stairs...', false];
+var event3 = ['\n\n\n\n\n\n\tThere is something on the ground you nearly trip over.\n\t\tYou pick it up to discover it\'s a health tonic.', true];
 
 
 
@@ -155,34 +254,36 @@ function EventGenerator(){};
     // Write a fun intro with a few timers to set up the story. ("Narrated through the voice of the 'GUIDE' ")
 
 
-    player.name = ask.question('\n\n\tMay I have your first name as we begin this adventure?: ');
-    console.log("\n\t\tThank you " + player.name + ', let us start at the beginning.');
+    player.name = ask.question('\n\n\tHello Traveler, this is the voice of your GUIDE.\n\t\tI apologize we have to meet under such conditions, but I assure you I can be trusted.\n\t\t\tMay I have your first name as we begin this adventure?: ');
+    console.log("\n\n\t\tThank you " + player.name + ', let us start at the beginning.');
 
-    ask.keyInYN("\n\n\tLet me tell you your options as you move forward. You will be asked to choose what to do.\n\tTyping the word 'print' will present your Name, current health, and any items you have accumulated on your journey.\n\t\tPressing 'w' will make you walk.\n\n\t\tAre you ready to begin your adventure?");
+    ask.keyInYN("\n\n\tGoing forward you will be asked to choose what to do.\n\tTyping the word 'print' will present your Name, current health, and any items you have accumulated on your journey.\n\t\tPressing 'w' will make you walk.\n\n\t\tAre you ready to begin your adventure?");
 
     ask.setDefaultOptions({
         limit: ['w', 'print']
     });
 
 
-// Make a stage 1 and a stage 2.  Stage one completes after 5 enemies have been defeated using count++?? or random key that's needed.
+
 
 ////// STAGE 1 ///////
 
     while(stage1 === false){
-        var choice = ask.question("\n\n\tWhen you are ready to continue, type 'w' to continue walking, or 'print' to check your stats: ");
+        var choice = ask.question("\n\n\n\n\tWhen you are ready to continue, type 'w' to continue walking, or 'print' to check your stats: ");
         if(choice === 'w'){
             walk();
             if(currentEnemy.health <= 0 && player.health > 0){
                 battleResolution();
             } else if(player.health <= 0){
-                // game over , player is dead. skip stage1.
+                stage2 = true;
                 stage1 = true;
             }
         }
 
         if(player.loot.includes("Lair Key")){
             ask.keyInYN("\n\n\n\n\n\n\n\t\tUpon defeat of the mighty dragon, a key falls from it's scales.\n\t\t\tYou see behind the dragon's carcas a large doorway.\n");
+            player.loot.splice(0);
+            console.log("\n\t\tYou use the 'Lair Key' to open the door, a fresh gust of air greets you.\n\t\t\tThis must be the way out of here!");
             stage1 = true;
            }
 
@@ -196,11 +297,9 @@ function EventGenerator(){};
 ////// STAGE 2 ///////
 
     while(stage2 === false){
-        console.log("You use the key to open the door, a fresh gust of air greets you.\n\tThis must be the way out of here!");
+        console.log("STAGE 2 SON!");
+        var choice = ask.question("\n\n\tWhen you are ready to continue, type 'w' to continue walking, or 'print' to check your stats: ");
 
-        if(player.health <= 0){
-            stage2 = true;
-        }
     }
 
 
