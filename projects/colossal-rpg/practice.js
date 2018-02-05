@@ -59,7 +59,7 @@ function frame5 (){
         console.log("||\\|||\\     /|||//|||||/");
         console.log("|||\\|||\\     /|||//|||||");
         console.log("||||\\|||\\     /|||//||||");
-    }, 3000);
+    }, 2500);
 }
 
 function frame6(){
@@ -71,7 +71,7 @@ function frame6(){
         console.log("||\\|||\\     /|||//|||||/");
         console.log("|||\\|||\\     /|||//|||||");
         console.log("||||\\|||\\     /|||//||||");
-    }, 3500);
+    }, 3000);
 }
 
 function frame7(){
@@ -83,7 +83,7 @@ function frame7(){
         console.log("||\\|||\\     /|||//|||||/");
         console.log("|||\\|||\\     /|||//|||||");
         console.log("||||\\|||\\     /|||//||||");
-    }, 4000);
+    }, 3500);
 }
 
 
@@ -97,4 +97,66 @@ var walkingMov = function(){
     frame7();
 };
 
-walkingMov();
+
+
+
+// console.log("\n\n\n\n\n\n\n\t\t\t    _....._                 _....._     ");
+// console.log("\t\t\t   / _. ._ \\     Y O U     / _. ._ \\    ");
+// console.log("\t\t\t  | '-' '-' |   D I E D   | '-' '-' |   ");
+// console.log("\t\t\t   \\  .^.  /               \\  .^.  /    ");
+// console.log("\t\t\t    |HHHHH|     G A M E     |HHHHH|     ");
+// console.log("\t\t\t     \\---/     O V E R !     \\---/       ");
+// console.log("\t\t\t                                        ");
+
+
+
+//
+// console.log("\n\t\t\t_---___---___---___---___---___---_");
+// console.log("\t\t\t_---___---___-_______-___---___---_");
+// console.log("\t\t\t_---___---___/  ___  \\___---___---_");
+// console.log("\t\t\t_---___---__| /  Ω  \\ |__---___---_");
+// console.log("\t\t\t_---___---__| |     | |__---___---_");
+// console.log("\t\t\t_---___---__| |    ˚| |__---___---_");
+// console.log("\t\t\t_---___---__| | ___ | |__---___---_");
+// console.log("\t\t\t_---___---__|/       \\|__---___---_");
+// console.log("\t\t\t------------/         \\------------");
+// console.log("\t\t\t-----------/           \\-----------");
+//
+// console.log("\n\n\n\n\n\n\n\t\t\t    _....._                 _....._     ");
+// console.log("\t\t\t   / _. ._ \\     Y O U     / _. ._ \\    ");
+// console.log("\t\t\t  | '-' '-' |   D I E D   | '-' '-' |   ");
+// console.log("\t\t\t   \\  .^.  /               \\  .^.  /    ");
+// console.log("\t\t\t    |HHHHH|     G A M E     |HHHHH|     ");
+// console.log("\t\t\t     \\---/     O V E R !     \\---/       ");
+// console.log("\t\t\t                                        ");
+//
+//
+
+console.log('                                           ')
+console.log('     MYSTIC         /\\       MOUNTAIN     ');
+console.log('                   /  \\                   ');
+console.log('       ^^         /    \\        ^^        ');
+console.log('         ^^      /      \\_            ^^  ');
+console.log('  ^^          __/    _     \\      ^^      ');
+console.log('             /     _/ \\      \\_           ');
+console.log(' __/\\____ /\\/     /    \\       \\___/\\_o_');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//

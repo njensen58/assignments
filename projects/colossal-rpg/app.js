@@ -15,18 +15,20 @@ var fleeSwitch = false;
 var playerHealthPlus;
 var playerHealthMinus;
 
+
+
         ////////////////////
         // GAME FUNCTIONS //
         ////////////////////
 
 
 function walk(){
-    var enemyChance = Math.floor(Math.random() * 2);
+    var enemyChance = Math.floor(Math.random() * 3);
      if(enemyChance === 1){
         encounter();
-    } else if(enemyChance === 0){
+    } else if(enemyChance === 0 || enemyChance === 2){
         randomEvent();
-     }
+    }
 };
 
 function encounter(){
@@ -44,12 +46,12 @@ function randomEvent(){
         healthPlus();
         player.health += playerHealthPlus;
             console.log('\n\n\n\n\n\t' + currentEvent.sideStory);
-            console.log('\t\t' + player.name + ' gains ' + playerHealthPlus + ' health');
+            console.log('\t\t\t' + player.name + ' gains ' + playerHealthPlus + ' health');
     } else if(currentEvent.eventBool === false){
         healthMinus();
         player.health -= playerHealthMinus;
             console.log('\n\n\n\n\n\t' + currentEvent.sideStory);
-            console.log('\t\t' + player.name + ' loses ' + playerHealthMinus + ' health');
+            console.log('\t\t\t' + player.name + ' loses ' + playerHealthMinus + ' health');
     }
 }
 
@@ -85,7 +87,7 @@ function enemySelect(){
 }
 
 function eventSelect(){
-    var eventSelect = Math.floor(Math.random() * 6);
+    var eventSelect = Math.floor(Math.random() * 10);
     switch(eventSelect){
         case 0:
             currentEvent = new EventGenerator(event1[0], event1[1]);
@@ -104,6 +106,18 @@ function eventSelect(){
             break;
         case 5:
             currentEvent = new EventGenerator(event6[0], event6[1]);
+            break;
+        case 6:
+            currentEvent = new EventGenerator(event7[0], event7[1]);
+            break;
+        case 7:
+            currentEvent = new EventGenerator(event8[0], event8[1]);
+            break;
+        case 8:
+            currentEvent = new EventGenerator(event9[0], event9[1]);
+            break;
+        case 9:
+            currentEvent = new EventGenerator(event10[0], event10[1]);
             break;
     }
     return currentEvent;
@@ -166,7 +180,7 @@ function battleResolution(){
     player.health += playerHealthPlus;
         console.log("\n\t\t\tYou defeated the " + currentEnemy.type);
         if(currentEnemy.loot !== undefined){
-            player.loot.push(currentEnemy.loot);
+            player.loot.push(' ' + currentEnemy.loot);
             console.log("\t\t\t\tYou acquired the " + currentEnemy.loot);
         }
         console.log('\t\t\t\t\t' + player.name + " receives + " + playerHealthPlus + " health.");
@@ -190,13 +204,13 @@ function healthMinus(){
 
 function lootCounter(){
     for(var i = 0; i < player.loot.length; i++){
-        if(player.loot[i] === 'Lair Key'){
+        if(player.loot[i] === ' Lair Key'){
             score += 100;
         }
-        if(player.loot[i] === 'Bone Necklace'){
+        if(player.loot[i] === ' Bone Necklace'){
             score += 25;
         }
-        if(player.loot[i] === 'Soul Shard'){
+        if(player.loot[i] === ' Soul Shard'){
             score += 50;
         }
     }
@@ -247,7 +261,7 @@ var orcM = ["Orc Cheiftan", 25, "Bone Necklace"];
 var demon = ["Demon", 25];
 var demonM = ["ArcDemon", 35, "Soul Shard"];
 var dragon = ["Dragon", 30];
-var dragonM = ["Dragon King", 50, "Lair Key"];
+var dragonM = ["Dragon King", 75, "Lair Key"];
 
 
         /////////////////////
@@ -261,12 +275,18 @@ function EventGenerator(sideStory, eventBool){
 
 
     /// EVENT OPTIONS ///
+
 var event1 = ['\n\n\n\n\n\n\tYou found a potion while walking!', true];
 var event2 = ['\n\n\n\n\n\n\tYou stumble on some debris and fall down a very long flight of stairs...', false];
 var event3 = ['\n\n\n\n\n\n\tThere is something on the ground you nearly trip over.\n\t\tYou pick it up to discover it\'s a health tonic.', true];
 var event4 = ['\n\n\n\n\n\n\tIn the dark you can\'t see it, but you definitely feel it when you walk directly into a wall...', false];
 var event5 = ['\n\n\n\n\n\n\tYou found a source of fresh water.', true];
-var event6 = ['\n\n\n\n\n\n\tYou walked right into a fire trap!\n\tYou\'re a little crisy, but alive...', false];
+var event6 = ['\n\n\n\n\n\n\tYou walked right into a fire trap!\n\tYou\'re a little crispy, but alive...', false];
+var event7 = ['\n\n\n\n\n\n\tYou discover a granola bar in your pocket.', true];
+var event8 = ['\n\n\n\n\n\n\tYou have a panic attack, fall over, and hit you head on a rock...', false];
+var event9 = ['\n\n\n\n\n\n\tYou found Jesus', true];
+var event10 = ['\n\n\n\n\n\n\tYou drink what you thought was water\n\tTurns out it\'s Orc urine...', false];
+
 
 
 
@@ -280,17 +300,17 @@ var event6 = ['\n\n\n\n\n\n\tYou walked right into a fire trap!\n\tYou\'re a lit
         // PLAYER SETUP //
         //////////////////
 
-    // Write a fun intro with a few timers to set up the story. ("Narrated through the voice of the 'GUIDE' ")
 
+    player.name = ask.question('\n\n\tHello Traveler, this is the voice of your GUIDE.\n\t\t[GUIDE] I apologize we have to meet under such conditions, \n\t\tbut I assure you I can be trusted.\n\n\t\t[GUIDE] May I have your first name as we begin this adventure?: ');
+        console.log("\n\n\t\t[GUIDE] Thank you " + player.name + '.');
 
-    player.name = ask.question('\n\n\tHello Traveler, this is the voice of your GUIDE.\n\t\tI apologize we have to meet under such conditions, but I assure you I can be trusted.\n\t\t\tMay I have your first name as we begin this adventure?: ');
-    console.log("\n\n\t\tThank you " + player.name + '.');
+    ask.keyInYN("\n\n\t[GUIDE] Going forward you will be asked to choose what to do.\n\t[GUIDE] Typing the word 'print' will present your Name, current health, and any items you have accumulated on your journey.\n\t[GUIDE] Pressing 'w' will make you walk.\n\t\t[GUIDE] If you feel you are up to the task, I will give you some advice... \n\t\t\t(press any key to continue)");
 
-    ask.keyInYN("\n\n\tGoing forward you will be asked to choose what to do.\n\tTyping the word 'print' will present your Name, current health, and any items you have accumulated on your journey.\n\t\tPressing 'w' will make you walk.\n\n\t\tIf you feel you are up to the task, I will give you some advice... \n\t\t\t(press any key to continue)");
+    mysticMountainImg()
 
-    console.log("\n\n\n\n\n\n\n\tWonderful, you are quite brave.\n\t\tYou are in the deepest tunnels of the Mystic Mountain.\n\t\t\tIn order to escape to a higher level you will need to obtain the 'Lair Key' which unlocks access to the path out of here.'");
+    ask.keyInYN("\n\t[GUIDE] Wonderful, you are quite brave.\n\n\t\t[GUIDE] You are in the deepest tunnels of the Mystic Mountain.\n\t\t[GUIDE] In order to escape to a higher level you will need to obtain the 'Lair Key', \n\t\t\twhich unlocks access to the path out of here.(press any key to continue)'");
 
-    ask.keyInYN("\n\tThe Dragon King rules these depths, and there are many other creatures that live down here.\n\t\tSome creatures you encounter will drop a special item, which will count towards your final score if you make it out of this mountain alive.\n\t\t\tThat should be all you need to know to begin, so when you are ready to start your journey, press any key.");
+    ask.keyInYN("\n\t[GUIDE] The Dragon King rules these depths, \n\t\tand there are many other creatures that live down here.\n\t\t[GUIDE] Some creatures you encounter will drop a special item, \n\t\t\twhich will count towards your final score if you make it out of this mountain alive.\n\t\t\t[GUIDE]  That should be all you need to know to begin, \n\t\t\t\tso when you are ready to start your journey, press any key.");
         //   Introduction to goals of the game.  Dragon King unlocks second level.  Certain enemies drop loot that will go towards your final score.
 
     ask.setDefaultOptions({
@@ -299,11 +319,10 @@ var event6 = ['\n\n\n\n\n\n\tYou walked right into a fire trap!\n\tYou\'re a lit
 
 
 
-
     ////// STAGE 1 /////// - Goal is to kill dragonKing to get lair key, which unlocks the final stage 2.
 
     while(stage1 === false){
-        var choice = ask.question("\n\n\n\n\tType 'w' to continue walking, or 'print' to check your status: ");
+        var choice = ask.question("\n\n\n\n\t[GUIDE] Type 'w' to continue walking, or 'print' to check your status: ");
         if(choice === 'w'){
             walk();
             if(currentEnemy.health <= 0 && player.health > 0){
@@ -314,10 +333,11 @@ var event6 = ['\n\n\n\n\n\n\tYou walked right into a fire trap!\n\tYou\'re a lit
             }
         }
 
-        if(player.loot.includes("Lair Key")){
+        if(player.loot.includes(" Lair Key")){
             ask.keyInYN("\n\n\n\n\t\tUpon defeat of the Dragon King, a key falls from it's scales.\n\t\t\tYou see behind the dragon's carcas a large doorway.\n\t\t\t\t(press y or n to use the 'Lair Key')");
-            console.log("\n\t\tYou use the 'Lair Key' to open the door, a fresh gust of air greets you.\n\t\t\tThis must be the way out of here!");
-            stage1 = true;
+            doorwayImg();
+                ask.keyInYN("\n\t\tYou use the 'Lair Key' to open the door, a fresh gust of air greets you.\n\t\t\tThis must be the way out of here!\n\t\t\t\t(Press any key to continue)");
+                stage1 = true;
            }
 
         if(choice === 'print'){
@@ -328,18 +348,17 @@ var event6 = ['\n\n\n\n\n\n\tYou walked right into a fire trap!\n\tYou\'re a lit
 
     /// INTRO TO STAGE 2 ///
 
-    ask.keyInYN('\n\n\n\n\n\t' + player.name + '! I can barely believe you destroyed the Dragon King!\n\t\tWhile you have made it this far, you still have a little ways to go (press any key to continue)');
+    if(player.health > 0){
+        ask.keyInYN('\n\n\n\n\n\t[GUIDE] ' + player.name + '! I can barely believe you destroyed the Dragon King!\n\t\tWhile you have made it this far, you still have a little ways to go (press any key to continue)');
 
-    ask.keyInYN('\n\n\n\n\n\n\n\n\t\tThere is still a ways to walk to get out of here.\n\t\tI imagine you will need to defeat 5 more enemies to reach the exit.\n\t\t\tGood Luck! (Press anykey to continue)');
-
-
+        ask.keyInYN('\n\n\t\t\t[GUIDE] You will need to walk a bit further to escape the mountain.\n\t\t\t\tI imagine you will need to defeat 5 more enemies to reach the exit.\n\t\t\t\t\tGood Luck! (Press anykey to continue)');
+    };
 
 
     ////// STAGE 2 ///////
 
     while(stage2 === false){
-        console.log("STAGE 2 SON!");
-        var choice = ask.question("\n\n\tType 'w' to continue walking, or 'print' to check your status: ");
+        var choice = ask.question("\n\n\t[GUIDE] Type 'w' to continue walking, or 'print' to check your status: ");
 
         if(choice === 'w'){
             walk();
@@ -361,30 +380,158 @@ var event6 = ['\n\n\n\n\n\n\tYou walked right into a fire trap!\n\tYou\'re a lit
     }
 
 
+/////////////////////////////
 ///// END GAME SEQUENCE /////
 
     // final conditional to check if player health is <= 0, or if game has been won.
     // Check players loot and give a final score upon Victory.
 
     if(player.health <= 0){
-        console.log("\n\n\nReally cool death message...\n\tGame over son.");
+        console.log("\n\n\n\n\n\n\n\t\t\t    _....._                 _....._     ");
+        console.log("\t\t\t   / _. ._ \\     Y O U     / _. ._ \\    ");
+        console.log("\t\t\t  | '-' '-' |   D I E D   | '-' '-' |   ");
+        console.log("\t\t\t   \\  .^.  /               \\  .^.  /    ");
+        console.log("\t\t\t    |HHHHH|     G A M E     |HHHHH|     ");
+        console.log("\t\t\t     \\---/     O V E R !     \\---/       ");
+        console.log("\t\t\t                                        ");
     } else {
         lootCounter();
-        console.log("\n\n\n\n\t\tCongratulations traveler, you successfully escaped the Dragon's Lair.\n\n\n");
-        console.log("\t\t\tAfter tallying up all of your 'LOOT', your final score is " + score + '\n\n\n');
+        console.log("\n\n\n\n\t\t[GUIDE] Congratulations traveler, you successfully escaped the Dragon's Lair.\n\n\n");
+        console.log("\t\t\tAfter tallying up all of your 'LOOT', your final score is " + score + '\n');
+        console.log("\n\t\t\t  CCCCC  OOO  NN    N GGGGGG RRRR    AAA  TTTTTT  SSSSS");
+        console.log("\t\t\t  C     O   O N  N  N G      R    R A   A   TT    S    ");
+        console.log("\t\t\t  C     O   O N   N N G   GG RRRR   AAAAA   TT    SSSSS");
+        console.log("\t\t\t  C     O   O N   N N G    G R   R  A   A   TT        S");
+        console.log("\t\t\t  CCCCC  OOO  N    NN GGGGGG R    R A   A   TT    SSSSS");
+        console.log("\t\t\t  ======================================================")
     }
 
 
+// HIGH SCORE - 400 - NATE //
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+/// EXTRAS //
 
 
 
+// ANIMATIONS //
 
+function doorwayImg(){
+    console.log("\n\t\t\t_---___---___---___---___---___---_");
+    console.log("\t\t\t_---___---___-_______-___---___---_");
+    console.log("\t\t\t_---___---___/  ___  \\___---___---_");
+    console.log("\t\t\t_---___---__| /  Ω  \\ |__---___---_");
+    console.log("\t\t\t_---___---__| |     | |__---___---_");
+    console.log("\t\t\t_---___---__| |    ˚| |__---___---_");
+    console.log("\t\t\t_---___---__| | ___ | |__---___---_");
+    console.log("\t\t\t_---___---__|/       \\|__---___---_");
+    console.log("\t\t\t------------/         \\------------");
+    console.log("\t\t\t-----------/           \\-----------");
+};
 
+function mysticMountainImg(){
+    console.log('\n\n\n\t\t\t||                                            ||')
+    console.log('\t\t\t||      MYSTIC         /\\       MOUNTAIN      ||');
+    console.log('\t\t\t||                    /  \\                    ||');
+    console.log('\t\t\t||        ^^         /    \\        ^^         ||');
+    console.log('\t\t\t||          ^^      /      \\_            ^^   ||');
+    console.log('\t\t\t||   ^^          __/    _     \\      ^^       ||');
+    console.log('\t\t\t||              /     _/ \\      \\_            ||');
+    console.log('\t\t\t||____/\\____ /\\/_____/  ∆ \\_______\\___/\\_o_/\\_||');
+}
 
-
-
-
-
-
-
-    /////////////
+// function frame1(){
+//     setTimeout(function(){
+//         console.log("\n\n\n\n\n\n\n\n\n\n||||\\|||\\     /|||//||||");
+//         console.log("|||\\|||\\     /|||//|||||");
+//         console.log("||\\|||\\     /|||//|||||/");
+//         console.log("||\\|||\\     /|||//|||||/");
+//         console.log("||\\|||\\     /|||//|||||/");
+//         console.log("|||\\|||\\     /|||//|||||");
+//         console.log("||||\\|||\\  o  /|||//||||");
+//     }, 500);
+// }
+//
+// function frame2(){
+//     setTimeout(function(){
+//         console.log("\n\n\n\n\n\n\n\n\n\n||||\\|||\\     /|||//||||");
+//         console.log("|||\\|||\\     /|||//|||||");
+//         console.log("||\\|||\\     /|||//|||||/");
+//         console.log("||\\|||\\     /|||//|||||/");
+//         console.log("||\\|||\\     /|||//|||||/");
+//         console.log("|||\\|||\\  o  /|||//|||||");
+//         console.log("||||\\|||\\     /|||//||||");
+//     }, 1000);
+// }
+//
+// function frame3(){
+//     setTimeout(function(){
+//         console.log("\n\n\n\n\n\n\n\n\n\n||||\\|||\\     /|||//||||");
+//         console.log("|||\\|||\\     /|||//|||||");
+//         console.log("||\\|||\\     /|||//|||||/");
+//         console.log("||\\|||\\     /|||//|||||/");
+//         console.log("||\\|||\\  o  /|||//|||||/");
+//         console.log("|||\\|||\\     /|||//|||||");
+//         console.log("||||\\|||\\     /|||//||||");
+//     }, 1500);
+// }
+//
+// function frame4(){
+//     setTimeout(function(){
+//         console.log("\n\n\n\n\n\n\n\n\n\n||||\\|||\\     /|||//||||");
+//         console.log("|||\\|||\\     /|||//|||||");
+//         console.log("||\\|||\\     /|||//|||||/");
+//         console.log("||\\|||\\  o  /|||//|||||/");
+//         console.log("||\\|||\\     /|||//|||||/");
+//         console.log("|||\\|||\\     /|||//|||||");
+//         console.log("||||\\|||\\     /|||//||||");
+//     }, 2000);
+// }
+//
+// function frame5 (){
+//     setTimeout(function(){
+//         console.log("\n\n\n\n\n\n\n\n\n\n||||\\|||\\     /|||//||||");
+//         console.log("|||\\|||\\     /|||//|||||");
+//         console.log("||\\|||\\  o  /|||//|||||/");
+//         console.log("||\\|||\\     /|||//|||||/");
+//         console.log("||\\|||\\     /|||//|||||/");
+//         console.log("|||\\|||\\     /|||//|||||");
+//         console.log("||||\\|||\\     /|||//||||");
+//     }, 2500);
+// }
+//
+// function frame6(){
+//     setTimeout(function(){
+//         console.log("\n\n\n\n\n\n\n\n\n\n||||\\|||\\     /|||//||||");
+//         console.log("|||\\|||\\  o  /|||//|||||");
+//         console.log("||\\|||\\     /|||//|||||/");
+//         console.log("||\\|||\\     /|||//|||||/");
+//         console.log("||\\|||\\     /|||//|||||/");
+//         console.log("|||\\|||\\     /|||//|||||");
+//         console.log("||||\\|||\\     /|||//||||");
+//     }, 3000);
+// }
+//
+// function frame7(){
+//     setTimeout(function(){
+//         console.log("\n\n\n\n\n\n\n\n\n\n||||\\|||\\  o  /|||//||||");
+//         console.log("|||\\|||\\     /|||//|||||");
+//         console.log("||\\|||\\     /|||//|||||/");
+//         console.log("||\\|||\\     /|||//|||||/");
+//         console.log("||\\|||\\     /|||//|||||/");
+//         console.log("|||\\|||\\     /|||//|||||");
+//         console.log("||||\\|||\\     /|||//||||");
+//     }, 3500);
+// }
+//
+// function walkingMov(){
+//     frame1();
+//     frame2();
+//     frame3();
+//     frame4();
+//     frame5();
+//     frame6();
+//     frame7();
+// };
