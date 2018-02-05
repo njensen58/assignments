@@ -1,5 +1,6 @@
 
 var ask = require('readline-sync');
+var sleep = require('sleep');
 
 
  // GAME SWITCHES & GLOBAL VARIABLES //
@@ -23,10 +24,10 @@ var playerHealthMinus;
 
 
 function walk(){
-    var enemyChance = Math.floor(Math.random() * 3);
+    var enemyChance = Math.floor(Math.random() * 2);
      if(enemyChance === 1){
         encounter();
-    } else if(enemyChance === 0 || enemyChance === 2){
+    } else if(enemyChance === 0){
         randomEvent();
     }
 };
@@ -45,13 +46,19 @@ function randomEvent(){
     if(currentEvent.eventBool === true){
         healthPlus();
         player.health += playerHealthPlus;
-            console.log('\n\n\n\n\n\t' + currentEvent.sideStory);
+                sleep.sleep(1);
+            console.log('\n\n\n\n\n\n\n\n\n\t' + currentEvent.sideStory);
+                sleep.sleep(1);
             console.log('\t\t\t' + player.name + ' gains ' + playerHealthPlus + ' health');
+                sleep.sleep(1);
     } else if(currentEvent.eventBool === false){
         healthMinus();
         player.health -= playerHealthMinus;
+                sleep.sleep(1);
             console.log('\n\n\n\n\n\t' + currentEvent.sideStory);
+                sleep.sleep(1);
             console.log('\t\t\t' + player.name + ' loses ' + playerHealthMinus + ' health');
+                sleep.sleep(1);
     }
 }
 
@@ -87,7 +94,7 @@ function enemySelect(){
 }
 
 function eventSelect(){
-    var eventSelect = Math.floor(Math.random() * 10);
+    var eventSelect = Math.floor(Math.random() * 12);
     switch(eventSelect){
         case 0:
             currentEvent = new EventGenerator(event1[0], event1[1]);
@@ -119,6 +126,12 @@ function eventSelect(){
         case 9:
             currentEvent = new EventGenerator(event10[0], event10[1]);
             break;
+        case 10:
+            currentEvent = new EventGenerator(event10[0], event10[1]);
+            break;
+        case 11:
+            currentEvent = new EventGenerator(event10[0], event10[1]);
+            break;
     }
     return currentEvent;
 }
@@ -131,7 +144,7 @@ function battleEngine(){
 
 function battleSequence(){
     fleeSwitch = false;
-    var attackOptions = ['Attack', 'Flee', 'print'];
+    var attackOptions = ['Attack', 'Flee', 'Print'];
     while((currentEnemy.health > 0 && player.health > 0) && fleeSwitch === false){
         var fightChoiceIndex = ask.keyInSelect(attackOptions, "\n\n\tWhat will you do? ");
         if(attackOptions[fightChoiceIndex] === 'Attack'){
@@ -140,6 +153,7 @@ function battleSequence(){
             flee();
         } else if(fightChoiceIndex === -1){
             console.log("\n\n\n\n\tBoromir says, 'One cannot simply cancel a battle...''");
+                sleep.sleep(1);
         } else if(fightChoiceIndex === 2) {
             console.log("\n\n\n\n\n\n\t\t\t\tPlayer 1\n\t\t\t\tName: " + player.name + "\n\t\t\t\tHealth: " + player.health + "\n\t\t\t\tLoot: " + player.loot);
         }
@@ -155,22 +169,28 @@ function attack(){
     currentEnemy.health -= attackPow;
     enemyAttack = currentEnemy.attackPow();
     player.health -= enemyAttack;
-        console.log("\n\n\n\n\n\n\n\t\t" + player.name + " hits the " + currentEnemy.type + " for " + attackPow);
-        console.log("\t\t\tThe " + currentEnemy.type + " hits back for " + enemyAttack);
+        console.log("\n\n\n\n\n\n\n\n\n\n\n\n\n\t\t" + player.name + " hits the " + currentEnemy.type + " for " + attackPow);
+        sleep.sleep(1);
+        console.log("\t\t\tThe " + currentEnemy.type + " hits back for " + enemyAttack + '\n');
+        sleep.sleep(1);
 };
 
 
 function flee(){
     var chance = Math.floor(Math.random() * 2);
     if(chance === 0){
+        sleep.sleep(1);
         console.log("\n\n\n\n\n\n\n\n\n\n\tYou escaped just in the nick of time.");
         fleeSwitch = true;
         return fleeSwitch;
     } else if(chance === 1){
+        sleep.sleep(1);
         enemyAttack = currentEnemy.attackPow();
         player.health -= enemyAttack;
             console.log("\n\n\n\n\n\t\tYou failed to escape!!");
+                sleep.sleep(1);
             console.log("\n\t\tThe " + currentEnemy.type + " hits back for " + enemyAttack);
+                sleep.sleep(1);
     }
 };
 
@@ -179,11 +199,14 @@ function battleResolution(){
     healthPlus();
     player.health += playerHealthPlus;
         console.log("\n\t\t\tYou defeated the " + currentEnemy.type);
+            sleep.sleep(1);
         if(currentEnemy.loot !== undefined){
             player.loot.push(' ' + currentEnemy.loot);
             console.log("\t\t\t\tYou acquired the " + currentEnemy.loot);
+                sleep.sleep(1);
         }
         console.log('\t\t\t\t\t' + player.name + " receives + " + playerHealthPlus + " health.");
+            sleep.sleep(1);
 }
 
 function healthPlus(){
@@ -255,13 +278,13 @@ function HardEnemyGenerator(type, health, loot, attackPow){
 
     // ENEMY OPTIONS //
 var goblinScout = ["Goblin Scout"];
-var vampireBats = ["Gang of Vampire Bats", 10];
+var vampireBats = ["Gang of Vampire Bats", 15];
 var orc = ["Orc", 20];
-var orcM = ["Orc Cheiftan", 25, "Bone Necklace"];
+var orcM = ["Orc Cheiftan", 35, "Bone Necklace"];
 var demon = ["Demon", 25];
-var demonM = ["ArcDemon", 35, "Soul Shard"];
+var demonM = ["ArcDemon", 40, "Soul Shard"];
 var dragon = ["Dragon", 30];
-var dragonM = ["Dragon King", 75, "Lair Key"];
+var dragonM = ["Dragon King", 60, "Lair Key"];
 
 
         /////////////////////
@@ -285,7 +308,9 @@ var event6 = ['\n\n\n\n\n\n\tYou walked right into a fire trap!\n\tYou\'re a lit
 var event7 = ['\n\n\n\n\n\n\tYou discover a granola bar in your pocket.', true];
 var event8 = ['\n\n\n\n\n\n\tYou have a panic attack, fall over, and hit you head on a rock...', false];
 var event9 = ['\n\n\n\n\n\n\tYou found Jesus', true];
-var event10 = ['\n\n\n\n\n\n\tYou drink what you thought was water\n\tTurns out it\'s Orc urine...', false];
+var event10 = ['\n\n\n\n\n\n\tYou drink what you thought was water.\n\tTurns out it\'s Orc urine...', false];
+var event11 = ['\n\n\n\n\n\n\tYou take a nap.  A really really good nap.', true];
+var event12 = ['\n\n\n\n\n\n\tA a rock in your shoe causes a blister..', false];
 
 
 
@@ -301,28 +326,43 @@ var event10 = ['\n\n\n\n\n\n\tYou drink what you thought was water\n\tTurns out 
         //////////////////
 
 
-    player.name = ask.question('\n\n\tHello Traveler, this is the voice of your GUIDE.\n\t\t[GUIDE] I apologize we have to meet under such conditions, \n\t\tbut I assure you I can be trusted.\n\n\t\t[GUIDE] May I have your first name as we begin this adventure?: ');
-        console.log("\n\n\t\t[GUIDE] Thank you " + player.name + '.');
+    console.log('\n\n\tHello Traveler, this is the voice of your GUIDE.');
+        sleep.sleep(2);
+    console.log('\n\t\t[GUIDE] I apologize we have to meet under such conditions, \n\t\tbut I assure you I can be trusted.');
+        sleep.sleep(2);
+    player.name = ask.question('\n\n\t\t[GUIDE] May I have your first name as we begin this adventure?: ');
+        sleep.sleep(1);
+    console.log("\n\n\t\t[GUIDE] Thank you " + player.name + '.');
+        sleep.sleep(1);
+    ask.keyInYN("\n\n\t[GUIDE] Going forward you will be asked to choose what to do.\n\t\t(press any key to continue)");
+    console.log("\n\t[GUIDE] Typing the word 'print' will present your Name, current health, and any items you have accumulated on your journey.");
+        sleep.sleep(3);
+    ask.keyInYN("\n\t[GUIDE] Pressing 'w' will make you walk.\n\t\t[GUIDE] If you feel you are up to the task, I will give you some advice... \n\t\t\t(press any key to continue)");
 
-    ask.keyInYN("\n\n\t[GUIDE] Going forward you will be asked to choose what to do.\n\t[GUIDE] Typing the word 'print' will present your Name, current health, and any items you have accumulated on your journey.\n\t[GUIDE] Pressing 'w' will make you walk.\n\t\t[GUIDE] If you feel you are up to the task, I will give you some advice... \n\t\t\t(press any key to continue)");
+        mysticMountainImg()
+    ask.keyInYN("\n\t[GUIDE] Wonderful, you are quite brave.  Welcome to the Mystic Mountain. \n\t\t\t(press any key to continue) ");
+        sleep.sleep(4);
+    console.log("\n\n\t\t[GUIDE] In order to escape to a higher level of this mountain you will need to obtain the 'Lair Key', \n\t\t\twhich unlocks access to the path out of here.\n\t\t\t\t(press any key to continue)'");
 
-    mysticMountainImg()
-
-    ask.keyInYN("\n\t[GUIDE] Wonderful, you are quite brave.\n\n\t\t[GUIDE] You are in the deepest tunnels of the Mystic Mountain.\n\t\t[GUIDE] In order to escape to a higher level you will need to obtain the 'Lair Key', \n\t\t\twhich unlocks access to the path out of here.(press any key to continue)'");
-
-    ask.keyInYN("\n\t[GUIDE] The Dragon King rules these depths, \n\t\tand there are many other creatures that live down here.\n\t\t[GUIDE] Some creatures you encounter will drop a special item, \n\t\t\twhich will count towards your final score if you make it out of this mountain alive.\n\t\t\t[GUIDE]  That should be all you need to know to begin, \n\t\t\t\tso when you are ready to start your journey, press any key.");
-        //   Introduction to goals of the game.  Dragon King unlocks second level.  Certain enemies drop loot that will go towards your final score.
-
-    ask.setDefaultOptions({
-        limit: ['w', 'print']
-    });
-
+    ask.keyInYN("\n\t[GUIDE] The Dragon King rules these depths. \n\t\t(press any key to continue) ");
+    console.log("\n\t\tThere are many other creatures that live down here.");
+        sleep.sleep(2);
+    console.log("\n\t\t[GUIDE] Some creatures you encounter will drop a special item, \n\t\t\twhich will count towards your final score if you make it out of this mountain alive.");
+        sleep.sleep(4);
+    ask.keyInYN("\n\t\t\t[GUIDE] That should be all you need to know to begin, \n\t\t\t\tso when you are ready to start your journey, (press any key to continue)");
 
 
+        ask.setDefaultOptions({
+            limit: ['w', 'print','item']
+        });
+
+
+    //////////////////////
     ////// STAGE 1 /////// - Goal is to kill dragonKing to get lair key, which unlocks the final stage 2.
+    //////////////////////
 
     while(stage1 === false){
-        var choice = ask.question("\n\n\n\n\t[GUIDE] Type 'w' to continue walking, or 'print' to check your status: ");
+        var choice = ask.question("\n\n\n\n\t[GUIDE] Type 'w' to continue walking, 'print' to check your status, or 'item' to use an item: ");
         if(choice === 'w'){
             walk();
             if(currentEnemy.health <= 0 && player.health > 0){
@@ -334,8 +374,10 @@ var event10 = ['\n\n\n\n\n\n\tYou drink what you thought was water\n\tTurns out 
         }
 
         if(player.loot.includes(" Lair Key")){
+                sleep.sleep(1);
             ask.keyInYN("\n\n\n\n\t\tUpon defeat of the Dragon King, a key falls from it's scales.\n\t\t\tYou see behind the dragon's carcas a large doorway.\n\t\t\t\t(press y or n to use the 'Lair Key')");
             doorwayImg();
+                    sleep.sleep(1);
                 ask.keyInYN("\n\t\tYou use the 'Lair Key' to open the door, a fresh gust of air greets you.\n\t\t\tThis must be the way out of here!\n\t\t\t\t(Press any key to continue)");
                 stage1 = true;
            }
@@ -346,16 +388,22 @@ var event10 = ['\n\n\n\n\n\n\tYou drink what you thought was water\n\tTurns out 
     }
 
 
+
+    ////////////////////////
     /// INTRO TO STAGE 2 ///
+    ////////////////////////
 
     if(player.health > 0){
         ask.keyInYN('\n\n\n\n\n\t[GUIDE] ' + player.name + '! I can barely believe you destroyed the Dragon King!\n\t\tWhile you have made it this far, you still have a little ways to go (press any key to continue)');
-
+            sleep.msleep(600);
         ask.keyInYN('\n\n\t\t\t[GUIDE] You will need to walk a bit further to escape the mountain.\n\t\t\t\tI imagine you will need to defeat 5 more enemies to reach the exit.\n\t\t\t\t\tGood Luck! (Press anykey to continue)');
     };
 
 
+
+    //////////////////////
     ////// STAGE 2 ///////
+    //////////////////////
 
     while(stage2 === false){
         var choice = ask.question("\n\n\t[GUIDE] Type 'w' to continue walking, or 'print' to check your status: ");
@@ -396,8 +444,11 @@ var event10 = ['\n\n\n\n\n\n\tYou drink what you thought was water\n\tTurns out 
         console.log("\t\t\t                                        ");
     } else {
         lootCounter();
+            sleep.sleep(1);
         console.log("\n\n\n\n\t\t[GUIDE] Congratulations traveler, you successfully escaped the Dragon's Lair.\n\n\n");
+            sleep.sleep(3);
         console.log("\t\t\tAfter tallying up all of your 'LOOT', your final score is " + score + '\n');
+            sleep.sleep(3);
         console.log("\n\t\t\t  CCCCC  OOO  NN    N GGGGGG RRRR    AAA  TTTTTT  SSSSS");
         console.log("\t\t\t  C     O   O N  N  N G      R    R A   A   TT    S    ");
         console.log("\t\t\t  C     O   O N   N N G   GG RRRR   AAAAA   TT    SSSSS");
@@ -432,16 +483,19 @@ function doorwayImg(){
 };
 
 function mysticMountainImg(){
-    console.log('\n\n\n\t\t\t||                                            ||')
+    console.log('\n\n\n\t\t\t||--------------------------------------------||')
     console.log('\t\t\t||      MYSTIC         /\\       MOUNTAIN      ||');
     console.log('\t\t\t||                    /  \\                    ||');
     console.log('\t\t\t||        ^^         /    \\        ^^         ||');
-    console.log('\t\t\t||          ^^      /      \\_            ^^   ||');
-    console.log('\t\t\t||   ^^          __/    _     \\      ^^       ||');
-    console.log('\t\t\t||              /     _/ \\      \\_            ||');
-    console.log('\t\t\t||____/\\____ /\\/_____/  ∆ \\_______\\___/\\_o_/\\_||');
+    console.log('\t\t\t||          ^^      /      \\__            ^^  ||');
+    console.log('\t\t\t||   ^^          __/    _     \\__    ^^       ||');
+    console.log('\t\t\t||              /     _/ \\_      \\_           ||');
+    console.log('\t\t\t||____/\\____ /\\/_____/_ ∆ _\\_______\\___/\\_o_/\\||');
+    console.log('\t\t\t||_/\\____/\\_________/ - - - \\__/\\_________/\\__||');
+    console.log('\t\t\t||____________/\\___/- - - - -\\_____/\\___/\\____||');
+    console.log('\t\t\t||--------------------------------------------||');
 }
-
+//
 // function frame1(){
 //     setTimeout(function(){
 //         console.log("\n\n\n\n\n\n\n\n\n\n||||\\|||\\     /|||//||||");
