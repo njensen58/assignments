@@ -142,6 +142,13 @@ var walkingMov = function(){
 
 
 
+    console.log("     _       ");
+    console.log("    |_|   ");
+    console.log("   /   \\   ");
+    console.log("  | ††† |   MMMmm, ");
+    console.log("  |     |      Potion....");
+    console.log("   \\___/    ");
+
 
 
 

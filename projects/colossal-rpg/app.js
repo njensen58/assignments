@@ -13,6 +13,8 @@ var score = 0;
 var currentEnemy;
 var currentEvent;
 var fleeSwitch = false;
+var potionCounter;
+var potionTaken = false;
 var playerHealthPlus;
 var playerHealthMinus;
 
@@ -66,13 +68,13 @@ function enemySelect(){
     var enemySelect = Math.floor(Math.random() * 8);
     switch(enemySelect) {
         case 0:
-            currentEnemy = new EasyEnemyGenerator(orc[0], orc[1]);
+            currentEnemy = new EasyEnemyGenerator(orc[0], orc[1], otherLoot[1]);
             break;
         case 1:
-            currentEnemy = new EasyEnemyGenerator(demon[0], demon[1]);
+            currentEnemy = new EasyEnemyGenerator(demon[0], demon[1], otherLoot[1]);
             break;
         case 2:
-            currentEnemy = new EasyEnemyGenerator(dragon[0], dragon[1]);
+            currentEnemy = new EasyEnemyGenerator(dragon[0], dragon[1], otherLoot[1]);
             break;
         case 3:
             currentEnemy = new HardEnemyGenerator(orcM[0], orcM[1], orcM[2]);
@@ -84,10 +86,10 @@ function enemySelect(){
             currentEnemy = new HardEnemyGenerator(dragonM[0], dragonM[1], dragonM[2]);
             break;
         case 6:
-            currentEnemy = new EasyEnemyGenerator(vampireBats[0], vampireBats[1]);
+            currentEnemy = new EasyEnemyGenerator(vampireBats[0], vampireBats[1], otherLoot[0]);
             break;
         case 7:
-            currentEnemy = new EasyEnemyGenerator(goblinScout[0], vampireBats[1]);
+            currentEnemy = new EasyEnemyGenerator(goblinScout[0], vampireBats[1], otherLoot[0]);
             break;
     }
     return currentEnemy;
@@ -144,7 +146,7 @@ function battleEngine(){
 
 function battleSequence(){
     fleeSwitch = false;
-    var attackOptions = ['Attack', 'Flee', 'Print'];
+    var attackOptions = ['Attack', 'Flee', 'Print', 'Potion'];
     while((currentEnemy.health > 0 && player.health > 0) && fleeSwitch === false){
         var fightChoiceIndex = ask.keyInSelect(attackOptions, "\n\n\tWhat will you do? ");
         if(attackOptions[fightChoiceIndex] === 'Attack'){
@@ -156,6 +158,8 @@ function battleSequence(){
                 sleep.sleep(1);
         } else if(fightChoiceIndex === 2) {
             console.log("\n\n\n\n\n\n\t\t\t\tPlayer 1\n\t\t\t\tName: " + player.name + "\n\t\t\t\tHealth: " + player.health + "\n\t\t\t\tLoot: " + player.loot);
+        } else if(fightChoiceIndex === 3){
+            usePotion();
         }
     }
 }
@@ -209,6 +213,51 @@ function battleResolution(){
             sleep.sleep(1);
 }
 
+function usePotion(){
+    potionCounter = 0;
+    for(var i = 0; i <= player.loot.length; i++){
+        if(player.loot[i] === ' Potion'){
+            potionCounter++;
+        }
+    }
+    hasPotion();
+}
+
+function hasPotion(){
+    if(potionCounter <= 0){
+        console.log("\n\n\n\n\tYou do not have any potions to use.")
+    } else {
+        takePotion();
+    }
+}
+
+function takePotion(){
+    var itemOptions = ['yes', 'no'];
+    potionTaken = false;
+    while(potionTaken === false){
+    var answer = ask.keyInSelect(itemOptions, "\n\n\n\t\tYou currently have " + potionCounter + " potion(s).\n\t\tWould you like to use one? (y or n)");
+        if(itemOptions[answer] === 'yes'){
+            potionEffect();
+            potionTaken = true;
+        } else if(itemOptions[answer] === 'no'){
+            console.log("\n\n\n\n\n\t\tAlright, it's good to know you have it available if needed.");
+            potionTaken = true;
+        } else {
+            console.log("\n\n\t\tPlease answer yes or no.");
+                sleep.sleep(1);
+        }
+    }
+}
+
+function potionEffect(){
+    var potionIndex = player.loot.indexOf(' Potion');
+    player.loot.splice(potionIndex, 1);
+    player.health += 10;
+        iTookAPotion();
+        console.log('\n\n\n\t\t' + player.name + ' took a potion and receieved +10 health.');
+            sleep.sleep(2);
+};
+
 function healthPlus(){
     playerHealthPlus = Math.floor(Math.random() * 16);
         if(playerHealthPlus < 5){
@@ -236,10 +285,12 @@ function lootCounter(){
         if(player.loot[i] === ' Soul Shard'){
             score += 50;
         }
+        if(player.loot[i] === ' Coin'){
+            score += 10;
+        }
     }
     return score;
 }
-
 
 
      //////////////////////
@@ -249,12 +300,13 @@ function lootCounter(){
 
 var player = {
     health: 100,
-    loot: [] || "Your bag is currently empty"
+    loot: [' Potion']
 };
 
-function EasyEnemyGenerator(type, health, attackPow){
+function EasyEnemyGenerator(type, health, loot, attackPow){
     this.type = type;
     this.health = health;
+    this.loot = loot;
     this.attackPow = function(){
         attackPowerE = Math.floor(Math.random() * 10);
         return attackPowerE;
@@ -286,6 +338,9 @@ var demonM = ["ArcDemon", 40, "Soul Shard"];
 var dragon = ["Dragon", 30];
 var dragonM = ["Dragon King", 60, "Lair Key"];
 
+    // ITEMS //
+var otherLoot = ['Coin', 'Potion'];
+
 
         /////////////////////
         //  RANDOM EVENTS  //
@@ -311,6 +366,7 @@ var event9 = ['\n\n\n\n\n\n\tYou found Jesus', true];
 var event10 = ['\n\n\n\n\n\n\tYou drink what you thought was water.\n\tTurns out it\'s Orc urine...', false];
 var event11 = ['\n\n\n\n\n\n\tYou take a nap.  A really really good nap.', true];
 var event12 = ['\n\n\n\n\n\n\tA a rock in your shoe causes a blister..', false];
+
 
 
 
@@ -353,7 +409,7 @@ var event12 = ['\n\n\n\n\n\n\tA a rock in your shoe causes a blister..', false];
 
 
         ask.setDefaultOptions({
-            limit: ['w', 'print','item']
+            limit: ['w', 'print', 'item']
         });
 
 
@@ -385,7 +441,12 @@ var event12 = ['\n\n\n\n\n\n\tA a rock in your shoe causes a blister..', false];
         if(choice === 'print'){
             console.log("\n\n\n\n\n\n\t\t\t\tPlayer 1\n\t\t\t\tName: " + player.name + "\n\t\t\t\tHealth: " + player.health + "\n\t\t\t\tLoot: " + player.loot);
         }
+
+        if(choice === 'item'){
+            usePotion();
+        }
     }
+
 
 
 
@@ -401,12 +462,13 @@ var event12 = ['\n\n\n\n\n\n\tA a rock in your shoe causes a blister..', false];
 
 
 
+
     //////////////////////
     ////// STAGE 2 ///////
     //////////////////////
 
     while(stage2 === false){
-        var choice = ask.question("\n\n\t[GUIDE] Type 'w' to continue walking, or 'print' to check your status: ");
+        var choice = ask.question("\n\n\t[GUIDE] Type 'w' to continue walking, 'print' to check your status, or 'item' to use an item: ");
 
         if(choice === 'w'){
             walk();
@@ -424,6 +486,10 @@ var event12 = ['\n\n\n\n\n\n\tA a rock in your shoe causes a blister..', false];
 
         if(choice === 'print'){
             console.log("\n\n\n\n\n\n\t\t\t\tPlayer 1\n\t\t\t\tName: " + player.name + "\n\t\t\t\tHealth: " + player.health + "\n\t\t\t\tLoot: " + player.loot);
+        }
+
+        if(choice === 'item'){
+            usePotion();
         }
     }
 
@@ -458,7 +524,7 @@ var event12 = ['\n\n\n\n\n\n\tA a rock in your shoe causes a blister..', false];
     }
 
 
-// HIGH SCORE - 400 - NATE //
+// HIGH SCORES //
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -495,7 +561,16 @@ function mysticMountainImg(){
     console.log('\t\t\t||____________/\\___/- - - - -\\_____/\\___/\\____||');
     console.log('\t\t\t||--------------------------------------------||');
 }
-//
+
+function iTookAPotion(){
+    console.log("\n\t\t\t     _       ");
+    console.log("\t\t\t    |_|   ");
+    console.log("\t\t\t   /   \\   ");
+    console.log("\t\t\t  | ††† |   MMMmm, ");
+    console.log("\t\t\t  |     |      Potion....");
+    console.log("\t\t\t   \\___/    ");
+}
+
 // function frame1(){
 //     setTimeout(function(){
 //         console.log("\n\n\n\n\n\n\n\n\n\n||||\\|||\\     /|||//||||");
