@@ -72,6 +72,7 @@ header {
     display: flex;
     background-image: url(https://images.unsplash.com/photo-1484429791456-7762873ce0f9?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=5b20ddd265963872979c82f5929bac70&auto=format&fit=crop&w=1650&q=80);
     background-size: cover;
+    background-attachment: fixed;
     justify-content: center;
     align-items: center;
 }
@@ -181,6 +182,7 @@ header span {
     height: 500px;
     background-image: url(https://images.unsplash.com/photo-1459539235056-5045ca20e525?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=42ace4ed912d7d494a4385258572a682&auto=format&fit=crop&w=1950&q=80);
     background-size: cover;
+    background-attachment: fixed;
 }
 
 .overlay {
