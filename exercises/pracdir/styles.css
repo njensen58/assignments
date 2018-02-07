@@ -1,28 +1,19 @@
-body {
-    text-align: center;
-    margin: 0;
+.grid-container {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  grid-gap: 10px;
+  background-color: #2196F3;
+  padding: 10px;
+}
+.grid-container > div {
+  background-color: rgba(255, 255, 255, 0.8);
+  text-align: center;
+  padding: 20px 0;
+  font-size: 30px;
+}
+.item1 {
+  grid-column-start: 1;
+  grid-column-end: 4;
+    grid-row-start: 2
 }
 
-.container { 
-    margin-left: 20%
-}
-
-form {
-
-}
-
-fieldset {
-    width: 70%;
-    height: 100px;
-}
-
-#sub {
-    width: 25%;
-    margin-right: 25%;
-    background-color: d
-}
-
-input {
-    width: 100px;
-    height: 25px
-}

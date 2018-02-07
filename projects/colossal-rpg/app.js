@@ -30,6 +30,7 @@ function walk(){
      if(enemyChance === 1){
         encounter();
     } else if(enemyChance === 0){
+        walkingMov();
         randomEvent();
     }
 };
@@ -96,7 +97,7 @@ function enemySelect(){
 }
 
 function eventSelect(){
-    var eventSelect = Math.floor(Math.random() * 12);
+    var eventSelect = Math.floor(Math.random() * 14);
     switch(eventSelect){
         case 0:
             currentEvent = new EventGenerator(event1[0], event1[1]);
@@ -129,10 +130,16 @@ function eventSelect(){
             currentEvent = new EventGenerator(event10[0], event10[1]);
             break;
         case 10:
-            currentEvent = new EventGenerator(event10[0], event10[1]);
+            currentEvent = new EventGenerator(event11[0], event11[1]);
             break;
         case 11:
-            currentEvent = new EventGenerator(event10[0], event10[1]);
+            currentEvent = new EventGenerator(event12[0], event12[1]);
+            break;
+        case 12:
+            currentEvent = new EventGenerator(event13[0], event13[1]);
+            break;
+        case 13:
+            currentEvent = new EventGenerator(event14[0], event14[1]);
             break;
     }
     return currentEvent;
@@ -166,7 +173,7 @@ function battleSequence(){
 
 
 function attack(){
-    var attackPow = Math.floor(Math.random() * 25);
+    var attackPow = Math.floor(Math.random() * 26);
     if(attackPow < 10){
         attackPow = 10;
     }
@@ -225,7 +232,7 @@ function usePotion(){
 
 function hasPotion(){
     if(potionCounter <= 0){
-        console.log("\n\n\n\n\tYou do not have any potions to use.")
+        console.log("\n\n\n\n\t\tYou do not have any potions to use.")
     } else {
         takePotion();
     }
@@ -235,7 +242,7 @@ function takePotion(){
     var itemOptions = ['yes', 'no'];
     potionTaken = false;
     while(potionTaken === false){
-    var answer = ask.keyInSelect(itemOptions, "\n\n\n\t\tYou currently have " + potionCounter + " potion(s).\n\t\tWould you like to use one? (y or n)");
+    var answer = ask.keyInSelect(itemOptions, "\n\n\n\t\tYou currently have " + potionCounter + " potion(s).\n\n\t\t\tWould you like to use one? (y or n)");
         if(itemOptions[answer] === 'yes'){
             potionEffect();
             potionTaken = true;
@@ -288,6 +295,10 @@ function lootCounter(){
         if(player.loot[i] === ' Coin'){
             score += 10;
         }
+        if(player.loot[i] === ' Potion'){
+            score += 15;
+        }
+        score += player.health;
     }
     return score;
 }
@@ -308,7 +319,7 @@ function EasyEnemyGenerator(type, health, loot, attackPow){
     this.health = health;
     this.loot = loot;
     this.attackPow = function(){
-        attackPowerE = Math.floor(Math.random() * 10);
+        attackPowerE = Math.floor(Math.random() * 14);
         return attackPowerE;
     }
 }
@@ -319,7 +330,7 @@ function HardEnemyGenerator(type, health, loot, attackPow){
     this.health = health;
     this.loot = loot;
     this.attackPow = function(){
-        attackPowerE = Math.floor(Math.random() * 20);
+        attackPowerE = Math.floor(Math.random() * 21);
         if(attackPowerE < 10){
             attackPowerE = 10;
         }
@@ -336,7 +347,7 @@ var orcM = ["Orc Cheiftan", 35, "Bone Necklace"];
 var demon = ["Demon", 25];
 var demonM = ["ArcDemon", 40, "Soul Shard"];
 var dragon = ["Dragon", 30];
-var dragonM = ["Dragon King", 60, "Lair Key"];
+var dragonM = ["Dragon King", 65, "Lair Key"];
 
     // ITEMS //
 var otherLoot = ['Coin', 'Potion'];
@@ -366,6 +377,8 @@ var event9 = ['\n\n\n\n\n\n\tYou found Jesus', true];
 var event10 = ['\n\n\n\n\n\n\tYou drink what you thought was water.\n\tTurns out it\'s Orc urine...', false];
 var event11 = ['\n\n\n\n\n\n\tYou take a nap.  A really really good nap.', true];
 var event12 = ['\n\n\n\n\n\n\tA a rock in your shoe causes a blister..', false];
+var event13 = ['\n\n\n\n\n\n\tYou remembered what your momma told you.', true];
+var event14 = ['\n\n\n\n\n\n\tYou got rick-rolled\n\t\tNever gonna give you up, never gonna let you dooowwwwn.', false];
 
 
 
@@ -382,30 +395,30 @@ var event12 = ['\n\n\n\n\n\n\tA a rock in your shoe causes a blister..', false];
         //////////////////
 
 
-    console.log('\n\n\tHello Traveler, this is the voice of your GUIDE.');
-        sleep.sleep(2);
-    console.log('\n\t\t[GUIDE] I apologize we have to meet under such conditions, \n\t\tbut I assure you I can be trusted.');
-        sleep.sleep(2);
+    // console.log('\n\n\tHello Traveler, this is the voice of your GUIDE.');
+    //     sleep.sleep(2);
+    // console.log('\n\t\t[GUIDE] I apologize we have to meet under such conditions, \n\t\tbut I assure you I can be trusted.');
+    //     sleep.sleep(2);
     player.name = ask.question('\n\n\t\t[GUIDE] May I have your first name as we begin this adventure?: ');
         sleep.sleep(1);
     console.log("\n\n\t\t[GUIDE] Thank you " + player.name + '.');
         sleep.sleep(1);
-    ask.keyInYN("\n\n\t[GUIDE] Going forward you will be asked to choose what to do.\n\t\t(press any key to continue)");
-    console.log("\n\t[GUIDE] Typing the word 'print' will present your Name, current health, and any items you have accumulated on your journey.");
-        sleep.sleep(3);
-    ask.keyInYN("\n\t[GUIDE] Pressing 'w' will make you walk.\n\t\t[GUIDE] If you feel you are up to the task, I will give you some advice... \n\t\t\t(press any key to continue)");
+    // ask.keyIn("\n\n\t[GUIDE] Going forward you will be asked to choose what to do.\n\t\t(press any key to continue)");
+    // console.log("\n\t[GUIDE] Typing the word 'print' will present your Name, current health, and any items you have accumulated on your journey.");
+    //     sleep.sleep(3);
+    // ask.keyIn("\n\t[GUIDE] Pressing 'w' will make you walk.\n\t\t[GUIDE] If you feel you are up to the task, I will give you some advice... \n\t\t\t(press any key to continue)");
+    //
+    //     mysticMountainImg()
+    // ask.keyIn("\n\t[GUIDE] Wonderful, you are quite brave.  Welcome to the Mystic Mountain. \n\t\t\t(press any key to continue) ");
+    //     sleep.sleep(3);
+    // ask.keyIn("\n\n\t\t[GUIDE] In order to escape to a higher level of this mountain you will need to obtain the 'Lair Key', \n\t\t\twhich unlocks access to the path out of here.\n\t\t\t\t(press any key to continue)'");
 
-        mysticMountainImg()
-    ask.keyInYN("\n\t[GUIDE] Wonderful, you are quite brave.  Welcome to the Mystic Mountain. \n\t\t\t(press any key to continue) ");
-        sleep.sleep(4);
-    console.log("\n\n\t\t[GUIDE] In order to escape to a higher level of this mountain you will need to obtain the 'Lair Key', \n\t\t\twhich unlocks access to the path out of here.\n\t\t\t\t(press any key to continue)'");
-
-    ask.keyInYN("\n\t[GUIDE] The Dragon King rules these depths. \n\t\t(press any key to continue) ");
-    console.log("\n\t\tThere are many other creatures that live down here.");
-        sleep.sleep(2);
-    console.log("\n\t\t[GUIDE] Some creatures you encounter will drop a special item, \n\t\t\twhich will count towards your final score if you make it out of this mountain alive.");
-        sleep.sleep(4);
-    ask.keyInYN("\n\t\t\t[GUIDE] That should be all you need to know to begin, \n\t\t\t\tso when you are ready to start your journey, (press any key to continue)");
+    // ask.keyIn("\n\t[GUIDE] The Dragon King rules these depths. \n\t\t(press any key to continue) ");
+    // console.log("\n\t\tThere are many other creatures that live down here.");
+    //     sleep.sleep(2);
+    // console.log("\n\t\t[GUIDE] Some creatures you encounter will drop a special item, \n\t\t\twhich will count towards your final score if you make it out of this mountain alive.");
+    //     sleep.sleep(4);
+    // ask.keyIn("\n\t\t\t[GUIDE] That should be all you need to know to begin, \n\t\t\t\tso when you are ready to start your journey, (press any key to continue)");
 
 
         ask.setDefaultOptions({
@@ -431,10 +444,10 @@ var event12 = ['\n\n\n\n\n\n\tA a rock in your shoe causes a blister..', false];
 
         if(player.loot.includes(" Lair Key")){
                 sleep.sleep(1);
-            ask.keyInYN("\n\n\n\n\t\tUpon defeat of the Dragon King, a key falls from it's scales.\n\t\t\tYou see behind the dragon's carcas a large doorway.\n\t\t\t\t(press y or n to use the 'Lair Key')");
-            doorwayImg();
+            ask.keyIn("\n\n\n\n\t\tUpon defeat of the Dragon King, a key falls from it's scales.\n\t\t\tYou see behind the dragon's carcas a large doorway.\n\t\t\t\t(press any key to use the 'Lair Key')");
+                doorwayImg();
                     sleep.sleep(1);
-                ask.keyInYN("\n\t\tYou use the 'Lair Key' to open the door, a fresh gust of air greets you.\n\t\t\tThis must be the way out of here!\n\t\t\t\t(Press any key to continue)");
+                ask.keyIn("\n\t\tYou use the 'Lair Key' to open the door, a fresh gust of air greets you.\n\t\t\tThis must be the way out of here!\n\t\t\t\t(press any key to continue)");
                 stage1 = true;
            }
 
@@ -445,6 +458,7 @@ var event12 = ['\n\n\n\n\n\n\tA a rock in your shoe causes a blister..', false];
         if(choice === 'item'){
             usePotion();
         }
+
     }
 
 
@@ -455,9 +469,9 @@ var event12 = ['\n\n\n\n\n\n\tA a rock in your shoe causes a blister..', false];
     ////////////////////////
 
     if(player.health > 0){
-        ask.keyInYN('\n\n\n\n\n\t[GUIDE] ' + player.name + '! I can barely believe you destroyed the Dragon King!\n\t\tWhile you have made it this far, you still have a little ways to go (press any key to continue)');
+        ask.keyIn('\n\n\n\n\n\t[GUIDE] ' + player.name + '! I can barely believe you destroyed the Dragon King!\n\t\tWhile you have made it this far, you still have a little ways to go (press any key to continue)');
             sleep.msleep(600);
-        ask.keyInYN('\n\n\t\t\t[GUIDE] You will need to walk a bit further to escape the mountain.\n\t\t\t\tI imagine you will need to defeat 5 more enemies to reach the exit.\n\t\t\t\t\tGood Luck! (Press anykey to continue)');
+        ask.keyIn('\n\n\t\t\t[GUIDE] You will need to walk a bit further to escape the mountain.\n\t\t\t\tI imagine you will need to defeat 5 more enemies to reach the exit.\n\t\t\t\t\tGood Luck! (Press anykey to continue)');
     };
 
 
@@ -494,8 +508,9 @@ var event12 = ['\n\n\n\n\n\n\tA a rock in your shoe causes a blister..', false];
     }
 
 
-/////////////////////////////
-///// END GAME SEQUENCE /////
+        /////////////////////////////
+        ///// END GAME SEQUENCE /////
+        /////////////////////////////
 
     // final conditional to check if player health is <= 0, or if game has been won.
     // Check players loot and give a final score upon Victory.
@@ -511,7 +526,7 @@ var event12 = ['\n\n\n\n\n\n\tA a rock in your shoe causes a blister..', false];
     } else {
         lootCounter();
             sleep.sleep(1);
-        console.log("\n\n\n\n\t\t[GUIDE] Congratulations traveler, you successfully escaped the Dragon's Lair.\n\n\n");
+        console.log("\n\n\n\n\t\t[GUIDE] Congratulations traveler, you successfully escaped the Mystic Mountain.\n\n\n");
             sleep.sleep(3);
         console.log("\t\t\tAfter tallying up all of your 'LOOT', your final score is " + score + '\n');
             sleep.sleep(3);
@@ -571,96 +586,88 @@ function iTookAPotion(){
     console.log("\t\t\t   \\___/    ");
 }
 
-// function frame1(){
-//     setTimeout(function(){
-//         console.log("\n\n\n\n\n\n\n\n\n\n||||\\|||\\     /|||//||||");
-//         console.log("|||\\|||\\     /|||//|||||");
-//         console.log("||\\|||\\     /|||//|||||/");
-//         console.log("||\\|||\\     /|||//|||||/");
-//         console.log("||\\|||\\     /|||//|||||/");
-//         console.log("|||\\|||\\     /|||//|||||");
-//         console.log("||||\\|||\\  o  /|||//||||");
-//     }, 500);
-// }
-//
-// function frame2(){
-//     setTimeout(function(){
-//         console.log("\n\n\n\n\n\n\n\n\n\n||||\\|||\\     /|||//||||");
-//         console.log("|||\\|||\\     /|||//|||||");
-//         console.log("||\\|||\\     /|||//|||||/");
-//         console.log("||\\|||\\     /|||//|||||/");
-//         console.log("||\\|||\\     /|||//|||||/");
-//         console.log("|||\\|||\\  o  /|||//|||||");
-//         console.log("||||\\|||\\     /|||//||||");
-//     }, 1000);
-// }
-//
-// function frame3(){
-//     setTimeout(function(){
-//         console.log("\n\n\n\n\n\n\n\n\n\n||||\\|||\\     /|||//||||");
-//         console.log("|||\\|||\\     /|||//|||||");
-//         console.log("||\\|||\\     /|||//|||||/");
-//         console.log("||\\|||\\     /|||//|||||/");
-//         console.log("||\\|||\\  o  /|||//|||||/");
-//         console.log("|||\\|||\\     /|||//|||||");
-//         console.log("||||\\|||\\     /|||//||||");
-//     }, 1500);
-// }
-//
-// function frame4(){
-//     setTimeout(function(){
-//         console.log("\n\n\n\n\n\n\n\n\n\n||||\\|||\\     /|||//||||");
-//         console.log("|||\\|||\\     /|||//|||||");
-//         console.log("||\\|||\\     /|||//|||||/");
-//         console.log("||\\|||\\  o  /|||//|||||/");
-//         console.log("||\\|||\\     /|||//|||||/");
-//         console.log("|||\\|||\\     /|||//|||||");
-//         console.log("||||\\|||\\     /|||//||||");
-//     }, 2000);
-// }
-//
-// function frame5 (){
-//     setTimeout(function(){
-//         console.log("\n\n\n\n\n\n\n\n\n\n||||\\|||\\     /|||//||||");
-//         console.log("|||\\|||\\     /|||//|||||");
-//         console.log("||\\|||\\  o  /|||//|||||/");
-//         console.log("||\\|||\\     /|||//|||||/");
-//         console.log("||\\|||\\     /|||//|||||/");
-//         console.log("|||\\|||\\     /|||//|||||");
-//         console.log("||||\\|||\\     /|||//||||");
-//     }, 2500);
-// }
-//
-// function frame6(){
-//     setTimeout(function(){
-//         console.log("\n\n\n\n\n\n\n\n\n\n||||\\|||\\     /|||//||||");
-//         console.log("|||\\|||\\  o  /|||//|||||");
-//         console.log("||\\|||\\     /|||//|||||/");
-//         console.log("||\\|||\\     /|||//|||||/");
-//         console.log("||\\|||\\     /|||//|||||/");
-//         console.log("|||\\|||\\     /|||//|||||");
-//         console.log("||||\\|||\\     /|||//||||");
-//     }, 3000);
-// }
-//
-// function frame7(){
-//     setTimeout(function(){
-//         console.log("\n\n\n\n\n\n\n\n\n\n||||\\|||\\  o  /|||//||||");
-//         console.log("|||\\|||\\     /|||//|||||");
-//         console.log("||\\|||\\     /|||//|||||/");
-//         console.log("||\\|||\\     /|||//|||||/");
-//         console.log("||\\|||\\     /|||//|||||/");
-//         console.log("|||\\|||\\     /|||//|||||");
-//         console.log("||||\\|||\\     /|||//||||");
-//     }, 3500);
-// }
-//
-// function walkingMov(){
-//     frame1();
-//     frame2();
-//     frame3();
-//     frame4();
-//     frame5();
-//     frame6();
-//     frame7();
-// };
+function frame1(){
+        console.log("\n\n\n\n\n\n\n\n\n\n\n\n\t\t\t||||\\|||\\     /|||//||||");
+        console.log("\t\t\t|||\\|||\\     /|||//|||||");
+        console.log("\t\t\t||\\|||\\     /|||//|||||/");
+        console.log("\t\t\t||\\|||\\     /|||//|||||/");
+        console.log("\t\t\t||\\|||\\     /|||//|||||/");
+        console.log("\t\t\t|||\\|||\\     /|||//|||||");
+        console.log("\t\t\t||||\\|||\\  o  /|||//||||");
+}
+
+function frame2(){
+        console.log("\n\n\n\n\n\n\n\n\n\n\n\n\t\t\t||||\\|||\\     /|||//||||");
+        console.log("\t\t\t|||\\|||\\     /|||//|||||");
+        console.log("\t\t\t||\\|||\\     /|||//|||||/");
+        console.log("\t\t\t||\\|||\\     /|||//|||||/");
+        console.log("\t\t\t||\\|||\\     /|||//|||||/");
+        console.log("\t\t\t|||\\|||\\  o  /|||//|||||");
+        console.log("\t\t\t||||\\|||\\     /|||//||||");
+}
+
+function frame3(){
+        console.log("\n\n\n\n\n\n\n\n\n\n\n\n\t\t\t||||\\|||\\     /|||//||||");
+        console.log("\t\t\t|||\\|||\\     /|||//|||||");
+        console.log("\t\t\t||\\|||\\     /|||//|||||/");
+        console.log("\t\t\t||\\|||\\     /|||//|||||/");
+        console.log("\t\t\t||\\|||\\  o  /|||//|||||/");
+        console.log("\t\t\t|||\\|||\\     /|||//|||||");
+        console.log("\t\t\t||||\\|||\\     /|||//||||");
+}
+
+function frame4(){
+        console.log("\n\n\n\n\n\n\n\n\n\n\n\n\t\t\t||||\\|||\\     /|||//||||");
+        console.log("\t\t\t|||\\|||\\     /|||//|||||");
+        console.log("\t\t\t||\\|||\\     /|||//|||||/");
+        console.log("\t\t\t||\\|||\\  o  /|||//|||||/");
+        console.log("\t\t\t||\\|||\\     /|||//|||||/");
+        console.log("\t\t\t|||\\|||\\     /|||//|||||");
+        console.log("\t\t\t||||\\|||\\     /|||//||||");
+}
+
+function frame5 (){
+        console.log("\n\n\n\n\n\n\n\n\n\n\n\n\t\t\t||||\\|||\\     /|||//||||");
+        console.log("\t\t\t|||\\|||\\     /|||//|||||");
+        console.log("\t\t\t||\\|||\\  o  /|||//|||||/");
+        console.log("\t\t\t||\\|||\\     /|||//|||||/");
+        console.log("\t\t\t||\\|||\\     /|||//|||||/");
+        console.log("\t\t\t|||\\|||\\     /|||//|||||");
+        console.log("\t\t\t||||\\|||\\     /|||//||||");
+}
+
+function frame6(){
+        console.log("\n\n\n\n\n\n\n\n\n\n\n\n\t\t\t||||\\|||\\     /|||//||||");
+        console.log("\t\t\t|||\\|||\\  o  /|||//|||||");
+        console.log("\t\t\t||\\|||\\     /|||//|||||/");
+        console.log("\t\t\t||\\|||\\     /|||//|||||/");
+        console.log("\t\t\t||\\|||\\     /|||//|||||/");
+        console.log("\t\t\t|||\\|||\\     /|||//|||||");
+        console.log("\t\t\t||||\\|||\\     /|||//||||");
+}
+
+function frame7(){
+        console.log("\n\n\n\n\n\n\n\n\n\n\n\n\t\t\t||||\\|||\\  o  /|||//||||");
+        console.log("\t\t\t|||\\|||\\     /|||//|||||");
+        console.log("\t\t\t||\\|||\\     /|||//|||||/");
+        console.log("\t\t\t||\\|||\\     /|||//|||||/");
+        console.log("\t\t\t||\\|||\\     /|||//|||||/");
+        console.log("\t\t\t|||\\|||\\     /|||//|||||");
+        console.log("\t\t\t||||\\|||\\     /|||//||||");
+}
+
+function walkingMov(){
+    frame1();
+        sleep.msleep(250);
+    frame2();
+        sleep.msleep(250);
+    frame3();
+        sleep.msleep(250);
+    frame4();
+        sleep.msleep(250);
+    frame5();
+        sleep.msleep(250);
+    frame6();
+        sleep.msleep(250);
+    frame7();
+};
