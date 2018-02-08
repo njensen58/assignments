@@ -1,0 +1,82 @@
+body {
+    text-align: center;
+}
+
+div {
+    background-color: grey;
+    height: 100px;
+    width: 100px;
+    padding: 50px;
+    display: inline-block;
+}
+
+.box1 {
+    width: 50px;
+    height: 50px;
+    transition: 1s;
+}
+
+.box1:hover {
+    background-color: dodgerblue;
+    width: 100px;
+    height: 100px;
+    margin-top: 20px;
+}
+
+.box2 {
+    background-color: green;
+    transition: all 1s ease-in-out;
+}
+
+.box2:hover {
+    background-color: rgba(20, 20, 200, .5);
+    box-shadow: -2px 5px 11px 4px black;
+    width: 50px;
+    height: 40px;
+}
+
+.box3 {
+    background-color: cornflowerblue;
+    transition: all 1s ease-in;
+}
+
+.box3:hover {
+    border: 1px solid cornflowerblue;
+    border-radius: 50%;
+    filter: opacity(20%);
+}
+
+.box4 {
+    transition: 300s ease-out;
+}
+
+.box4:hover {
+    border-top-left-radius: 20%;
+    border-top-right-radius: 40%;
+    border-bottom-left-radius: 60%;
+    border-bottom-right-radius: 60%;
+    background-color: rgba(20, 30, 200, .6);
+    transform: rotate(-10000deg);
+}
+
+.box5 {
+    transition: all 500ms cubic-bezier(0.890, 0.110, 0.195, 0.785);
+}
+
+.box5:hover {
+    background-color: darkred;
+    height: 200px;
+}
+
+.box6 {
+    width: 100px;
+    height: 100px;
+    background-color: violet;
+    transition: width 2s, height 2s, transform 2s, background-color 2s;
+}
+
+.box6:hover {
+    width: 300px;
+    height: 300px;
+    transform: rotate(1080deg);
+}

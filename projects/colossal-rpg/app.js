@@ -319,7 +319,7 @@ function EasyEnemyGenerator(type, health, loot, attackPow){
     this.health = health;
     this.loot = loot;
     this.attackPow = function(){
-        attackPowerE = Math.floor(Math.random() * 14);
+        attackPowerE = Math.floor(Math.random() * 10);
         return attackPowerE;
     }
 }
@@ -330,7 +330,7 @@ function HardEnemyGenerator(type, health, loot, attackPow){
     this.health = health;
     this.loot = loot;
     this.attackPow = function(){
-        attackPowerE = Math.floor(Math.random() * 21);
+        attackPowerE = Math.floor(Math.random() * 18);
         if(attackPowerE < 10){
             attackPowerE = 10;
         }
@@ -356,6 +356,7 @@ var otherLoot = ['Coin', 'Potion'];
         /////////////////////
         //  RANDOM EVENTS  //
         /////////////////////
+
 
 function EventGenerator(sideStory, eventBool){
     this.sideStory = sideStory;
@@ -395,10 +396,10 @@ var event14 = ['\n\n\n\n\n\n\tYou got rick-rolled\n\t\tNever gonna give you up, 
         //////////////////
 
 
-    // console.log('\n\n\tHello Traveler, this is the voice of your GUIDE.');
-    //     sleep.sleep(2);
-    // console.log('\n\t\t[GUIDE] I apologize we have to meet under such conditions, \n\t\tbut I assure you I can be trusted.');
-    //     sleep.sleep(2);
+    console.log('\n\n\tHello Traveler, this is the voice of your GUIDE.');
+        sleep.sleep(2);
+    console.log('\n\t\t[GUIDE] I apologize we have to meet under such conditions, \n\t\tbut I assure you I can be trusted.');
+        sleep.sleep(2);
     player.name = ask.question('\n\n\t\t[GUIDE] May I have your first name as we begin this adventure?: ');
         sleep.sleep(1);
     console.log("\n\n\t\t[GUIDE] Thank you " + player.name + '.');
@@ -406,13 +407,13 @@ var event14 = ['\n\n\n\n\n\n\tYou got rick-rolled\n\t\tNever gonna give you up, 
     // ask.keyIn("\n\n\t[GUIDE] Going forward you will be asked to choose what to do.\n\t\t(press any key to continue)");
     // console.log("\n\t[GUIDE] Typing the word 'print' will present your Name, current health, and any items you have accumulated on your journey.");
     //     sleep.sleep(3);
-    // ask.keyIn("\n\t[GUIDE] Pressing 'w' will make you walk.\n\t\t[GUIDE] If you feel you are up to the task, I will give you some advice... \n\t\t\t(press any key to continue)");
-    //
-    //     mysticMountainImg()
-    // ask.keyIn("\n\t[GUIDE] Wonderful, you are quite brave.  Welcome to the Mystic Mountain. \n\t\t\t(press any key to continue) ");
+    ask.keyIn("\n\t[GUIDE] Pressing 'w' will make you walk.\n\t\t[GUIDE] If you feel you are up to the task, I will give you some advice... \n\t\t\t(press any key to continue)");
+
+        mysticMountainImg()
+    ask.keyIn("\n\t[GUIDE] Wonderful, you are quite brave.  Welcome to the Mystic Mountain. \n\t\t\t(press any key to continue) ");
     //     sleep.sleep(3);
     // ask.keyIn("\n\n\t\t[GUIDE] In order to escape to a higher level of this mountain you will need to obtain the 'Lair Key', \n\t\t\twhich unlocks access to the path out of here.\n\t\t\t\t(press any key to continue)'");
-
+    //
     // ask.keyIn("\n\t[GUIDE] The Dragon King rules these depths. \n\t\t(press any key to continue) ");
     // console.log("\n\t\tThere are many other creatures that live down here.");
     //     sleep.sleep(2);
@@ -430,6 +431,7 @@ var event14 = ['\n\n\n\n\n\n\tYou got rick-rolled\n\t\tNever gonna give you up, 
     ////// STAGE 1 /////// - Goal is to kill dragonKing to get lair key, which unlocks the final stage 2.
     //////////////////////
 
+
     while(stage1 === false){
         var choice = ask.question("\n\n\n\n\t[GUIDE] Type 'w' to continue walking, 'print' to check your status, or 'item' to use an item: ");
         if(choice === 'w'){
@@ -444,10 +446,9 @@ var event14 = ['\n\n\n\n\n\n\tYou got rick-rolled\n\t\tNever gonna give you up, 
 
         if(player.loot.includes(" Lair Key")){
                 sleep.sleep(1);
-            ask.keyIn("\n\n\n\n\t\tUpon defeat of the Dragon King, a key falls from it's scales.\n\t\t\tYou see behind the dragon's carcas a large doorway.\n\t\t\t\t(press any key to use the 'Lair Key')");
+            ask.keyInYN("\n\n\n\n\t\tUpon defeat of the Dragon King, a key falls from it's scales.\n\t\t\tYou see behind the dragon's carcas a large doorway.\n\t\t\t\t(press any key to use the 'Lair Key')");
                 doorwayImg();
-                    sleep.sleep(1);
-                ask.keyIn("\n\t\tYou use the 'Lair Key' to open the door, a fresh gust of air greets you.\n\t\t\tThis must be the way out of here!\n\t\t\t\t(press any key to continue)");
+                ask.keyInYN("\n\t\tYou use the 'Lair Key' to open the door, a fresh gust of air greets you.\n\t\t\tThis must be the way out of here!\n\t\t\t\t(press any key to continue)");
                 stage1 = true;
            }
 
@@ -469,9 +470,9 @@ var event14 = ['\n\n\n\n\n\n\tYou got rick-rolled\n\t\tNever gonna give you up, 
     ////////////////////////
 
     if(player.health > 0){
-        ask.keyIn('\n\n\n\n\n\t[GUIDE] ' + player.name + '! I can barely believe you destroyed the Dragon King!\n\t\tWhile you have made it this far, you still have a little ways to go (press any key to continue)');
+        ask.keyInYN('\n\n\n\n\n\t[GUIDE] ' + player.name + '! I can barely believe you destroyed the Dragon King!\n\t\tWhile you have made it this far, you still have a little ways to go (press any key to continue)');
             sleep.msleep(600);
-        ask.keyIn('\n\n\t\t\t[GUIDE] You will need to walk a bit further to escape the mountain.\n\t\t\t\tI imagine you will need to defeat 5 more enemies to reach the exit.\n\t\t\t\t\tGood Luck! (Press anykey to continue)');
+        ask.keyInYN('\n\n\t\t\t[GUIDE] You will need to walk a bit further to escape the mountain.\n\t\t\t\tI imagine you will need to defeat 5 more enemies to reach the exit.\n\t\t\t\t\tGood Luck! (Press anykey to continue)');
     };
 
 
@@ -539,7 +540,9 @@ var event14 = ['\n\n\n\n\n\n\tYou got rick-rolled\n\t\tNever gonna give you up, 
     }
 
 
-// HIGH SCORES //
+    // HIGH SCORES //
+
+// 1 - NATE - SCORE: 310;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
