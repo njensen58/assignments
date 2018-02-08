@@ -1,0 +1,115 @@
+* {
+    margin: 0;
+}
+
+/*--- FONTS ---*/
+@font-face {
+    font-family: verdeModerna;
+    src: url(resources/imgs/verdemoderna.woff);
+}
+
+@font-face {
+    font-family: juliusSansOneV6;
+    src: url(http://fonts.gstatic.com/s/juliussansone/v6/iU65JP9acQHPDLkdalCF7pbhOpL-vLTkIjCTuVYsuO0.woff2);
+}
+
+@font-face {
+    font-family: juliusSansOneV5;
+    src: url(http://fonts.gstatic.com/s/librebaskerville/v5/pR0sBQVcY0JZc_ciXjFsK8j0T1k_tV7QYhgnOhA2764.woff2);
+}
+
+@font-face {
+    font-family: juliusSansOneV5Italic;
+    src: url(http://fonts.gstatic.com/s/librebaskerville/v5/QHIOz1iKF3bIEzRdDFaf5fbsUggLxuOzHNuXcSFlTaY.woff2);
+}
+
+@font-face {
+    font-family: glyph;
+    src: url(resources/imgs/enso.svg);
+}
+
+
+/*==================*/
+/* ==== HEADER ==== */
+
+.topTrim {
+    background-color: #265751;
+    padding-top: 10px;
+    width: 100%;
+}
+
+.headerDiv {
+    position: relative;
+    width: 100%;
+    background: url(resources/imgs/gridlines-opaque.png) fixed,
+                url(resources/imgs/contours@2x.png) fixed,
+                url(resources/imgs/huntington.jpg) no-repeat;
+    background-size: auto;
+    background-size: cover;
+    height: 235px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.glyph {
+    width: 50px;
+    position: absolute;
+    top: 10px;
+    margin-top: 5px;
+}
+
+header h1 {
+    color: white;
+    width: 100vw;
+    margin-top: 50px;
+    font-family: juliusSansOneV6, serif;
+}
+
+header h2 {
+    color: white;
+}
+
+.bannerRow {
+    width: 100%;
+    height: 70px;;
+    bottom: 0;
+    background-color: rgba(204, 204, 204, 0.4);
+    position: absolute;
+    display: grid;
+    grid-template-columns: 75px auto 75px;
+    font-family: juliusSansOneV6;
+    font-size: 19px;
+}
+
+.bannerBtn1 {
+    height: 75px;
+    grid-column: 1;
+}
+
+.banner {
+    grid-column: 2;
+    height: 75px;
+    width: 100%;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+div.banner span {
+
+}
+
+.bannerBtn2 {
+    grid-column: 3;
+    height: 75px;
+    transition: .5s;
+}
+
+.bannerBtn1:hover,
+.bannerBtn2:hover,
+.banner:hover {
+    background-color: rgba(250, 250, 250, 0.5)
+}
