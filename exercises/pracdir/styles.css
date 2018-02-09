@@ -1,23 +1,11 @@
-.accordion {
-    background-color: #eee;
-    color: #444;
-    cursor: pointer;
-    padding: 18px;
-    width: 100%;
-    text-align: left;
-    border: none;
-    outline: none;
-    transition: 0.4s;
-}
+var request = require('request');
 
-.active, 
-.accordion:hover {
-    background-color: #ccc;
-}
-
-.panel {
-    padding: 0 18px;
-    background-color: white;
-    overflow: hidden;
-    display: none;
-}
+request('http://pokeapi.co/api/v1/pokemon/25/', function (error, response, body) {  
+    if (!error && response.statusCode === 200) {
+        var data = JSON.parse(body);
+        console.log("Pokemon Name: " + data.name);
+        console.log("Speed: " + data.speed);
+        console.log("Weight: " + data.weight);
+        console.log("Favorite Move: " + data.moves[2].name);
+    }
+});
