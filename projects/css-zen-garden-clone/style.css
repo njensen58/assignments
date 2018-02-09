@@ -33,7 +33,7 @@
 /* ==== HEADER ==== */
 
 .topTrim {
-    background-color: #265751;
+    background-color: rgba(19, 67, 71, 0.9);;
     padding-top: 10px;
     width: 100%;
 }
@@ -137,7 +137,8 @@ div.banner span {
 /*--------------------*/
 /*====== MAIN ========*/
 
-.whiteContainer1 {
+.whiteContainer1,
+.whiteContainer2 {
     display: grid;
     grid-template-columns: 10% auto 10%;
 }
@@ -153,13 +154,17 @@ div.banner span {
 
 .article1,
 .article2,
-.article3 {
+.article3,
+.article4,
+.article5 {
     grid-column: 2;
 }
 
 article.article1 p,
 article.article2 p,
-article.article3 p {
+article.article3 p,
+article.article4 p,
+article.article5 p {
     margin-top: 10px;
     line-height: 1.9;
     font-family: juliusSansOneV5;
@@ -169,25 +174,29 @@ article.article3 p {
 
 .article1Head,
 .article2Head,
-.article3Head {
+.article3Head,
+.article4Head,
+.article5Head {
     font-family: juliusSansOneV6;
     margin-top: 42px;
     font-size: 20px;
     text-transform: uppercase;
 }
 
-.article2 {
+.article2,
+.article4,
+.article5 {
     margin-bottom: 20px;
 }
 
-.article3 {
-    margin-top: 20px;
-    background-color: rgba(138,188,159,0.5);
+.article3Head {
+    margin-top: 30px;
 }
 
-.article3Background {
+.greenSection {
+    display: grid;
+    grid-template-columns: 10% auto 10%;
     background-color: rgba(138,188,159,0.5);
-    grid-column: 1;
 }
 
 
