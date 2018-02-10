@@ -1,5 +1,10 @@
 * {
     margin: 0;
+    box-sizing: border-box;
+}
+
+a {
+    text-decoration: none;
 }
 
 /*--- FONTS ---*/
@@ -33,7 +38,7 @@
 /* ==== HEADER ==== */
 
 .topTrim {
-    background-color: rgba(19, 67, 71, 0.9);
+    background-color: rgba(19, 67, 71, 1);
     padding-top: 10px;
     width: 100%;
 }
@@ -41,7 +46,8 @@
 .headerDiv {
     position: relative;
     width: 100%;
-    background: url(resources/imgs/gridlines-opaque.png) fixed,
+    background: url(resources/imgs/noise.png) fixed,
+                url(resources/imgs/gridlines-opaque.png) fixed,
                 url(resources/imgs/contours@2x.png) no-repeat,
                 url(resources/imgs/huntington.jpg) no-repeat;
     background-size: auto;
@@ -53,11 +59,13 @@
     text-align: center;
 }
 
+.glyphContainer {
+
+}
+
 .glyph {
     width: 50px;
-    position: absolute;
-    top: 10px;
-    margin-top: 10px;
+    margin-top: 20px;
 }
 
 .titleSpan {
@@ -67,8 +75,8 @@
 
 header h1 {
     color: white;
-    width: 100vw;
-    margin-top: 85px;
+    width: 100%;
+    margin-top: 10px;
     font-family: juliusSansOneV6, serif;
     font-weight: lighter;
     font-size: 29px;
@@ -81,7 +89,6 @@ header h2 {
     font-family: juliusSansOneV5Italic;
     font-size: 18px;
     padding-top: 5px;
-    /* letter-spacing: 1px; */
     color: rgba(250, 250, 250, .6);
 }
 
@@ -141,7 +148,7 @@ div.banner span {
 .whiteContainer1,
 .whiteContainer2 {
     display: grid;
-    grid-template-columns: 10% auto 10%;
+    grid-template-columns: 10% 1fr 10%;
 }
 
 .introDiv {
@@ -152,6 +159,12 @@ div.banner span {
     font-size: 13.5px;
     color: rgba(1, 1, 1, 0.8);
 }
+
+.downloadDiv {
+    font-size: 0;
+}
+
+
 
 .article1,
 .article2,
@@ -197,7 +210,7 @@ article.article5 p {
 
 .greenSection {
     display: grid;
-    grid-template-columns: 10% auto 10%;
+    grid-template-columns: 10% 1fr 10%;
     background: url(resources/imgs/bamboo.png) fixed no-repeat;
     background-size: cover;
 }
@@ -221,13 +234,32 @@ article.article5 p {
     align-items: center;
     height: 225px;
     position: relative;
-    background: url(resources/imgs/koi.jpg) no-repeat;
+    background: url(resources/imgs/gridlines.png) -101px 93px,
+                url(resources/imgs/contours@2x.png) no-repeat,
+                url(resources/imgs/koi.jpg) no-repeat;
     background-size: cover;
     text-align: center;
 }
 
 .footerTextDiv {
+    font-size: 23px;
+    margin: 0 7%;
+    line-height: 1.8;
+    color: rgba(232, 232, 232, 0.42);
+    font-family: juliusSansOneV5Italic;
+}
 
+a.footerText1 {
+    text-decoration: none;
+    font-family: juliusSansOneV5;
+}
+
+a.footerText1:hover {
+    text-decoration: underline;
+}
+
+.footerText1 {
+    color: rgba(232, 232, 232, 0.76);
 }
 
 .footerIconDiv {
@@ -243,7 +275,7 @@ article.article5 p {
 }
 
 .icons {
-    border: 1px solid #134347;
+    border: 1px solid #13434700;
     border-radius: 50%;
     transition: .3s ease-out;
     margin: 0 5px;
@@ -253,9 +285,105 @@ article.article5 p {
     background-color: #d8d8d88f;
     color: #134347;
     border: 1px solid #134347;
+    cursor: pointer;
 }
 
 
 
 
-/*-----------------*/
+    /*----------------*/
+    /*--TILES-TYPE-1--*/
+    /*----------------*/
+
+.tilesContainer1,
+.tilesContainer2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.tilesContainer1 {
+    background-color: #edf4f0;
+}
+
+.greenOverlay {
+    background-color: rgba(138,188,159,0.5);
+}
+
+.tilesContainer2 {
+    background: url(resources/imgs/bamboo.png);
+}
+
+.tileType1,
+.tileType2 {
+    width: 100%;
+    height: 75px;
+    display: flex;
+    padding-top: 10px;
+    border-bottom: 1px solid #758e8536;
+    line-height: 1.3;
+}
+
+.tileType2 {
+    font-family: juliusSansOneV6;
+    font-size: 17px;
+    color: rgba(0, 20, 10, .7);
+}
+
+.col1 {
+    grid-column: 1;
+    margin-left: 10%;
+}
+
+.col2 {
+    grid-column: 2;
+    margin-left: 10%;
+}
+
+.tileTitle {
+    font-family: juliusSansOneV6;
+    color: rgba(0, 20, 10, .7);
+}
+
+.byTile {
+    font-family: juliusSansOneV5Italic;
+    font-size: 13px;
+    color: rgba(20, 20, 20, 0.28);
+}
+
+.tileName {
+    font-family: juliusSansOneV5;
+    font-size: 12px;
+
+}
+
+div.tileType2 p {
+    margin-top: 5px;
+}
+
+.gFirstRow {
+    height: 70px;
+}
+
+.gSecondRow {
+    height: 60px;
+}
+
+.gThirdRow {
+    height: 60px;
+}
+
+.gBottomRow {
+    height: 88px;
+}
+
+.ggFirstRow {
+    height: 57px;
+}
+
+.ggSecondRow {
+    height: 40px;
+}
+
+.ggLastRow {
+    height: 35px;
+}

@@ -5,16 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700" rel="stylesheet">
+    <link rel="icon" href="resources/imgs/favicons.png"/>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="queries/queries.css">
     <title>CSS Zen Garden: The Beauty of CSS Design</title>
 </head>
 <body>
       <!-- Reseach how to put icon in <title> tab -->
-      <!-- Research how to use font sheet in sources -->
+
     <header>
         <div class="topTrim"></div>
         <div class="headerDiv">
-            <img src="resources/imgs/enso.svg" class="glyph" alt="Zen Glyph"/>
+            <div class="glyphContainer">
+                <img src="resources/imgs/enso.svg" class="glyph" alt="Zen Glyph"/>
+            </div>
             <h1>CSS Zen Garden</h1>
             <h2>The Beauty of <span class="titleSpan">CSS</span> Design</h2>
             <div class="bannerRow">
@@ -26,12 +30,23 @@
     </header>
 
     <div class="whiteContainer1">
-
         <div class="introDiv">
             <p>
                 A demonstration of what can be accomplished through CSS-based design. Select any style sheet from the list to load it into this page.
             </p>
+        </div>
 
+        <div class="downloadDiv">
+                Download the example at
+                <div class="downloadDivs">
+                    <span class="linkSpans">D</span>
+                    <a href="#" class="linkText">HTML FILE</a>
+                </div>
+                    and
+                <div class="downloadDivs">
+                    <span class="linkSpans">D</span>
+                    <a href="#" class="linkText">CSS FILE</a>
+                </div>
         </div>
 
         <article class="article1">
@@ -103,7 +118,7 @@
     <div class="footerDiv">
         <div class="footerTextDiv">
             <p>
-                By <a href="">Dave Shea</a>. Bandwidth graciously donated by <a href="">mediatemple</a>. Now available: <a href="">Zen Garden, the book</a>.
+                By <a href="" class="footerText1">Dave Shea</a>. Bandwidth graciously donated by <a href="" class="footerText1">mediatemple</a>. Now available: <a href="" class="footerText1">Zen Garden, the book</a>.
             </p>
         </div>
     </div>
@@ -118,8 +133,101 @@
         </p>
     </div>
 
-    <div class="tilesContainer">
+    <div class="tilesContainer1">
+        <div class="tileType1 gFirstRow">
+            <p class="col1">
+                <span class="tileTitle">UNDER THE SEA!</span>
+                <br/>
+                <span class="byTile">by</span>
+                <span class="tileName">Eric Stoltz
+            </p>
+        </div>
+        <div class="tileType1 gFirstRow">
+            <p class="col2">
+                <span class="tileTitle">MAKE ’EM PROUD</span>
+                <br/>
+                <span class="byTile">by</span>
+                <span class="tileName">Michael McAghon and Scotty Reifsnyder
+            </p>
+        </div>
+        <div class="tileType1 gSecondRow">
+            <p class="col1">
+                <span class="tileTitle">ORCHID BEAUTY</span>
+                <br/>
+                <span class="byTile">by</span>
+                <span class="tileName">Kevin Addison</span>
+            </p>
+        </div>
+        <div class="tileType1 gSecondRow">
+            <p class="col2">
+                <span class="tileTitle">OCEANSCAPE</span>
+                <br/>
+                <span class="byTile">by</span>
+                <span class="tileName">Justin Gray</span>
+            </p>
+        </div>
+        <div class="tileType1 gThirdRow">
+            <p class="col1">
+                <span class="tileTitle">CSS CO., LTD.</span>
+                <br/>
+                <span class="byTile">by</span>
+                <span class="tileName">Benjamin Klemm</span>
+            </p>
+        </div>
+        <div class="tileType1 gThirdRow">
+            <p class="col2">
+                <span class="tileTitle">SAKURA</span>
+                <br/>
+                <span class="byTile">by</span>
+                <span class="tileName">Tatsuya Uchida</span>
+            </p>
+        </div>
+        <div class="tileType1 gBottomRow">
+            <p class="col1">
+                <span class="tileTitle">KYOTO FOREST</span>
+                <br/>
+                <span class="byTile">by</span>
+                <span class="tileName">John Politowski</span>
+            </p>
+        </div>
+        <div class="tileType1 gBottomRow">
+            <p class="col2">
+                <span class="tileTitle">A WALK IN THE GARDEN</span>
+                <br/>
+                <span class="byTile">by</span>
+                <span class="tileName">Simon Van Hauwermeiren</span>
+            </p>
+        </div>
+    </div>
 
+    <div class="greenOverlay">
+        <div class="tilesContainer2">
+            <div class="tileType2 ggFirstRow">
+                <p class="col1">
+                    View This Design's CSS
+                </p>
+            </div>
+            <div class="tileType2 ggFirstRow">
+                <p class="col2">
+                    CSS Resources
+                </p>
+            </div>
+            <div class="tileType2 ggSecondRow">
+                <p class="col1">
+                    FAQ
+                </p>
+            </div>
+            <div class="tileType2 ggSecondRow">
+                <p class="col2">
+                    Submit a Design
+                </p>
+            </div>
+            <div class="tileType2 ggLastRow">
+                <p class="col2">
+                    Translations
+                </p>
+            </div>
+        </div>
     </div>
 
 

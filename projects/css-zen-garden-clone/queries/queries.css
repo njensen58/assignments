@@ -1,0 +1,115 @@
+
+/*-------------------------------*/
+/*------------  501px -----------*/
+/*-------------------------------*/
+@media only screen and (min-width: 501px) {
+
+.headerDiv {
+    height: 220px;
+    align-items: none;
+    display: grid;
+    grid-template-columns: 10% 1fr 10%;
+    grid-template-rows: 50px 170px;
+}
+
+header h1 {
+    width: 80%;
+    grid-column: 2;
+    grid-row: 2;
+    font-size: 28px;
+    /* margin-left: 56px;
+    margin-bottom: 140px; */
+    display: inline-block;
+    position: absolute;
+    left: 35px;
+}
+
+
+header h2 {
+    grid-column: 2;
+    grid-row: 2;
+    margin-bottom: 60px;
+}
+
+.glyphContainer {
+    grid-row: 2;
+    grid-column: 2;
+    text-align: left;
+}
+
+.glyph {
+    /* width: 0px; */
+}
+
+
+}
+
+
+
+/*-------------------------------*/
+/*------------  601px -----------*/
+/*-------------------------------*/
+@media only screen and (min-width: 601px) {
+
+.downloadDiv {
+    display: block;
+    grid-column: 2;
+    font-size: 13.5px;
+    font-family: juliusSansOneV5;
+    margin-top: 18px;
+    color: rgba(1, 1, 1, 0.8);
+}
+
+.downloadDivs {
+    display: inline-block;
+    padding: 3px;
+    transition: .3s;
+    border-radius: 3px;
+}
+
+.downloadDivs a.linkText,
+.downloadDivs span {
+    transition: .3s;
+}
+
+.linkSpans {
+    font-family: verdeModerna;
+    font-size: 15px;
+    padding: 2px 2px;
+    color: #a9b995;
+    background-color: #d9e1cd;
+    border-radius: 3px;
+}
+
+.linkText {
+    font-family: juliusSansOneV6;
+    color: #94a282;
+}
+
+.downloadDivs:hover {
+    background-color: #0d8ba1;
+    color: white;
+}
+
+.downloadDivs:hover a, {
+    background-color: #0d8ba1;
+}
+
+.downloadDivs:hover a.linkText {
+    color: white;
+}
+
+.downloadDivs:hover span {
+    background-color: #0b8398;
+    color: white;
+}
+
+}
+
+
+
+
+
+
+
+/**/

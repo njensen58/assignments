@@ -1,0 +1,37 @@
+{
+    "name": "json's Deli's Menu",
+    "appetizers": [
+        {
+            "name": "Ceaser Salad",
+            "ingredients": ["Lettuce", "Chicken", "Ceaser Dressing"],
+            "description": "A lovely light salad"
+        },
+        {
+            "name": "Chicken Noodle Soup",
+            "ingredients": ["Chicken", "Noodles", "Chicken Broth"],
+            "description": "Just like mom used to make"
+        },
+        {
+            "name": "Garlic Bread",
+            "ingredients": ["Bread", "Garlic"],
+            "description": "What you expect it to be"
+        }
+    ],
+    "cold sandwiches": [
+        {
+            "name": "BLT",
+            "ingredients": ["Bacon", "Lettuce", "Tomatoe"],
+            "description": "Yummmmm"
+        },
+        {
+            "name": "Chicago",
+            "ingredients": ["Rat flesh", "Lettuce"],
+            "description": "Probably wouldn't order this one"
+        },
+        {
+            "name": "SLC",
+            "ingredients": ["Guilt", "Religion"],
+            "description": "It's home for now"
+        }
+    ]
+}
