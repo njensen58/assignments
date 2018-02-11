@@ -416,6 +416,15 @@ article.article4 {
 }
 
 
+@media only screen and (max-width: 1130px) {
+
+.tileType1:hover {
+     background: linear-gradient(to right, #edf4f0, white, #edf4f0);
+}
+
+}
+
+
 
 
 
