@@ -127,6 +127,12 @@ header h2 {
     color: white;
 }
 
+.whiteContainer1,
+.whiteContainer2,
+.greenSection {
+    padding: 10px 5px 20px 5px
+}
+
 }
 
 
@@ -175,6 +181,11 @@ header h2 {
     font-size: 25px;
     padding-bottom: 225px;
     padding-left: 0;
+}
+
+.banner {
+    border-left: 1px solid #134347;
+    border-right: 1px solid #134347;
 }
 
 
