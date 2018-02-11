@@ -1,0 +1,33 @@
+@media only screen and (min-width: 600px) {
+.container {
+    height: 600px;
+    padding: 50px;
+    grid-gap: 10px 10px;
+    grid-template-areas:
+            "h h h h"
+            "s c c c"
+            "s2 s2 s2 s2"
+            "f f f f";
+    }
+
+div.container div {
+    font-size: 30px
+}
+
+}
+
+
+@media only screen and (min-width: 1020px){
+.container {
+    height: 800px;
+    padding: 70px;
+    grid-gap: 20px 20px;
+    grid-template-areas:
+                "h h h h"
+                "s c c s2"
+                "f f f f";
+    }
+div.container div {
+    font-size: 40px
+}
+}

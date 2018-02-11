@@ -1,0 +1,52 @@
+body {
+    background-color: darkorange;
+}
+
+.container {
+    height: 400px;
+    display: grid;
+    grid-gap: 10px 0;
+    grid-template-areas:
+            "h h h h"
+            "s s s s"
+            "c c c c"
+            "s2 s2 s2 s2"
+            "f f f f";
+}
+
+div.container div {
+    border-radius: 6px;
+    padding: 10px;
+    font-size: 21px;
+    font-weight: lighter;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.header {
+    grid-area: h;
+    background-color: dodgerblue;
+}
+
+.sidebar {
+    grid-area: s;
+    background-color: lightgreen;
+}
+
+.content {
+    grid-area: c;
+    background-color: lightgray;
+}
+
+.sidebar2 {
+    grid-area: s2;
+    background-color: cyan;
+}
+
+.footer {
+    grid-area: f;
+    background-color: grey;
+}
