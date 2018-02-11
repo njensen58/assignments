@@ -54,11 +54,22 @@ header {
     background: url(resources/imgs/noise.png) fixed,
                 url(resources/imgs/gridlines.png) 0px 60px fixed,
                 url(resources/imgs/contours@2x.png) fixed;
+    background-size: cover;
     height: 240px;
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
+}
+
+.fullScreenHeader {
+    position: relative;
+    grid-column: 2;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    height: 240px;
+    width: 100%;
 }
 
 
@@ -108,6 +119,14 @@ header h2 {
     grid-column: 1;
 }
 
+.bannerBtnText {
+    font-family: verdeModerna;
+    font-size: 45px;
+    color: rgba(245, 245, 245, 0.68);
+    position: relative;
+    top: 10px;
+}
+
 .banner {
     grid-column: 2;
     height: 70px;
@@ -117,6 +136,8 @@ header h2 {
     justify-content: center;
     align-items: center;
     transition: .5s;
+    border-left: 1px solid #134347;
+    border-right: 1px solid #134347;
 }
 
 div.banner span {
@@ -367,15 +388,15 @@ div.tileType2 p {
 }
 
 .gFirstRow {
-    height: 70px;
+    height: 80px;
 }
 
 .gSecondRow {
-    height: 60px;
+    height: 75px;
 }
 
 .gThirdRow {
-    height: 60px;
+    height: 70px;
 }
 
 .gBottomRow {
@@ -383,13 +404,13 @@ div.tileType2 p {
 }
 
 .ggFirstRow {
-    height: 57px;
+    height: 63px;
 }
 
 .ggSecondRow {
-    height: 40px;
+    height: 50px;
 }
 
 .ggLastRow {
-    height: 35px;
+    height: 45px;
 }
