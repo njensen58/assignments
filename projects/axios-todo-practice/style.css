@@ -1,0 +1,39 @@
+* {
+    box-sizing: border-box;
+}
+
+.appContainer {
+    display: grid;
+    grid-template-columns: 1fr 4fr 1fr;
+}
+
+.titleBox {
+    grid-column: 2;
+    text-align: center;
+}
+
+h1 {
+    grid-column: 2;
+    display: inline-block
+}
+
+.listContainer {
+
+    grid-column: 2;
+}
+
+li {
+    border: 1px solid black;
+    padding: 5px;
+    list-style: none;
+    margin: 5px 0;
+    grid-column: 1;
+}
+
+.inputContainer {
+    grid-column: 1;
+}
+
+.checker {
+    float: right;
+}
