@@ -4,7 +4,9 @@
 
 .appContainer {
     display: grid;
-    grid-template-columns: 1fr 4fr 1fr;
+    grid-template-columns: 2fr 4fr;
+    grid-template-rows: auto;
+    background-color: #ddd;
 }
 
 .titleBox {
@@ -14,26 +16,99 @@
 
 h1 {
     grid-column: 2;
-    display: inline-block
+    display: inline-block;
+    text-decoration: underline;
+    font-weight: lighter;
 }
 
 .listContainer {
-
+    background-color: #999;
     grid-column: 2;
+    display: flex;
+    border-radius: 5px;
+    justify-content: center;
+}
+
+ul {
+    width: 90%;
+    margin:0 10px;
+    background-color: #888;
+    padding: 0;
 }
 
 li {
     border: 1px solid black;
     padding: 5px;
     list-style: none;
-    margin: 5px 0;
-    grid-column: 1;
+    margin: 5px 5px;
+    grid-column: 2;
+    border-radius: 10px;
+    background-color: white;
+    font-size: 18px;
 }
 
 .inputContainer {
     grid-column: 1;
+    grid-row: 2;
+    margin: 5px 5px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+}
+
+input {
+    margin: 5px 0;
+    padding: 5px;
+    background-color: #eee
 }
 
 .checker {
+    float: left;
+    margin: 10px 20px
+}
+
+.checker:checked {
+
+}
+
+input.checker:checked + li.strike {
+    text-decoration: line-through;
+    color: red;
+    background-color: #ddd;
+}
+
+.delete, {
     float: right;
+}
+
+.deleteSpan,
+.delete {
+
+    float: right;
+}
+
+.deleteSpan:hover  {
+    font-size: 20px;
+    color: red;
+}
+
+
+input:focus {
+    outline: 1px solid black;
+    background: #fff;
+}
+
+.imgEdit {
+    border-radius: 10px;
+    margin-right: 5px;
+    width: 50px;
+}
+
+#btn {
+    background-color: dodgerblue;
+}
+
+#btn:hover {
+    background-color: cornflowerblue;
 }

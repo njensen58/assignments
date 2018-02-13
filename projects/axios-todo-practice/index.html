@@ -4,18 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
     <link rel="stylesheet" href="style.css">
     <title>Todo list</title>
 </head>
 <body>
 
     <div class="appContainer">
-        <div class="inputContainer">
-            <input type="text" id="userInput" placeholder="New Todo">
+        <form class="inputContainer">
+            <input name="todoTitle" type="text" id="userInput" placeholder="New Todo" required/>
             <input type="number" id="userPrice" placeholder="Price">
             <input type="text" id="userDescription" placeholder="Description">
-            <button type="submit" id="btn">Submit New Todo</button>
-        </div>
+            <input type="text" id="userImage" placeholder="Image Url - https://">
+            <input type="submit" id="btn">
+        </form>
 
         <div class="titleBox">
             <h1>My Todo List</h1>
@@ -26,6 +28,10 @@
 
             </ul>
         </div>
+    </div>
+
+    <div class="footer">
+
     </div>
 
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
