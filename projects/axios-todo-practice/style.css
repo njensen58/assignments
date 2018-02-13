@@ -2,38 +2,48 @@
     box-sizing: border-box;
 }
 
+body {
+    margin: 0;
+    background: url(https://i.imgur.com/dcOofxb.jpg) fixed no-repeat;
+    background-size: cover;
+
+}
+
 .appContainer {
     display: grid;
-    grid-template-columns: 2fr 4fr;
+    grid-template-columns: 1fr 2fr 1fr 4fr 1fr;
     grid-template-rows: auto;
-    background-color: #ddd;
+    /* background-color: #ddd; */
+    padding-bottom: 30px;
 }
 
 .titleBox {
-    grid-column: 2;
+    grid-column: 4;
     text-align: center;
 }
 
 h1 {
-    grid-column: 2;
+    grid-column: 4;
     display: inline-block;
     text-decoration: underline;
     font-weight: lighter;
+    font-family: 'Fredericka the Great', cursive;
 }
 
 .listContainer {
-    background-color: #999;
-    grid-column: 2;
+    grid-column: 4;
     display: flex;
     border-radius: 5px;
     justify-content: center;
+    margin-bottom: 20px;
 }
 
 ul {
     width: 90%;
     margin:0 10px;
-    background-color: #888;
+
     padding: 0;
+    border-radius: 5px;
 }
 
 li {
@@ -41,16 +51,33 @@ li {
     padding: 5px;
     list-style: none;
     margin: 5px 5px;
-    grid-column: 2;
+    grid-column: 4;
     border-radius: 10px;
     background-color: white;
     font-size: 18px;
+    font-family: 'Patrick Hand SC', cursive;
+    font-size: 23px;
+    box-shadow: -1px 5px 20px 0px #424242e3;
 }
 
 .inputContainer {
-    grid-column: 1;
+    grid-column: 2;
     grid-row: 2;
     margin: 5px 5px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    background-color: rgba(220, 253, 255, 0.42);
+    border-radius: 20%;
+    height: 70%;
+    box-shadow: -4px 5px 14px 1px #2e31334a;
+    padding: 10px;
+}
+
+.deleteContainer {
+    grid-column: 4;
+    grid-row: 3;
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -60,17 +87,20 @@ li {
 input {
     margin: 5px 0;
     padding: 5px;
-    background-color: #eee
+    background-color: #1b5267;
+}
+
+input::placeholder {
+    color: white;
+    font-weight: lighter;
 }
 
 .checker {
-    float: left;
-    margin: 10px 20px
+    float: right;
+    margin: 37px 20px;
 }
 
-.checker:checked {
 
-}
 
 input.checker:checked + li.strike {
     text-decoration: line-through;
@@ -78,19 +108,10 @@ input.checker:checked + li.strike {
     background-color: #ddd;
 }
 
-.delete, {
-    float: right;
-}
 
-.deleteSpan,
-.delete {
 
-    float: right;
-}
-
-.deleteSpan:hover  {
-    font-size: 20px;
-    color: red;
+.idSpan {
+    font-size: 12px;
 }
 
 
@@ -103,7 +124,10 @@ input:focus {
     border-radius: 10px;
     margin-right: 5px;
     width: 50px;
+    margin-top: 5px;
 }
+
+
 
 #btn {
     background-color: dodgerblue;
@@ -111,4 +135,13 @@ input:focus {
 
 #btn:hover {
     background-color: cornflowerblue;
+}
+
+#btn2 {
+    padding: 5px;
+    background-color: red;
+}
+
+#btn2:hover {
+    background-color: pink;
 }
