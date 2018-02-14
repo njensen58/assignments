@@ -11,7 +11,7 @@ const idDel = document.getElementById('del');
 let imgTag = '';
 let id = '';
 
-// _id:
+
 
 
 
@@ -25,7 +25,7 @@ axios.get('https://api.vschool.io/nateJ/todo/').then(response => {
 })
 
 
-btn.addEventListener("click", function(e){
+document.getElementById('form').addEventListener("submit", function(e){
     e.preventDefault();
     newTodo = {title:` ${todoTitle.value}`,
                price:` ${todoPrice.value}`,
@@ -33,14 +33,9 @@ btn.addEventListener("click", function(e){
                imgUrl:`${todoImg.value}`
                 };
     imgTag = newTodo.imgUrl ? `<img src="${newTodo.imgUrl}" class="imgEdit"/>` : "";
-    if(newTodo.title === " "){
-        alert("Your Todo must have a Title")
-    } else {
         axios.post('https://api.vschool.io/nateJ/todo/', newTodo);
         document.getElementById('list').innerHTML += `<input type="checkbox" class="checker"><li class="strike">${imgTag}${newTodo.title}</li>`;
-    }
-
-})
+    })
 
 btn2.addEventListener("click", function() {
     if(idDel.value === ''){
@@ -49,11 +44,3 @@ btn2.addEventListener("click", function() {
     axios.delete(`https://api.vschool.io/nateJ/todo/${idDel.value}`).then(alert("Todo successfully deleted"));
     }
 })
-
-
-
-// const icons = document.getElementsByTagName('i');
-//
-// icons[1].addEventListener("click", function(){
-//     console.log('hellow')
-// })

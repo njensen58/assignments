@@ -12,17 +12,17 @@
 <body>
 
     <div class="appContainer">
-        <form class="inputContainer">
+        <form class="inputContainer" id="form">
             <input name="todoTitle" type="text" id="userInput" placeholder="New Todo" required/>
             <input type="number" id="userPrice" placeholder="Price">
             <input type="text" id="userDescription" placeholder="Description">
             <input type="text" id="userImage" placeholder="Image Url - https://">
-            <input type="submit" id="btn">
+            <button id="btn">Submit</button>
         </form>
         <br/>
 
         <form class="deleteContainer">
-            <input type="text" id="del" placeholder="Input Id of Todo you want to delete">
+            <input type="text" id="del" placeholder="Input ID of Todo you want to delete">
             <button type="submit" id="btn2">Delete</button>
         </form>
 
@@ -37,9 +37,6 @@
         </div>
     </div>
 
-    <div class="footer">
-
-    </div>
 
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="app.js" type="text/javascript"></script>
