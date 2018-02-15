@@ -1,0 +1,14 @@
+
+body {
+    margin: 0;
+}
+.navBar {
+    color: blue;
+    display: flex;
+    flex-direction: row;
+    background-color: lightblue;
+}
+
+ul.navBar li {
+    margin-left: 20px;
+}

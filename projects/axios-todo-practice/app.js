@@ -13,8 +13,7 @@ let id = '';
 
 
 
-
-
+// PLACE THE GET REQUEST TO RENDER THE CURRENT LIST ON PAGE LOAD
 axios.get('https://api.vschool.io/nateJ/todo/').then(response => {
     for(let i = 0; i < response.data.length; i++){
     imgTag = response.data[i].imgUrl ? `<img src="${response.data[i].imgUrl}" class="imgEdit"/>` : "";
@@ -24,7 +23,7 @@ axios.get('https://api.vschool.io/nateJ/todo/').then(response => {
     }
 })
 
-
+// SUBMIT FORM LISTENER & POST REQUEST/RENDER NEW TOdo ITEM
 document.getElementById('form').addEventListener("submit", function(e){
     e.preventDefault();
     newTodo = {title:` ${todoTitle.value}`,
@@ -37,6 +36,8 @@ document.getElementById('form').addEventListener("submit", function(e){
         document.getElementById('list').innerHTML += `<input type="checkbox" class="checker"><li class="strike">${imgTag}${newTodo.title}</li>`;
     })
 
+
+// DELETE LISTENER TO REMOVE TOdo
 btn2.addEventListener("click", function() {
     if(idDel.value === ''){
         alert("Please copy the ID from the Todo you want to delete");
