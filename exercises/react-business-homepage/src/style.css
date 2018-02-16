@@ -75,11 +75,12 @@ h2 {
     color: #888;
     font-family: 'Oxygen', sans-serif;
     font-weight: 300;
-    transition: .5s;
+    transition: .6s ease-in;
 }
 
 .navUl li:hover {
     color: #542a22;
+    text-decoration: underline;
 }
 
 .bodyContainer {
@@ -188,7 +189,7 @@ h2 {
 .rating3 p {
     font-size: 32px;
     font-family: 'Oxygen', sans-serif;
-    padding-top: 16px;
+    padding-top: 13px;
     color: white;
     font-weight: lighter;
     letter-spacing: 2;
@@ -347,6 +348,12 @@ h2 {
     font-family: 'Oxygen', sans-serif;
 }
 
+.formDiv h3 {
+    font-size: 20px;
+    font-family: 'Oxygen', sans-serif;
+    font-weight: lighter;
+}
+
 .submitBtn {
     margin-top: 20px;
     width: 100px;
@@ -368,4 +375,208 @@ h2 {
 .footerRightFill {
     grid-column: 4;
     background-color: #ddd;
+}
+
+.iconsDiv {
+
+}
+
+.iconsDiv ul {
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    text-align: center;
+    padding: 0;
+}
+
+.icon1,
+.icon2,
+.icon3 {
+    font-size: 30px;
+    margin: 20px;
+    transition: .3s;
+}
+
+.icon1:hover {
+    color: #dd4b39;
+}
+
+.icon2:hover {
+    color: #6e5494;
+}
+
+.icon3:hover {
+    color: #00aced;
+}
+
+
+
+
+/*------- QUERIES -------*/
+
+
+/*-------------------------*/
+/*---------TABLET----------*/
+/*-------------------------*/
+
+@media only screen and (max-width: 800px) {
+    .rating1 p,
+    .rating2 p,
+    .rating3 p {
+        padding-top: 28px;
+    }
+
+.bodyFootDiv {
+    height: 390px;
+    font-size: 18px;
+}
+
+}
+
+@media only screen and (max-width: 700px) {
+
+
+.bodyFootDiv {
+    height: 475px;
+    font-size: 18px;
+}
+
+}
+
+@media only screen and (max-width: 600px) {
+.rating1 p,
+.rating2 p,
+.rating3 p {
+    padding-top: 36px;
+}
+
+.bodyFootDiv {
+    height: 625px;
+}
+
+}
+
+
+
+
+/*-------------------------*/
+/*---------MOBILE----------*/
+/*-------------------------*/
+
+@media only screen and (max-width: 500px) {
+
+.mobileContainer {
+    display: grid;
+    grid-template-columns: 20px 1fr 20px;
+}
+
+.pageContainer {
+    grid-column: 1 / -1;
+    grid-template-columns: 20px 1fr 20px;
+}
+
+.topContainer {
+    grid-column: 1 / -1;
+}
+
+.navContainer {
+    grid-column: 1 / -1;
+    height: 50px;
+}
+
+.navUl {
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    padding: 0;
+}
+
+.navUl li {
+    margin: 8px 20px 0 20px;
+}
+
+.headerContainer {
+    height: 450px;
+    grid-column: 1 / -1;
+    margin-bottom: 10px;
+}
+
+h1 {
+    font-size: 40px;
+
+}
+
+h2 {
+    font-size: 20px;
+}
+
+.bodyContainer {
+    grid-column: 2;
+    padding: 15px;
+}
+
+.ratingsContainer {
+    grid-column: 2;
+}
+
+.ratingOverlay {
+    grid-template-columns: 25px 1fr 25px;
+}
+
+.rating1,
+.rating2,
+.rating3 {
+    margin: 33px 0;
+}
+
+.rating1 p,
+.rating2 p,
+.rating3 p {
+    font-size: 20px;
+    letter-spacing: 2px;
+    padding-top: 15px;
+}
+
+.bodyFootDiv {
+    margin-top: 30px;
+    height: 500px;
+    font-size: 15px;
+}
+
+.formDiv {
+    margin: 0 20px;
+}
+
+}
+
+
+
+@media only screen and (max-width: 469px) {
+.bodyFootDiv {
+    font-size: 14px;
+    height: 450px;
+}
+}
+
+@media only screen and (max-width: 445px) {
+.bodyFootDiv {
+    font-size: 14px;
+    height: 525px;
+}
+}
+
+@media only screen and (max-width: 375px) {
+
+
+.bodyFootDiv {
+    height: 560px;
+}
+}
+
+@media only screen and (max-width: 320px) {
+
+.bodyFootDiv {
+    height: 695px;
+}
 }
