@@ -420,7 +420,7 @@ h2 {
 /*---------TABLET----------*/
 /*-------------------------*/
 
-@media only screen and (max-width: 800px) {
+@media only screen and (max-width: 820px) {
     .rating1 p,
     .rating2 p,
     .rating3 p {
