@@ -59,14 +59,14 @@ function VacationSpots(props){
     return (
             <div style={ background }>
                 <div>
-                    <h1 style={text}>{ props.place }</h1>
+                    <h1 style={ text }>{ props.place }</h1>
                 </div>
                 <div>
                     <img src={props.image} style={ imgStyle }/>
                 </div>
                 <div>
                     <p>{ props.price }</p>
-                    <h3 style={costStyle}>{ cost(props) }</h3>
+                    <h3 style={ costStyle }>{ cost(props) }</h3>
                 </div>
             </div>
     )

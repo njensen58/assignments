@@ -43,7 +43,7 @@ function App(){
     const mappedVacations = vacationSpots.map((spot)=>{
         return <VacationSpots place={spot.place} price={spot.price} timeToGo={spot.timeToGo} image={spot.imgUrl}/>;
     })
-
+    
     return (
         <div style={grid}>
             { mappedVacations }
