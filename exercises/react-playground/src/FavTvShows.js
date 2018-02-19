@@ -61,8 +61,8 @@ function FavTvShows(props){
     return (
         <div style={ favShowsDiv }>
             <div style={ overlay } className="tileHover">
-                <h1 style={ title }>{props.title} </h1>
-                <h3 style={ genre }>{ props.genre} </h3>
+                <h1 style={ title }>{ props.title } </h1>
+                <h3 style={ genre }>{ props.genre } </h3>
                 <span style={ rating }>{ props.rate } Stars</span>
             </div>
         </div>

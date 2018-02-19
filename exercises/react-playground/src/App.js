@@ -37,8 +37,8 @@ function App(){
         backgroundColor: '#ddd',
     }
 
-    const mappedTvShows = tvShows.map(show =>
-        <FavTvShows title={show.title} genre={show.genre} img={show.imgUrl} rate={show.starRate}/>
+    const mappedTvShows = tvShows.map((show, index) =>
+        <FavTvShows title={show.title} genre={show.genre} img={show.imgUrl} rate={show.starRate} key={show.title + '-' + index}/>
     )
 
     return (
