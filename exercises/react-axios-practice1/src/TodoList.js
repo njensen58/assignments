@@ -46,7 +46,7 @@ class TodoList extends React.Component {
           description={todo.description}
           price={todo.price || "$FREE"}
         />
-        )
+      )
     })
 
     return (
