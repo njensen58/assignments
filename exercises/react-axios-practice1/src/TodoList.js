@@ -10,17 +10,13 @@ class TodoList extends React.Component {
       todos: []
     }
   }
-
   componentDidMount(){
     axios.get('https://api.vschool.io/nateJ/todo').then(response => {
-      this.setState(() => {
-        return {
+      this.setState({
           todos: response.data
-        }
       })
     })
   }
-
   render() {
     const container = {
       display: 'grid',

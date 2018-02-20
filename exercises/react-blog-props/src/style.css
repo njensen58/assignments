@@ -1,3 +1,8 @@
+/* FONTS */
+ /* font-family: 'Open Sans', sans-serif; */
+ /* font-family: 'Lora', serif; */
+
+
 * {
   box-sizing: border-box;
 }
@@ -6,15 +11,238 @@ body {
   margin: 0;
 }
 
+
+
+
+/* ---- HEADER & NAVBAR ---- */
+
 .headerBox {
   background-image: url(https://blackrockdigital.github.io/startbootstrap-clean-blog/img/home-bg.jpg);
   background-size: cover;
-  background-repeat: no-repeat;
   background-position: center;
-  height: 490px;
+  height: 480px;
+  width: 100%;
 }
 
 .headerOverlay {
   background-color: rgba(40, 40, 40, .5);
-  height: 490px;
+  height: 480px;
+  padding: 5px 15px 0 15px;
+  width: 100%;
 }
+
+.headerOverlay h1,
+.headerOverlay h2 {
+  color: white;
+  text-align: center;
+  font-family: 'Open sans', sans-serif;
+}
+
+.headerOverlay h1 {
+  font-size: 80px;
+  font-weight: 800;
+  margin-top: 100px;
+  margin-bottom: 0;
+  letter-spacing: 1.5px;
+}
+
+.headerOverlay h2 {
+  font-weight: 300;
+  margin-top: 0;
+  font-size: 23px;
+}
+
+.navContainer {
+  top: 0;
+  width: 100%;
+}
+
+.navDisplayDiv {
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  padding: 0 15px 10px 15px;
+  color: white;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.navLogo {
+  font-size: 18px;
+  font-weight: 800;
+  margin-top: -5px;
+  margin-left: 15px;
+  transition: .5s;
+}
+
+
+.navLiContainer {
+  display: flex;
+  flex-direction: row;
+  position: absolute;
+  right: 0;
+  float: right;
+}
+
+.navLiContainer li {
+  list-style: none;
+  margin: 0 5px 0 25px;
+  font-size: 12px;
+  font-weight: 800;
+  text-transform: uppercase;
+  transition: .5s;
+}
+
+.navLiContainer li:hover,
+.navLogo:hover {
+  color: #ddd;
+  cursor: pointer;
+}
+
+
+/* ------ BLOG AND BLOG POST ------ */
+
+
+.blogListContainer {
+  display: grid;
+  grid-template-columns: 1fr 3fr 1fr;
+  margin-top: 40px;
+}
+
+.blogPostContainer {
+  grid-column: 2;
+  border-bottom: 1px solid #ddd;
+}
+
+.blogTitle,
+.blogSubtitle,
+.footerButton {
+  font-family: 'Open Sans', sans-serif;
+}
+
+.blogTitle {
+  font-size: 31px;
+  font-weight: 800;
+  margin-bottom: 0;
+  transition: .3s;
+
+}
+
+.blogTitle:hover {
+  color: #0085a1;
+  text-shadow: -2px 2px 1px rgba(150, 150, 150, 0.77);
+  cursor: pointer;
+}
+
+.blogSubtitle {
+  font-size: 25px;
+  font-weight: 300;
+  margin-top: 5px;
+  margin-bottom: 0;
+}
+
+.blogCredits {
+  font-family: 'Lora', serif;
+  margin-top: 10px;
+  font-size: 17px;
+  font-weight: lighter;
+  color: #888;
+}
+
+.blogHighlights {
+  color: black;
+  transition: .3s;
+}
+
+.blogHighlights:hover {
+  text-decoration: underline;
+  color: #0085a1;
+}
+
+
+
+/* ----- FOOTER ----- */
+
+.footerContainer {
+  height: 280px;
+  display: grid;
+  grid-template-columns: 1fr 3fr 1fr;
+}
+
+.buttonDiv {
+  display: flex;
+  flex-direction: row-reverse;
+  margin-right: 20px;
+  grid-column: 2;
+}
+
+.footerButton {
+  background-color: #0085a1;
+  height: 50px;
+  width: 160px;
+  text-align: center;
+  transition: .3s;
+  margin-top: 15px;
+}
+
+.footerButton:hover {
+  background-color: #00758e;
+  cursor: pointer;
+}
+
+.btnText:hover {
+  color: #eee;
+}
+
+.btnText {
+  color: white;
+  font-weight: 800;
+  text-transform: uppercase;
+  font-size: 13px;
+  letter-spacing: 1.5px;
+  display: block;
+  padding-top: 15px;
+}
+
+.iconDiv {
+  grid-column: 1 / -1;
+  text-align: center;
+  border-top: 1px solid #ddd;
+  height: 117px;
+}
+
+.iconDiv ul {
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-top: 50px;
+  padding-left: 0;
+}
+
+.iconDiv ul li {
+  margin: 0 25px;
+  font-size: 35px;
+}
+
+.copyright {
+  grid-column: 2;
+  text-align: center;
+  font-size: 14px;
+  font-family: 'Lora', serif;
+  color: #777;
+}
+
+.ion-social-twitter:hover,
+.ion-social-facebook:hover,
+.ion-social-twitter:hover {
+  transition: .3s;
+}
+
+.ion-social-twitter:hover,
+.ion-social-facebook:hover,
+.ion-social-twitter:hover {
+  color: #0085a1;
+  cursor: pointer;
+}
+
+/*---------------------------*/
