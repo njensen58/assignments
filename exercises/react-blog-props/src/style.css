@@ -1,0 +1,20 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+.headerBox {
+  background-image: url(https://blackrockdigital.github.io/startbootstrap-clean-blog/img/home-bg.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 490px;
+}
+
+.headerOverlay {
+  background-color: rgba(40, 40, 40, .5);
+  height: 490px;
+}
