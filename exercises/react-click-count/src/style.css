@@ -1,0 +1,50 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+.container {
+  display: grid;
+  text-align: center;
+  grid-template-columns: repeat(5, 1fr);
+  border: 1px solid black;
+  padding: 10px;
+  margin: 10px;
+}
+
+.container h1 {
+  font-size: 40px;
+  grid-column: 3;
+  border-radius: 20%;
+}
+
+.container button {
+  width: 100px;
+  height: 100px;
+  border-radius: 20px;
+}
+
+.addBtn,
+.multBtn {
+  grid-column: 2;
+}
+
+.minusBtn,
+.divBtn {
+  grid-column: 4;
+}
+
+.multBtn,
+.divBtn {
+  margin-top: 10px;
+}
+
+.clock {
+  border-radius: 20px;
+  padding: 10px;
+  font-weight: lighter;
+  
+}
