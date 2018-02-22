@@ -1,13 +1,31 @@
 import React from 'react';
 
-class Item extends React.Component{
-    render(){
+function Item(props){
         return (
-            <div>
-                <h4><button onClick={this.props.handleDelete}> X </button>{this.props.index + '. ' + this.props.value}</h4>
+            <div className="itemContainer">
+                {props.items.map((item, i) => {
+                    return (
+                        <p style={props.complete}
+                           key={item + '-' + i}>
+                            <button
+                                onClick={()=>props.handleDelete(item)}
+                                className="deleteBtn">
+                                X
+                            </button>
+                            <span>{item}</span>
+                            <button
+                                onClick={()=>props.handleComplete(item)}
+                                className="completeBtn">
+                                √
+                            </button>
+                        </p>
+                        )}
+                    )}
             </div>
         )
-    }
 }
 
+
 export default Item;
+
+{/*You can also do onClick={props.handleDelete.bind(this, item)}*/}

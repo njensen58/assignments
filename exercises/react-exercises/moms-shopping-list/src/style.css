@@ -1,0 +1,47 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #ddd;
+}
+
+.appContainer {
+    background-color: #ddd;
+    display: flex;
+    padding: 20px;
+}
+
+.shoppingListContainer {
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    background-color: #fff;
+    margin: 0 25%;
+}
+
+.itemContainer {
+    
+}
+
+.itemContainer p {
+    display: flex;
+    justify-content: space-between;
+}
+
+.deleteBtn {
+    background-color: red;
+    height: 30px;
+    width: 30px;
+    border-radius: 5px;
+}
+
+.completeBtn {
+    background-color: limegreen;
+    height: 30px;
+    width: 30px;
+    border-radius: 5px;
+}

@@ -11,8 +11,6 @@ class ShoppingList extends React.Component {
         }
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
-    this.handleDelete = this.handleDelete.bind(this);
-    this.handleComplete = this.handleComplete.bind(this);
     }
 
     handleSubmit(e){
@@ -31,41 +29,28 @@ class ShoppingList extends React.Component {
         })
     }
 
-    handleDelete(id){
-        this.setState(prevState => ({
-            items: prevState.items.filter(item => item !== id)
-        }))
-    }
-
-    handleComplete(id){
-        return 'line-through'
-    }
-
     render(){
-
         return (
-            <div className="shoppingListContainer">
-                <div className="formContainer">
+            <div>
+                <div>
                     <ListForm
                         handleSubmit={this.handleSubmit}
                         handleChange={this.handleChange}
                         value={this.state.value}
                     />
                 </div>
-                <div className="itemListContainer">
+                <div>
                     <ItemsList
-                        items={this.state.items}
+                        itemsArr={this.state.items}
                         value={this.state.value}
-                        handleDelete={this.handleDelete}
-                        handleComplete={this.handleComplete}
                     />
                 </div>
-        </div>
+            </div>
         )
     }
 }
 
 
 
-
-export default ShoppingList;
+export default ShoppingList
+;

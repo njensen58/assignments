@@ -1,4 +1,6 @@
 import React from 'react';
+import Form from './Form';
+import FormList from './FormList';
 
 class App extends React.Component {
   constructor(){
@@ -25,36 +27,24 @@ class App extends React.Component {
     })
   }
 
-
   render(){
-    const mappedList = this.state.names.map((name, i) => {
-      return (
-        <li key={name + '-' + i} style={liStyle}>{name}</li>
-      )
-    });
-    const listStyle = {
-      listStyle: 'none'
-    }
-
-    const liStyle = {
-      color: 'blue'
-    }
-
     return (
-      <form onSubmit={this.handleSubmit}>
-        Input a name:
-        <input
-          type="text"
-          onChange={this.handleChange}
-          value={this.state.value}
-        />
-        <button>Submit</button>
-        <h1>~ {this.state.value}</h1>
-        <h3>Name List</h3>
-        <ul style={listStyle}>
-          {mappedList}
-        </ul>
-      </form>
+        <div>
+            <div>
+            <Form
+                handleChange={this.handleChange}
+                handleSubmit={this.handleSubmit}
+                value={this.state.value}
+                names={this.state.names}
+            />
+            </div>
+            <div>
+            <FormList
+                value={this.state.value}
+                names={this.state.names}
+            />
+            </div>
+        </div>
     )
   }
 }
