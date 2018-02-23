@@ -5,8 +5,9 @@ function Item(props){
             <div className="itemContainer">
                 {props.items.map((item, i) => {
                     return (
-                        <p style={props.complete}
-                           key={item + '-' + i}>
+                        <p style={props.completed}
+                           key={item + '-' + i}
+                           className="itemStyle">
                             <button
                                 onClick={()=>props.handleDelete(item)}
                                 className="deleteBtn">

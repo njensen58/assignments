@@ -7,7 +7,8 @@ class ShoppingList extends React.Component {
         super();
         this.state = {
             value: '',
-            items: []
+            items: [],
+            isCompleted: 'false'
         }
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
@@ -38,10 +39,21 @@ class ShoppingList extends React.Component {
     }
 
     handleComplete(id){
-        return 'line-through'
+        if(this.state.isCompleted === 'false'){
+            this.setState({
+                isCompleted: 'true'
+            }
+        )} else {
+            this.setState({
+                isCompleted: 'false'
+            })
+        }
     }
 
     render(){
+        const completed = {
+
+        }
 
         return (
             <div className="shoppingListContainer">
@@ -58,6 +70,7 @@ class ShoppingList extends React.Component {
                         value={this.state.value}
                         handleDelete={this.handleDelete}
                         handleComplete={this.handleComplete}
+                        completed={completed}
                     />
                 </div>
         </div>

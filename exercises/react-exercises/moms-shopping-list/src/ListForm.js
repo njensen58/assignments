@@ -1,22 +1,20 @@
 import React from 'react';
 
 
-
-class ListForm extends React.Component {
-    render(){
+function ListForm(props){
         return (
-            <div>
-                <form onSubmit={this.props.handleSubmit}>
+            <div className="itemFormContainer">
+                <form onSubmit={props.handleSubmit}>
                     <input
                         type="text"
-                        onChange={this.props.handleChange}
-                        value={this.props.value}/>
+                        onChange={props.handleChange}
+                        value={props.value}/>
                     <button>Add New Item</button>
                 </form>
             </div>
         )
     }
-}
+
 
 
 export default ListForm;

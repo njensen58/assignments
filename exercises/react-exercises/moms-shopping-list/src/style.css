@@ -21,26 +21,72 @@ body {
     flex-direction: column;
     background-color: #fff;
     margin: 0 25%;
+    text-align: center;
+}
+
+div.itemFormContainer form {
+    display: flex;
+    height: 40px;
+}
+
+div.itemFormContainer input {
+    font-family: sans-serif;
+    font-size: 16px;
+    padding-left: 4px;
+}
+
+div.itemFormContainer button {
+    background-color: #5785d878;
+    border-radius: 4px;
+    margin-left: 5px;
+    transition: .4s;
+}
+
+div.itemFormContainer button:hover {
+    background-color: cornflowerblue;
+    color: white;
+}
+
+div.itemListContainer h1, {
+    font-weight: lighter;
+    font-family: sans-serif;
+    text-transform: uppercase;
+    border-bottom: 1px solid black;
+    font-size: 20px;
+}
+
+div.itemListContainer h2 {
+    font-weight: lighter;
+    font-family: sans-serif;
+    font-size: 20px;
 }
 
 .itemContainer {
-    
+
+}
+
+.itemStyle {
+    font-family: sans-serif;
 }
 
 .itemContainer p {
     display: flex;
     justify-content: space-between;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    align-items: center;
+    width: 260px;
 }
 
 .deleteBtn {
-    background-color: red;
+    background-color: #C82617;
     height: 30px;
     width: 30px;
     border-radius: 5px;
 }
 
 .completeBtn {
-    background-color: limegreen;
+    background-color: #32C835;
     height: 30px;
     width: 30px;
     border-radius: 5px;
