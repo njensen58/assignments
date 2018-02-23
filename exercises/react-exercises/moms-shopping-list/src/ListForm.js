@@ -8,7 +8,8 @@ function ListForm(props){
                     <input
                         type="text"
                         onChange={props.handleChange}
-                        value={props.value}/>
+                        value={props.value}
+                    />
                     <button>Add New Item</button>
                 </form>
             </div>

@@ -10,7 +10,8 @@ body {
 
 .appContainer {
     background-color: #ddd;
-    display: flex;
+    display: grid;
+    grid-template-columns: 1fr 3fr 1fr;
     padding: 20px;
 }
 
@@ -22,6 +23,7 @@ body {
     background-color: #fff;
     margin: 0 25%;
     text-align: center;
+    grid-column: 2
 }
 
 div.itemFormContainer form {
@@ -67,6 +69,7 @@ div.itemListContainer h2 {
 
 .itemStyle {
     font-family: sans-serif;
+    font-weight: lighter;
 }
 
 .itemContainer p {
