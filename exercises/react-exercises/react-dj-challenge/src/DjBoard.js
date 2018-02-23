@@ -1,13 +1,73 @@
 import React from 'react';
-
+import Square from './Square'
 
 function DjBoard(props){
+    const boardContainer = {
+        display: 'grid',
+        gridTemplateColumns: '1fr 1fr',
+        gridTemplateRows: '220px 220px',
+        border: '2px dashed #ddd',
+        margin: '10px 10px 5px 10px',
+        borderRadius: '20px',
+        backgroundColor: '#ddd'
+    }
+    const topLeftSquare = {
+        gridColumn: '1',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+    }
+    const topRightSquare = {
+        gridColumn: '2',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+    }
+    const bottomLeftSquare = {
+        gridColumn: '1',
+        gridRow: '2',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+    }
+    const bottomRightSquare = {
+        gridColumn: '2',
+        gridRow: '2',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+    }
+
     return (
-        <div className="boardContainer">
-            <div style={props.btnOneColors && props.btnTwoColors}>Box 1</div>
-            <div style={props.btnOneColors && props.btnTwoColors}>Box 2</div>
-            <div style={props.btnOneColors}>Box 3</div>
-            <div style={props.btnOneColors}>Box 4</div>
+        <div style={boardContainer}>
+            <div
+                style={topLeftSquare}>
+                <Square
+                    color={props.gridColors.one}
+                    text={props.text.one}
+                />
+            </div>
+            <div
+                style={topRightSquare}>
+                <Square
+                    color={props.gridColors.two}
+                    text={props.text.two}
+                />
+            </div>
+            <div
+                style={bottomLeftSquare}>
+                <Square
+                    color={props.gridColors.three}
+                    text={props.text.three}
+                />
+            </div>
+            <div
+                style={bottomRightSquare}>
+                <Square
+                    color={props.gridColors.four}
+                    text={props.text.four}
+                />
+            </div>
         </div>
     )
 }
