@@ -31,6 +31,31 @@ const btn4Div = {
     gridRow: 1,
     gridColumn: 4
 }
+const btn5Div = {
+    gridRow: 2,
+    gridColumn: 1
+}
+const btn6Div = {
+    gridRow: 1,
+    gridColumn: 2,
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center'
+}
+const btn7Div = {
+    gridRow: 1,
+    gridColumn: 3,
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center'
+}
+const btn8Div = {
+    gridRow: 2,
+    gridColumn: 4,
+    display: 'flex',
+    justifyContent: 'center',
+    marginLeft: '25px'
+}
 const btn1 = {
     width: '75px',
     height: '50px',
@@ -58,6 +83,37 @@ const btn4 = {
     borderRadius: '10px',
     marginTop: '10px',
     outline: 'none'
+}
+const btn5 = {
+    width: '50px',
+    height: '50px',
+    borderRadius: '50%',
+    outline: 'none',
+    textAlign: 'center'
+}
+
+const btn6 = {
+    width: '50px',
+    height: '50px',
+    borderRadius: '50%',
+    outline: 'none',
+    textAlign: 'center'
+}
+
+const btn7 = {
+    width: '50px',
+    height: '50px',
+    borderRadius: '50%',
+    outline: 'none',
+    textAlign: 'center'
+}
+
+const btn8 = {
+    width: '50px',
+    height: '50px',
+    borderRadius: '50%',
+    outline: 'none',
+    textAlign: 'center'
 }
 
 function DjButtons(props){
@@ -90,6 +146,34 @@ function DjButtons(props){
                     onClick={props.handleBtnFour}
                     style={btn4}>
                     Button 4
+                </button>
+            </div>
+            <div style={btn5Div}>
+                <button
+                    onClick={props.handleBtnFive}
+                    style={btn5}>
+                    Button 5
+                </button>
+            </div>
+            <div style={btn6Div}>
+                <button
+                    onClick={props.handleBtnSix}
+                    style={btn6}>
+                    Button 6
+                </button>
+            </div>
+            <div style={btn7Div}>
+                <button
+                    onClick={props.handleBtnSeven}
+                    style={btn7}>
+                    Button 7
+                </button>
+            </div>
+            <div style={btn8Div}>
+                <button
+                    onClick={props.handleBtnEight}
+                    style={btn8}>
+                    Button 8
                 </button>
             </div>
         </div>

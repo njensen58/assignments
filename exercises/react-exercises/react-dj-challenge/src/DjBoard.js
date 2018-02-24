@@ -45,6 +45,8 @@ function DjBoard(props){
                 <Square
                     color={props.gridColors.one}
                     text={props.text.one}
+                    shrink={props.shrink}
+                    fontStyle={props.fontStyle}
                 />
             </div>
             <div
@@ -52,6 +54,8 @@ function DjBoard(props){
                 <Square
                     color={props.gridColors.two}
                     text={props.text.two}
+                    shrink={props.shrink}
+                    fontStyle={props.fontStyle}
                 />
             </div>
             <div
@@ -59,6 +63,8 @@ function DjBoard(props){
                 <Square
                     color={props.gridColors.three}
                     text={props.text.three}
+                    shrink={props.shrink}
+                    fontStyle={props.fontStyle}
                 />
             </div>
             <div
@@ -66,6 +72,8 @@ function DjBoard(props){
                 <Square
                     color={props.gridColors.four}
                     text={props.text.four}
+                    shrink={props.shrink}
+                    fontStyle={props.fontStyle}
                 />
             </div>
         </div>

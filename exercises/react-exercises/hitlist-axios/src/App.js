@@ -7,6 +7,7 @@ function App(){
     return (
         <div>
             <Header />
+            <h1 className="hitlistTitle">-HIT LIST-</h1>
             <HitListContainer />
             <Footer />
         </div>
