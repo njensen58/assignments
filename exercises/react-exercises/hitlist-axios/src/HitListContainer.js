@@ -9,6 +9,7 @@ class HitListContainer extends React.Component {
             people: []
         }
     }
+    
     componentDidMount(){
         axios.get('http://api.vschool.io:6543/hitlist.json').then(response => {
             console.dir(response.data)
@@ -18,6 +19,7 @@ class HitListContainer extends React.Component {
         })
             console.log(this.state.people)
     }
+
     render(){
         const mappedHitList = this.state.people.map((person, i) => {
             return (
@@ -28,8 +30,9 @@ class HitListContainer extends React.Component {
                 />
             )
         })
+
         return (
-            <div>
+            <div className="listContainer">
                 { mappedHitList }
             </div>
         )

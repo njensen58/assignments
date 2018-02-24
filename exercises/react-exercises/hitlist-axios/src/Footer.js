@@ -3,8 +3,8 @@ import React from 'react';
 
 function Footer(){
     return (
-        <div>
-            FOOTER STUUUUFFFF.
+        <div className="footerContainer">
+            Copyright 2018
         </div>
     )
 }

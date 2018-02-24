@@ -6,7 +6,7 @@ function Header(){
         <div className="headerContainer">
             <div className="headerOverlay">
                 <Navbar />
-                <h1><span className="icon">ICON</span>HitList Header</h1>
+                <h1><span className="icon">ICON</span>HitList</h1>
             </div>
         </div>
     )
