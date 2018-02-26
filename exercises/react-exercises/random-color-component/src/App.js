@@ -12,7 +12,6 @@ class App extends React.Component {
 
     componentDidMount(){
         axios.get('http://www.colr.org/json/color/random').then(response => {
-            console.dir(response.data.new_color);
             this.setState({
                 color: response.data.new_color,
             })
