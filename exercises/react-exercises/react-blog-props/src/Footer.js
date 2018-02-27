@@ -13,7 +13,7 @@ function Footer(){
         <ul>
           <li><i className="ion-social-twitter"></i></li>
           <li><i className="ion-social-facebook"></i></li>
-          <li><i className="ion-social-twitter"></i></li>
+          <li><i className="ion-social-instagram"></i></li>
         </ul>
       </div>
       <div className="copyright">

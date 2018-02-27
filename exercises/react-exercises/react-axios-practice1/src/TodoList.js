@@ -10,6 +10,7 @@ class TodoList extends React.Component {
       todos: []
     }
   }
+  
   componentDidMount(){
     axios.get('https://api.vschool.io/nateJ/todo').then(response => {
       this.setState({
@@ -17,6 +18,7 @@ class TodoList extends React.Component {
       })
     })
   }
+
   render() {
     const container = {
       display: 'grid',

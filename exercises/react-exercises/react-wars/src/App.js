@@ -1,7 +1,7 @@
 import React from 'react';
-import {Route, Link} from 'react-router-dom';
+import {Switch, Route, Link} from 'react-router-dom';
 import axios from 'axios';
-import CharacterDisplay from './CharacterDisplay';
+import CurrentSelect from './CurrentSelect'
 
 
 class App extends React.Component {
@@ -12,18 +12,19 @@ class App extends React.Component {
         }
     }
 
+
     componentDidMount(){
         axios.get('https://swapi.co/api/people/').then(response => {
-                console.log(response.data.results);
                 this.setState({
                     names: response.data.results
                 })
             })
     }
 
+
     render(){
         const mappedLinks = this.state.names.map(person => {
-            return <Link to="https://swapi.co/api/people/" key={person.name}>{person.name}</Link>
+            return <Link to={`${this.props.match.url}/${itemID}`} key={person.name}>{person.name}</Link>
         })
 
 
@@ -37,11 +38,14 @@ class App extends React.Component {
                     {mappedLinks}
                 </div>
                 <div className="displayContainer">
-
+                    <Switch>
+                        <Route path={`${this.props.match.url}/:itemID`} component={CurrentSelect}/>
+                    </Switch>
                 </div>
             </div>
         )
     }
 }
+
 
 export default App;

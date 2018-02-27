@@ -1,0 +1,61 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+}
+
+.images {
+    width: 60px;
+}
+
+.appContainer {
+    display: grid;
+    grid-template-columns: 1fr 4fr 1fr;
+}
+
+.todoFormContainer {
+    grid-column: 2;
+    height: 200px;
+}
+
+.todoForm {
+    display: flex;
+    flex-direction: column;
+}
+
+.todoForm input {
+    margin: 10px 0;
+    width: 100%;
+}
+
+.todoForm button {
+
+}
+
+.mappedTodosContainer {
+    grid-column: 2;
+}
+
+.todoContainer {
+    border: 1px solid black;
+    border-radius: 10px;
+    margin: 10px;
+    padding: 10px;
+}
+
+.todoTitle h1 {
+    font-weight: lighter;
+    margin: 0;
+    font-size: 20px;
+}
+
+.todoDescription h3 {
+    font-size: 15px;
+}
+
+
+/**/
