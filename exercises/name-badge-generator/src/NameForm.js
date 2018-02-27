@@ -67,9 +67,10 @@ function NameForm(props){
                         name="aboutYou"
                         value={props.value.aboutYou}
                         className="aboutYou"
+                        placeholder="Tell us about you"
                         required
                     >
-                        {props.value.aboutYou}
+
                     </textArea>
                 </div>
                 <div className="submitBtn">

@@ -1,0 +1,44 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+}
+
+.navBarDiv {
+    background-color: #ddd9;
+    height: 60px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.homeDiv,
+.aboutDiv,
+.contactDiv,
+.servicesDiv {
+    height: 500px;
+    font-size: 50px;
+    background-color: #333;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    letter-spacing: 2px;
+}
+
+.footerDiv {
+    height: 60px;
+    background-color: #ddd9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.links {
+    font-size: 20px;
+    text-decoration: none;
+}

@@ -46,7 +46,7 @@ class App extends React.Component {
                     placeOfBirth: '',
                     phone: '',
                     favFood: '',
-                    aboutYou: 'Tell us about yourself',
+                    aboutYou: '',
                     nameBadges: [...prevState.nameBadges, newNameBadge],
                     count: prevState.count + 1
                 }))

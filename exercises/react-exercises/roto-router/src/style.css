@@ -1,0 +1,60 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    padding: 0;
+    margin: 0;
+    font-family: sans-serif;
+    font-weight: lighter;
+}
+
+.navbarContainer {
+
+}
+
+.navbarDiv {
+    position: absolute;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    background-color: #6668;
+    height: 40px;
+}
+
+.navbarDiv a {
+    color: white;
+}
+
+
+
+/*---------*/
+/*--HOME---*/
+
+.homeDiv {
+
+}
+
+.homeHeaderDiv {
+    background-image: url(http://wgambleplumbing.com/wp-content/uploads/2017/09/plumbing.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 300px;
+}
+
+.homeHeaderOverlay {
+    background-color: #3337;
+    height: 300px;
+}
+
+.homeHeaderOverlay h1 {
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    color: white;
+    padding-top: 120px;
+    font-weight: lighter;
+    letter-spacing: 2px;
+}
