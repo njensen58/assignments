@@ -2,28 +2,38 @@ import React from 'react';
 
 
 function TodoComponent(props){
-    console.log(props)
+    const editTitle = {
+        display: 'none'
+    }
+
     return (
         <div className="todoContainer">
             <div className="todoTitle">
-                <h1>{props.title}</h1>
+                <h1>{props.info.title}</h1>
             </div>
             <div className="todoDescriptionDiv">
-                <h3>{props.description}</h3>
-                <p>{props.price}</p>
+                <h3>{props.info.description}</h3>
+                <p>{props.info.price}</p>
             </div>
             <div className="imgDiv">
-                <img src={props.imgUrl} className="images" alt={props.title}/>
+                <img src={props.info.imgUrl} className="images" alt={props.info.title}/>
             </div>
             <div className="editBtnDiv">
                 <button className="editBtn">EDIT</button>
             </div>
             <div className="checkboxDiv">
-                <input type="checkbox" className="checkbox" onChange={()=>props.completeTodo(props.title)}/>
+                { props.info.completed ?
+                    <button
+                        className="checkboxDiv2"
+                        onClick={()=>props.handleComplete(props.info._id)}>Undo</button>
+                :
+                    <button
+                        onClick={()=>props.handleComplete(props.info._id)}>Complete</button>
+                }
             </div>
             <div className="delBtnDiv">
                  <button
-                     onClick={()=>props.deleteTodo(props.id)}
+                     onClick={()=>props.deleteTodo(props.info._id)}
                      className="delBtn">X</button>
             </div>
         </div>

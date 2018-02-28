@@ -4,7 +4,6 @@ import TodoList from './TodoList'
 import axios from 'axios';
 
 
-
 class App extends React.Component {
     constructor(){
         super();
@@ -13,7 +12,7 @@ class App extends React.Component {
         }
         this.addTodo = this.addTodo.bind(this);
         this.deleteTodo = this.deleteTodo.bind(this);
-        this.completeTodo = this.completeTodo.bind(this);
+        this.handleComplete = this.handleComplete.bind(this);
     }
 
     componentDidMount(){
@@ -24,25 +23,24 @@ class App extends React.Component {
         })
     }
 
-
     addTodo(todo){
         axios.post('https://api.vschool.io/nateJ/todo', todo).then(response => {
             this.setState((prevState) => {
                 return {
-                    todos: [response.data, ...prevState.todos]
+                    todos: [...prevState.todos, response.data]
                 }
             })
         })
     }
 
-    deleteTodo(todoID){
-        axios.delete('https://api.vschool.io/nateJ/todo/' + todoID).then(response => {
+    deleteTodo(id){
+        axios.delete('https://api.vschool.io/nateJ/todo/' + id).then(response => {
             alert('Todo was successfully deleted.');
             this.setState(prevState => {
                 return {
                     todos: prevState.todos.filter(todo => {
                         return (
-                            todo._id !== todoID
+                            todo._id !== id
                         )
                     })
                 }
@@ -50,8 +48,19 @@ class App extends React.Component {
         })
     }
 
-    completeTodo(todoTitle){
-
+    handleComplete(id){
+        const indexOfItemToEdit = this.state.todos.findIndex(todo => {
+            return todo._id === id;
+        })
+        const isComplete = this.state.todos[indexOfItemToEdit].completed;
+        const newBool = !isComplete;
+        axios.put('https://api.vschool.io/nateJ/todo/' + id, {completed: newBool}).then(response => {
+            this.setState(prevState => {
+                const copy = [...prevState.todos];
+                copy.splice(indexOfItemToEdit, 1, response.data);
+                return {todos: copy}
+            })
+        })
     }
 
     render() {
@@ -66,7 +75,7 @@ class App extends React.Component {
                     <TodoList
                         todos={this.state.todos}
                         deleteTodo={this.deleteTodo}
-                        completeTodo={this.completeTodo}
+                        handleComplete={this.handleComplete}
                     />
                 </div>
             </div>

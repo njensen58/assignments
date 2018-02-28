@@ -5,14 +5,11 @@ function TodoList(props){
     const mappedTodos = props.todos.map((todo, index) => {
         return (
             <TodoComponent
-                title={todo.title}
-                description={todo.description}
-                price={todo.price}
-                imgUrl={todo.imgUrl}
+                info={todo}
                 key={todo + index}
                 deleteTodo={props.deleteTodo}
-                completeTodo={props.completeTodo}
-                id={todo._id}
+                handleComplete={props.handleComplete}
+                completed={props.completed}
             />
         )
     })
