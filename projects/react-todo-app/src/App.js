@@ -1,6 +1,6 @@
 import React from 'react';
 import TodoForm from './TodoForm';
-import TodoComponent from './TodoComponent';
+import TodoList from './TodoList'
 import axios from 'axios';
 
 
@@ -9,14 +9,11 @@ class App extends React.Component {
     constructor(){
         super();
         this.state = {
-            todos: [],
-            title: '',
-            description: '',
-            price: '',
-            imgUrl: ''
+            todos: []
         }
-        this.handleChange = this.handleChange.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
+        this.addTodo = this.addTodo.bind(this);
+        this.deleteTodo = this.deleteTodo.bind(this);
+        this.completeTodo = this.completeTodo.bind(this);
     }
 
     componentDidMount(){
@@ -27,51 +24,50 @@ class App extends React.Component {
         })
     }
 
-    handleChange(e){
-        this.setState({
-            [e.target.name]: e.target.value
+
+    addTodo(todo){
+        axios.post('https://api.vschool.io/nateJ/todo', todo).then(response => {
+            this.setState((prevState) => {
+                return {
+                    todos: [response.data, ...prevState.todos]
+                }
+            })
         })
     }
 
-    handleSubmit(e){
-        e.preventDefault();
-        let newTodo = {
-            title: this.state.title,
-            description: this.state.description,
-            price: this.state.price,
-            imgUrl: this.state.imgUrl
-        }
-        axios.post('https://api.vschool.io/nateJ/todo', newTodo)
-        this.setState({
-            title: '',
-            description: '',
-            price: '',
-            imgUrl: ''
+    deleteTodo(todoID){
+        axios.delete('https://api.vschool.io/nateJ/todo/' + todoID).then(response => {
+            alert('Todo was successfully deleted.');
+            this.setState(prevState => {
+                return {
+                    todos: prevState.todos.filter(todo => {
+                        return (
+                            todo._id !== todoID
+                        )
+                    })
+                }
+            })
         })
+    }
+
+    completeTodo(todoTitle){
+
     }
 
     render() {
-        const mappedTodos = this.state.todos.map((todo, index) => {
-            return (
-                <TodoComponent
-                    title={todo.title}
-                    description={todo.description}
-                    img={todo.imgUrl}
-                    key={todo + index}
-                />
-            )
-        })
-
         return (
             <div className="appContainer">
                 <div className="todoFormContainer">
                     <TodoForm
-                        handleChange={this.handleChange}
-                        handleSubmit={this.handleSubmit}
+                        addTodo={this.addTodo}
                     />
                 </div>
                 <div className="mappedTodosContainer">
-                    {mappedTodos}
+                    <TodoList
+                        todos={this.state.todos}
+                        deleteTodo={this.deleteTodo}
+                        completeTodo={this.completeTodo}
+                    />
                 </div>
             </div>
         )

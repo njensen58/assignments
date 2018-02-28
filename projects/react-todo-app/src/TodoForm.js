@@ -1,42 +1,48 @@
 import React from 'react';
+import FormComponent from './FormComponent'
 
 
-function TodoForm(props){
-    return (
-        <div>
-            <form onSubmit={props.handleSubmit} className="todoForm">
-                <label><input
-                    type="text"
-                    onChange={props.handleChange}
-                    value={props.title}
-                    placeholder="Title"
-                    name="title"
-                /></label>
-                <label><input
-                    type="text"
-                    onChange={props.handleChange}
-                    value={props.description}
-                    placeholder="Description"
-                    name="description"
-                /></label>
-                <label><input
-                    type="text"
-                    onChange={props.handleChange}
-                    value={props.price}
-                    placeholder="Price"
-                    name="price"
-                /></label>
-                <label><input
-                    type="text"
-                    onChange={props.handleChange}
-                    value={props.imgUrl}
-                    placeholder="ImgUrl"
-                    name="imgUrl"
-                /></label>
-                <button>Submit</button>
-            </form>
-        </div>
-    )
+class TodoForm extends React.Component {
+    constructor(){
+        super();
+        this.state = {
+            title: '',
+            description: '',
+            price: '',
+            imgUrl: ''
+        }
+        this.handleChange = this.handleChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
+    }
+
+    handleChange(e){
+        this.setState({
+            [e.target.name]: e.target.value
+        })
+    }
+
+    handleSubmit(e){
+        e.preventDefault();
+        this.props.addTodo(this.state);
+        this.setState({
+            title: '',
+            description: '',
+            price: '',
+            imgUrl: ''
+        })
+    }
+
+    render(){
+        return (
+            <div className="todoFormDiv">
+                <FormComponent
+                    handleChange={this.handleChange}
+                    handleSubmit={this.handleSubmit}
+                    data={this.state}
+                />
+            </div>
+        )
+    }
 }
 
 
