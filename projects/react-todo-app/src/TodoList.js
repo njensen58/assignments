@@ -10,6 +10,7 @@ function TodoList(props){
                 deleteTodo={props.deleteTodo}
                 handleComplete={props.handleComplete}
                 completed={props.completed}
+                edit={props.edit}
             />
         )
     })

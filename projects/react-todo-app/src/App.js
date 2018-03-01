@@ -4,7 +4,7 @@ import TodoList from './TodoList'
 import axios from 'axios';
 
 
-class App extends React.Component {
+class App extends React.Component{
     constructor(){
         super();
         this.state = {
@@ -13,6 +13,7 @@ class App extends React.Component {
         this.addTodo = this.addTodo.bind(this);
         this.deleteTodo = this.deleteTodo.bind(this);
         this.handleComplete = this.handleComplete.bind(this);
+        this.handleEdit = this.handleEdit.bind(this);
     }
 
     componentDidMount(){
@@ -63,7 +64,20 @@ class App extends React.Component {
         })
     }
 
-    render() {
+    handleEdit(editedTodo, id){
+        const indexOfItemToEdit = this.state.todos.findIndex(todo => {
+            return todo._id === id;
+        })
+        axios.put('https://api.vschool.io/nateJ/todo/' + id, editedTodo).then(response=>{
+            this.setState(prevState =>{
+                const copy = [...prevState.todos];
+                copy.splice(indexOfItemToEdit, 1, response.data);
+                return {todos: copy}
+            })
+        })
+    }
+
+    render(){
         return (
             <div className="appContainer">
                 <div className="todoFormContainer">
@@ -76,6 +90,7 @@ class App extends React.Component {
                         todos={this.state.todos}
                         deleteTodo={this.deleteTodo}
                         handleComplete={this.handleComplete}
+                        edit={this.handleEdit}
                     />
                 </div>
             </div>
