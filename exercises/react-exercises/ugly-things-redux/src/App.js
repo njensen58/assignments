@@ -4,6 +4,7 @@ import { addThing } from './redux';
 import HeaderForm from './HeaderForm';
 import UglyThingsDisplay from './UglyThingsDisplay';
 
+
 class App extends React.Component {
     constructor(){
         super();
