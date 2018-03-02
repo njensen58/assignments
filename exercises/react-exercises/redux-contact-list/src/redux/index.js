@@ -3,7 +3,7 @@ const redux = require('redux')
 export const contactList = [
     {
         name: 'Jerry Simpson',
-        phone: '801-123-4567'
+        phone: '8011234567'
     }
 ]
 

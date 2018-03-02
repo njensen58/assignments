@@ -1,6 +1,5 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { contactList } from './redux';
 import { addContact } from './redux';
 import ContactListDisplay from './ContactListDisplay'
 
@@ -10,10 +9,11 @@ class App extends React.Component{
     constructor(props){
         super(props);
         this.state = {
-            name: ''
+            name: '',
+            phone: ''
         }
         this.handleChange = this.handleChange.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleClick = this.handleClick.bind(this);
     }
 
     handleChange(e){
@@ -22,13 +22,16 @@ class App extends React.Component{
         })
     }
 
-    handleSubmit(e){
-        e.preventDefault();
-        this.props.store.dispatch(addContact(this.state))
+    handleClick(){
+        this.props.addContact(this.state)
+        this.setState({
+            name: '',
+            phone: ''
+        })
     }
 
     render(){
-        const mappedContacts = contactList.map(contact => {
+        const mappedContacts = this.props.contactList.map(contact => {
             return (
                 <ContactListDisplay
                     key={contact.name}
@@ -40,16 +43,23 @@ class App extends React.Component{
         return (
             <div>
                 <div>
-                    <form onSubmit={this.handleSubmit}>
+
                     <input
                         type="text"
                         placeholder="New Contact Name"
                         name="name"
                         onChange={this.handleChange}
-                        value={this.state.value}
-                        />
-                    <button>Add Contact</button>
-                    </form>
+                        value={this.state.name}
+                    />
+                    <input
+                        type="text"
+                        placeholder="Phone Number"
+                        name="phone"
+                        onChange={this.handleChange}
+                        value={this.state.phone}
+                    />
+                    <button onClick={this.handleClick}>Add Contact</button>
+
                 </div>
                 <div>
                     {mappedContacts}
@@ -59,4 +69,4 @@ class App extends React.Component{
     }
 }
 
-export default connect(state=>state, {contactList, addContact})(App);
+export default connect(state=>state, {addContact})(App);
