@@ -221,6 +221,9 @@ body {
 
 .questionDiv {
     text-align: center;
+    background-color: #0009;
+    color: white;
+    border-radius: 8px;
 }
 
 .questionStyle {
@@ -245,13 +248,15 @@ body {
     margin: 20px 100px;
     border-radius: 5px;
     border: 1px solid #444;
-    transition: .2s;
+    transition: .4s;
 }
 
 .answersDiv button:hover {
     letter-spacing: 5px;
     background-color: #333;
     color: white;
+    -webkit-box-shadow: -2px 3px 9px 0px rgba(48,48,48,0.7);
+box-shadow: -2px 3px 9px 0px rgba(48,48,48,0.7);
 }
 
 .correctAnswerScreen {
@@ -351,7 +356,7 @@ body {
     .gameContainerDiv {
         display: grid;
         margin-top: 20px;
-        grid-template-rows: 5fr 1fr
+        grid-template-rows: 5fr 1fr;
     }
 
     .mobileQuestions {
@@ -374,6 +379,10 @@ body {
     .answersDiv button {
         font-size: 16px;
     }
+
+    .aboutBlock4 {
+        margin-bottom: 30px;
+    }
 }
 
 @media only screen and (min-width: 900px){
@@ -381,5 +390,17 @@ body {
     .aboutBlock2,
     .aboutBlock3 {
         font-size: 23px;
+    }
+
+    .questionStyle {
+        font-size: 33px;
+    }
+
+    .newQuestionBtn button {
+        font-size: 20px;
+    }
+
+    .answersDiv button {
+        font-size: 22px;
     }
 }

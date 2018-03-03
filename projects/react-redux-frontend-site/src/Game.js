@@ -43,9 +43,11 @@ class Game extends React.Component {
     }
 
     handleCorrect(){
-        this.setState({
-            onCurrentQ: false
-        })
+        if(this.state.wrong === true){
+            this.setState({
+                onCurrentQ: false
+            })
+        }
     }
 
     handleIncorrect(){

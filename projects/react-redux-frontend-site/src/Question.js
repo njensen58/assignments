@@ -3,7 +3,12 @@ const decode = require('unescape')
 
 function Question(props){
         const incorrectBtnsStyle = {
-            backgroundColor: props.info.wrong ? '' : 'red'
+            backgroundColor: props.info.wrong ? '' : '#b24c4c',
+            color: props.info.wrong ? '' : 'white'
+        }
+        const correctBtnStyle = {
+            backgroundColor: props.info.wrong ? '' : '#32b274',
+            color: props.info.wrong ? '' : 'white'
         }
 
         const question = decode(props.question).includes('&') ? decode(props.question.replace(/&#039;/gi, "'"), 'all') : decode(props.question)
@@ -22,7 +27,11 @@ function Question(props){
             )
         })
         const randomNum = Math.floor(Math.random() * 4);
-        const correctAnswerBtn = <button onClick={props.handleCorrect}>{correctAnswer}</button>
+        const correctAnswerBtn =
+        <button
+            onClick={props.handleCorrect}
+            style={correctBtnStyle}
+        >{correctAnswer}</button>
         incorrectAnswersArr.splice(randomNum, 0, correctAnswerBtn);
 
 

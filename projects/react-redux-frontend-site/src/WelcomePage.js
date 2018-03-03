@@ -7,7 +7,7 @@ function WelcomePage(){
         <div className="welcomePageDiv">
             <div className="welcomePageOverlay">
                 <h1>Trivia!</h1>
-                <button><Link to="/game">?</Link></button>
+                <button><Link to="/game"><i className="ion-help"></i></Link></button>
             </div>
         </div>
     )
