@@ -86,6 +86,7 @@ body {
     justify-content: space-around;
     align-items: center;
     flex-direction: column;
+    box-shadow: inset 0px -1px 130px 13px rgba(36,36,36,0.62);
 }
 
 .welcomePageOverlay h1 {
@@ -104,7 +105,7 @@ body {
     border-radius: 30px;
     background-color: dodgerblue;
     border: none;
-    transition:  .3s;
+    transition: .3s;
 }
 
 .welcomePageOverlay button:hover {
@@ -122,10 +123,86 @@ body {
 /*--------ABOUT--------*/
 /*---------------------*/
 .aboutDiv {
-
+    background: url('https://images.unsplash.com/photo-1476789668825-c16c51c46ac3?ixlib=rb-0.3.5&s=33fbc87cec61ae0f05aa6de827905fa5&auto=format&fit=crop&w=1050&q=80');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 90vh;
 }
 
+.aboutDivOverlay {
+    height: 90vh;
+    background-color: #3338;
+    box-shadow: inset 0px -1px 300px 17px rgba(20,20,20,1);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
 
+.aboutDivOverlay p {
+    margin: 0;
+    padding: 0;
+    color: white;
+}
+.aboutDivOverlay a {
+    margin: 0;
+    padding: 0;
+    color: white;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+.aboutBlock1 a:hover,
+.aboutBlock2 a:hover,
+.aboutBlock3 a:hover {
+    color: lightblue;
+    border-bottom: 1px solid lightblue;
+}
+
+.aboutBlock1,
+.aboutBlock2,
+.aboutBlock3 {
+    display: flex;
+    align-items: center;
+    line-height: 25px;
+    padding: 10px;
+    background-color: #7777;
+    border-radius: 5px;
+    margin: 5px 15%;
+    justify-content: flex-start;
+    height: 100px;
+    transition: .3s;
+    font-size: 18px;
+}
+
+.aboutBlock1:hover,
+.aboutBlock2:hover,
+.aboutBlock3:hover {
+    background-color: #3338;
+}
+
+.aboutBlock4 {
+    width: 50%;
+    margin-left: 25%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.icons2 {
+    color: white;
+    font-size: 40px;
+    margin: 10px;
+    transition: .3s;
+}
+
+.iLink:hover {
+    color: #0077B5;
+}
+
+.iGit:hover {
+    color: #913399;
+}
 
 
 /*---------------------*/
@@ -186,7 +263,13 @@ body {
 
 .newQuestionBtn {
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.newQuestionBtn p {
+    margin: 0;
+    padding: 0;
 }
 
 .newQuestionBtn button {

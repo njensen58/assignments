@@ -5,12 +5,30 @@ import axios from 'axios';
 const randomQUrl = 'https://opentdb.com/api.php?amount=1&category=9&type=multiple'
 
 const question = []
+let currentCat = 'general';
 
 
-
-export function getQuestion(){
+export function getQuestion(cat){
+    let catDecider = () => {
+        if(cat === 'general'){
+            currentCat = '9';
+        }else if(cat === 'film'){
+            currentCat = '11';
+        }else if(cat === 'tv'){
+            currentCat = '14';
+        }else if(cat === 'history'){
+            currentCat = '23';
+        }else if(cat === 'celeb'){
+            currentCat = '26';
+        }else if(cat === 'geo'){
+            currentCat = '22';
+        }else if(cat === 'sports'){
+            currentCat = '21';
+        }
+    }
+    catDecider();
     return function(dispatch){
-        axios.get(randomQUrl).then(response => {
+        axios.get('https://opentdb.com/api.php?amount=1&category=' + currentCat + '&type=multiple').then(response => {
             dispatch({
                 type: 'GET_QUESTION',
                 question: response.data.results
