@@ -3,7 +3,7 @@ const decode = require('unescape')
 
 function Question(props){
         const incorrectBtnsStyle = {
-            backgroundColor: props.info.onCurrentQ ? '' : 'red'
+            backgroundColor: props.info.wrong ? '' : 'red'
         }
 
         const question = decode(props.question).includes('&') ? decode(props.question.replace(/&#039;/gi, "'"), 'all') : decode(props.question)
@@ -41,7 +41,7 @@ function Question(props){
                     </div>
                 :
                     <div className="correctAnswerScreen">
-                        <img src="https://i.imgur.com/hbgtV4y.gif" alt="Correct Answer" width="500px"></img>
+                        <i className="ion-thumbsup"></i> Correct! <i className="ion-happy-outline"></i>
                     </div>
                 }
             </div>

@@ -2,7 +2,6 @@ import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import axios from 'axios';
 
-const randomQUrl = 'https://opentdb.com/api.php?amount=1&category=9&type=multiple'
 
 const question = []
 let currentCat = 'general';

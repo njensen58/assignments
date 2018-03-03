@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { getQuestion } from './redux';
+import GameControls from './GameControls';
 import QuestionDisplay from './QuestionDisplay';
 
 
@@ -9,7 +10,8 @@ class Game extends React.Component {
         super();
         this.state = {
             onCurrentQ: true,
-            currentCat: 'general'
+            currentCat: 'general',
+            wrong: true
         }
         this.handleClick = this.handleClick.bind(this);
         this.handleCorrect = this.handleCorrect.bind(this);
@@ -28,7 +30,8 @@ class Game extends React.Component {
             this.props.question.splice(0, 1);
             this.props.getQuestion(this.state.currentCat);
             this.setState({
-                onCurrentQ: true
+                onCurrentQ: true,
+                wrong: true
             })
         }
     }
@@ -46,39 +49,31 @@ class Game extends React.Component {
     }
 
     handleIncorrect(){
-
+        if(this.state.wrong === true){
+            this.setState({
+                wrong: false
+            })
+        }
     }
 
     render(){
         return (
             <div className="gameContainerDiv">
-                <div className="catSelectDiv">
-
+                <div className="mobileControls">
+                <GameControls
+                    info={this.state}
+                    handleChange={this.handleChange}
+                    handleClick={this.handleClick}
+                />
                 </div>
-                <div className="newQuestionBtn">
-                    <div>
-                    <p>Select Category</p>
-                    <select
-                        value={this.state.currentCat}
-                        onChange={this.handleChange}
-                    >
-                        <option value="general">General Knowledge</option>
-                        <option value="film">Film</option>
-                        <option value="tv">TV</option>
-                        <option value="history">History</option>
-                        <option value="celeb">Celebrities</option>
-                        <option value="geo">Geography</option>
-                        <option value="sports">Sports</option>
-                    </select>
-                    </div>
-                    <button onClick={this.handleClick}>New Question</button>
-                </div>
+                <div className="mobileQuestions">
                 <QuestionDisplay
                     question={this.props.question}
                     info={this.state}
                     handleCorrect={this.handleCorrect}
                     handleIncorrect={this.handleIncorrect}
                 />
+                </div>
             </div>
         )
     }
