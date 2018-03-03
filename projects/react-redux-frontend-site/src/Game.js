@@ -7,8 +7,12 @@ import QuestionDisplay from './QuestionDisplay';
 class Game extends React.Component {
     constructor(){
         super();
-        this.state = {}
+        this.state = {
+            onCurrentQ: true
+        }
         this.handleClick = this.handleClick.bind(this);
+        this.handleCorrect = this.handleCorrect.bind(this);
+        this.handleIncorrect = this.handleIncorrect.bind(this);
     }
 
     componentDidMount(){
@@ -21,17 +25,34 @@ class Game extends React.Component {
         if(this.props.question.length === 1){
             this.props.question.splice(0, 1);
             this.props.getQuestion();
+            this.setState({
+                onCurrentQ: true
+            })
         }
+    }
+
+    handleCorrect(){
+        this.setState({
+            onCurrentQ: false
+        })
+    }
+
+    handleIncorrect(){
+
     }
 
     render(){
         return (
             <div className="gameContainerDiv">
-                <QuestionDisplay
-                    question={this.props.question}/>
-                <div>
+                <div className="newQuestionBtn">
                     <button onClick={this.handleClick}>New Question</button>
                 </div>
+                <QuestionDisplay
+                    question={this.props.question}
+                    info={this.state}
+                    handleCorrect={this.handleCorrect}
+                    handleIncorrect={this.handleIncorrect}
+                />
             </div>
         )
     }

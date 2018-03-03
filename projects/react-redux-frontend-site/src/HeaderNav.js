@@ -6,7 +6,7 @@ function HeaderNav(props){
     return (
         <div className="headerNavDiv">
             <div>
-                <h1>Trivia!</h1>
+                <h1><Link to="/">Trivia!</Link></h1>
             </div>
             <div className="navDiv">
                 <Link to="/">Home</Link>

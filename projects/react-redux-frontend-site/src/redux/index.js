@@ -6,6 +6,8 @@ const randomQUrl = 'https://opentdb.com/api.php?amount=1&category=9&type=multipl
 
 const question = []
 
+
+
 export function getQuestion(){
     return function(dispatch){
         axios.get(randomQUrl).then(response => {

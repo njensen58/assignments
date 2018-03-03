@@ -5,7 +5,7 @@
 body {
     margin: 0;
     padding: 0;
-    font-family: sans-serif;
+    font-family: 'Lato', sans-serif;
     font-weight: lighter;
 }
 
@@ -19,7 +19,7 @@ body {
 /*------HEADERNAV------*/
 /*---------------------*/
 .headerNavDiv {
-    background-color: #888;
+    background-color: #3dbfff;
     height: 60px;
     display: flex;
     flex-direction: row;
@@ -27,7 +27,7 @@ body {
 }
 
 .headerNavDiv h1 {
-    margin: 0 0 0 10px;
+    margin: 0;
     padding: 5px;
     font-size: 22px;
     color: white;
@@ -36,14 +36,25 @@ body {
 
 .headerNavDiv a {
     text-decoration: none;
-    padding: 21px;
     color: white;
+    padding: 10px;
     transition: .3s;
 }
 
 .headerNavDiv a:hover {
-    background-color: #ddd;
-    color: #888;
+    color: #ffc649;
+}
+
+.navDiv a {
+    text-decoration: none;
+    padding: 20px;
+    color: white;
+    transition: .3s;
+}
+
+.navDiv a:hover {
+    background-color: #8ad8ff;
+    color: #12394c;
 }
 
 
@@ -61,16 +72,57 @@ body {
 /*-----WELCOMEPAGE-----*/
 /*---------------------*/
 .welcomePageDiv {
-    height: 600px;
+    background: url('https://images.unsplash.com/photo-1498940757830-82f7813bf178?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=4850857100f88ddb5387d1a02f393228&auto=format&fit=crop&w=1867&q=80');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 90vh;
 }
 
+.welcomePageOverlay {
+    height: 90vh;
+    background-color: #3338;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+}
+
+.welcomePageOverlay h1 {
+    margin: 0;
+    padding: 0;
+    color: white;
+    font-size: 90px;
+    font-weight: lighter;
+    letter-spacing: 3px;
+}
+
+.welcomePageOverlay button {
+    margin: 50px;
+    width: 150px;
+    font-size: 50px;
+    border-radius: 30px;
+    background-color: dodgerblue;
+    border: none;
+    transition:  .3s;
+}
+
+.welcomePageOverlay button:hover {
+    background-color: cornflowerblue;
+}
+
+.welcomePageOverlay a {
+    text-decoration: none;
+    border: none;
+    color: white;
+}
 
 
 /*---------------------*/
 /*--------ABOUT--------*/
 /*---------------------*/
 .aboutDiv {
-    height: 600px;
+
 }
 
 
@@ -80,7 +132,6 @@ body {
 /*--------GAME---------*/
 /*---------------------*/
 .gameContainerDiv {
-    height: 600px;
     padding: 20px;
 }
 
@@ -94,6 +145,7 @@ body {
     padding: 10px;
     border-radius: 8px;
     margin: 0;
+    font-weight: 400;
 }
 
 .answersDiv {
@@ -118,12 +170,39 @@ body {
     color: white;
 }
 
+.correctAnswerScreen {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 90px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 700px;
+}
 
+.correctAnswerScreen img {
+    border-radius: 10px;
+}
 
+.newQuestionBtn {
+    display: flex;
+    justify-content: flex-end;
+}
 
+.newQuestionBtn button {
+    padding: 10px;
+    margin: 20px;
+    border-radius: 5px;
+    font-size: 16px;
+    background-color: #3098cc;
+    color: white;
+    outline: none;
+    transition: .3s;
+}
 
-
-
+.newQuestionBtn button:hover {
+    background-color: #247299;
+}
 
 
 
@@ -131,13 +210,23 @@ body {
 /*-------FOOTER--------*/
 /*---------------------*/
 .footerDiv {
-    height: 80px;
-    background-color: #333;
+    height: 40px;
+    background-color:#4a33b2;
     color: white;
     display: flex;
     justify-content: center;
     align-items: center;
-    position: absolute;
+    position: fixed;
     bottom: 0;
     width: 100%;
+    font-size: 15px;
+}
+
+.footerDiv a {
+    text-decoration: none;
+    color: white;
+}
+
+.icons {
+    font-size: 30px;
 }

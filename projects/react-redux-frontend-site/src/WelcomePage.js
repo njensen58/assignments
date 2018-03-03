@@ -1,10 +1,14 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 
 function WelcomePage(){
     return (
         <div className="welcomePageDiv">
-            Welcome
+            <div className="welcomePageOverlay">
+                <h1>Trivia!</h1>
+                <button><Link to="/game">?</Link></button>
+            </div>
         </div>
     )
 }

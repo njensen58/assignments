@@ -9,6 +9,9 @@ function QuestionDisplay(props){
                 question={question.question}
                 correct_answer={question.correct_answer}
                 incorrect_answers={question.incorrect_answers}
+                handleCorrect={props.handleCorrect}
+                handleIncorrect={props.handleIncorrect}
+                info={props.info}
                 key={question + i}
             />
         )
