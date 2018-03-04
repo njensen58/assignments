@@ -27,12 +27,11 @@ function Question(props){
             )
         })
         const randomNum = Math.floor(Math.random() * 4);
-        const correctAnswerBtn =
-        <button
-            onClick={props.handleCorrect}
-            style={correctBtnStyle}
-        >{correctAnswer}</button>
+        const correctAnswerBtn = <button onClick={props.handleCorrect} style={correctBtnStyle}>{correctAnswer}</button>
+
+        let currentAnswersArr = [...incorrectAnswersArr, correctAnswerBtn]
         incorrectAnswersArr.splice(randomNum, 0, correctAnswerBtn);
+
 
 
 

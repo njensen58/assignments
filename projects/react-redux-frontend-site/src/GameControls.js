@@ -10,6 +10,7 @@ function GameControls(props){
             <select
                 value={props.info.currentCat}
                 onChange={props.handleChange}
+                className="selectStyle"
             >
                 <option value="general">General Knowledge</option>
                 <option value="film">Film</option>

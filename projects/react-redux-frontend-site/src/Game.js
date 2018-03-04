@@ -40,6 +40,7 @@ class Game extends React.Component {
         this.setState({
             currentCat: e.target.value
         })
+        this.props.getQuestion(this.state.currentCat);
     }
 
     handleCorrect(){

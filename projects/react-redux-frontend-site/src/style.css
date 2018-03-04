@@ -72,7 +72,7 @@ body {
 /*-----WELCOMEPAGE-----*/
 /*---------------------*/
 .welcomePageDiv {
-    background: url('https://images.unsplash.com/photo-1498940757830-82f7813bf178?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=4850857100f88ddb5387d1a02f393228&auto=format&fit=crop&w=1867&q=80');
+    background: url('https://images.unsplash.com/photo-1442876906995-6761040d1f0b?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=3f298a52eb789d2258812c601ad22962&auto=format&fit=crop&w=1920&q=80');
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -81,7 +81,7 @@ body {
 
 .welcomePageOverlay {
     height: 90vh;
-    background-color: #3338;
+    background-color: #1d1d1dc4;
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -102,14 +102,14 @@ body {
     margin: 50px;
     width: 150px;
     font-size: 50px;
-    border-radius: 30px;
-    background-color: dodgerblue;
+    border-radius: 10px;
+    background-color: cornflowerblue;
     border: none;
     transition: .3s;
 }
 
 .welcomePageOverlay button:hover {
-    background-color: cornflowerblue;
+    background-color: dodgerblue;
 }
 
 .welcomePageOverlay a {
@@ -132,7 +132,7 @@ body {
 
 .aboutDivOverlay {
     height: 90vh;
-    background-color: #3338;
+    background-color: #1d1d1dc4;
     box-shadow: inset 0px -1px 300px 17px rgba(20,20,20,1);
     display: flex;
     flex-direction: column;
@@ -279,6 +279,7 @@ box-shadow: -2px 3px 9px 0px rgba(48,48,48,0.7);
 .newQuestionBtn p {
     margin: 0;
     padding: 0;
+    font-size: 17px;
 }
 
 .newQuestionBtn button {
@@ -296,6 +297,15 @@ box-shadow: -2px 3px 9px 0px rgba(48,48,48,0.7);
     background-color: #247299;
 }
 
+.selectStyle {
+    border:  none;
+    color: white;
+    background-color: #3098cc;
+    font-weight: lighter;
+    font-size: 14px;
+    margin: 5px;
+    outline: none;
+}
 
 
 /*---------------------*/
@@ -361,7 +371,7 @@ box-shadow: -2px 3px 9px 0px rgba(48,48,48,0.7);
 
     .mobileQuestions {
         grid-row: 1;
-        margin: 30px 0 30px 0;
+        margin: 10px 0 10px 0;
     }
 
     .mobileControls {
@@ -382,6 +392,10 @@ box-shadow: -2px 3px 9px 0px rgba(48,48,48,0.7);
 
     .aboutBlock4 {
         margin-bottom: 30px;
+    }
+
+    .answersDiv button:hover {
+        letter-spacing: 2px;
     }
 }
 

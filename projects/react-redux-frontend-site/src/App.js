@@ -10,7 +10,9 @@ import Footer from './Footer';
 function App(props){
     return (
         <div className="appContainer">
-            <HeaderNav />
+            <div>
+                <HeaderNav />
+            </div>
                 <Switch>
                     <Route exact path="/" component={WelcomePage}/>
                     <Route path="/game" component={Game}/>

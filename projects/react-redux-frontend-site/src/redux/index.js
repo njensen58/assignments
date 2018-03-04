@@ -8,7 +8,7 @@ let currentCat = 'general';
 
 
 export function getQuestion(cat){
-    let catDecider = () => {
+    const catDecider = () => {
         if(cat === 'general'){
             currentCat = '9';
         }else if(cat === 'film'){
