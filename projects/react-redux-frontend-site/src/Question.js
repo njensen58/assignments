@@ -27,7 +27,7 @@ function Question(props){
             )
         })
 
-    
+
         const correctAnswerBtn = <button onClick={props.handleCorrect} style={correctBtnStyle}>{correctAnswer}</button>
 
         incorrectAnswersArr.splice(props.info.randomNum, 0, correctAnswerBtn)
