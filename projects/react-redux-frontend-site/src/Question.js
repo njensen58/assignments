@@ -19,21 +19,20 @@ function Question(props){
             return (
                 <button
                     style={incorrectBtnsStyle}
-                    onClick={props.handleIncorrect}
+                    onClick={()=>props.handleIncorrect(currentAnswersArr)}
                     key={answer + 1}
                 >
                     {decode(answer).includes('&') ? decode(answer.replace(/&#039;/gi, "'"), 'all') : decode(answer)}
                 </button>
             )
         })
-        const randomNum = Math.floor(Math.random() * 4);
+
+    
         const correctAnswerBtn = <button onClick={props.handleCorrect} style={correctBtnStyle}>{correctAnswer}</button>
 
-        let currentAnswersArr = [...incorrectAnswersArr, correctAnswerBtn]
-        incorrectAnswersArr.splice(randomNum, 0, correctAnswerBtn);
+        incorrectAnswersArr.splice(props.info.randomNum, 0, correctAnswerBtn)
 
-
-
+        let currentAnswersArr = incorrectAnswersArr;
 
         return (
             <div>
@@ -44,7 +43,7 @@ function Question(props){
                         </div>
 
                         <div className="answersDiv">
-                            {incorrectAnswersArr}
+                            {currentAnswersArr}
                         </div>
                     </div>
                 :

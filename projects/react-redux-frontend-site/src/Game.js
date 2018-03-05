@@ -11,7 +11,8 @@ class Game extends React.Component {
         this.state = {
             onCurrentQ: true,
             currentCat: 'general',
-            wrong: true
+            wrong: true,
+            randomNum: 0
         }
         this.handleClick = this.handleClick.bind(this);
         this.handleCorrect = this.handleCorrect.bind(this);
@@ -22,25 +23,32 @@ class Game extends React.Component {
     componentDidMount(){
         if(this.props.question.length === 0){
             this.props.getQuestion(this.state.currentCat);
+            this.setState({
+                randomNum: Math.floor(Math.random() * 4)
+            })
         }
     }
 
     handleClick(){
         if(this.props.question.length === 1){
             this.props.question.splice(0, 1);
-            this.props.getQuestion(this.state.currentCat);
             this.setState({
                 onCurrentQ: true,
-                wrong: true
+                wrong: true,
+                randomNum: Math.floor(Math.random() * 4)
             })
+            this.props.getQuestion(this.state.currentCat);
+
         }
     }
 
     handleChange(e){
         this.setState({
-            currentCat: e.target.value
+            currentCat: e.target.value,
+            wrong: true
         })
         this.props.getQuestion(this.state.currentCat);
+
     }
 
     handleCorrect(){
@@ -51,7 +59,7 @@ class Game extends React.Component {
         }
     }
 
-    handleIncorrect(){
+    handleIncorrect(currentAnswers){
         if(this.state.wrong === true){
             this.setState({
                 wrong: false
@@ -60,6 +68,7 @@ class Game extends React.Component {
     }
 
     render(){
+        const randomNum = Math.floor(Math.random() * 4);
         return (
             <div className="gameContainerDiv">
                 <div className="mobileControls">
