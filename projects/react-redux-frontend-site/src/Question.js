@@ -15,12 +15,12 @@ function Question(props){
 
         const correctAnswer = decode(props.correct_answer).includes('&') ? decode(props.correct_answer.replace(/&#039;/gi, "'"), 'all') : decode(props.correct_answer)
 
-        const incorrectAnswersArr = props.incorrect_answers.map(answer => {
+        const incorrectAnswersArr = props.incorrect_answers.map((answer, i) => {
             return (
                 <button
                     style={incorrectBtnsStyle}
                     onClick={()=>props.handleIncorrect(currentAnswersArr)}
-                    key={answer + 1}
+                    key={answer + '-' + i}
                 >
                     {decode(answer).includes('&') ? decode(answer.replace(/&#039;/gi, "'"), 'all') : decode(answer)}
                 </button>

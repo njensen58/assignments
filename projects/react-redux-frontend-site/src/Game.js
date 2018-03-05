@@ -68,7 +68,6 @@ class Game extends React.Component {
     }
 
     render(){
-        const randomNum = Math.floor(Math.random() * 4);
         return (
             <div className="gameContainerDiv">
                 <div className="mobileControls">

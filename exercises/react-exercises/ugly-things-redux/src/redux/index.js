@@ -1,35 +1,11 @@
-import { createStore } from 'redux';
-
-const uglyThings = [
-    {
-        title: 'practice',
-        imgUrl: 'img',
-        description: 'stuff'
-    }
-];
-
-
-export function addThing(newThing){
-    return {
-        type: 'ADD_THING',
-        newThing
-    }
-}
-
-
-function reducer(prevState = {uglyThings}, action){
-    switch(action.type){
-        case 'ADD_THING':
-            return {
-                uglyThings: [...prevState.uglyThings, action.newThing]
-            }
-        default:
-            return {
-                prevState
-            }
-    }
-}
+import { createStore, combineReducers } from 'redux';
+import entries from './entries';
 
 
 
-export default createStore(reducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
+const store = createStore(
+    combineReducers({entries}),
+    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+);
+
+export default store;

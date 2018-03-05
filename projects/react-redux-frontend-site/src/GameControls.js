@@ -1,5 +1,5 @@
 import React from 'react';
-import QuestionDisplay from './QuestionDisplay';
+
 
 
 function GameControls(props){

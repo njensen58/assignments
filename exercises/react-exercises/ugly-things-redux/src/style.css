@@ -10,7 +10,7 @@ body {
 
 .headerContainer {
     height: 200px;
-    background-color: #aaa;
+    background-color: dodgerblue;
     padding: 10px;
 }
 
@@ -49,4 +49,51 @@ body {
     margin-top: 10px;
     width: 80px;
     border-radius: 10px;
+}
+
+.thingsDisplayContainer {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.entryDiv {
+    padding: 10px;
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: #ddd;
+    border-radius: 10px;
+    text-align: center;
+}
+
+
+
+.entryTitle {
+    font-weight: lighter;
+    margin: 5px;
+    padding: 0;
+}
+
+.entryDescription {
+    font-weight: lighter;
+    margin: 5px;
+    padding: 0;
+}
+
+
+.commentStyle {
+    list-style: none;
+    font-weight: lighter;
+    text-align: left;
+    padding: 5px;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+}
+
+.removeBtnStyle {
+    background-color: red;
+    color: white;
 }

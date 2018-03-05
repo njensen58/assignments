@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { addThing } from './redux';
+import { addThing, removeThing } from './redux/entries.js';
 import HeaderForm from './HeaderForm';
 import UglyThingsDisplay from './UglyThingsDisplay';
 
@@ -15,6 +15,7 @@ class App extends React.Component {
         }
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleChange = this.handleChange.bind(this);
+        this.handleImgRemove = this.handleImgRemove.bind(this);
     }
 
     handleSubmit(e){
@@ -32,6 +33,11 @@ class App extends React.Component {
             [e.target.name]: e.target.value
         })
     }
+
+    handleImgRemove(title){
+        this.props.removeThing(title)
+    }
+
     render(){
         return (
             <div>
@@ -46,12 +52,14 @@ class App extends React.Component {
                 </div>
                 <div>
                     <UglyThingsDisplay
-                        uglyThings={this.props.uglyThings}
-                    />
+                        handleImgRemove={this.handleImgRemove}
+                     />
                 </div>
             </div>
         )
     }
 }
 
-export default connect(state=>state, { addThing })(App);
+
+
+export default connect(state=>state, { addThing, removeThing })(App);
