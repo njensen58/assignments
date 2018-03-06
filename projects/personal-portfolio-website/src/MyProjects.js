@@ -23,16 +23,19 @@ const projectsArr = [
         url: 'http://my-css-zen-garden-example.surge.sh/'
     },
     {
-        title: 'Triva Game',
-        description: 'A front-end project used to combine React with Redux, Thunk and Axios to make asychronous calls to an API.',
-        imgs: [],
-        url: 'http://trivia-game-app-example.surge.sh'
+        title: 'Trivia Game',
+        description: 'A front-end project used to combine React with Redux, Thunk, and Axios to make asychronous calls to an API.  This was also a challenge in logic in order to pull the question objects from the API and have the user interact with them in trivia question style.',
+        imgs: [
+            require('./resources/trivia3.png'),
+            require('./resources/trivia2.png'),
+            require('./resources/trivia1.png')
+        ],
+        url: 'http://trivia-game-frontend-site.surge.sh'
     }
 ]
 
 function MyProjects(props){
     const mappedProjects = projectsArr.map(project => {
-        console.log(project);
         return (
             <Project
                 title={project.title}
@@ -53,6 +56,7 @@ function MyProjects(props){
             <div className="mappedProjectsContainer">
                 {mappedProjects}
             </div>
+            <hr className="bodyHr"/>
         </div>
     )
 

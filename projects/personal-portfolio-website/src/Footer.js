@@ -2,8 +2,8 @@ import React from 'react';
 
 function Footer(){
     return (
-        <div>
-            Footer
+        <div className="footerDiv">
+            Nate Jensen - 2018
         </div>
     )
 }

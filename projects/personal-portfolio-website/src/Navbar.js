@@ -10,7 +10,7 @@ function Navbar(props){
     }
     return (
         <div className="navDiv">
-            
+
             <div className="navLinks">
                 <div
                  className="sandwhichMenu"
@@ -24,15 +24,15 @@ function Navbar(props){
                 <Link
                     to="/"
                     style={navStyle}
-                    >Home</Link>
+                    >/Home</Link>
                 <Link
                     to="/myprojects"
                     style={navStyle}
-                    >Projects</Link>
+                    >/Projects</Link>
                 <Link
                     to="/about"
                     style={navStyle}
-                    >About/Resume</Link>
+                    >/About-Resume</Link>
             </div>
 
         </div>
