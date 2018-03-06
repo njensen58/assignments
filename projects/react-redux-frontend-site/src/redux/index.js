@@ -37,12 +37,12 @@ export function getQuestion(cat){
 }
 
 
-function reducer(prevState = question, action){
+function reducer(state = question, action){
     switch(action.type){
         case 'GET_QUESTION':
             return action.question
         default:
-            return prevState
+            return state
     }
 }
 

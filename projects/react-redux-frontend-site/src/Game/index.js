@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { getQuestion } from './redux';
+import { getQuestion } from '../redux';
 import GameControls from './GameControls';
 import QuestionDisplay from './QuestionDisplay';
 
@@ -32,23 +32,22 @@ class Game extends React.Component {
     handleClick(){
         if(this.props.question.length === 1){
             this.props.question.splice(0, 1);
-            this.setState({
-                onCurrentQ: true,
-                wrong: true,
-                randomNum: Math.floor(Math.random() * 4)
-            })
+                this.setState({
+                    onCurrentQ: true,
+                    wrong: true,
+                    randomNum: Math.floor(Math.random() * 4)
+                })
             this.props.getQuestion(this.state.currentCat);
-
         }
     }
 
     handleChange(e){
         this.setState({
             currentCat: e.target.value,
-            wrong: true
+            wrong: true,
+            randomNum: Math.floor(Math.random() * 4)
         })
-        this.props.getQuestion(this.state.currentCat);
-
+        this.props.getQuestion(e.target.value);
     }
 
     handleCorrect(){
@@ -94,4 +93,4 @@ const mapStateToProps = (state) => {
     return {question: state}
 }
 
-export default connect(mapStateToProps,{ getQuestion })(Game);
+export default connect(mapStateToProps, { getQuestion })(Game);

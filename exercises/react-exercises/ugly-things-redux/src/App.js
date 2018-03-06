@@ -34,8 +34,8 @@ class App extends React.Component {
         })
     }
 
-    handleImgRemove(title){
-        this.props.removeThing(title)
+    handleImgRemove(id){
+        this.props.removeThing(id)
     }
 
     render(){

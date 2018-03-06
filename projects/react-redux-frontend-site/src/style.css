@@ -103,9 +103,10 @@ body {
     width: 150px;
     font-size: 50px;
     border-radius: 10px;
-    background-color: cornflowerblue;
+    background-color: rgb(61, 191, 255);
     border: none;
     transition: .3s;
+    outline: none;
 }
 
 .welcomePageOverlay button:hover {
@@ -221,18 +222,18 @@ body {
 
 .questionDiv {
     text-align: center;
-    background-color: #0009;
+    background-color: #1c536f95;
     color: white;
     border-radius: 8px;
 }
 
 .questionStyle {
     font-size: 26px;
-    border: 1px solid black;
+    border: 1px solid #3337;
     padding: 10px;
     border-radius: 8px;
     margin: 0;
-    font-weight: 400;
+    font-weight: 300;
 }
 
 .answersDiv {
@@ -247,16 +248,18 @@ body {
     font-size: 18px;
     margin: 20px 100px;
     border-radius: 5px;
-    border: 1px solid #444;
+    border: 1px solid #4447;
     transition: .4s;
+    outline: none;
+    color: rgba(0, 0, 0, .7);
 }
 
 .answersDiv button:hover {
-    letter-spacing: 5px;
+    letter-spacing: 3px;
     background-color: #333;
     color: white;
     -webkit-box-shadow: -2px 3px 9px 0px rgba(48,48,48,0.7);
-box-shadow: -2px 3px 9px 0px rgba(48,48,48,0.7);
+    box-shadow: -2px 3px 9px 0px rgba(48,48,48,0.7);
 }
 
 .correctAnswerScreen {
@@ -264,8 +267,6 @@ box-shadow: -2px 3px 9px 0px rgba(48,48,48,0.7);
     justify-content: space-between;
     align-items: center;
     font-size: 90px;
-    background-size: cover;
-    background-repeat: no-repeat;
     height: 500px;
 }
 
@@ -287,7 +288,7 @@ box-shadow: -2px 3px 9px 0px rgba(48,48,48,0.7);
     margin: 20px;
     border-radius: 5px;
     font-size: 16px;
-    background-color: #3098cc;
+    background-color: rgb(61, 191, 255);
     color: white;
     outline: none;
     transition: .3s;
@@ -301,7 +302,7 @@ box-shadow: -2px 3px 9px 0px rgba(48,48,48,0.7);
 .selectStyle {
     border:  none;
     color: white;
-    background-color: #3098cc;
+    background-color: #1c536f95;
     font-weight: lighter;
     font-size: 14px;
     margin: 5px;
@@ -396,7 +397,7 @@ box-shadow: -2px 3px 9px 0px rgba(48,48,48,0.7);
     }
 
     .answersDiv button:hover {
-        letter-spacing: 2px;
+        letter-spacing: 0;
     }
 }
 
@@ -417,5 +418,18 @@ box-shadow: -2px 3px 9px 0px rgba(48,48,48,0.7);
 
     .answersDiv button {
         font-size: 22px;
+    }
+}
+
+@media only screen and (min-width: 1200px){
+    .questionStyle {
+        font-size: 40px;
+    }
+    .newQuestionBtn button {
+        font-size: 24px;
+    }
+
+    .answersDiv button {
+        font-size: 28px;
     }
 }

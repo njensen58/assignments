@@ -1,7 +1,10 @@
 import React from 'react';
-import Header from './Header';
+import { Switch, Route } from 'react-router';
+import Home from './Home';
 import Navbar from './Navbar';
 import MyProjects from './MyProjects';
+import About from './About';
+import Footer from './Footer';
 
 
 class Website extends React.Component {
@@ -15,8 +18,12 @@ class Website extends React.Component {
         return (
             <div>
                 <Navbar />
-                <Header />
-                <MyProjects />
+                <Switch>
+                    <Route exact path="/" component={Home}/>
+                    <Route path="/myprojects" component={MyProjects}/>
+                    <Route path="/about" component={About}/>
+                </Switch>
+                <Footer />
             </div>
         )
     }

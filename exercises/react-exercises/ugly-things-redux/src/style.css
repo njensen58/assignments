@@ -21,6 +21,7 @@ body {
     text-align: center;
     padding-bottom: 10px;
     font-weight: lighter;
+    color: white;
 }
 
 .formContainer {
@@ -82,6 +83,9 @@ body {
     padding: 0;
 }
 
+.commentInput {
+    margin-right: 5px;
+}
 
 .commentStyle {
     list-style: none;

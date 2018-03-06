@@ -12,8 +12,9 @@ export function removeThing(thing){
     }
 }
 
+const state = [{title: 'Naked Mole Rat', description: 'Kim Possible lied', imgUrl: 'https://pbs.twimg.com/media/C5Eb5DIUoAAVa6e.jpg'}]
 
-function reducer(prevState = [], action){
+function reducer(prevState = state, action){
     switch(action.type){
         case 'ADD_THING':
             return  [...prevState, action.newThing]

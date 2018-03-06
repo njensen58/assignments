@@ -29,12 +29,14 @@ class UglyThing extends React.Component {
     }
 
     handleCommentAdd(){
-        this.setState(prevState => {
-            return {
-                comments: [...prevState.comments, this.state.comment],
-                comment: ''
-            }
-        })
+        if(this.state.comment.length > 0){
+            this.setState(prevState => {
+                return {
+                    comments: [...prevState.comments, this.state.comment],
+                    comment: ''
+                }
+            })
+        }
     }
 
     handleCommentRemove(comment){
@@ -76,8 +78,7 @@ class UglyThing extends React.Component {
                         style={commentsReveal}>{this.state.showComments ? 'V' : '^'}
                     </button>
                     { this.state.showComments ?
-                        <button
-                            style={deleteImgBtn} onClick={()=>this.props.handleImgRemove(this.props.title)}>Delete this Thing</button>
+                        <button style={deleteImgBtn} onClick={()=>this.props.handleImgRemove(this.props.title)}>Delete this Thing</button>
                     :
                          ''
                     }
@@ -88,16 +89,19 @@ class UglyThing extends React.Component {
                             name="comment"
                             value={this.state.comment}
                             onChange={this.handleChange}
+                            className="commentInput"
                         />
                         <button
                             onClick={this.handleCommentAdd}>Add Comment
                         </button>
                         { this.state.comments.map((comment, i) => {
                             return (
-                                <li className="commentStyle">- {comment}<button
+                                <li className="commentStyle"
+                                    key={comment + '-' + i}
+                                    >- {comment}<button
                                     onClick={()=>this.handleCommentRemove(comment)}
                                     className="removeBtnStyle"
-                                    key={comment + '-' + i}
+
                                 >X</button></li>
                             )
                         })}
