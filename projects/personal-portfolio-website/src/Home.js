@@ -7,12 +7,13 @@ function Home(props){
         <div>
             <div className="headerBackground">
                 <div>
-                    <h1>Website Title</h1>
-                    <h2>Website subtitle</h2>
+                    <h1>Nate Jensen</h1>
+                    <h2>Design / Develop / Program</h2>
                 </div>
             </div>
-            <div>
-
+            <hr className="bodyHr"/>
+            <div className="bodySection1">
+                <h3>Introduction:</h3>
             </div>
         </div>
     )

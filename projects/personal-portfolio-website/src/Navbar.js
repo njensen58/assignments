@@ -4,13 +4,13 @@ import { Link } from 'react-router-dom';
 
 function Navbar(props){
     const navStyle = {
-        fontSize: props.info.nav ? '12px' : '0',
+        display: props.info.nav ? 'inline-block' : 'none',
         textDecoration: 'none',
-        textTransform: 'uppercase',
-        transition: '.4s ease-out'
+        textTransform: 'uppercase'
     }
     return (
         <div className="navDiv">
+            
             <div className="navLinks">
                 <div
                  className="sandwhichMenu"
