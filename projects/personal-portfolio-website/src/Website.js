@@ -11,13 +11,24 @@ class Website extends React.Component {
     constructor(){
         super();
         this.state = {
-
+            nav: false
         }
+        this.handleNavExpand = this.handleNavExpand.bind(this)
     }
+
+    handleNavExpand(){
+        this.setState(prevState => ({
+            nav: prevState.nav ? false : true
+        }))
+    }
+
     render(){
         return (
-            <div>
-                <Navbar />
+            <div className="appContainer">
+                <Navbar
+                    handleNavExpand={this.handleNavExpand}
+                    info={this.state}
+                />
                 <Switch>
                     <Route exact path="/" component={Home}/>
                     <Route path="/myprojects" component={MyProjects}/>

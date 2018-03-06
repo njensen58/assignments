@@ -11,6 +11,9 @@ function Home(props){
                     <h2>Website subtitle</h2>
                 </div>
             </div>
+            <div>
+
+            </div>
         </div>
     )
 }
