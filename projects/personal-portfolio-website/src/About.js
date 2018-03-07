@@ -35,8 +35,21 @@ function About(){
                 </div>
                 <div className="contactDiv">
                     <h3>Contact</h3>
+                    <div>
+                        <ul>
+                            <li>Email:  Nathan.Jensen.58@gmail.com</li>
+                            <li>Cell:  (801) 856-9961</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <a href=""><i className="ion-social-github icons"></i></a>
+                        <a href=""><i className="ion-social-linkedin icons"></i></a>
+                        <a href=""><i className="ion-social-googleplus icons"></i></a>
+
+                    </div>
                 </div>
             </div>
+            <hr className="bodyHr"/>
         </div>
     )
 }
