@@ -5,16 +5,184 @@
 body {
     margin: 0;
     padding: 0;
+    font-family: sans-serif;
+    background-color: #2223;
+}
+
+
+.appContainer {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    background: url('https://wallpaperstock.net/star-wars%3a-bounty-hunter-wallpapers_20868_1600x1200.jpg');
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+}
+
+.bountyCtrlsContainer {
+    padding: 20px;
+}
+
+.bountyCtrlsDiv {
+    display: flex;
+    flex-direction: column;
+}
+
+.bountyCtrlsDiv input {
+    margin: 10px;
 }
 
 .bountyContainer {
-    padding: 10px;
-    border: 1px solid black;
-    display: flex;
-    justify-content: space-between;
-    margin: 10px 20px;
+    display: grid;
+    grid-template-columns: 3fr 1fr 1fr 1fr;
+    margin: 2px;
 }
 
-.bodyContainer h1 {
+.bountyTitleContainer {
+    display: flex;
+    justify-content: flex-start;
+    align-items: baseline;
+    color: #ddd;
+}
+
+.bountyTitleContainer h1 {
     margin: 0;
+    font-size: 18px;
+    font-weight: lighter;
+    letter-spacing: 2px;
+}
+
+.bountyTitleContainer button {
+    margin-right: 10px;
+    margin-bottom: 3px;
+    outline: none;
+}
+
+.expandedBountyContainer {
+    padding: 5px;
+    display: grid;
+    grid-template-columns: 3fr 1fr 1fr 1fr;
+    grid-column: 1 / -1;
+    color: white;
+}
+
+.expandedBountyContainer h1 {
+    margin: 0;
+    grid-column: 1 / 4;
+    font-weight: 300;
+}
+
+.expandedBountyContainer button {
+    margin-right: 10px;
+    outline: none;
+}
+
+.expandedBountyDetailsContainer {
+    grid-column: 2 / -1;
+    display: grid;
+    grid-template-columns: 3fr 3fr 1fr;
+    grid-template-rows: 30px 60px;
+    width: 100%;
+    font-weight: 300;
+}
+
+.expandedBountyDetailsContainer button {
+    grid-column: 3;
+    display: flex;
+    justify-content: center;
+    margin: 1px;
+    border-radius: 3px;
+    padding: 3px 5px;
+    background-color: #555;
+    color: white;
+    border: none;
+    font-weight: lighter;
+    font-size: 13px;
+    transition: .4s;
+    outline: none;
+}
+
+.expandedBountyDetailsContainer button:hover {
+    background-color: #ddd;
+    color: black;
+}
+
+.titleTypeSpan {
+    grid-row: 1;
+    grid-column: 1;
+    display: flex;
+    justify-content: flex-start;
+    text-decoration: underline;
+}
+
+.titleInfoSpan {
+    grid-column: 1;
+    grid-row: 2;
+    font-size: 30px;
+    display: flex;
+    justify-content: flex-start;
+    text-transform: uppercase;
+}
+
+.bountyTypeSpan {
+    grid-row: 1;
+    grid-column: 2;
+    display: flex;
+    justify-content: flex-start;
+    text-decoration: underline;
+}
+
+.bountyInfoSpan {
+    grid-column: 2;
+    grid-row: 2;
+    font-size: 30px;
+    display: flex;
+    justify-content: flex-start;
+    text-transform: uppercase;
+}
+
+.editingContainer {
+    grid-column: 3;
+    grid-row: 1 / -1;
+    padding: 5px;
+}
+
+.editingContainer input {
+    margin: 2px;
+    padding: 5px;
+}
+
+.dropdownBtnStyle {
+    background-color: #2228;
+    color: white;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+}
+
+.bountyContainer p {
+    margin: 2px;;
+}
+
+/*------------------*/
+/*-----CONTROLS-----*/
+/*------------------*/
+.addBountyBtn {
+    padding: 10px 25px;
+    border-radius: 4px;
+    font-size: 15px;
+    font-weight: lighter;
+    background-color: #99000080;
+    color: white;
+    outline: none;
+}
+
+.addNewBountyBtn {
+    padding: 10px 25px;
+    border-radius: 4px;
+    font-size: 15px;
+    font-weight: lighter;
+    background-color: #2119C780;
+    color: white;
+    outline: none;
 }

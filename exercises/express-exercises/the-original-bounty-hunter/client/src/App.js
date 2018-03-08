@@ -11,11 +11,12 @@ class App extends React.Component {
             firstName: '',
             lastName: '',
             type: '',
-            bounty: ''
+            bountyAmount: ''
         }
         this.handleDeleteBounty = this.handleDeleteBounty.bind(this);
         this.handleAddBounty = this.handleAddBounty.bind(this);
         this.handleChange = this.handleChange.bind(this);
+        this.handleEditSubmit = this.handleEditSubmit.bind(this);
     }
 
     handleChange(e){
@@ -46,16 +47,35 @@ class App extends React.Component {
             firstName: this.state.firstName,
             lastName: this.state.lastName,
             type: this.state.type,
-            bounty: this.state.bounty
+            bountyAmount: this.state.bountyAmount
         }
-        axios.post('/bounty', newBounty).then(response => {
-            this.setState(prevState => ({
-                bounties: [...prevState.bounties, response.data],
-                firstName: '',
-                lastName: '',
-                type: '',
-                bounty: ''
-            }))
+        if(newBounty.firstName !== '' && newBounty.type !== '' && newBounty.bountyAmount !== ''){
+            axios.post('/bounty', newBounty).then(response => {
+                this.setState(prevState => ({
+                    bounties: [...prevState.bounties, response.data],
+                    firstName: '',
+                    lastName: '',
+                    type: '',
+                    bountyAmount: ''
+                }))
+            })
+        } else {
+            alert('First Name, Type, and Bounty are required');
+        }
+    }
+
+    handleEditSubmit(item, updatedFields){
+        for(let key in updatedFields){
+            if(updatedFields[key] !== ''){
+                item[key] = updatedFields[key]
+            }
+        }
+        axios.put('/bounty/' + item.id, item).then(response => {
+            axios.get('/bounty').then(response => {
+                this.setState({
+                    bounties: response.data
+                })
+            })
         })
     }
 
@@ -66,19 +86,20 @@ class App extends React.Component {
                     key={bounty.id}
                     info={bounty}
                     handleDeleteBounty={this.handleDeleteBounty}
+                    handleEditSubmit={this.handleEditSubmit}
                 />
             )
         })
         return (
-            <div>
-                <div>
+            <div className="appContainer">
+                <div className="bountyCtrlsContainer">
                     <BountyControls
                         handleAddBounty={this.handleAddBounty}
                         handleChange={this.handleChange}
                         info={this.state}
                     />
                 </div>
-                <div>
+                <div className="bountiesContainer">
                     {mappedBounties}
                 </div>
             </div>
