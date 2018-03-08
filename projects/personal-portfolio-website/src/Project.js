@@ -36,7 +36,7 @@ class Project extends React.Component {
                 { this.state.dropDown === false ?
                     ''
                     :
-                <div className="dropdownSlide">
+                <div>
                     <p>{this.props.description}</p>
                     <div className="projectImgsDiv">
                         {this.props.imgs.map(image => <button onClick={()=>this.handleImgOpen(image)}><img src={image} alt=""/></button>)}

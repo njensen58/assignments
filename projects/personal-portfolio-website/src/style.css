@@ -191,7 +191,7 @@ body {
     margin: 0;
     font-weight: 400;
     letter-spacing: 2px;
-    font-size: 25px;
+    font-size: 24px;
     color: #e0ddd5;
 }
 
@@ -238,6 +238,7 @@ body {
     border-radius: 3px;
     background-color: #e0ddd5;
     border: none;
+    margin-bottom: 10px;
 }
 
 .projectUrlBtnDiv a {
@@ -246,9 +247,7 @@ body {
     color: #283d70;
 }
 
-.dropdownSlide {
-    transition: 1s;
-}
+
 
 /*---------------*/
 /*-----ABOUT-----*/
@@ -258,7 +257,7 @@ body {
     background-size: cover;
     height: 450px;
     background-position: center;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
 }
 
 .aboutHeader div {
@@ -288,7 +287,7 @@ body {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: repeat(3, 200px);
-    padding: 0 10px 10px 10px;
+    padding: 0 10px;
 }
 
 .educationDiv,
@@ -306,13 +305,36 @@ body {
 .skillsDiv h3,
 .contactDiv h3 {
     margin: 0;
-    font-weight: 300;
+    font-weight: 400;
     letter-spacing: 1.5px;
 }
 
 .educationDiv {
     grid-row: 3;
     grid-column: 1 / -1;
+}
+
+.educateDivTop {
+    display: flex;
+    justify-content: space-between;
+}
+
+.schoolTitle {
+    font-size: 19px;
+    font-weight: 300;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: .5s;
+}
+
+.schoolTitle a {
+    text-decoration: none;
+    color: black;
+
+}
+
+.schoolTitle a:hover {
+    border-bottom: 1px solid black;
 }
 
 .skillsDiv {
@@ -345,8 +367,28 @@ body {
     padding: 0;
 }
 
+.gitIcon:visited,
+.linkIcon:visited,
+.googIcon:visited {
+    color: black;
+}
+
+.gitIcon:hover {
+    color: #6e5494;
+}
+
+.linkIcon:hover {
+    color: #0077B5;
+}
+
+.googIcon:hover {
+    color: #dd4b39;
+}
+
 .icons {
-    font-size: 40px;
+    font-size: 45px;
+    color: black;
+    transition: .4s;
 }
 
 
@@ -362,6 +404,7 @@ body {
     color: white;
     font-size: 14px;
     font-weight: 200;
+    margin-top: 10px;
 }
 
 
@@ -374,6 +417,45 @@ body {
 /*---------------*/
 
 @media only screen and (min-width: 600px){
+    .projectsHeaderBackground h1 {
+        font-size: 75px;
+        letter-spacing: 3px;
+        font-weight: 300;
+    }
+
+    .headerBackground h1 {
+        font-size: 60px;
+    }
+
+    .headerBackground h2 {
+        font-size: 21px;
+    }
+
+    .tileContainer {
+        font-size: 30px;
+        align-items: center;
+        display: flex;
+        justify-content: flex-start;;
+    }
+
+    .projectImgsDiv img {
+        width: 150px;
+        height: 150px;
+    }
+
+    .projectContainer p {
+        font-size: 18px;
+        font-weight: 300;
+    }
+
+    .projectUrlBtnDiv button {
+        padding: 10px 20px;
+    }
+
+    .projectUrlBtnDiv a {
+        font-size: 18px;
+    }
+
     .skillsDiv {
         grid-column: 1 / 3;
     }
@@ -389,6 +471,43 @@ body {
 
 
 @media only screen and (min-width: 800px){
+    .projectsHeaderBackground h1 {
+        font-size: 85px;
+        letter-spacing: 5px;
+        font-weight: 300;
+    }
+
+    .headerBackground h1 {
+        font-size: 70px;
+    }
+
+    .headerBackground h2 {
+        font-size: 25px;
+    }
+
+    .tileContainer {
+        font-size: 35px;
+    }
+
+    .projectImgsDiv img {
+        width: 200px;
+        height: 200px;
+    }
+
+    .projectContainer p {
+        font-size: 21px;
+        font-weight: 300;
+    }
+
+    .projectUrlBtnDiv button {
+        padding: 15px 20px;
+        margin-bottom: 10px;
+    }
+
+    .projectUrlBtnDiv a {
+        font-size: 18px;
+    }
+
     .aboutInfoContainer {
         display: grid;
         grid-template-columns: 1fr 1fr 1fr 1fr;
@@ -411,6 +530,15 @@ body {
 
 
 @media only screen and (min-width: 1200px){
+    .tileContainer {
+        font-size: 40px;
+    }
+
+    .projectImgsDiv img {
+        width: 250px;
+        height: 250px;
+    }
+
     .aboutInfoContainer {
         grid-template-columns: 1fr 1fr 1fr;
         grid-template-rows: repeat(1, 200px);

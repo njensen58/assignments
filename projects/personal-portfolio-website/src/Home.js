@@ -28,6 +28,7 @@ function Home(props){
                     While I have many passions and hobbies, this site is for my work in computer programming and design.
                 </div>
             </div>
+            <hr className="bodyHr"/>
         </div>
     )
 }

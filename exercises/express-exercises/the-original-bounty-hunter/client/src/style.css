@@ -1,0 +1,20 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.bountyContainer {
+    padding: 10px;
+    border: 1px solid black;
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 20px;
+}
+
+.bodyContainer h1 {
+    margin: 0;
+}

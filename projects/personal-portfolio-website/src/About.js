@@ -12,7 +12,7 @@ function About(){
             <hr className="bodyHr"/>
             <div className="aboutInfoContainer">
                 <div className="skillsDiv">
-                    <h3>Skills</h3>
+                    <h3> -Skills- </h3>
                     <div>
                         <ul>
                             <li>JavaScript</li>
@@ -31,20 +31,39 @@ function About(){
                     </div>
                 </div>
                 <div className="educationDiv">
-                    <h3>Education</h3>
+                    <h3> -Education- </h3>
+                    <div className="educateDivTop">
+                        <div>
+                            <p className="schoolTitle"><a href="http://vschool.io/"> V SCHOOL</a> - 2018</p>
+                            <p> - MERN STACK </p>
+                        </div>
+                        <div>
+                            <p className="schoolTitle">University of Utah</p>
+                            <p> - BS Psychology 2014</p>
+                        </div>
+                    </div>
                 </div>
                 <div className="contactDiv">
-                    <h3>Contact</h3>
+                    <h3> -Contact- </h3>
                     <div>
                         <ul>
                             <li>Email:  Nathan.Jensen.58@gmail.com</li>
-                            <li>Cell:  (801) 856-9961</li>
+                            <li>Phone:  (801) 856-9961</li>
                         </ul>
                     </div>
                     <div>
-                        <a href=""><i className="ion-social-github icons"></i></a>
-                        <a href=""><i className="ion-social-linkedin icons"></i></a>
-                        <a href=""><i className="ion-social-googleplus icons"></i></a>
+                        <a
+                            href="https://github.com/njensen58"><i
+                            className="ion-social-github icons gitIcon"></i>
+                        </a>
+                        <a
+                            href="https://linkedin.com/in/natej58"><i
+                            className="ion-social-linkedin icons linkIcon"></i>
+                        </a>
+                        <a
+                            href="https://google.com/+NathanJensen"><i
+                            className="ion-social-googleplus icons googIcon"></i>
+                        </a>
 
                     </div>
                 </div>
