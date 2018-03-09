@@ -36,8 +36,10 @@ class App extends React.Component {
     handleDeleteBounty(id){
         axios.delete('/bounty/' + id).then(response => {
             alert('Bounty was removed successfully')
-            this.setState({
-                bounties: response.data
+            axios.get('/bounty').then(response => {
+                this.setState({
+                    bounties: response.data
+                })
             })
         })
     }
@@ -70,7 +72,7 @@ class App extends React.Component {
                 item[key] = updatedFields[key]
             }
         }
-        axios.put('/bounty/' + item.id, item).then(response => {
+        axios.put('/bounty/' + item._id, item).then(response => {
             axios.get('/bounty').then(response => {
                 this.setState({
                     bounties: response.data
@@ -80,11 +82,10 @@ class App extends React.Component {
     }
 
     render(){
-        console.log(this.state.bounties)
         const mappedBounties = this.state.bounties.map(bounty => {
             return (
                 <Bounty
-                    key={bounty.id}
+                    key={bounty._id}
                     info={bounty}
                     handleDeleteBounty={this.handleDeleteBounty}
                     handleEditSubmit={this.handleEditSubmit}

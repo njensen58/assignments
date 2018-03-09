@@ -149,7 +149,7 @@ class Bounty extends React.Component {
                                 :
                                     <div>
                                         <button onClick={this.handleEditDisplay}>Edit</button>
-                                        <button onClick={()=>this.props.handleDeleteBounty(this.props.info.id)}>Delete</button>
+                                        <button onClick={()=>this.props.handleDeleteBounty(this.props.info._id)}>Delete</button>
                                     </div>
                                 }
 
