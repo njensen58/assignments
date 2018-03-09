@@ -23,6 +23,12 @@ const projectsArr = [
         url: 'http://my-css-zen-garden-example.surge.sh/'
     },
     {
+        title: 'Mystic Mountain (Console RPG)',
+        description: 'A Retro JavaScript RPG game made in Node.js, To play the game, do the following:\n\t1. Click the button below and fork the directory on github.\n\t2. ',
+        imgs: [],
+        url: ''
+    },
+    {
         title: 'Trivia Game',
         description: 'A front-end project used to combine React with Redux, Thunk, and Axios to make asychronous calls to an API.  This was also a challenge in logic in order to pull the question objects from the API and have the user interact with them in trivia question style.',
         imgs: [

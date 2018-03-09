@@ -80,6 +80,7 @@ class App extends React.Component {
     }
 
     render(){
+        console.log(this.state.bounties)
         const mappedBounties = this.state.bounties.map(bounty => {
             return (
                 <Bounty

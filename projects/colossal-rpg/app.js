@@ -404,22 +404,22 @@ var event14 = ['\n\n\n\n\n\n\tYou got rick-rolled\n\t\tNever gonna give you up, 
         sleep.sleep(1);
     console.log("\n\n\t\t[GUIDE] Thank you " + player.name + '.');
         sleep.sleep(1);
-    // ask.keyIn("\n\n\t[GUIDE] Going forward you will be asked to choose what to do.\n\t\t(press any key to continue)");
-    // console.log("\n\t[GUIDE] Typing the word 'print' will present your Name, current health, and any items you have accumulated on your journey.");
-    //     sleep.sleep(3);
+    ask.keyIn("\n\n\t[GUIDE] Going forward you will be asked to choose what to do.\n\t\t(press any key to continue)");
+    console.log("\n\t[GUIDE] Typing the word 'print' will present your Name, current health, and any items you have accumulated on your journey.");
+        sleep.sleep(3);
     ask.keyIn("\n\t[GUIDE] Pressing 'w' will make you walk.\n\t\t[GUIDE] If you feel you are up to the task, I will give you some advice... \n\t\t\t(press any key to continue)");
 
         mysticMountainImg()
     ask.keyIn("\n\t[GUIDE] Wonderful, you are quite brave.  Welcome to the Mystic Mountain. \n\t\t\t(press any key to continue) ");
-    //     sleep.sleep(3);
-    // ask.keyIn("\n\n\t\t[GUIDE] In order to escape to a higher level of this mountain you will need to obtain the 'Lair Key', \n\t\t\twhich unlocks access to the path out of here.\n\t\t\t\t(press any key to continue)'");
-    //
-    // ask.keyIn("\n\t[GUIDE] The Dragon King rules these depths. \n\t\t(press any key to continue) ");
-    // console.log("\n\t\tThere are many other creatures that live down here.");
-    //     sleep.sleep(2);
-    // console.log("\n\t\t[GUIDE] Some creatures you encounter will drop a special item, \n\t\t\twhich will count towards your final score if you make it out of this mountain alive.");
-    //     sleep.sleep(4);
-    // ask.keyIn("\n\t\t\t[GUIDE] That should be all you need to know to begin, \n\t\t\t\tso when you are ready to start your journey, (press any key to continue)");
+        sleep.sleep(3);
+    ask.keyIn("\n\n\t\t[GUIDE] In order to escape to a higher level of this mountain you will need to obtain the 'Lair Key', \n\t\t\twhich unlocks access to the path out of here.\n\t\t\t\t(press any key to continue)'");
+
+    ask.keyIn("\n\t[GUIDE] The Dragon King rules these depths. \n\t\t(press any key to continue) ");
+    console.log("\n\t\tThere are many other creatures that live down here.");
+        sleep.sleep(2);
+    console.log("\n\t\t[GUIDE] Some creatures you encounter will drop a special item, \n\t\t\twhich will count towards your final score if you make it out of this mountain alive.");
+        sleep.sleep(4);
+    ask.keyIn("\n\t\t\t[GUIDE] That should be all you need to know to begin, \n\t\t\t\tso when you are ready to start your journey, (press any key to continue)");
 
 
         ask.setDefaultOptions({
@@ -579,6 +579,8 @@ function mysticMountainImg(){
     console.log('\t\t\t||____________/\\___/- - - - -\\_____/\\___/\\____||');
     console.log('\t\t\t||--------------------------------------------||');
 }
+
+
 
 function iTookAPotion(){
     console.log("\n\t\t\t     _       ");
