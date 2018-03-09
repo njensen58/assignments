@@ -24,9 +24,13 @@ const projectsArr = [
     },
     {
         title: 'Mystic Mountain (Console RPG)',
-        description: 'A Retro JavaScript RPG game made in Node.js, To play the game, do the following:\n\t1. Click the button below and fork the directory on github.\n\t2. ',
-        imgs: [],
-        url: ''
+        description: 'A Retro style JavaScript RPG console game made in Node.js.  The link below will take you to the project on Github.  This game includes systems that generate random battle encounters or events, provides battle encounter user controls, and requires the user to play through 2 stages to win and receive a score.',
+        imgs: [
+            require('./resources/rpg1.png'),
+            require('./resources/rpg2.png'),
+            require('./resources/rpg3.png')
+        ],
+        url: 'https://github.com/njensen58/assignments/tree/master/projects/colossal-rpg'
     },
     {
         title: 'Trivia Game',
