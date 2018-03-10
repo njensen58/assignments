@@ -40,25 +40,44 @@ class Topic extends React.Component {
 
     render(){
         return (
-            <div>
+            <div className="topicContainer">
 
+            { this.state.showDescription ?
                 <div>
-                    <h2>{this.props.info.title}</h2>
-                    <button onClick={()=>this.handleDownVote(this.props.info)}> - </button>
-                    <span>Votes: {this.props.info.votes}</span>
-                    <button onClick={()=>this.handleUpVote(this.props.info)}> + </button>
+                    <div className="detailedTopicDisplay">
+                        <h2 onClick={this.handleShowDescription}>{this.props.info.title}</h2>
+                        <button onClick={()=>this.handleDownVote(this.props.info)}> - </button>
+                        <span>Votes: {this.props.info.votes}</span>
+                        <button onClick={()=>this.handleUpVote(this.props.info)}> + </button>
+                            <p>{this.props.info.description}</p>
+                            <button onClick={()=>this.props.handleDelete(this.props.info._id)}>Delete</button>
+                    </div>
+                    <div className="commentsContainerDiv">
+                        <h3>Comments</h3>
+                            <CommentsContainer
+                                info={this.props.info}
+                                updateTopics={this.props.updateTopics}
+                            />
+                    </div>
                 </div>
-
-                <p>{this.props.info.description}</p>
-                <button onClick={()=>this.props.handleDelete(this.props.info._id)}>Delete</button>
-
+            :
                 <div>
-                    <h3>Comments</h3>
-                        <CommentsContainer
-                            info={this.props.info}
-                            updateTopics={this.props.updateTopics}
-                        />
+                    <div className="simpleTopicDisplay">
+                        <h2 onClick={this.handleShowDescription} >{this.props.info.title}</h2>
+                        <div>
+                            <button onClick={()=>this.handleDownVote(this.props.info)}> - </button>
+                            <span>Votes: {this.props.info.votes}</span>
+                            <button onClick={()=>this.handleUpVote(this.props.info)}> + </button>
+                        </div>
+                    </div>
+                    <div className="simpleDescription">
+                        <p>{this.props.info.description.slice(0, 50) + '...'}</p>
+                    </div>
                 </div>
+            }
+
+
+
             </div>
         )
     }

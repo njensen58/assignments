@@ -59,7 +59,7 @@ class TopicsContainer extends React.Component {
                         updateTopics={this.updateTopics}
                     />
                 </div>
-                <div>
+                <div className="mappedTopicsDiv">
                     {mappedTopics}
                 </div>
             </div>
