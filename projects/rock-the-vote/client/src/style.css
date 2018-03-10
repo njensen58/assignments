@@ -1,0 +1,100 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    font-weight: lighter;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+}
+
+
+
+/*-----------------*/
+/*-----NAVBAR------*/
+/*-----------------*/
+
+.navbarContainer {
+    display: flex;
+    background-color: #3339;
+    justify-content: center;
+    align-items: center;
+    height: 30px;
+    color: white;
+}
+
+.navbarContainer a {
+    padding: 0 10px;
+}
+
+.navbarContainer span {
+    padding-left: 5px;
+}
+
+
+
+
+
+/*----------------------*/
+/*---TOPICS-CONTAINER---*/
+/*----------------------*/
+
+
+/*------------------*/
+/*----TOPIC_FORM----*/
+/*------------------*/
+.topicFormContainer {
+    height: 50px;
+    background-color: dodgerblue;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.topicFormContainer div {
+    display: flex;
+}
+
+.topicFormContainer input {
+    margin: 10px;
+    padding: 5px;
+}
+
+.topicFormContainer button {
+
+}
+
+
+
+
+
+
+/*----------------------*/
+/*----TOPIC_COMMENTS----*/
+/*----------------------*/
+.commentsContainer {
+    padding: 5px;
+    border: 1px solid black;
+    overflow-y: scroll;
+    height: 100px;
+    width: 50%;
+    position: absolute;
+    background-color: #ddd;
+}
+
+.commentsContainer input {
+    width: 100%;
+}
+
+.addCommentDiv {
+    display: flex;
+}
+
+
+/*--------*/
