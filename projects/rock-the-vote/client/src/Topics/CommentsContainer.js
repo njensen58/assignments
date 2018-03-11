@@ -34,13 +34,16 @@ class CommentsContainer extends React.Component{
                 this.props.updateTopics();
             })
         }
+        this.setState({
+            comment: ''
+        })
     }
 
     render(){
         const mappedComments = this.props.info.comments.length > 0 ?
             this.props.info.comments.map(comment => {
                 return (
-                    <p>- {comment}</p>
+                    <p className="comment">- {comment}</p>
                 )
             })
             :

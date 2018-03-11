@@ -45,12 +45,18 @@ class Topic extends React.Component {
             { this.state.showDescription ?
                 <div>
                     <div className="detailedTopicDisplay">
-                        <h2 onClick={this.handleShowDescription}>{this.props.info.title}</h2>
+                        <div className="detailedTopicHeaderDiv">
+                            <h2 onClick={this.handleShowDescription}>{this.props.info.title}</h2>
+                            <button
+                                onClick={()=>this.props.handleDelete(this.props.info._id)}
+                                className="deleteBtn">X
+                            </button>
+                        </div>
                         <button onClick={()=>this.handleDownVote(this.props.info)}> - </button>
                         <span>Votes: {this.props.info.votes}</span>
                         <button onClick={()=>this.handleUpVote(this.props.info)}> + </button>
                             <p>{this.props.info.description}</p>
-                            <button onClick={()=>this.props.handleDelete(this.props.info._id)}>Delete</button>
+
                     </div>
                     <div className="commentsContainerDiv">
                         <h3>Comments</h3>

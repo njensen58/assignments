@@ -2,8 +2,8 @@ import React from 'react';
 
 function Footer(){
     return (
-        <div>
-            Footer
+        <div className="footerDiv">
+            Rock-The-Vote!
         </div>
     )
 }
