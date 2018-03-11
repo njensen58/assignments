@@ -5,12 +5,12 @@ function Navbar(){
     return (
         <div className="navbarContainer">
             <div>
-                <span>RTV!</span>
+                <span>Rock-The-Vote!</span>
             </div>
             <div>
-                <Link to="/"> • Home</Link>
-                <Link to="/topics"> • Topics</Link>
-                <Link to="/about"> • About</Link>
+                <Link to="/">  Home</Link>
+                <Link to="/topics">  Topics</Link>
+                <Link to="/about">  About</Link>
             </div>
         </div>
     )

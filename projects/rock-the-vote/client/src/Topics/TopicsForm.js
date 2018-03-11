@@ -45,11 +45,23 @@ class TopicsForm extends React.Component {
     }
 
     render(){
+
+        const expandedAdd = {
+            height: this.state.isAddingPost ? '300px' : '50px',
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            gridColumn: '2',
+            justifyContent: 'center',
+            position: 'absolute',
+            width: '100%',
+            backgroundColor: '#60BAA799'
+        }
+
         return (
             <div className="topicFormContainer">
             { this.state.isAddingPost ?
-                <div>
-                <form onSubmit={this.handleSubmit}>
+                <div style={expandedAdd}>
                     <input
                         type="text"
                         name="title"
@@ -57,21 +69,21 @@ class TopicsForm extends React.Component {
                         onChange={this.handleChange}
                         placeholder="Title"
                     />
-                <input
-                        type="text"
+                <textarea
                         name="description"
                         value={this.state.description}
+                        cols="40"
+                        rows="10"
                         onChange={this.handleChange}
                         placeholder="Description"
-                    />
-                    <button>Submit</button>
-                </form>
+                    ></textarea>
+                <button onClick={this.handleSubmit}>Submit</button>
                 <div>
                     <button onClick={this.handleAddTopic}>Close</button>
                 </div>
                 </div>
             :
-                <div>
+                <div className="addTopicDiv">
                     <button onClick={this.handleAddTopic}>Add Topic</button>
                 </div>
             }

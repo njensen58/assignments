@@ -26,12 +26,14 @@ class CommentsContainer extends React.Component{
     }
 
     handleAddComment(){
-        const updatedTopic = {
-            comments: [...this.props.info.comments, this.state.comment]
+        if(this.state.comment.length > 0){
+            const updatedTopic = {
+                comments: [...this.props.info.comments, this.state.comment]
+            }
+            axios.put('/topics/' + this.props.info._id, updatedTopic).then(response => {
+                this.props.updateTopics();
+            })
         }
-        axios.put('/topics/' + this.props.info._id, updatedTopic).then(response => {
-            this.props.updateTopics();
-        })
     }
 
     render(){

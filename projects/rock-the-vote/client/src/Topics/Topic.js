@@ -76,8 +76,6 @@ class Topic extends React.Component {
                 </div>
             }
 
-
-
             </div>
         )
     }
