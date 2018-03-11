@@ -7,6 +7,9 @@ body {
     padding: 0;
     font-family: 'Josefin Sans', sans-serif;
     font-weight: lighter;
+    background: #8e9eab;
+    background: -webkit-linear-gradient(to right, #8e9eab80, #eef2f380);
+    background: linear-gradient(to right, #8e9eab80, #eef2f380);
 }
 
 a {
@@ -116,10 +119,13 @@ a {
 /*-----------------------*/
 /*----TOPIC_CONTAINER----*/
 /*-----------------------*/
+
+
 .mappedTopicsDiv {
     display: grid;
     grid-template-columns: 1fr 10fr 1fr;
     margin-bottom: 60px;
+    margin-top: 20px;
 }
 
 .topicContainer {
@@ -144,7 +150,7 @@ a {
 .simpleTopicDisplay h2 {
     margin: 0;
     grid-column: 1;
-    font-size: 20px;
+    font-size: 18px;
     letter-spacing: 1px;
     text-transform: uppercase;
     font-weight: 400;
@@ -157,9 +163,8 @@ a {
     border-radius: 2px;
     text-align: center;
     height: 20px;
+    background-color: #D1F0F150;
 }
-
-
 
 .simpleTopicDisplay div {
     grid-column: 2;
@@ -192,7 +197,6 @@ a {
     margin: 0;
     font-size: 25px;
     font-weight: lighter;
-
     padding-bottom: 15px;
 }
 
@@ -201,12 +205,12 @@ a {
     font-size: 12px;
     padding: 15px 0 15px 0;
     border-bottom: 1px solid #ddd;
+    line-height: 18px;
 }
 
 .detailedTopicDisplay button {
     display: inline-block;
     margin-top: 10px;
-
 }
 
 .detailedTopicDisplay button:active {
@@ -222,10 +226,15 @@ a {
 }
 
 .deleteBtn {
-    background-color: #D1F0F150;
-    color: #999;
+    background-color: #D1F0F101;
+    margin-left: 10px;
+    color: #6669;
+    transition: .3s;
 }
 
+.deleteBtn:hover {
+    color: black;
+}
 
 .detailedTopicDisplay span {
     padding: 5px;
@@ -239,18 +248,21 @@ a {
 .commentsContainerDiv h3 {
     font-weight: 300;
     border-bottom: 1px solid #ddd;
+    margin-top: 0;
+    padding-left: 5px;
 }
 
 .commentsContainer {
     padding: 5px;
     border: 1px solid black;
     overflow-y: scroll;
-    height: 100px;
+    height: 150px;
     width: 100%;
-    background-color: white;
+    background-color: #ffff;
     border: none;
     border-radius: 4px;
     font-size: 12px;
+    margin: 10px 0 0 0;
 }
 
 .commentsContainer input {
@@ -259,14 +271,26 @@ a {
     bottom: 0;
     outline: none;
     border: none;
-    background-color: #D1F0F150;
-    margin-right: 2px;
+    background-color: #D1F0F1;
+    margin-right: 5px;
+    padding: 5px;
+    border-radius: 3px;
+    margin-top: 5px;
 }
 
 .commentsContainer button {
     border: .5px solid #ddd;
     border-radius: 2px;
-    background-color: #D1F0F190;
+    border: none;
+    outline: none;
+    background-color: #D1F0F1;
+    margin-top: 5px;
+}
+
+.hideCommentsBtn {
+    margin-bottom: 5px;
+    margin-right: 10px;
+    background-color: #D1F0F101;
     border: none;
     outline: none;
 }
@@ -275,9 +299,54 @@ a {
     display: flex;
 }
 
-.comment {
-    border-bottom: .5px solid #ddd9;
-    padding-bottom: 5px;
+.commentContainer {
+    border-bottom: .5px solid #8889;
+    padding: 4px 0;
+    display: flex;
+}
+
+.comment p {
+
+}
+
+.dropdownBtn {
+    background-color: #D1F0F101;
+    border: none;
+    outline: none;
+}
+
+.icon {
+    font-size: 20px;
+    color: #333;
+}
+
+.votesAndIconsDiv {
+    display: flex;
+    justify-content: space-between;
+}
+
+.shareIconDiv {
+    padding-top: 5px;
+}
+
+.shareIconDiv a {
+    font-size: 18px;
+    padding: 5px 6px;
+    display: inline-block;
+    color: #3339;
+    transition: .3s;
+}
+
+.shareIcon1:hover {
+    color: #00aced;
+}
+
+.shareIcon2:hover {
+    color: #3b5998;
+}
+
+.shareIcon3:hover {
+    color: #ff4500;
 }
 
 
@@ -285,7 +354,8 @@ a {
 /*----FOOTER----*/
 /*--------------*/
 .footerDiv {
-    height: 30px;
+    height: 25px;
+    font-size: 13px;
     display: flex;
     background-color: #D1F0F190;
     color: #333;
@@ -297,5 +367,166 @@ a {
     width: 100%;
     z-index: -1;
 }
+
+
+
+
+
+/*---------------*/
+/*----QUERIES----*/
+/*---------------*/
+
+@media only screen and (min-width: 450px){
+    .mappedTopicsDiv {
+        grid-template-columns: 3fr 10fr 3fr;
+    }
+
+    .topicContainer {
+        grid-column: 2;
+    }
+
+}
+
+
+
+
+@media only screen and (min-width: 600px){
+    .simpleTopicDisplay {
+        padding: 6px;
+    }
+
+    .simpleTopicDisplay h2 {
+        font-size: 21px;
+        letter-spacing: 1.5px;
+    }
+
+    .simpleDescription p {
+        font-size: 15px;
+        padding-left: 6px;
+    }
+
+    .simpleTopicDisplay span {
+        font-size: 15px;
+    }
+
+    .detailedTopicDisplay h2 {
+        font-size: 32px;
+        letter-spacing: 1px;
+    }
+
+    .detailedTopicDisplay p {
+        font-size: 15px;
+        line-height: 19px;
+    }
+
+    .commentsContainer {
+        font-size: 14px;
+    }
+
+    .shareIconDiv a {
+        font-size: 20px;
+        padding: 5px 9px;
+    }
+}
+
+
+
+
+@media only screen and (min-width: 800px){
+    .mappedTopicsDiv {
+        grid-template-columns: 5fr 10fr 5fr;
+    }
+
+    .topicContainer {
+        grid-column: 2;
+    }
+
+    .simpleTopicDisplay {
+        padding: 7px;
+    }
+
+    .simpleTopicDisplay h2 {
+        font-size: 22px;
+    }
+
+    .simpleTopicDisplay span {
+        font-size: 20px;
+    }
+
+    .simpleDescription p {
+
+    }
+
+    .detailedTopicDisplay span {
+        font-size: 20px;
+    }
+
+    .detailedTopicDisplay h2 {
+        font-size: 35px;
+        letter-spacing: 1.5px;
+    }
+
+    .detailedTopicDisplay p {
+        font-size: 15px;
+        letter-spacing: .5px;
+        line-height: 20px;
+    }
+
+    .commentsContainer {
+        font-size: 14px;
+    }
+
+    .shareIcon {
+        font-size: 24px;
+        padding: 5px 15px;
+    }
+
+}
+
+
+@media only screen and (min-width: 1200px){
+    .mappedTopicsDiv {
+        grid-template-columns: 6fr 10fr 6fr;
+    }
+
+    .simpleTopicDisplay h2 {
+        font-size: 27px;
+        letter-spacing: 2px;
+    }
+
+    .simpleTopicDisplay span {
+        font-size: 19px;
+    }
+
+    .simpleDescription p {
+        font-size: 18px;
+    }
+
+    .detailedTopicDisplay h2 {
+        font-size: 42px;
+        letter-spacing: 2px;
+    }
+
+    .detailedTopicDisplay span {
+        font-size: 17px;
+    }
+
+    .detailedTopicDisplay p {
+        font-size: 18px;
+        letter-spacing: 1px;
+        line-height: 23px;
+    }
+
+    .commentsContainer {
+        font-size: 16px;
+    }
+
+    .shareIconDiv a {
+        font-size: 23px;
+        padding: 5px 12px;
+    }
+
+}
+
 
 /*--------*/

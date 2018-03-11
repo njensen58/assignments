@@ -52,9 +52,18 @@ class Topic extends React.Component {
                                 className="deleteBtn">X
                             </button>
                         </div>
-                        <button onClick={()=>this.handleDownVote(this.props.info)}> - </button>
-                        <span>Votes: {this.props.info.votes}</span>
-                        <button onClick={()=>this.handleUpVote(this.props.info)}> + </button>
+                        <div className="votesAndIconsDiv">
+                            <div>
+                                <button onClick={()=>this.handleDownVote(this.props.info)}> - </button>
+                                <span>Votes: {this.props.info.votes}</span>
+                                <button onClick={()=>this.handleUpVote(this.props.info)}> + </button>
+                            </div>
+                            <div className="shareIconDiv">
+                                <a href="#" className="shareIcon1"><i className="ion-social-twitter"></i></a>
+                                <a href="#" className="shareIcon2"><i className="ion-social-facebook"></i></a>
+                                <a href="#" className="shareIcon3"><i className="ion-social-reddit"></i></a>
+                            </div>
+                        </div>
                             <p>{this.props.info.description}</p>
 
                     </div>

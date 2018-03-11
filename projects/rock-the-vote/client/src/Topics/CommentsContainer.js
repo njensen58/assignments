@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import Comment from './Comment';
 
 class CommentsContainer extends React.Component{
     constructor(){
@@ -41,33 +42,43 @@ class CommentsContainer extends React.Component{
 
     render(){
         const mappedComments = this.props.info.comments.length > 0 ?
-            this.props.info.comments.map(comment => {
+            this.props.info.comments.map((comment, i) => {
                 return (
-                    <p className="comment">- {comment}</p>
+                    <Comment
+                        key={comment + '-' + i}
+                        comment={comment}
+                    />
                 )
             })
             :
             'No Comments';
         return (
-            <div >
+            <div>
                 { this.state.showComments ?
-                <div className="commentsContainer">
-                    <button onClick={this.handleShowComments}>Hide Comments</button>
-                    {mappedComments}
-                    <div className="addCommentDiv">
-                        <input type="text"
-                            placeholder="New Comment"
-                            onChange={this.handleChange}
-                            value={this.state.comment}
-                            name="comment"
-                        />
-                        <button onClick={this.handleAddComment}>Submit</button>
+                    <div className="commentsContainer">
+                        <button
+                            onClick={this.handleShowComments}
+                            className="hideCommentsBtn"
+                            ><i className="ion-android-arrow-dropup icon"></i>
+                        </button>
+                        {mappedComments}
+                        <div className="addCommentDiv">
+                            <input type="text"
+                                placeholder="New Comment"
+                                onChange={this.handleChange}
+                                value={this.state.comment}
+                                name="comment"
+                            />
+                            <button onClick={this.handleAddComment}>Submit</button>
+                        </div>
                     </div>
-                </div>
                 :
-                <div>
-                    <button onClick={this.handleShowComments}>Show Comments</button>
-                </div>
+                    <div>
+                        <button
+                            onClick={this.handleShowComments}
+                            className="dropdownBtn"><i className="ion-android-arrow-dropdown icon"></i>
+                        </button>
+                    </div>
                 }
             </div>
         )

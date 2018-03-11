@@ -8,9 +8,8 @@ function Navbar(){
                 <span>Rock-The-Vote!</span>
             </div>
             <div>
-                <Link to="/">  Home</Link>
-                <Link to="/topics">  Topics</Link>
-                <Link to="/about">  About</Link>
+                <Link to="/">  /Topics</Link>
+                <Link to="/about">  /About</Link>
             </div>
         </div>
     )
