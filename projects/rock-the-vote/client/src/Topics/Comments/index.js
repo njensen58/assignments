@@ -26,32 +26,24 @@ class CommentsContainer extends React.Component{
         }))
     }
 
-    handleAddComment(){
-        if(this.state.comment.length > 0){
-            const updatedTopic = {
-                comments: [...this.props.info.comments, this.state.comment]
-            }
-            axios.put('/topics/' + this.props.info._id, updatedTopic).then(response => {
-                this.props.updateTopics();
-            })
-        }
+    handleAddComment(id){
+        axios.post(`/topics/${id}/comment`, {text: this.state.comment}).then(response => {
+            this.props.updateTopics();
+        })
         this.setState({
             comment: ''
         })
     }
 
     render(){
-        const mappedComments = this.props.info.comments.length > 0 ?
-            this.props.info.comments.map((comment, i) => {
+        const mappedComments = this.props.comments.length > 0 ?
+            this.props.comments.map((comment, i) => {
                 return (
-                    <Comment
-                        key={comment + '-' + i}
-                        comment={comment}
-                    />
+                    <Comment key={comment._id} comment={comment}/>
                 )
             })
             :
-            'No Comments';
+            <span>No Comments</span>
         return (
             <div>
                 { this.state.showComments ?
@@ -69,11 +61,11 @@ class CommentsContainer extends React.Component{
                                 value={this.state.comment}
                                 name="comment"
                             />
-                            <button onClick={this.handleAddComment}>Submit</button>
+                        <button onClick={()=>this.handleAddComment(this.props._id)}>Submit</button>
                         </div>
                     </div>
                 :
-                    <div>
+                    <div className="showCommentsBtn">
                         <button
                             onClick={this.handleShowComments}
                             className="dropdownBtn"><i className="ion-android-arrow-dropdown icon"></i>

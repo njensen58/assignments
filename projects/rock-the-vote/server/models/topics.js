@@ -11,7 +11,17 @@ const topicSchema = ({
         required: true
     },
     votes: Number,
-    comments: [String]
+    comments: [
+        {
+            text: String,
+            timeStamp: {
+                type: Date,
+                default: Date.now
+            }
+        }
+    ]
 })
+
+
 
 module.exports = mongoose.model('Topics', topicSchema);

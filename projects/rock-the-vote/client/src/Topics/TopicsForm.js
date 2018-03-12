@@ -40,14 +40,15 @@ class TopicsForm extends React.Component {
         });
         this.setState({
             title: '',
-            description: ''
+            description: '',
+            isAddingPost: false
         })
     }
 
     render(){
 
         const expandedAdd = {
-            height: this.state.isAddingPost ? '300px' : '50px',
+            height: this.state.isAddingPost ? '300px' : '0',
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
@@ -57,6 +58,7 @@ class TopicsForm extends React.Component {
             width: '100%',
             backgroundColor: '#60BAA799'
         }
+
 
         return (
             <div className="topicFormContainer">

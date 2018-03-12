@@ -20,6 +20,17 @@ topicRoutes.post('/', (req, res) => {
     })
 })
 
+topicRoutes.post('/:id/comment', (req, res) => {
+    Topic.findByIdAndUpdate(
+        req.params.id,
+        {$push: {"comments": req.body}},
+        {new: true}, (err, updatedTopic) => {
+            if (err) res.status(500).send(err);
+            return res.send(updatedTopic);
+        }
+    )
+})
+
 
 topicRoutes.put('/:id', (req, res) => {
     Topic.findByIdAndUpdate(req.params.id, req.body, {new: true}, (err, updatedItem) => {
