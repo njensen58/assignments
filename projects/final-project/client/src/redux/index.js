@@ -3,14 +3,30 @@ import thunk from 'redux-thunk';
 import axios from 'axios';
 
 
-const scoreCard = {}
+const scorecard = {
+    ones: 0,
+    twos: 0,
+    threes: 0,
+    fours: 0,
+    fives: 0,
+    sixes: 0
+}
 
+export function updateScorecard(update){
+    return {
+        type: "UPDATE_SCORECARD",
+        update
+    }
+}
 
-
-function reducer(state = scoreCard, action){
+function reducer(state = scorecard, action){
     switch(action.type){
+        case "UPDATE_SCORECARD":
+            return {
+
+            }
         default:
-            return scoreCard
+            return state
     }
 }
 
