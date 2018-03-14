@@ -48,7 +48,7 @@ class TopicsForm extends React.Component {
     render(){
 
         const expandedAdd = {
-            height: this.state.isAddingPost ? '300px' : '0',
+            height: this.state.isAddingPost ? '280px' : '0',
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',

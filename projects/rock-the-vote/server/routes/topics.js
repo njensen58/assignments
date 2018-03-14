@@ -5,9 +5,9 @@ const Topic = require('../models/topics');
 
 
 topicRoutes.get('/', (req, res) => {
-    Topic.find((err, votes) => {
+    Topic.find((err, topics) => {
         if (err) return res.status(500).send(err);
-        return res.send(votes);
+        return res.send(topics);
     })
 })
 
@@ -19,6 +19,7 @@ topicRoutes.post('/', (req, res) => {
         return res.send(newTopic);
     })
 })
+
 
 topicRoutes.post('/:id/comment', (req, res) => {
     Topic.findByIdAndUpdate(
