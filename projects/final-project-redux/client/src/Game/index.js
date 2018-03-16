@@ -3,6 +3,8 @@ import Scorecard from './Scorecard';
 import Diceboard from './Diceboard';
 import { connect } from 'react-redux';
 
+let totalGameScore = 0;
+
 class Game extends React.Component {
     constructor(){
         super();
@@ -40,7 +42,10 @@ class Game extends React.Component {
                 isGameComplete: true
             })
         }
+        const s = this.props.scorecard;
+        const b = s.yahtzeeBonus.length > 0 ? s.yahtzeeBonus.reduce((t, n) => t+=n,0) : 0;
 
+        totalGameScore = s.ones + s.twos + s.threes + s.fours + s.fives + s.sixes + s.threeOfAKind + s.fourOfAKind + s.fullHouse + s.smallStraight + s.largeStraight + s.yahtzee + s.chance + b;
     }
 
     render(){
@@ -52,7 +57,13 @@ class Game extends React.Component {
             <div className="gameContainer">
             { this.state.isGameComplete ?
                 <div className="gameComplete">
-                    YAAAY you won!
+                    <Scorecard
+                        currentNums={this.state.currentNums}
+                        resetCurrentNums={this.resetCurrentNums}
+                    />
+                    <div>
+                        Total Score: {totalGameScore}
+                    </div>
                 </div>
             :
                 <div className="gameInProgress">

@@ -20,7 +20,8 @@ class LowerSection extends React.Component {
             largeStraight: 0,
             yahtzee: 0,
             chance: 0,
-            yahtzeeBonus: []
+            yahtzeeBonus: 0,
+            yahtzeeBonusHasBeenCounted: false
         }
         this.calculate3OfAKind = this.calculate3OfAKind.bind(this);
         this.calculate4OfAKind = this.calculate4OfAKind.bind(this);
@@ -42,7 +43,9 @@ class LowerSection extends React.Component {
                 smallStraight: 0,
                 largeStraight: 0,
                 yahtzee: 0,
-                chance: 0
+                chance: 0,
+                yahtzeeBonus: 0,
+                yahtzeeBonusHasBeenCounted: false
             })
         }
     }
@@ -209,9 +212,9 @@ class LowerSection extends React.Component {
                     }
                 }
                 if(yahtzee > 0){
-                    this.setState({
-                        yahtzeeBonus: [1]
-                    })
+                    this.setState(prevState => ({
+                        yahtzeeBonus: 100
+                    }))
                 }
             }
         }
@@ -221,12 +224,6 @@ class LowerSection extends React.Component {
     updateScore(value, section){
         this.props.updateScorecard(value, section)
         this.props.updateGameControl(section);
-        this.props.resetCurrentNums();
-        this.props.isDoneSelecting();
-    }
-
-    updateYahtzeeBonusScore(update){
-        this.props.updateYahtzeeBonus(update)
         this.props.resetCurrentNums();
         this.props.isDoneSelecting();
     }
@@ -244,8 +241,10 @@ class LowerSection extends React.Component {
         }
 
         const score = this.props.scorecard;
-        const bonusTotal = this.state.yahtzeeBonus.length > 0 ?
-            this.state.yahtzeeBonus.reduce((total, num) => total+=num, 0) : 0
+
+        const bonusTotal = score.yahtzeeBonus.length > 0 ?
+            score.yahtzeeBonus.reduce((total, num) => total+=num, 0) : 0
+
         const totalScore = score.threeOfAKind + score.fourOfAKind + score.fullHouse + score.smallStraight + score.largeStraight + score.yahtzee + score.chance + bonusTotal;
 
         return (
@@ -333,9 +332,9 @@ class LowerSection extends React.Component {
                         section="yahtzeeBonus"
                         currentNums={this.props.currentNums}
                         calculateValue={this.calculateYahtzeeBonus}
-                        updateScore={this.updateYahtzeeBonusScore}
-                        value={bonusTotal}
-                        confirmedValue={this.props.scorecard.yahtzeeBonus}
+                        value={this.state.yahtzeeBonus}
+                        confirmedValue={bonusTotal}
+                        resetCurrentNums={this.props.resetCurrentNums}
                     />
                 </div>
                 <div>

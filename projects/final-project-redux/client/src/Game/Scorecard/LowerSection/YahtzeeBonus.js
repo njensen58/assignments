@@ -1,6 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { disallowSelection } from '../../../redux/controls'
+import { isDoneSelecting } from '../../../redux/controls';
+import { updateYahtzeeBonus } from '../../../redux/scorecard';
 
 
 class YahtzeeBonus extends React.Component{
@@ -10,7 +12,7 @@ class YahtzeeBonus extends React.Component{
             isSelected: false
         }
         this.handleSelected = this.handleSelected.bind(this);
-        this.handleConfirm = this.handleConfirm.bind(this);
+        this.updateYahtzeeBonusScore = this.updateYahtzeeBonusScore.bind(this);
     }
 
     componentWillReceiveProps(){
@@ -22,24 +24,28 @@ class YahtzeeBonus extends React.Component{
     }
 
     handleSelected(){
-        if(this.props.controls.allowSelection){
-            if(this.state.isConfirmed === false){
-                this.props.calculateValue();
-                this.setState(prevState => ({
-                    isSelected: prevState.isSelected ? false : true
-                }))
-            }
+    if(this.props.controls.allowSelection && this.props.gamecontrol.yahtzee){
+            this.setState(prevState => ({
+                isSelected: !prevState.isSelected ? true : false
+            }), ()=>{
+                if(this.state.isSelected){
+                    this.props.calculateValue();
+                }
+            })
         }
+
     }
 
-    handleConfirm(){
+    updateYahtzeeBonusScore(){
         this.props.disallowSelection();
-        this.props.updateScore('bonus')
+        this.props.updateYahtzeeBonus(this.props.value);
+        this.props.resetCurrentNums();
+        this.props.isDoneSelecting();
     }
 
     render(){
         const selected = {
-            backgroundColor: this.state.isSelected && this.props.value > 0 ? 'dodgerblue' : 'white',
+            backgroundColor: this.state.isSelected ? 'dodgerblue' : 'white',
             width: '50px',
             height: '50px',
             border: '1px solid black',
@@ -64,28 +70,29 @@ class YahtzeeBonus extends React.Component{
         }
 
 
-        const totalBonus = this.props.confirmedValue.length * 100;
+        const totalBonus = this.props.confirmedValue;
 
         return (
                 <div>
                     <div style={selected} onClick={this.handleSelected}>
-                    {!this.state.isSelected ?
+                    {this.state.isSelected ?
                         <div>
-
+                            {this.props.scorecard.yahtzeeBonus.length > 0 ?
+                                totalBonus + 100
+                            :
+                                 this.props.value
+                            }
                         </div>
                     :
                         <div>
-                        {totalBonus > 0 ?
-                            totalBonus
-                        :
-                            <span></span>
-                        }
+                            {/*this displays total bonus added together*/}
+                            {totalBonus > 0 ? totalBonus : ''}
                         </div>
                     }
                     </div>
                     {this.state.isSelected ?
                         <div>
-                            <button onClick={this.handleConfirm}>Save</button>
+                            <button onClick={this.updateYahtzeeBonusScore}>Save</button>
                         </div>
                     :
                         <div>
@@ -97,4 +104,4 @@ class YahtzeeBonus extends React.Component{
     }
 }
 
-export default connect(state=>state, { disallowSelection })(YahtzeeBonus);
+export default connect(state=>state, { disallowSelection, updateYahtzeeBonus, isDoneSelecting })(YahtzeeBonus);

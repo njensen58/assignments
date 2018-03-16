@@ -17,6 +17,10 @@ function Scorecard(props){
                     resetCurrentNums={props.resetCurrentNums}
                 />
             </div>
+            <div>
+                <span>Total Score</span>
+                <div></div>
+            </div>
         </div>
     )
 }
