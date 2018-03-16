@@ -14,6 +14,7 @@ function Scorecard(props){
             <div className="lowerSectionDiv">
                 <LowerSection
                     currentNums={props.currentNums}
+                    resetCurrentNums={props.resetCurrentNums}
                 />
             </div>
         </div>

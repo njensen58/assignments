@@ -5,7 +5,10 @@ const scorecard = {
     fours: 0,
     fives: 0,
     sixes: 0,
-    threeOfAKind: 0
+    threeOfAKind: 0,
+    fourOfAKind: 0,
+    fullHouse: 0,
+    smallStraight: 0
 }
 
 export function updateScorecard(update, section){

@@ -44,10 +44,6 @@ class UpperSection extends React.Component{
             this.setState({
                 onesValue: value
             })
-        } else {
-            this.setState({
-                onesValue: 0
-            })
         }
     }
 
@@ -56,10 +52,6 @@ class UpperSection extends React.Component{
             const value = this.props.currentNums.reduce((final, num) => num === 2 ? final += 2 : final, 0)
             this.setState({
                 twosValue: value
-            })
-        } else {
-            this.setState({
-                twosValue: 0
             })
         }
     }
@@ -70,10 +62,6 @@ class UpperSection extends React.Component{
             this.setState({
                 threesValue: value
             })
-        } else {
-            this.setState({
-                threesValue: 0
-            })
         }
     }
 
@@ -82,10 +70,6 @@ class UpperSection extends React.Component{
             const value = this.props.currentNums.reduce((final, num) => num === 4 ? final += 4 : final, 0)
             this.setState({
                 foursValue: value
-            })
-        } else {
-            this.setState({
-                foursValue: 0
             })
         }
     }
@@ -96,10 +80,6 @@ class UpperSection extends React.Component{
             this.setState({
                 fivesValue: value
             })
-        } else {
-            this.setState({
-                fivesValue: 0
-            })
         }
     }
 
@@ -109,11 +89,7 @@ class UpperSection extends React.Component{
             this.setState({
                 sixesValue: value
             })
-        } else {
-            this.setState({
-                sixesValue: 0
-            })
-        }
+        } 
     }
 
     updateScore(value, section){

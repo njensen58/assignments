@@ -27,7 +27,7 @@ class Section extends React.Component{
             if(this.state.isConfirmed === false){
                 this.props.calculateValue();
                 this.setState(prevState => ({
-                    isSelected: prevState.isSelected ? false : true
+                    isSelected: !prevState.isSelected ? true : false
                 }))
             }
         }
