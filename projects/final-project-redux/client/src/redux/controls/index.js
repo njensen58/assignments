@@ -7,6 +7,8 @@ const controls = {
 
 
 
+
+
 export function reset(){
     return {
         type: "RESET"
@@ -42,6 +44,7 @@ export function disallowSelection(){
         type: "DISALLOW_SELECTION"
     }
 }
+
 
 
 

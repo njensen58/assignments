@@ -8,7 +8,11 @@ const scorecard = {
     threeOfAKind: 0,
     fourOfAKind: 0,
     fullHouse: 0,
-    smallStraight: 0
+    smallStraight: 0,
+    largeStraight: 0,
+    yahtzee: 0,
+    chance: 0,
+    yahtzeeBonus: []
 }
 
 export function updateScorecard(update, section){
@@ -19,12 +23,24 @@ export function updateScorecard(update, section){
     }
 }
 
+export function updateYahtzeeBonus(newBonus){
+    return {
+        type: "UPDATE_YAHTZEE_BONUS",
+        newBonus
+    }
+}
+
 function reducer(state = scorecard, action){
     switch(action.type){
         case "UPDATE_SCORECARD":
             return {
                 ...state,
                 [action.section]: action.update
+            }
+        case "UPDATE_YAHTZEE_BONUS":
+            return {
+                ...state,
+                yahtzeeBonus: [...state.yahtzeeBonus, action.newBonus]
             }
         default:
             return state

@@ -3,6 +3,7 @@ import Section from './Section';
 import { connect } from 'react-redux';
 import { updateScorecard } from '../../../redux/scorecard';
 import { isDoneSelecting } from '../../../redux/controls';
+import { updateGameControl} from '../../../redux/gamecontrol';
 
 
 class UpperSection extends React.Component{
@@ -89,11 +90,12 @@ class UpperSection extends React.Component{
             this.setState({
                 sixesValue: value
             })
-        } 
+        }
     }
 
     updateScore(value, section){
-        this.props.updateScorecard(value, section)
+        this.props.updateScorecard(value, section);
+        this.props.updateGameControl(section);
         this.props.resetCurrentNums();
         this.props.isDoneSelecting();
     }
@@ -196,7 +198,12 @@ class UpperSection extends React.Component{
                     </div>
                 </div>
                 <div>
-                    <span>Total Score</span>
+                    <span>Upper Section Score</span>
+                    {totalScore < 1 ?
+                    <div style={totalDisplay}>
+
+                    </div>
+                    :
                     <div>
                     { totalScore >= 63 ?
                         <div style={totalDisplay}>
@@ -208,10 +215,15 @@ class UpperSection extends React.Component{
                         </div>
                     }
                     </div>
+                    }
                 </div>
             </div>
         )
     }
 }
 
-export default connect(state=>state, { updateScorecard, isDoneSelecting })(UpperSection);
+export default connect(state=>state, {
+    updateScorecard,
+    isDoneSelecting,
+    updateGameControl
+})(UpperSection);

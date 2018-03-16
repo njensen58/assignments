@@ -1,8 +1,10 @@
 import React from 'react';
 import Section from './Section';
+import YahtzeeBonus from './YahtzeeBonus';
 import { connect } from 'react-redux';
-import { updateScorecard } from '../../../redux/scorecard';
+import { updateScorecard, updateYahtzeeBonus } from '../../../redux/scorecard';
 import { isDoneSelecting } from '../../../redux/controls';
+import { updateGameControl} from '../../../redux/gamecontrol';
 
 
 
@@ -14,13 +16,35 @@ class LowerSection extends React.Component {
             threeOfAKind: 0,
             fourOfAKind: 0,
             fullHouse: 0,
-            smallStraight: 0
+            smallStraight: 0,
+            largeStraight: 0,
+            yahtzee: 0,
+            chance: 0,
+            yahtzeeBonus: []
         }
         this.calculate3OfAKind = this.calculate3OfAKind.bind(this);
         this.calculate4OfAKind = this.calculate4OfAKind.bind(this);
         this.calculateFullHouse = this.calculateFullHouse.bind(this);
         this.calculateSmallStraight = this.calculateSmallStraight.bind(this);
+        this.calculateLargeStraight = this.calculateLargeStraight.bind(this);
+        this.calculateYahtzee = this.calculateYahtzee.bind(this);
+        this.calculateChance = this.calculateChance.bind(this);
+        this.calculateYahtzeeBonus = this.calculateYahtzeeBonus.bind(this);
         this.updateScore = this.updateScore.bind(this);
+    }
+
+    componentWillReceiveProps(){
+        if(this.props.controls.shouldReset){
+            this.setState({
+                threeOfAKind: 0,
+                fourOfAKind: 0,
+                fullHouse: 0,
+                smallStraight: 0,
+                largeStraight: 0,
+                yahtzee: 0,
+                chance: 0
+            })
+        }
     }
 
 
@@ -117,15 +141,113 @@ class LowerSection extends React.Component {
         }
     }
 
+    calculateLargeStraight(){
+        if(this.props.currentNums.length > 0){
+            const sorted = this.props.currentNums.sort((a, b) => a > b);
+            const noDups = sorted.reduce((finalArr, num) => {
+                if(!finalArr.includes(num)){
+                    finalArr.push(num);
+                }
+                return finalArr;
+            }, [])
+            let count = 0;
+            for(let i = 0; i < noDups.length; i++){
+                if(noDups[i + 1] === noDups[i] + 1 && noDups[i - 1] === noDups[i] - 1){
+                    count++;
+                }
+            }
+            if(count === 3){
+                this.setState({
+                    largeStraight: 40
+                })
+            }
+        }
+    }
+
+    calculateYahtzee(){
+        if(this.props.currentNums.length > 0){
+            const value = this.props.currentNums
+                .reduce((myObj, num) => {
+                    myObj[num]+=1;
+                    return myObj;
+                },{1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0})
+            let yahtzee = 0;
+            for(let key in value){
+                if(value[key] === 5){
+                    yahtzee = key
+                }
+            }
+            if(yahtzee > 0 && this.props.gamecontrol.yahtzee === false){
+                this.setState({
+                    yahtzee: 50
+                })
+            }
+        }
+    }
+
+    calculateChance(){
+        if(this.props.currentNums.length > 0){
+            const value = this.props.currentNums.reduce((final, num) => final += num, 0);
+            this.setState({
+                chance: value
+            })
+        }
+    }
+
+    calculateYahtzeeBonus(){
+        if(this.props.currentNums.length > 0){
+            if(this.props.gamecontrol.yahtzee === true){
+                const value = this.props.currentNums
+                    .reduce((myObj, num) => {
+                        myObj[num]+=1;
+                        return myObj;
+                    },{1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0})
+                let yahtzee = 0;
+                for(let key in value){
+                    if(value[key] === 5){
+                        yahtzee = key
+                    }
+                }
+                if(yahtzee > 0){
+                    this.setState({
+                        yahtzeeBonus: [1]
+                    })
+                }
+            }
+        }
+    }
+
 
     updateScore(value, section){
         this.props.updateScorecard(value, section)
+        this.props.updateGameControl(section);
+        this.props.resetCurrentNums();
+        this.props.isDoneSelecting();
+    }
+
+    updateYahtzeeBonusScore(update){
+        this.props.updateYahtzeeBonus(update)
         this.props.resetCurrentNums();
         this.props.isDoneSelecting();
     }
 
     render(){
-        console.log(this.props)
+        const totalDisplay = {
+            width: '50px',
+            height: '50px',
+            border: '1px solid black',
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            borderRadius: '3px',
+            margin: '2px',
+        }
+
+        const score = this.props.scorecard;
+        const bonusTotal = this.state.yahtzeeBonus.length > 0 ?
+            this.state.yahtzeeBonus.reduce((total, num) => total+=num, 0) : 0
+        const totalScore = score.threeOfAKind + score.fourOfAKind + score.fullHouse + score.smallStraight + score.largeStraight + score.yahtzee + score.chance + bonusTotal;
+
         return (
             <div className="lowerSectionContainer">
                 <div>
@@ -172,9 +294,72 @@ class LowerSection extends React.Component {
                         confirmedValue={this.props.scorecard.smallStraight}
                     />
                 </div>
+                <div>
+                    <span>Large Straight</span>
+                    <Section
+                        section="largeStraight"
+                        currentNums={this.props.currentNums}
+                        calculateValue={this.calculateLargeStraight}
+                        updateScore={this.updateScore}
+                        value={this.state.largeStraight}
+                        confirmedValue={this.props.scorecard.largeStraight}
+                    />
+                </div>
+                <div>
+                    <span>Yahtzee</span>
+                    <Section
+                        section="yahtzee"
+                        currentNums={this.props.currentNums}
+                        calculateValue={this.calculateYahtzee}
+                        updateScore={this.updateScore}
+                        value={this.state.yahtzee}
+                        confirmedValue={this.props.scorecard.yahtzee}
+                    />
+                </div>
+                <div>
+                    <span>Chance</span>
+                    <Section
+                        section="chance"
+                        currentNums={this.props.currentNums}
+                        calculateValue={this.calculateChance}
+                        updateScore={this.updateScore}
+                        value={this.state.chance}
+                        confirmedValue={this.props.scorecard.chance}
+                    />
+                </div>
+                <div>
+                    <span>Yahtzee Bonus</span>
+                    <YahtzeeBonus
+                        section="yahtzeeBonus"
+                        currentNums={this.props.currentNums}
+                        calculateValue={this.calculateYahtzeeBonus}
+                        updateScore={this.updateYahtzeeBonusScore}
+                        value={bonusTotal}
+                        confirmedValue={this.props.scorecard.yahtzeeBonus}
+                    />
+                </div>
+                <div>
+                    <span>Lower Section Score</span>
+                    <div>
+                    {totalScore < 1 ?
+                        <div style={totalDisplay}>
+
+                        </div>
+                    :
+                        <div style={totalDisplay}>
+                            {totalScore}
+                        </div>
+                    }
+                    </div>
+                </div>
             </div>
         )
     }
 }
 
-export default connect(state=>state, { updateScorecard, isDoneSelecting })(LowerSection);
+export default connect(state=>state, {
+    updateScorecard,
+    isDoneSelecting,
+    updateYahtzeeBonus,
+    updateGameControl
+})(LowerSection);

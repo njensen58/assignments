@@ -2,11 +2,13 @@ import { createStore, applyMiddleware, combineReducers } from 'redux';
 import thunk from 'redux-thunk';
 import scorecard from './scorecard'
 import controls from './controls';
+import gamecontrol from './gamecontrol'
 
 
 const rootReducer = combineReducers({
     scorecard,
-    controls
+    controls,
+    gamecontrol
 })
 
 
