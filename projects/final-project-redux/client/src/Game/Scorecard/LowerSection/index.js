@@ -97,14 +97,17 @@ class LowerSection extends React.Component {
     calculateSmallStraight(){
         if(this.props.currentNums.length > 0){
             const sorted = this.props.currentNums.sort((a, b) => a > b);
-            let count = 0;
-            let currentNum = sorted[0]
-            for(let i = 1; i < sorted.length; i++){
-                if(sorted[i + 1] === sorted[i] + 1 && sorted[i - 1] === sorted[i] - 1){
-                    count++;
-                    currentNum = sorted[i]
+            const noDups = sorted.reduce((finalArr, num) => {
+                if(!finalArr.includes(num)){
+                    finalArr.push(num)
                 }
-
+                return finalArr;
+            },[])
+            let count = 0;
+            for(let i = 1; i < noDups.length; i++){
+                if(noDups[i + 1] === noDups[i] + 1 && noDups[i - 1] === noDups[i] - 1){
+                    count++;
+                }
             }
             if(count === 2){
                 this.setState({
@@ -113,6 +116,7 @@ class LowerSection extends React.Component {
             }
         }
     }
+
 
     updateScore(value, section){
         this.props.updateScorecard(value, section)
