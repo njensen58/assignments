@@ -15,7 +15,7 @@ class Section extends React.Component{
     }
 
     componentWillReceiveProps(){
-        if(!this.props.allowSelection){
+        if(!this.props.allowSelection && this.state.isSelected){
             this.setState({
                 isSelected: false
             })
@@ -45,21 +45,23 @@ class Section extends React.Component{
 
     render(){
         const selected = {
-            backgroundColor: this.state.isSelected && this.props.value > 0 ? 'dodgerblue' : 'white',
-            width: '50px',
-            height: '50px',
-            border: '1px solid black',
+            backgroundColor: this.state.isSelected && this.props.value > 0 ? '#97AABD' : '#D5DEDC',
+            width: this.state.isSelected ? '45px' : '75px',
+            height: '35px',
+            borderRight: '1px solid black',
             display: 'flex',
             justifyContent: 'center',
             alignItems: 'center',
             borderRadius: '3px',
-            margin: '2px'
+            margin: '2px',
+
         }
 
         const confirmed = {
-            width: '50px',
-            height: '50px',
-            border: '1px solid black',
+            width: '75px',
+            height: '35px',
+            borderRight: '1px solid black',
+            border: this.state.isConfirmed ? '2px solid black' : 'none',
             display: 'flex',
             justifyContent: 'center',
             alignItems: 'center',
@@ -70,13 +72,13 @@ class Section extends React.Component{
         }
 
         return (
-            <div>
+            <div className="lowerSectionButtonsContainer">
                 {this.state.isConfirmed ?
                 <div style={confirmed}>
                     {this.props.confirmedValue}
                 </div>
                 :
-                    <div>
+                    <div className="lowerBtnDiv">
                         <div style={selected} onClick={this.handleSelected}>
                         {!this.state.isSelected ?
                             <div>
@@ -93,8 +95,8 @@ class Section extends React.Component{
                         }
                         </div>
                         {this.state.isSelected && !this.state.isConfirmed ?
-                        <div>
-                            <button onClick={this.handleConfirm}>Save</button>
+                        <div className="lowerSaveBtnDiv">
+                            <button onClick={this.handleConfirm}><i className="ion-checkmark-circled icon"></i></button>
                         </div>
                         :
                         <div>

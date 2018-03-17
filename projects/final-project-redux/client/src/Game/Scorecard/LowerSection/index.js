@@ -136,7 +136,7 @@ class LowerSection extends React.Component {
                     count++;
                 }
             }
-            if(count === 2){
+            if(count >= 2){
                 this.setState({
                     smallStraight: 30
                 })
@@ -229,16 +229,6 @@ class LowerSection extends React.Component {
     }
 
     render(){
-        const totalDisplay = {
-            width: '50px',
-            height: '50px',
-            border: '1px solid black',
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-            borderRadius: '3px',
-            margin: '2px',
-        }
 
         const score = this.props.scorecard;
 
@@ -247,10 +237,22 @@ class LowerSection extends React.Component {
 
         const totalScore = score.threeOfAKind + score.fourOfAKind + score.fullHouse + score.smallStraight + score.largeStraight + score.yahtzee + score.chance + bonusTotal;
 
+        const totalDisplay = {
+            width: this.state.isSelected ? '45px' : '75px',
+            height: '35px',
+            borderRight: '1px solid black',
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            borderRadius: '3px',
+            margin: '2px',
+            backgroundColor: totalScore < 1 ? '#D5DEDC' : 'green'
+        }
+
+
         return (
             <div className="lowerSectionContainer">
                 <div>
-                    <span>3 Of A Kind</span>
                     <Section
                         section="threeOfAKind"
                         currentNums={this.props.currentNums}
@@ -259,9 +261,9 @@ class LowerSection extends React.Component {
                         value={this.state.threeOfAKind}
                         confirmedValue={this.props.scorecard.threeOfAKind}
                     />
+                    <h3>3 Of A Kind</h3>
                 </div>
                 <div>
-                    <span>4 Of A Kind</span>
                     <Section
                         section="fourOfAKind"
                         currentNums={this.props.currentNums}
@@ -270,9 +272,9 @@ class LowerSection extends React.Component {
                         value={this.state.fourOfAKind}
                         confirmedValue={this.props.scorecard.fourOfAKind}
                     />
+                    <h3>4 Of A Kind</h3>
                 </div>
                 <div>
-                    <span>Full House</span>
                     <Section
                         section="fullHouse"
                         currentNums={this.props.currentNums}
@@ -281,9 +283,9 @@ class LowerSection extends React.Component {
                         value={this.state.fullHouse}
                         confirmedValue={this.props.scorecard.fullHouse}
                     />
+                    <h3>Full House</h3>
                 </div>
                 <div>
-                    <span>Small Straight</span>
                     <Section
                         section="smallStraight"
                         currentNums={this.props.currentNums}
@@ -292,9 +294,9 @@ class LowerSection extends React.Component {
                         value={this.state.smallStraight}
                         confirmedValue={this.props.scorecard.smallStraight}
                     />
+                    <h3>Small Straight</h3>
                 </div>
                 <div>
-                    <span>Large Straight</span>
                     <Section
                         section="largeStraight"
                         currentNums={this.props.currentNums}
@@ -303,9 +305,9 @@ class LowerSection extends React.Component {
                         value={this.state.largeStraight}
                         confirmedValue={this.props.scorecard.largeStraight}
                     />
+                    <h3>Large Straight</h3>
                 </div>
                 <div>
-                    <span>Yahtzee</span>
                     <Section
                         section="yahtzee"
                         currentNums={this.props.currentNums}
@@ -314,9 +316,9 @@ class LowerSection extends React.Component {
                         value={this.state.yahtzee}
                         confirmedValue={this.props.scorecard.yahtzee}
                     />
+                    <h3>Yahtzee</h3>
                 </div>
                 <div>
-                    <span>Chance</span>
                     <Section
                         section="chance"
                         currentNums={this.props.currentNums}
@@ -325,9 +327,9 @@ class LowerSection extends React.Component {
                         value={this.state.chance}
                         confirmedValue={this.props.scorecard.chance}
                     />
+                    <h3>Chance</h3>
                 </div>
                 <div>
-                    <span>Yahtzee Bonus</span>
                     <YahtzeeBonus
                         section="yahtzeeBonus"
                         currentNums={this.props.currentNums}
@@ -336,9 +338,9 @@ class LowerSection extends React.Component {
                         confirmedValue={bonusTotal}
                         resetCurrentNums={this.props.resetCurrentNums}
                     />
+                    <h3>Yahtzee Bonus</h3>
                 </div>
                 <div>
-                    <span>Lower Section Score</span>
                     <div>
                     {totalScore < 1 ?
                         <div style={totalDisplay}>
@@ -350,6 +352,7 @@ class LowerSection extends React.Component {
                         </div>
                     }
                     </div>
+                    <h3>Lower Total</h3>
                 </div>
             </div>
         )

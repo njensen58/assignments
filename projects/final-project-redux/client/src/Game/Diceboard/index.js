@@ -18,7 +18,7 @@ class Diceboard extends React.Component {
 
     handleRoll(){
         if(this.props.controls.hasSelected){
-            if(this.state.rollCount < 3){
+            if(this.state.rollCount < 3 || this.state.savedDie.length < 5){
                 this.props.undoReset();
                 let dice1 = Math.floor(Math.random() * 6 + 1)
                 let dice2 = Math.floor(Math.random() * 6 + 1)
@@ -51,44 +51,48 @@ class Diceboard extends React.Component {
                 currentRoll: []
             })
         } else {
-            alert('You must select all numbers')
+            console.log('fuck')
         }
     }
 
     render(){
         return (
             <div className="diceboardContainer">
-                <div>
-                    Roll Count: {this.state.rollCount}
+                <div className="rollCountDiv">
+                    <span>Roll: </span> <span>{this.state.rollCount}</span>
                 </div>
-                <Die
-                    num={this.state.currentRoll[0]}
-                    info={this.state}
-                    handleSaveNumChoice={this.handleSaveNumChoice}
-                />
-                <Die
-                    num={this.state.currentRoll[1]}
-                    info={this.state}
-                    handleSaveNumChoice={this.handleSaveNumChoice}
-                />
-                <Die
-                    num={this.state.currentRoll[2]}
-                    info={this.state}
-                    handleSaveNumChoice={this.handleSaveNumChoice}
-                />
-                <Die
-                    num={this.state.currentRoll[3]}
-                    info={this.state}
-                    handleSaveNumChoice={this.handleSaveNumChoice}
-                />
-                <Die
-                    num={this.state.currentRoll[4]}
-                    info={this.state}
-                    handleSaveNumChoice={this.handleSaveNumChoice}
-                />
-                { this.state.rollCount !== 3 ?
+                <div className="dieContainer">
+                    <Die
+                        num={this.state.currentRoll[0]}
+                        info={this.state}
+                        handleSaveNumChoice={this.handleSaveNumChoice}
+                    />
+                    <Die
+                        num={this.state.currentRoll[1]}
+                        info={this.state}
+                        handleSaveNumChoice={this.handleSaveNumChoice}
+                    />
+                    <Die
+                        num={this.state.currentRoll[2]}
+                        info={this.state}
+                        handleSaveNumChoice={this.handleSaveNumChoice}
+                    />
+                    <Die
+                        num={this.state.currentRoll[3]}
+                        info={this.state}
+                        handleSaveNumChoice={this.handleSaveNumChoice}
+                    />
+                    <Die
+                        num={this.state.currentRoll[4]}
+                        info={this.state}
+                        handleSaveNumChoice={this.handleSaveNumChoice}
+                    />
+                </div>
+
+                {/*To have the dice sequence finish if all 5 have been saved*/}
+                { this.state.rollCount !== 3 && this.state.savedDie.length < 5 ?
                 <div>
-                    <button onClick={this.handleRoll}>
+                    <button onClick={this.handleRoll} className="rollBtn">
                         { this.state.rollCount < 1 ?
                             <span>New roll</span>
                         :
@@ -97,13 +101,20 @@ class Diceboard extends React.Component {
                     </button>
                 </div>
                 :
-                    <button onClick={this.handleReset}>
-                        <span>Submit Numbers</span>
+                <div className="rollBtnDiv">
+                    <button onClick={this.handleReset} className="rollBtn">
+                        Submit Numbers
                     </button>
+                </div>
                 }
             </div>
         )
     }
 }
 
-export default connect(state=>state, { reset, undoReset, isSelecting, allowSelection })(Diceboard);
+export default connect(state=>state, {
+    reset,
+    undoReset,
+    isSelecting,
+    allowSelection
+})(Diceboard);

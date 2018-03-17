@@ -10,6 +10,7 @@ class Die extends React.Component {
             hasSaved: false
         }
         this.handleLock = this.handleLock.bind(this);
+        this.rollsShouldEnd = this.rollsShouldEnd.bind(this);
     }
 
     componentWillReceiveProps(){
@@ -39,19 +40,28 @@ class Die extends React.Component {
         }
     }
 
-    render(){
-        const selected = {
-            backgroundColor: this.state.isLocked ? "cornflowerblue" : "white",
-            width: "50px",
-            height: "50px",
-            border: "1px solid black",
-            borderRadius: "10px",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            margin: "5px",
-            fontSize: "20px"
+    rollsShouldEnd(){
+        if(this.props.info.rollCount === 3){
+            this.setState({
+                lockedNum: this.props.num,
+                hasSaved: true,
+                isLocked: true
+            }, ()=>{
+                this.props.handleSaveNumChoice(this.props.num);
+            })
         }
+
+    }
+
+    render(){
+        if(!this.state.isLocked && !this.state.hasSaved){
+            this.rollsShouldEnd();
+        }
+        const selected = {
+            backgroundColor: this.state.isLocked ? "#314455" : "#EAE7DC",
+            color: this.state.isLocked ? "#EAE7DC" : "darkslategrey",
+        }
+        {/*other style is in css .dieContainer div */}
 
         return (
 

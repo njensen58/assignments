@@ -101,24 +101,38 @@ class UpperSection extends React.Component{
     }
 
     render(){
+
+        const score = this.props.scorecard;
+        const totalScore = score.ones + score.twos + score.threes + score.fours + score.fives + score.sixes;
+
         const totalDisplay = {
-            width: '50px',
-            height: '50px',
-            border: '1px solid black',
+            width: '75px',
+            height: '35px',
+            borderLeft: '1px solid black',
             display: 'flex',
             justifyContent: 'center',
             alignItems: 'center',
             borderRadius: '3px',
             margin: '2px',
+            backgroundColor: totalScore < 1 ? '#D5DEDC' : 'green'
         }
 
-        const score = this.props.scorecard;
-        const totalScore = score.ones + score.twos + score.threes + score.fours + score.fives + score.sixes;
+        const bonusDisplay = {
+            width: '75px',
+            height: '35px',
+            borderLeft: '1px solid black',
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            borderRadius: '3px',
+            margin: '2px',
+            backgroundColor: totalScore >= 63 ? 'green' : '#D5DEDC'
+        }
 
         return (
             <div className="upperSectionContainer">
                 <div>
-                    <span>1's</span>
+                    <h3>1's</h3>
                     <Section
                         section="ones"
                         currentNums={this.props.currentNums}
@@ -129,7 +143,7 @@ class UpperSection extends React.Component{
                     />
                 </div>
                 <div>
-                    <span>2's</span>
+                    <h3>2's</h3>
                     <Section
                         section="twos"
                         currentNums={this.props.currentNums}
@@ -140,7 +154,7 @@ class UpperSection extends React.Component{
                     />
                 </div>
                 <div>
-                    <span>3's</span>
+                    <h3>3's</h3>
                     <Section
                         section="threes"
                         currentNums={this.props.currentNums}
@@ -151,7 +165,7 @@ class UpperSection extends React.Component{
                     />
                 </div>
                 <div>
-                    <span>4's</span>
+                    <h3>4's</h3>
                     <Section
                         section="fours"
                         currentNums={this.props.currentNums}
@@ -162,7 +176,7 @@ class UpperSection extends React.Component{
                     />
                 </div>
                 <div>
-                    <span>5's</span>
+                    <h3>5's</h3>
                     <Section
                         section="fives"
                         currentNums={this.props.currentNums}
@@ -173,7 +187,7 @@ class UpperSection extends React.Component{
                     />
                 </div>
                 <div>
-                    <span>6's</span>
+                    <h3>6's</h3>
                     <Section
                         section="sixes"
                         currentNums={this.props.currentNums}
@@ -184,21 +198,21 @@ class UpperSection extends React.Component{
                     />
                 </div>
                 <div>
-                    <span>BONUS</span>
+                    <h3>BONUS</h3>
                     <div>
                         { totalScore >= 63 ?
-                            <div style={totalDisplay}>
+                            <div style={bonusDisplay}>
                                 +35
                             </div>
                         :
-                            <div style={totalDisplay}>
+                            <div style={bonusDisplay}>
                                 {/*Nothing*/}
                             </div>
                         }
                     </div>
                 </div>
                 <div>
-                    <span>Upper Section Score</span>
+                    <h3>Upper Total</h3>
                     {totalScore < 1 ?
                     <div style={totalDisplay}>
 

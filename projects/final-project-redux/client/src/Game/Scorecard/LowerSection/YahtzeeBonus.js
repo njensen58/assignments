@@ -16,7 +16,7 @@ class YahtzeeBonus extends React.Component{
     }
 
     componentWillReceiveProps(){
-        if(!this.props.allowSelection){
+        if(!this.props.allowSelection && this.state.isSelected){
             this.setState({
                 isSelected: false
             })
@@ -24,17 +24,15 @@ class YahtzeeBonus extends React.Component{
     }
 
     handleSelected(){
-    if(this.props.controls.allowSelection && this.props.gamecontrol.yahtzee){
+    if(this.props.controls.allowSelection && this.props.scorecard.yahtzee > 0){
             this.setState(prevState => ({
                 isSelected: !prevState.isSelected ? true : false
-            }), ()=>{
-                if(this.state.isSelected){
-                    this.props.calculateValue();
-                }
-            })
+            }))
+        }
+            this.props.calculateValue();
         }
 
-    }
+
 
     updateYahtzeeBonusScore(){
         this.props.disallowSelection();
@@ -45,10 +43,10 @@ class YahtzeeBonus extends React.Component{
 
     render(){
         const selected = {
-            backgroundColor: this.state.isSelected ? 'dodgerblue' : 'white',
-            width: '50px',
-            height: '50px',
-            border: '1px solid black',
+            backgroundColor: this.state.isSelected ? '#97AABD' : '#D5DEDC',
+            width: this.state.isSelected ? '45px' : '75px',
+            height: '35px',
+            borderRight: '1px solid black',
             display: 'flex',
             justifyContent: 'center',
             alignItems: 'center',
@@ -57,9 +55,9 @@ class YahtzeeBonus extends React.Component{
         }
 
         const confirmed = {
-            width: '50px',
-            height: '50px',
-            border: '1px solid black',
+            width: '75px',
+            height: '35px',
+            borderRight: '1px solid black',
             display: 'flex',
             justifyContent: 'center',
             alignItems: 'center',
@@ -91,8 +89,8 @@ class YahtzeeBonus extends React.Component{
                     }
                     </div>
                     {this.state.isSelected ?
-                        <div>
-                            <button onClick={this.updateYahtzeeBonusScore}>Save</button>
+                        <div className="lowerSaveBtnDiv">
+                            <button     onClick={this.updateYahtzeeBonusScore}><i className="ion-checkmark-circled icon"></i></button>
                         </div>
                     :
                         <div>

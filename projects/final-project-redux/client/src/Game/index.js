@@ -70,6 +70,7 @@ class Game extends React.Component {
                     <Scorecard
                         currentNums={this.state.currentNums}
                         resetCurrentNums={this.resetCurrentNums}
+                        totalGameScore={totalGameScore}
                     />
                     <Diceboard
                         updateCurrentNums={this.updateCurrentNums}
