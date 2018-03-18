@@ -90,7 +90,7 @@ class YahtzeeBonus extends React.Component{
                     </div>
                     {this.state.isSelected ?
                         <div className="lowerSaveBtnDiv">
-                            <button     onClick={this.updateYahtzeeBonusScore}><i className="ion-checkmark-circled icon"></i></button>
+                            <button onClick={this.updateYahtzeeBonusScore}><i className="ion-checkmark-circled icon"></i></button>
                         </div>
                     :
                         <div>

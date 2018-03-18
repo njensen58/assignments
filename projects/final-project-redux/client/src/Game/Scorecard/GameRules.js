@@ -37,26 +37,31 @@ function GameRules(){
                 <p>
                     These are acheived by either have 3 or 4 of the same number at the end of your 3 rolls.  The points earned are dependent on what number you have 3 or 4 of.  For example, ( 5 - 5 - 5 ) is worth 15 points, and ( 5 - 5 - 5 - 5 ) is worth 20 points.
                 </p>
-                <span>Full House</span>
+                <span>Full House - 25pts</span>
                 <p>
-                    A full house occurs when your 5 die consist of a three-pair and a two-pair. For example, having ( 2 - 2 - 5 - 5 - 5 ) is a full house, and is worth 25 points.
+                    A full house occurs when your 5 die consist of a three-pair and a two-pair. For example, having ( 2 - 2 - 5 - 5 - 5 ) is a full house.
                 </p>
-                <span>Small Straight</span>
+                <span>Small Straight - 30pts</span>
                 <p>
-                    A Small Straight is an increasing sequence of four, such as  ( 1 - 2 - 3 - 4 ),  or  ( 2 - 3 - 4 - 5 ), and is worth 30 points.
+                    A Small Straight is an increasing sequence of four, such as  ( 1 - 2 - 3 - 4 ),  or  ( 2 - 3 - 4 - 5 ).
                     Large straights (see below) can also be used in the small straight scoring section.
                 </p>
-                <span>Large Straight</span>
+                <span>Large Straight - 40pts</span>
                 <p>
-                    A Large Straight is an increaseing sequence of fice, such as ( 1 - 2 - 3 - 4 - 5 ),  or  ( 2 - 3 - 4 - 5 - 6 ), and is worth 40 points.
+                    A Large Straight is an increaseing sequence of fice, such as ( 1 - 2 - 3 - 4 - 5 ),  or  ( 2 - 3 - 4 - 5 - 6 ).
                 </p>
-                <span>Yahtzee</span>
+                <span>Yahtzee - 50pts</span>
                 <p>
-                    A Yahtzee is a 5 of a kind, such as ( 6 - 6 - 6 - 6 - 6), and is worth 50 points.
+                    A Yahtzee is a 5 of a kind, such as ( 6 - 6 - 6 - 6 - 6).
                 </p>
                 <span>Chance</span>
                 <p>
                     Chance gives you a total of your final 5 die.  For example, ( 1 - 2 - 2 - 6 - 6 ) would give you 17 points.
+                </p>
+                <p>
+                     <i className="ion-happy-outline icon"></i>
+                          THANKS FOR PLAYING!
+                     <i className="ion-happy-outline icon"></i> - The Almighty Developer
                 </p>
         </div>
     )

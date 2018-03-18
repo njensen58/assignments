@@ -103,7 +103,7 @@ class Diceboard extends React.Component {
                 :
                 <div className="rollBtnDiv">
                     <button onClick={this.handleReset} className="rollBtn">
-                        Submit Numbers
+                        Submit
                     </button>
                 </div>
                 }

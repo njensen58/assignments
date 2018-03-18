@@ -1,0 +1,36 @@
+
+/*---------------------*/
+/*-----HIGHSCORES------*/
+/*---------------------*/
+.highscoreContainer {
+    height: 488px;
+    overflow-y: scroll;
+    display: grid;
+    grid-template-columns: 1fr 4fr 1fr;
+}
+
+.highscoreDiv {
+    grid-column: 2;
+    background-color: #ddd;
+    margin: 5px 0;
+    display: grid;
+    grid-template-column: 4fr 1fr 1fr;
+    padding: 10px 0;
+}
+
+.highscoreDiv h1,
+.highscoreDiv h2 {
+    margin: 0;
+    font-size: 13px;
+}
+
+.highscoreDiv h1 {
+    grid-column: 1;
+    padding-left: 10px;
+}
+
+.highscoreDiv h2 {
+    grid-column: 3;
+    text-align: right;
+    padding-right: 10px;
+}

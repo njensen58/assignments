@@ -1,6 +1,7 @@
 import React from 'react';
+import Highscore from './Highscore';
 import { connect } from 'react-redux';
-import { getHigh } from './redux/highscores';
+import { getHigh } from '../redux/highscores';
 
 class Highscores extends React.Component {
     constructor(){
@@ -21,14 +22,15 @@ class Highscores extends React.Component {
     render(){
         const mappedScores = this.state.highscores.map(score => {
             return (
-                <div>
-                    <h1>{score.name}</h1>
-                    <h3>{score.score}</h3>
-                </div>
+                <Highscore
+                    key={score._id}
+                    name={score.name}
+                    score={score.score}
+                />
             )
         })
         return (
-            <div>
+            <div className="highscoreContainer">
                 {mappedScores}
             </div>
         )

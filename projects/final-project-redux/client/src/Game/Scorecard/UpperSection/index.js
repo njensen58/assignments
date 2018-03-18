@@ -128,7 +128,7 @@ class UpperSection extends React.Component{
             borderTopLeftRadius: '3px',
             borderBottomLeftRadius: '3px',
             backgroundColor: totalScore >= 63 ? 'darkslategrey' : '#D5DEDC',
-            color: totalScore >= 63 ? '#3338' : 'white'
+            color: totalScore >= 63 ? 'white' : '#3338'
         }
 
         return (

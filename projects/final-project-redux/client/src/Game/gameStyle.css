@@ -145,6 +145,12 @@ button {
     font-style: italic;
 }
 
+.howToPlayIcon {
+    position: absolute;
+    grid-row: 1;
+    right: 3px;
+}
+
 
 /*---------------*/
 /*---DICEBOARD---*/
@@ -190,12 +196,12 @@ button {
 }
 
 .dieContainer div:hover {
-    border: 2px solid #333;
+    border: 3px solid #333;
     transition: .2s;
 }
 
 .rollBtnDiv {
-    padding: 2px;
+
 }
 
 .rollBtn {
@@ -267,6 +273,11 @@ button {
 .lowerSectionContainer > div {
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
+}
+
+.upperSectionContainer > div:hover,
+.lowerSectionContainer > div:hover {
+    background-color: #333;
 }
 
 
@@ -535,6 +546,16 @@ button {
     .rollBtnDiv {
         padding: 5px;
     }
+
+    .totalScoreDiv {
+        grid-template-columns: 3fr 2fr;
+    }
+
+    .totalScoreDiv h3 {
+        padding: 0;
+        font-weight: 400;
+        letter-spacing: 1px;
+    }
 }
 
 
@@ -550,7 +571,7 @@ button {
     .upperSectionContainer h3,
     .lowerSectionContainer h3 {
         font-size: 18px;
-        width: 200px;
+        width: 195px;
         font-weight: 500;
         letter-spacing: 2px;
     }
@@ -571,4 +592,204 @@ button {
         margin-top: 5px;
     }
 
+}
+
+/*--------------------*/
+/*------ 750 px ------*/
+@media only screen and (min-width: 750px){
+    .upperSectionContainer h3,
+    .lowerSectionContainer h3 {
+        font-size: 19px;
+        width: 220px;
+        letter-spacing: 2.5px;
+    }
+
+}
+
+/*--------------------*/
+/*------ 850 px ------*/
+@media only screen and (min-width: 850px){
+    .upperSectionContainer h3,
+    .lowerSectionContainer h3 {
+        font-size: 20px;
+        width: 230px;
+        letter-spacing: 3px;
+    }
+
+}
+
+/*--------------------*/
+/*------ 900 px ------*/
+@media only screen and (min-width: 900px){
+    .scorecardContainer {
+        grid-column: 1 / 3;
+        grid-row: 2;
+    }
+
+    .upperSectionContainer > div,
+    .lowerSectionContainer > div {
+        height: 60px;
+    }
+
+    .upperSectionContainer h3,
+    .lowerSectionContainer h3 {
+        font-size: 20px;
+        width: 210px;
+        font-weight: 500;
+        letter-spacing: 2px;
+    }
+
+    .diceboardContainer {
+        grid-column: 3 / -1;
+        grid-row: 2;
+        padding: 0 2px;
+        display: flex;
+        flex-direction: column;
+        height: 665px;
+        background-color: #314455;
+        border: 1px solid #644E5B;
+        border-radius: 1px;
+    }
+
+    .dieContainer {
+        height: 567px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    .dieContainer div {
+        /* height: 35px;
+        width: 35px; */
+        border: 1px solid #333;
+        border-radius: 10px;
+        margin: 5px;
+        font-size: 30px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .rollCountDiv {
+        font-size: 15px;
+        color: #eee;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+    }
+
+
+    .rollBtn {
+        height: 70px;
+        margin-top: 5px;
+    }
+
+    .howToPlayIcon {
+        position: absolute;
+        grid-row: 1;
+        grid-column: 2;
+        right: 92px;
+    }
+
+}
+
+
+
+/*--------------------*/
+/*------ 1024 px ------*/
+@media only screen and (min-width: 1024px){
+    .upperSectionContainer > div,
+    .lowerSectionContainer > div {
+        height: 63px;
+    }
+
+    .upperSectionContainer h3,
+    .lowerSectionContainer h3 {
+        font-size: 24px;
+        width: 300px;
+        font-weight: 600;
+        letter-spacing: 3px;
+    }
+
+    .lowerSectionButtonsContainer span,
+    .upperSectionButtonsContainer span,
+    .yahtzeeBonusDisplay span,
+    .bonusDisplay span {
+        font-size: 27px;
+    }
+
+    .diceboardContainer {
+        height: 695px;
+    }
+
+    .dieContainer div {
+        font-size: 35px;
+        font-weight: lighter;
+    }
+
+    .dieContainer {
+        height: 595px;
+    }
+}
+
+
+/*--------------------*/
+/*------ 1150 px ------*/
+@media only screen and (min-width: 1150px){
+    .gameContainer {
+        background-color: #333;
+    }
+
+    .gameInProgress {
+        margin: 0 30px;
+    }
+
+    .diceboardContainer {
+        width: 116px;
+    }
+
+    .dieContainer div {
+        font-size: 40px;
+        height: 100px;
+        width: 100px;
+    }
+
+    .howToPlayIcon {
+        right: 150px;
+    }
+}
+
+
+/*--------------------*/
+/*------ 1400 px ------*/
+@media only screen and (min-width: 1400px){
+    .gameInProgress {
+        margin: 0 50px;
+    }
+
+    .howToPlayIcon {
+        right: 170px;
+    }
+}
+
+/*--------------------*/
+/*------ 1600 px ------*/
+@media only screen and (min-width: 1600px){
+    .gameInProgress {
+        margin: 0 100px;
+    }
+}
+
+/*--------------------*/
+/*------ 1800 px ------*/
+@media only screen and (min-width: 1600px){
+    .gameInProgress {
+        margin: 0 150px;
+    }
+
+    .howToPlayIcon {
+        right: 270px;
+    }
 }

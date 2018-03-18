@@ -50,7 +50,7 @@ class Game extends React.Component {
         this.props.addHighScore(newHighScore).then(() => {
             this.setState({
                 isGameComplete: false
-            }, ()=>{
+            }, () => {
                 this.props.resetScorecard();
                 this.props.restartGame();
             })

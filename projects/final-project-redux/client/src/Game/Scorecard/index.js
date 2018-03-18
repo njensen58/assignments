@@ -30,16 +30,9 @@ class Scorecard extends React.Component {
             overflowY: 'scroll'
         }
 
-        const howToPlayIcon = {
-            position: 'absolute',
-            gridRow: '1',
-            right: '0',
-            marginRight: '10px'
-        }
-
         return (
             <div className="scorecardContainer">
-                <div style={howToPlayIcon} onClick={this.toggleIsLearning}>
+                <div className="howToPlayIcon" onClick={this.toggleIsLearning}>
                     <span><i className="ion-help-circled questionIcon"></i></span>
                 </div>
                 <div style={howToPlay} onClick={this.toggleIsLearning}>

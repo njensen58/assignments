@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const sortHighScores = (arr) => arr.sort((a, b) => parseInt(a.score) < parseInt(b.score));
+const sortHighScores = (arr) => arr.sort((a, b) => Number(a.score) < Number(b.score));
 
 export function getHigh(){
     return function(dispatch){
