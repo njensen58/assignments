@@ -47,26 +47,26 @@ class Section extends React.Component{
         const selected = {
             backgroundColor: this.state.isSelected && this.props.value > 0 ? '#97AABD' : '#D5DEDC',
             width: this.state.isSelected ? '45px' : '75px',
-            height: '35px',
+            height: '100%',
             borderLeft: '1px solid black',
             display: 'flex',
             justifyContent: 'center',
             alignItems: 'center',
-            borderRadius: '3px',
-            margin: '2px',
-
+            borderTopLeftRadius: '3px',
+            borderBottomLeftRadius: '3px',
+            transition: '.5s ease-out'
         }
 
         const confirmed = {
             width: '75px',
-            height: '35px',
+            height: '100%',
             borderLeft: '1px solid black',
             border: this.state.isConfirmed ? '2px solid black' : 'none',
             display: 'flex',
             justifyContent: 'center',
             alignItems: 'center',
-            borderRadius: '3px',
-            margin: '2px',
+            borderTopLeftRadius: '3px',
+            borderBottomLeftRadius: '3px',
             backgroundColor: 'darkslategrey',
             color: 'white'
         }
@@ -77,10 +77,10 @@ class Section extends React.Component{
             <div className="upperSectionButtonsContainer">
                 {this.state.isConfirmed ?
                 <div style={confirmed}>
-                    {this.props.confirmedValue}
+                    <span>{this.props.confirmedValue}</span>
                 </div>
                 :
-                    <div>
+                    <div className="tileScreenExpand">
                         {this.state.isSelected && !this.state.isConfirmed ?
                         <div className="upperSaveBtnDiv">
                             <button onClick={this.handleConfirm}><i className="ion-checkmark-circled icon"></i></button>
@@ -100,7 +100,7 @@ class Section extends React.Component{
 
                             <div>
                                 {this.props.value >= 0 ?
-                                    this.props.value
+                                    <span>{this.props.value}</span>
                                 :
                                     ''
                                 }

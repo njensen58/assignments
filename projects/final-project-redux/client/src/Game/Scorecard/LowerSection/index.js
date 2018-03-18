@@ -239,14 +239,14 @@ class LowerSection extends React.Component {
 
         const totalDisplay = {
             width: this.state.isSelected ? '45px' : '75px',
-            height: '35px',
-            borderRight: '1px solid black',
+            height: '100%',
+            border: '1px solid black',
             display: 'flex',
             justifyContent: 'center',
             alignItems: 'center',
             borderRadius: '3px',
-            margin: '2px',
-            backgroundColor: totalScore < 1 ? '#D5DEDC' : 'green'
+            backgroundColor: totalScore < 1 ? '#D5DEDC' : 'darkslategrey',
+            color: totalScore < 1 ? '#3337' : 'white'
         }
 
 

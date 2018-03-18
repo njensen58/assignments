@@ -107,32 +107,34 @@ class UpperSection extends React.Component{
 
         const totalDisplay = {
             width: '75px',
-            height: '35px',
-            borderLeft: '1px solid black',
+            height: '100%',
+            border: '1px solid black',
             display: 'flex',
             justifyContent: 'center',
             alignItems: 'center',
-            borderRadius: '3px',
-            margin: '2px',
-            backgroundColor: totalScore < 1 ? '#D5DEDC' : 'green'
+            borderTopLeftRadius: '3px',
+            borderBottomLeftRadius: '3px',
+            backgroundColor: totalScore < 1 ? '#D5DEDC' : 'darkslategrey',
+            color: totalScore < 1 ? '#3337' : 'white'
         }
 
         const bonusDisplay = {
             width: '75px',
-            height: '35px',
-            borderLeft: '1px solid black',
+            height: '100%',
+            border: '1px solid black',
             display: 'flex',
             justifyContent: 'center',
             alignItems: 'center',
-            borderRadius: '3px',
-            margin: '2px',
-            backgroundColor: totalScore >= 63 ? 'green' : '#D5DEDC'
+            borderTopLeftRadius: '3px',
+            borderBottomLeftRadius: '3px',
+            backgroundColor: totalScore >= 63 ? 'darkslategrey' : '#D5DEDC',
+            color: totalScore >= 63 ? '#3338' : 'white'
         }
 
         return (
             <div className="upperSectionContainer">
                 <div>
-                    <h3>1's</h3>
+                    <h3>ones</h3>
                     <Section
                         section="ones"
                         currentNums={this.props.currentNums}
@@ -143,7 +145,7 @@ class UpperSection extends React.Component{
                     />
                 </div>
                 <div>
-                    <h3>2's</h3>
+                    <h3>twos</h3>
                     <Section
                         section="twos"
                         currentNums={this.props.currentNums}
@@ -154,7 +156,7 @@ class UpperSection extends React.Component{
                     />
                 </div>
                 <div>
-                    <h3>3's</h3>
+                    <h3>threes</h3>
                     <Section
                         section="threes"
                         currentNums={this.props.currentNums}
@@ -165,7 +167,7 @@ class UpperSection extends React.Component{
                     />
                 </div>
                 <div>
-                    <h3>4's</h3>
+                    <h3>fours</h3>
                     <Section
                         section="fours"
                         currentNums={this.props.currentNums}
@@ -176,7 +178,7 @@ class UpperSection extends React.Component{
                     />
                 </div>
                 <div>
-                    <h3>5's</h3>
+                    <h3>fives</h3>
                     <Section
                         section="fives"
                         currentNums={this.props.currentNums}
@@ -187,7 +189,7 @@ class UpperSection extends React.Component{
                     />
                 </div>
                 <div>
-                    <h3>6's</h3>
+                    <h3>sixes</h3>
                     <Section
                         section="sixes"
                         currentNums={this.props.currentNums}
@@ -197,12 +199,12 @@ class UpperSection extends React.Component{
                         confirmedValue={this.props.scorecard.sixes}
                     />
                 </div>
-                <div>
+                <div className="bonusDisplayDiv">
                     <h3>BONUS</h3>
                     <div>
                         { totalScore >= 63 ?
                             <div style={bonusDisplay}>
-                                +35
+                                <span>+35</span>
                             </div>
                         :
                             <div style={bonusDisplay}>

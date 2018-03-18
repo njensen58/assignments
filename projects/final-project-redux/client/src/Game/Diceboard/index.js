@@ -19,7 +19,9 @@ class Diceboard extends React.Component {
     handleRoll(){
         if(this.props.controls.hasSelected){
             if(this.state.rollCount < 3 || this.state.savedDie.length < 5){
-                this.props.undoReset();
+                if(this.props.controls.shouldReset){
+                    this.props.undoReset();
+                }
                 let dice1 = Math.floor(Math.random() * 6 + 1)
                 let dice2 = Math.floor(Math.random() * 6 + 1)
                 let dice3 = Math.floor(Math.random() * 6 + 1)
@@ -50,8 +52,6 @@ class Diceboard extends React.Component {
                 savedDie: [],
                 currentRoll: []
             })
-        } else {
-            console.log('fuck')
         }
     }
 

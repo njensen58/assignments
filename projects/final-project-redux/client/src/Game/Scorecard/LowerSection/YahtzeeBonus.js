@@ -45,24 +45,22 @@ class YahtzeeBonus extends React.Component{
         const selected = {
             backgroundColor: this.state.isSelected ? '#97AABD' : '#D5DEDC',
             width: this.state.isSelected ? '45px' : '75px',
-            height: '35px',
+            height: '100%',
             borderRight: '1px solid black',
             display: 'flex',
             justifyContent: 'center',
             alignItems: 'center',
             borderRadius: '3px',
-            margin: '2px'
         }
 
         const confirmed = {
             width: '75px',
-            height: '35px',
+            height: '100%',
             borderRight: '1px solid black',
             display: 'flex',
             justifyContent: 'center',
             alignItems: 'center',
             borderRadius: '3px',
-            margin: '2px',
             backgroundColor: 'darkslategrey',
             color: 'white'
         }
@@ -71,20 +69,20 @@ class YahtzeeBonus extends React.Component{
         const totalBonus = this.props.confirmedValue;
 
         return (
-                <div>
+                <div className="yahtzeeBonusdisplay">
                     <div style={selected} onClick={this.handleSelected}>
                     {this.state.isSelected ?
                         <div>
                             {this.props.scorecard.yahtzeeBonus.length > 0 ?
-                                totalBonus + 100
+                                <span>totalBonus + 100</span>
                             :
-                                 this.props.value
+                                 <span>{this.props.value}</span>
                             }
                         </div>
                     :
                         <div>
                             {/*this displays total bonus added together*/}
-                            {totalBonus > 0 ? totalBonus : ''}
+                            {totalBonus > 0 ? <span>totalBonus</span> : ''}
                         </div>
                     }
                     </div>

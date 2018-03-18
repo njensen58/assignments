@@ -58,8 +58,8 @@ class Die extends React.Component {
             this.rollsShouldEnd();
         }
         const selected = {
-            backgroundColor: this.state.isLocked ? "#314455" : "#EAE7DC",
-            color: this.state.isLocked ? "#EAE7DC" : "darkslategrey",
+            backgroundColor: this.state.isLocked ? "#1c2c3a" : "#EAE7DC",
+            color: this.state.isLocked ? 'white' : "darkslategrey",
         }
         {/*other style is in css .dieContainer div */}
 
