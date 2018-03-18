@@ -222,7 +222,7 @@ class LowerSection extends React.Component {
 
 
     updateScore(value, section){
-        this.props.updateScorecard(value, section)
+        this.props.updateScorecard(value, section);
         this.props.updateGameControl(section);
         this.props.resetCurrentNums();
         this.props.isDoneSelecting();
@@ -244,7 +244,8 @@ class LowerSection extends React.Component {
             display: 'flex',
             justifyContent: 'center',
             alignItems: 'center',
-            borderRadius: '3px',
+            borderTopRightRadius: '3px',
+            borderBottomRightRadius: '3px',
             backgroundColor: totalScore < 1 ? '#D5DEDC' : 'darkslategrey',
             color: totalScore < 1 ? '#3337' : 'white'
         }

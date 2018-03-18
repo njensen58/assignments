@@ -3,8 +3,15 @@ import UpperSection from './UpperSection';
 import LowerSection from './LowerSection';
 
 function Scorecard(props){
+
+    const howToPlay = {
+        display: 'none'
+    }
     return (
         <div className="scorecardContainer">
+            <div style={howToPlay}>
+
+            </div>
             <div className="upperSectionDiv">
                 <UpperSection
                     currentNums={props.currentNums}

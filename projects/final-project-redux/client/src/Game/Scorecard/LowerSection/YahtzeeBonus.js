@@ -50,7 +50,8 @@ class YahtzeeBonus extends React.Component{
             display: 'flex',
             justifyContent: 'center',
             alignItems: 'center',
-            borderRadius: '3px',
+            borderTopRightRadius: '3px',
+            borderBottomRightRadius: '3px',
         }
 
         const confirmed = {
@@ -60,7 +61,8 @@ class YahtzeeBonus extends React.Component{
             display: 'flex',
             justifyContent: 'center',
             alignItems: 'center',
-            borderRadius: '3px',
+            borderTopRightRadius: '3px',
+            borderBottomRightRadius: '3px',
             backgroundColor: 'darkslategrey',
             color: 'white'
         }

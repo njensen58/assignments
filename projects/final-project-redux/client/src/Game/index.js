@@ -2,6 +2,11 @@ import React from 'react';
 import Scorecard from './Scorecard';
 import Diceboard from './Diceboard';
 import { connect } from 'react-redux';
+import { addHighScore } from '../redux/highscores';
+import { restartGame } from '../redux/gamecontrol';
+import { resetScorecard } from '../redux/scorecard';
+import './gameStyle.css';
+
 
 let totalGameScore = 0;
 
@@ -10,12 +15,16 @@ class Game extends React.Component {
         super();
         this.state = {
             currentNums: [],
-            isGameComplete: false
+            isGameComplete: false,
+            name: ""
         }
         this.updateCurrentNums = this.updateCurrentNums.bind(this);
         this.resetCurrentNums = this.resetCurrentNums.bind(this);
+        this.handleChange = this.handleChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
         this.gameover = this.gameover.bind(this);
     }
+
 
     updateCurrentNums(nums){
         this.setState({
@@ -27,6 +36,26 @@ class Game extends React.Component {
         this.setState({
             currentNums: []
         })
+    }
+
+    handleChange(e){
+        this.setState({
+            name: e.target.value
+        })
+    }
+
+    handleSubmit(e){
+        e.preventDefault();
+        const newHighScore = {name: this.state.name, score: totalGameScore}
+        this.props.addHighScore(newHighScore).then(() => {
+            this.setState({
+                isGameComplete: false
+            }, ()=>{
+                this.props.resetScorecard();
+                this.props.restartGame();
+            })
+            this.props.history.push('/highscores');
+        });
     }
 
     gameover(){
@@ -61,8 +90,20 @@ class Game extends React.Component {
                         currentNums={this.state.currentNums}
                         resetCurrentNums={this.resetCurrentNums}
                     />
-                    <div>
-                        Total Score: {totalGameScore}
+                    <div className="enterHighScoreDiv">
+                        <h3>Score: {totalGameScore}</h3>
+                        <div>
+                            <form onSubmit={this.handleSubmit}>
+                                <input
+                                    type="text"
+                                    name="name"
+                                    onChange={this.handleChange}
+                                    placeholder="Enter Name"
+                                    value={this.state.name}
+                                />
+                                <button>Submit</button>
+                            </form>
+                        </div>
                     </div>
                 </div>
             :
@@ -82,4 +123,4 @@ class Game extends React.Component {
     }
 }
 
-export default connect(state=>state, {})(Game);
+export default connect(state=>state, { addHighScore, restartGame, resetScorecard })(Game);

@@ -18,7 +18,7 @@ mongoose.connect('mongodb://localhost/yahtzeeClone', (err) => {
 
 
 
-app.use('/scorecards', require('./routes/scorecards'));
+app.use('/highscores', require('./routes/highscores'));
 
 
 app.listen(port, () => {

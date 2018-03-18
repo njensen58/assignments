@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const scorecardSchema = ({
+const highscoreSchema = ({
     name: {
         type: String,
         required: true
@@ -12,4 +12,4 @@ const scorecardSchema = ({
     }
 })
 
-module.exports = mongoose.model("Scorecards", scorecardSchema);
+module.exports = mongoose.model("Highscores", highscoreSchema);
