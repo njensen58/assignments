@@ -23,7 +23,6 @@ button {
 /*---GAME---*/
 /*----------*/
 .gameContainer {
-
 }
 
 .gameComplete {
@@ -33,6 +32,7 @@ button {
 .gameInProgress {
     display: grid;
     grid-template-columns: 3fr 1fr;
+
 }
 
 .gameComplete {
@@ -103,6 +103,7 @@ button {
     background-color: #EAE7DC;
     border: 1px solid #8E8D8A;
     border-radius: 1px;
+    margin-top: 20px;
 }
 
 
@@ -649,6 +650,7 @@ button {
         background-color: #314455;
         border: 1px solid #644E5B;
         border-radius: 1px;
+        margin-top: 20px;
     }
 
     .dieContainer {

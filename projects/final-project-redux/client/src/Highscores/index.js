@@ -31,6 +31,9 @@ class Highscores extends React.Component {
         })
         return (
             <div className="highscoreContainer">
+                <div className="highscoreTitle">
+                    <h1>HIGHSCORES</h1>
+                </div>
                 {mappedScores}
             </div>
         )
