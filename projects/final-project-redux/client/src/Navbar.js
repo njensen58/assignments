@@ -5,14 +5,14 @@ class Navbar extends React.Component {
     constructor(){
         super();
         this.state = {
-            expandedNav: true
+            expandedNav: false
         }
         this.handleExpandNav = this.handleExpandNav.bind(this);
     }
 
     handleExpandNav(){
         this.setState(prevState => ({
-            expandedNav: prevState.expandedNav ? false : true
+            expandedNav: !prevState.expandedNav ? true : false
         }))
     }
 

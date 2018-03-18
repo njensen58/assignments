@@ -187,8 +187,7 @@ button {
 .dieContainer div {
     height: 35px;
     width: 35px;
-    border: 1px solid #333;
-    border-radius: 10px;
+    border-radius: 8px;
     margin: 5px;
     font-size: 20px;
     display: flex;
@@ -197,7 +196,7 @@ button {
 }
 
 .dieContainer div:hover {
-    border: 3px solid #333;
+    border: 2px solid #EAE7DC;
     transition: .2s;
 }
 
@@ -545,7 +544,7 @@ button {
     }
 
     .rollBtnDiv {
-        padding: 5px;
+
     }
 
     .totalScoreDiv {

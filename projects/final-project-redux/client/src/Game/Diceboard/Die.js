@@ -11,6 +11,7 @@ class Die extends React.Component {
         }
         this.handleLock = this.handleLock.bind(this);
         this.rollsShouldEnd = this.rollsShouldEnd.bind(this);
+        this.handleDiceImages = this.handleDiceImages.bind(this);
     }
 
     componentWillReceiveProps(){
@@ -53,25 +54,57 @@ class Die extends React.Component {
 
     }
 
+
+    handleDiceImages(){
+        if(this.state.isLocked){
+            if(this.state.lockedNum === 1){
+                return require('../../resources/imgs/Dice1.svg');
+            } else if(this.state.lockedNum === 2){
+                return require('../../resources/imgs/Dice2.svg');
+            } else if(this.state.lockedNum === 3){
+                return require('../../resources/imgs/Dice3.svg');
+            } else if(this.state.lockedNum === 4){
+                return require('../../resources/imgs/Dice4.svg');
+            } else if(this.state.lockedNum === 5){
+                return require('../../resources/imgs/Dice5.svg');
+            } else if(this.state.lockedNum === 6){
+                return require('../../resources/imgs/Dice6.svg');
+        }
+    }
+        if(!this.state.isLocked){
+            if(this.props.num === 1){
+                return require('../../resources/imgs/Dice1.svg');
+            } else if(this.props.num === 2){
+                return require('../../resources/imgs/Dice2.svg');
+            } else if(this.props.num === 3){
+                return require('../../resources/imgs/Dice3.svg');
+            } else if(this.props.num === 4){
+                return require('../../resources/imgs/Dice4.svg');
+            } else if(this.props.num === 5){
+                return require('../../resources/imgs/Dice5.svg');
+            } else if(this.props.num === 6){
+                return require('../../resources/imgs/Dice6.svg');
+            }
+        }
+    }
+
     render(){
         if(!this.state.isLocked && !this.state.hasSaved){
             this.rollsShouldEnd();
         }
         const selected = {
-            backgroundColor: this.state.isLocked ? "#1c2c3a" : "#EAE7DC",
+            backgroundImage: 'url(' + this.handleDiceImages() + ')',
             color: this.state.isLocked ? 'white' : "darkslategrey",
+            backgroundSize: 'contain',
+            borderRadius: '15px',
+            backgroundColor: this.state.isLocked ? '#A8D0E6' : 'white'
+
         }
         {/*other style is in css .dieContainer div */}
 
         return (
 
                 <div style={selected} onClick={this.handleLock} >
-
-                    { this.state.isLocked ?
-                        this.state.lockedNum
-                    :
-                        this.props.num
-                    }
 
                 </div>
         )
