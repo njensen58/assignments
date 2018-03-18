@@ -96,7 +96,7 @@ button {
 /*---------------*/
 .scorecardContainer {
     grid-column: 1 / -1;
-    grid-row: 1;
+    grid-row: 2;
     padding: 10px;
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -106,7 +106,44 @@ button {
 }
 
 
+.questionIcon {
+    color: #1119;
+}
 
+.questionIcon:hover {
+    color: #333;
+    transition: .3s;
+}
+
+.howToPlayDiv {
+    height: 530px;
+    padding: 20px;
+}
+
+.howToPlayDiv h1 {
+    margin: 15px 0;
+    color: white;
+    text-align: center;
+    padding: 10px 10px;
+    border-bottom: 1px solid white;
+    border-top: 1px solid white;
+    text-transform: uppercase;
+}
+
+
+.howToPlayDiv p {
+    color: white;
+    font-size: 12px;
+    margin: 10px 0;
+}
+
+.howToPlayDiv span {
+    color: white;
+    margin-top: 10px;
+    border-bottom: 1px dashed white;
+    text-transform: uppercase;
+    font-style: italic;
+}
 
 
 /*---------------*/
@@ -114,7 +151,7 @@ button {
 /*---------------*/
 .diceboardContainer {
     grid-column: 1 / -1;
-    grid-row: 2;
+    grid-row: 3;
     padding: 0 2px;
     display: grid;
     grid-template-columns: 1fr 5fr 1fr;
