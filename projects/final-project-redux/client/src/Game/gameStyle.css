@@ -23,6 +23,9 @@ button {
 /*---GAME---*/
 /*----------*/
 .gameContainer {
+    background-color: #333;
+    height: 97.5vh;
+    padding-top: 10px;
 }
 
 .gameComplete {
@@ -121,6 +124,16 @@ button {
     padding: 20px;
 }
 
+.scorecardContainer > div:nth-child(2) {
+    width: 100%;
+    position: absolute;
+    grid-row: 1;
+    flex-direction: column;
+    background-color: rgba(4, 3, 3, 0.83);
+    z-index: 1;
+    overflow-y: scroll;
+}
+
 .howToPlayDiv h1 {
     margin: 15px 0;
     color: white;
@@ -187,7 +200,7 @@ button {
 .dieContainer div {
     height: 35px;
     width: 35px;
-    border-radius: 8px;
+    border-radius: 6px;
     margin: 5px;
     font-size: 20px;
     display: flex;
@@ -417,6 +430,10 @@ button {
 /*--------------------*/
 /*------ 400 px ------*/
 @media only screen and (min-width: 400px){
+    .gameContainer {
+        padding-top: 20px;
+    }
+
     .lowerSectionButtonsContainer span,
     .upperSectionButtonsContainer span,
     .yahtzeeBonusDisplay span,
@@ -461,6 +478,9 @@ button {
     .lowerSaveBtnDiv {
         margin-left: 5px;
     }
+
+
+
 
 }
 
@@ -519,6 +539,29 @@ button {
         font-weight: 300;
     }
 
+    .howToPlayDiv {
+        height: 588px;
+        padding: 20px 40px;
+    }
+
+    .howToPlayDiv h1 {
+        margin: 15px 0;
+        padding: 10px 10px;
+        font-size: 30px;
+        letter-spacing: 1px;
+    }
+
+
+    .howToPlayDiv p {
+        font-size: 14px;
+        font-weight: lighter;
+    }
+
+    .howToPlayDiv span {
+        letter-spacing: 1px;
+        font-size: 18px;
+    }
+
 }
 
 /*--------------------*/
@@ -556,6 +599,10 @@ button {
         font-weight: 400;
         letter-spacing: 1px;
     }
+
+    .howToPlayDiv {
+        height: 592px;
+    }
 }
 
 
@@ -585,11 +632,33 @@ button {
         font-weight: 600;
         height: 74px;
         width: 74px;
+        border-radius: 10px;
     }
 
     .rollBtn {
         height: 90%;
         margin-top: 5px;
+    }
+
+    .howToPlayDiv {
+        height: 663px;
+        padding: 20px 60px;
+    }
+
+    .howToPlayDiv h1 {
+        margin: 15px 0;
+        padding: 10px 10px;
+        font-size: 35px;
+        letter-spacing: 2px;
+    }
+
+
+    .howToPlayDiv p {
+        font-size: 16px;
+    }
+
+    .howToPlayDiv span {
+    letter-spacing: 1px;
     }
 
 }
@@ -621,6 +690,10 @@ button {
 /*--------------------*/
 /*------ 900 px ------*/
 @media only screen and (min-width: 900px){
+    .gameContainer {
+        padding-top: 35px;
+    }
+
     .scorecardContainer {
         grid-column: 1 / 3;
         grid-row: 2;
@@ -663,7 +736,7 @@ button {
         /* height: 35px;
         width: 35px; */
         border: 1px solid #333;
-        border-radius: 10px;
+        border-radius: 12px;
         margin: 5px;
         font-size: 30px;
         display: flex;
@@ -733,6 +806,31 @@ button {
     .dieContainer {
         height: 595px;
     }
+
+    .howToPlayDiv {
+        height: 694px;
+        padding: 20px 120px;
+    }
+
+
+
+    .howToPlayDiv h1 {
+        margin: 15px 0;
+        padding: 10px 10px;
+        font-size: 35px;
+        letter-spacing: 2px;
+    }
+
+
+    .howToPlayDiv p {
+        font-size: 18px;
+        font-weight: 400;
+    }
+
+    .howToPlayDiv span {
+    letter-spacing: 1.5px;
+    font-size: 24px;
+    }
 }
 
 
@@ -744,7 +842,7 @@ button {
     }
 
     .gameInProgress {
-        margin: 0 30px;
+        margin: 0 60px;
     }
 
     .diceboardContainer {
@@ -755,10 +853,40 @@ button {
         font-size: 40px;
         height: 100px;
         width: 100px;
+        border-radius: 15px;
     }
 
     .howToPlayIcon {
-        right: 150px;
+        right: 180px;
+    }
+
+    .howToPlayDiv {
+        height: 700px;
+        padding: 20px;
+    }
+
+    .scorecardContainer > div:nth-child(2) {
+        width: 90vw;
+        position: absolute;
+        padding: 20px 120px;
+    }
+
+    .howToPlayDiv h1 {
+        margin: 15px 0;
+        padding: 10px 10px;
+        font-size: 35px;
+        letter-spacing: 2px;
+    }
+
+
+    .howToPlayDiv p {
+        font-size: 18px;
+        font-weight: 400;
+    }
+
+    .howToPlayDiv span {
+        letter-spacing: 1.5px;
+        font-size: 24px;
     }
 }
 
@@ -767,11 +895,17 @@ button {
 /*------ 1400 px ------*/
 @media only screen and (min-width: 1400px){
     .gameInProgress {
-        margin: 0 50px;
+        margin: 0 140px;
     }
 
     .howToPlayIcon {
-        right: 170px;
+        right: 260px;
+    }
+
+    .scorecardContainer > div:nth-child(2) {
+        width: 84vw;
+        position: absolute;
+        padding: 20px 140px;
     }
 }
 
@@ -779,15 +913,26 @@ button {
 /*------ 1600 px ------*/
 @media only screen and (min-width: 1600px){
     .gameInProgress {
-        margin: 0 100px;
+        margin: 0 190px;
     }
+
+    .howToPlayIcon {
+        position: fixed;
+        left: 253px;
+    }
+
+    .scorecardContainer > div:nth-child(2) {
+        width: 75vw;
+        position: absolute;
+    }
+
 }
 
 /*--------------------*/
 /*------ 1800 px ------*/
 @media only screen and (min-width: 1600px){
     .gameInProgress {
-        margin: 0 150px;
+        margin: 0 250px;
     }
 
     .howToPlayIcon {

@@ -21,13 +21,7 @@ class Scorecard extends React.Component {
     render(){
         const howToPlay = {
             display: this.state.isLearning ? 'flex' : 'none',
-            position: 'absolute',
-            gridRow: '1',
-            width: '100%',
-            flexDirection: 'column',
-            backgroundColor: 'rgba(4, 3, 3, 0.83)',
-            zIndex: '1',
-            overflowY: 'scroll'
+
         }
 
         return (

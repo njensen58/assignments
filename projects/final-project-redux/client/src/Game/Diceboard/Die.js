@@ -96,7 +96,7 @@ class Die extends React.Component {
             backgroundImage: 'url(' + this.handleDiceImages() + ')',
             color: this.state.isLocked ? 'white' : "darkslategrey",
             backgroundSize: 'contain',
-            borderRadius: '15px',
+        
             backgroundColor: this.state.isLocked ? '#A8D0E6' : 'white'
 
         }
