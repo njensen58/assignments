@@ -13,6 +13,7 @@ class Highscores extends React.Component {
 
     componentDidMount(){
         this.props.getHigh().then(() => {
+            this.props.highscores.highscores.sort((a, b) => Number(b.score) - Number(a.score))
             this.setState({
                 highscores: this.props.highscores.highscores
             })
@@ -20,6 +21,7 @@ class Highscores extends React.Component {
     }
 
     render(){
+
         const mappedScores = this.state.highscores.map(score => {
             return (
                 <Highscore
@@ -30,11 +32,33 @@ class Highscores extends React.Component {
             )
         })
         return (
-            <div className="highscoreContainer">
-                <div className="highscoreTitle">
-                    <h1>HIGHSCORES</h1>
+            <div className="highscorePageContainer">
+                <div className="followMeDiv">
+                    <h3>-Follow me-</h3>
+                    <div>
+                        <a href="https://github.com/njensen58"><i className="ion-social-github socialIconG"></i></a>
+                        <a href="https://linkedin.com/in/natej58"><i className="ion-social-linkedin socialIconL"></i></a>
+                        <a href="https://www.instagram.com/nate.sj/"><i className="ion-social-instagram socialIconI"></i></a>
+                    </div>
                 </div>
-                {mappedScores}
+                <div className="aboutDiv">
+                    <h3>-About-</h3>
+                    <p>
+                        - Final Project by Nate Jensen @ V School
+                    </p>
+                    <p>
+                        - Front-end made with React
+                    </p>
+                    <p>
+                        - Back-end made with Express & MongoDB w/Mongoose
+                    </p>
+                </div>
+                <div className="highscoreContainer">
+                    <div className="highscoreTitle">
+                        <h1>HIGHSCORES</h1>
+                    </div>
+                    {mappedScores}
+                </div>
             </div>
         )
     }

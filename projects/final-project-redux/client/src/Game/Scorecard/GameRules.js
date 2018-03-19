@@ -60,7 +60,7 @@ function GameRules(){
                 </p>
                 <p>
                      <i className="ion-happy-outline icon"></i>
-                          THANKS FOR PLAYING!
+                           - THANKS FOR PLAYING! -
                      <i className="ion-happy-outline icon"></i> - The Almighty Developer
                 </p>
         </div>

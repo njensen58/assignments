@@ -38,10 +38,6 @@ button {
 
 }
 
-.gameComplete {
-
-}
-
 .enterHighScoreDiv {
     position: absolute;
     width: 100%;
@@ -134,6 +130,16 @@ button {
     overflow-y: scroll;
 }
 
+.scorecardContainer > div:nth-child(2)::-webkit-scrollbar {
+    background-color: #333;
+    width: 15px;
+}
+
+.scorecardContainer > div:nth-child(2)::-webkit-scrollbar-thumb {
+    background-color: #EAE7DC;
+    border-radius: 2px;
+}
+
 .howToPlayDiv h1 {
     margin: 15px 0;
     color: white;
@@ -178,6 +184,9 @@ button {
     background-color: #314455;
     border: 2px solid #644E5B;
     border-radius: 1px;
+    -webkit-box-shadow: -1px 29px 45px 5px rgba(0,0,0,0.3);
+    -moz-box-shadow: -1px 29px 45px 5px rgba(0,0,0,0.3);
+    box-shadow: -1px 29px 45px 5px rgba(0,0,0,0.3);
 }
 
 .rollCountDiv {
@@ -280,17 +289,26 @@ button {
 .upperSectionContainer > div {
     border-top-left-radius: 5px;
     border-bottom-left-radius: 5px;
-
+    -webkit-box-shadow: -2px 3px 4px 0px rgba(0,0,0,0.70);
+    -moz-box-shadow: -2px 3px 4px 0px rgba(0,0,0,0.70);
+    box-shadow: -2px 3px 4px 0px rgba(0,0,0,0.70);
 }
 
 .lowerSectionContainer > div {
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
+    -webkit-box-shadow: 2px 3px 4px 0px rgba(0,0,0,0.61);
+    -moz-box-shadow: 2px 3px 4px 0px rgba(0,0,0,0.61);
+    box-shadow: 2px 3px 4px 0px rgba(0,0,0,0.61);
 }
 
 .upperSectionContainer > div:hover,
 .lowerSectionContainer > div:hover {
     background-color: #333;
+    -webkit-box-shadow: 0px 10px 31px -5px rgba(0,0,0,0.80);
+    -moz-box-shadow: 0px 10px 31px -5px rgba(0,0,0,0.80);
+    box-shadow: 0px 10px 31px -5px rgba(0,0,0,0.80);
+    transition: .2s;
 }
 
 
@@ -562,6 +580,18 @@ button {
         font-size: 18px;
     }
 
+    .yahtzeeTitleDiv {
+        transform: translateY(-24px);
+    }
+
+    .yahtzeeTitleDiv h1 {
+        margin: 0;
+        font-size: 26px;
+        padding: 8px 3px;
+        margin-top: 2px;
+        letter-spacing: 7px;
+    }
+
 }
 
 /*--------------------*/
@@ -603,6 +633,16 @@ button {
     .howToPlayDiv {
         height: 592px;
     }
+
+    .yahtzeeTitleDiv {
+        transform: translateY(-24px);
+    }
+
+    .yahtzeeTitleDiv h1 {
+        font-size: 27px;
+        letter-spacing: 9px;
+    }
+
 }
 
 
@@ -673,6 +713,15 @@ button {
         letter-spacing: 2.5px;
     }
 
+    .yahtzeeTitleDiv {
+        transform: translateY(-26px);
+    }
+
+    .yahtzeeTitleDiv h1 {
+        font-size: 29px;
+        letter-spacing: 12px;
+    }
+
 }
 
 /*--------------------*/
@@ -694,9 +743,16 @@ button {
         padding-top: 35px;
     }
 
+    .gameCompleteDiceboard {
+
+    }
+
     .scorecardContainer {
         grid-column: 1 / 3;
         grid-row: 2;
+        -webkit-box-shadow: -1px 5px 61px 4px rgba(0,0,0,0.88);
+        -moz-box-shadow: -1px 5px 61px 4px rgba(0,0,0,0.88);
+        box-shadow: -1px 5px 61px 4px rgba(0,0,0,0.88);
     }
 
     .upperSectionContainer > div,
@@ -718,15 +774,18 @@ button {
         padding: 0 2px;
         display: flex;
         flex-direction: column;
-        height: 665px;
+        height: 673px;
         background-color: #314455;
         border: 1px solid #644E5B;
         border-radius: 1px;
         margin-top: 20px;
+        -webkit-box-shadow: 10px 5px 43px 4px rgba(0,0,0,0.70);
+        -moz-box-shadow: 10px 5px 43px 4px rgba(0,0,0,0.70);
+        box-shadow: 10px 5px 43px 4px rgba(0,0,0,0.70);
     }
 
     .dieContainer {
-        height: 567px;
+        height: 575px;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
@@ -754,7 +813,6 @@ button {
         align-items: center;
     }
 
-
     .rollBtn {
         height: 70px;
         margin-top: 5px;
@@ -765,6 +823,15 @@ button {
         grid-row: 1;
         grid-column: 2;
         right: 92px;
+    }
+
+    .yahtzeeTitleDiv {
+        transform: translateY(-30px);
+    }
+
+    .yahtzeeTitleDiv h1 {
+        font-size: 32px;
+        letter-spacing: 15px;
     }
 
 }
@@ -795,7 +862,7 @@ button {
     }
 
     .diceboardContainer {
-        height: 695px;
+        height: 703px;
     }
 
     .dieContainer div {
@@ -804,7 +871,7 @@ button {
     }
 
     .dieContainer {
-        height: 595px;
+        height: 605px;
     }
 
     .howToPlayDiv {
@@ -831,6 +898,16 @@ button {
     letter-spacing: 1.5px;
     font-size: 24px;
     }
+
+    .yahtzeeTitleDiv {
+        transform: translateY(-32px);
+    }
+
+    .yahtzeeTitleDiv h1 {
+        font-size: 34px;
+        letter-spacing: 20px;
+    }
+
 }
 
 
@@ -839,6 +916,7 @@ button {
 @media only screen and (min-width: 1150px){
     .gameContainer {
         background-color: #333;
+        height: 104vh
     }
 
     .gameInProgress {
@@ -888,6 +966,7 @@ button {
         letter-spacing: 1.5px;
         font-size: 24px;
     }
+
 }
 
 
@@ -907,6 +986,7 @@ button {
         position: absolute;
         padding: 20px 140px;
     }
+
 }
 
 /*--------------------*/
@@ -917,8 +997,7 @@ button {
     }
 
     .howToPlayIcon {
-        position: fixed;
-        left: 253px;
+        transform: translateX(-100px);
     }
 
     .scorecardContainer > div:nth-child(2) {
@@ -938,4 +1017,5 @@ button {
     .howToPlayIcon {
         right: 270px;
     }
+
 }

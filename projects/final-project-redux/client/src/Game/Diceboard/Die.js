@@ -14,6 +14,12 @@ class Die extends React.Component {
         this.handleDiceImages = this.handleDiceImages.bind(this);
     }
 
+    componentDidUpdate(){
+        if(!this.state.isLocked && !this.state.hasSaved){
+            this.rollsShouldEnd();
+        }
+    }
+
     componentWillReceiveProps(){
             if(this.props.controls.shouldReset){
                 this.setState({
@@ -89,18 +95,16 @@ class Die extends React.Component {
     }
 
     render(){
-        if(!this.state.isLocked && !this.state.hasSaved){
-            this.rollsShouldEnd();
-        }
+
         const selected = {
             backgroundImage: 'url(' + this.handleDiceImages() + ')',
             color: this.state.isLocked ? 'white' : "darkslategrey",
             backgroundSize: 'contain',
-        
+
             backgroundColor: this.state.isLocked ? '#A8D0E6' : 'white'
 
         }
-        {/*other style is in css .dieContainer div */}
+        
 
         return (
 

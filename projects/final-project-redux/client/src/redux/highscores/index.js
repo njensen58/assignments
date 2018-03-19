@@ -1,11 +1,8 @@
 import axios from 'axios';
 
-const sortHighScores = (arr) => arr.sort((a, b) => Number(a.score) < Number(b.score));
-
 export function getHigh(){
     return function(dispatch){
         return axios.get('/highscores').then(response => {
-            sortHighScores(response.data)
             dispatch({
                 type: "GET_HIGH",
                 highscores: response.data

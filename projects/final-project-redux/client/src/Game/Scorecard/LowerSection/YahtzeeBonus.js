@@ -70,13 +70,15 @@ class YahtzeeBonus extends React.Component{
 
         const totalBonus = this.props.confirmedValue;
 
+        const preview = totalBonus + 100;
+
         return (
                 <div className="yahtzeeBonusdisplay">
                     <div style={selected} onClick={this.handleSelected}>
                     {this.state.isSelected ?
                         <div>
                             {this.props.scorecard.yahtzeeBonus.length > 0 ?
-                                <span>totalBonus + 100</span>
+                                <span>{preview}</span>
                             :
                                  <span>{this.props.value}</span>
                             }
@@ -84,7 +86,7 @@ class YahtzeeBonus extends React.Component{
                     :
                         <div>
                             {/*this displays total bonus added together*/}
-                            {totalBonus > 0 ? <span>totalBonus</span> : ''}
+                            {totalBonus > 0 ? <span>{totalBonus}</span> : ''}
                         </div>
                     }
                     </div>

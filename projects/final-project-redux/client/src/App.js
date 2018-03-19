@@ -4,7 +4,6 @@ import Navbar from './Navbar';
 import Home from './Home';
 import Game from './Game';
 import Highscores from './Highscores';
-import About from './About';
 import Footer from './Footer';
 
 
@@ -16,7 +15,6 @@ function App(props){
                     <Route exact path="/" component={Home}/>
                     <Route path="/game" component={Game}/>
                     <Route path="/highscores" component={Highscores}/>
-                    <Route path="/about" component={About}/>
                 </Switch>
             <Footer />
         </div>
