@@ -22,6 +22,14 @@ export function updateGameControl(section){
     }
 }
 
+export function updateCurrentGame(section, bool){
+    return {
+        type: "UPDATE_CURRENT_GAME",
+        section,
+        bool
+    }
+}
+
 export function restartGame(){
     return {
         type: "RESTART_GAME"
@@ -35,6 +43,14 @@ function reducer(state = gameControl, action){
         return {
             ...state,
             [action.section]: true
+        }
+    case "UPDATE_CURRENT_GAME":
+        if(action.bool === 'false'){
+            action.bool = false
+        }
+        return {
+            ...state,
+            [action.section]: action.bool
         }
     case "RESTART_GAME":
         return {

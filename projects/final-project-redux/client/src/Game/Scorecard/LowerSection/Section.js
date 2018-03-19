@@ -14,6 +14,18 @@ class Section extends React.Component{
         this.handleConfirm = this.handleConfirm.bind(this);
     }
 
+    componentDidMount(){
+        if(sessionStorage.getItem('gamecontrol')){
+            const currentGame = JSON.parse(sessionStorage.gamecontrol);
+            const section = this.props.section;
+            if(currentGame[section]){
+                this.setState({
+                    isConfirmed: true
+                })
+            }
+        }
+    }
+
     componentWillReceiveProps(){
         if(!this.props.allowSelection && this.state.isSelected){
             this.setState({

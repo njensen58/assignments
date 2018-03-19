@@ -3,8 +3,8 @@ import Scorecard from './Scorecard';
 import Diceboard from './Diceboard';
 import { connect } from 'react-redux';
 import { addHighScore } from '../redux/highscores';
-import { restartGame } from '../redux/gamecontrol';
-import { resetScorecard } from '../redux/scorecard';
+import { restartGame, updateCurrentGame } from '../redux/gamecontrol';
+import { resetScorecard, updateScorecard  } from '../redux/scorecard';
 import './gameStyle.css';
 
 
@@ -25,6 +25,20 @@ class Game extends React.Component {
         this.gameover = this.gameover.bind(this);
     }
 
+    componentDidMount(){
+        if(sessionStorage.getItem('scorecard')){
+            if(sessionStorage.getItem('gamecontrol')){
+                const currentScore = JSON.parse(sessionStorage.scorecard);
+                const currentGame = JSON.parse(sessionStorage.gamecontrol);
+                for(let key in currentScore){
+                    this.props.updateScorecard(currentScore[key], key)
+                }
+                for(let key in currentGame){
+                    this.props.updateCurrentGame(key, currentGame[key])
+                }
+            }
+        }
+    }
 
     updateCurrentNums(nums){
         this.setState({
@@ -123,4 +137,10 @@ class Game extends React.Component {
     }
 }
 
-export default connect(state=>state, { addHighScore, restartGame, resetScorecard })(Game);
+export default connect(state=>state, {
+    addHighScore,
+    restartGame,
+    resetScorecard,
+    updateScorecard,
+    updateCurrentGame
+})(Game);

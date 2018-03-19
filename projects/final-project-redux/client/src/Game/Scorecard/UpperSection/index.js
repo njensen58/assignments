@@ -26,6 +26,14 @@ class UpperSection extends React.Component{
         this.updateScore = this.updateScore.bind(this);
     }
 
+    componentDidMount(){
+        if(sessionStorage.getItem('scorecard')){
+            const scoreCard = JSON.parse(sessionStorage.scorecard);
+            const section = this.props.section;
+            console.log(scoreCard)
+        }
+    }
+
     componentWillReceiveProps(){
         if(this.props.controls.shouldReset){
             this.setState({

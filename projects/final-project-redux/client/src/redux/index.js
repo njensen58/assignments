@@ -20,8 +20,13 @@ let store = createStore(rootReducer,
     applyMiddleware(thunk)
 );
 
+
+
 store.subscribe(()=>{
     let state = store.getState();
+    sessionStorage.setItem('scorecard', JSON.stringify(state.scorecard));
+    sessionStorage.setItem('gamecontrol', JSON.stringify(state.gamecontrol))
 })
+
 
 export default store;
