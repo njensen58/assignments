@@ -5,6 +5,7 @@ import Home from './Home';
 import Game from './Game';
 import Highscores from './Highscores';
 import Footer from './Footer';
+import Admin from './Admin';
 
 
 function App(props){
@@ -15,6 +16,7 @@ function App(props){
                     <Route exact path="/" component={Home}/>
                     <Route path="/game" component={Game}/>
                     <Route path="/highscores" component={Highscores}/>
+                    <Route path="/admin-almighty" component={Admin}/>
                 </Switch>
             <Footer />
         </div>

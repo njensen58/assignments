@@ -16,7 +16,7 @@ class YahtzeeBonus extends React.Component{
     }
 
     componentWillReceiveProps(){
-        if(!this.props.allowSelection && this.state.isSelected){
+        if(!this.props.controls.allowSelection && this.state.isSelected){
             this.setState({
                 isSelected: false
             })
@@ -25,16 +25,21 @@ class YahtzeeBonus extends React.Component{
 
     handleSelected(){
     if(this.props.controls.allowSelection && this.props.scorecard.yahtzee > 0){
+        if(this.props.value > 0){
             this.setState(prevState => ({
                 isSelected: !prevState.isSelected ? true : false
             }))
         }
             this.props.calculateValue();
         }
+    }
 
 
 
     updateYahtzeeBonusScore(){
+        this.setState({
+            isSelected: false
+        })
         this.props.disallowSelection();
         this.props.updateYahtzeeBonus(this.props.value);
         this.props.resetCurrentNums();
@@ -75,7 +80,7 @@ class YahtzeeBonus extends React.Component{
         return (
                 <div className="yahtzeeBonusdisplay">
                     <div style={selected} onClick={this.handleSelected}>
-                    {this.state.isSelected ?
+                    {this.state.isSelected && this.props.value > 0 ?
                         <div>
                             {this.props.scorecard.yahtzeeBonus.length > 0 ?
                                 <span>{preview}</span>

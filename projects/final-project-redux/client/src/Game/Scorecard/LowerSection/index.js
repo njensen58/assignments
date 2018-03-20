@@ -20,8 +20,7 @@ class LowerSection extends React.Component {
             largeStraight: 0,
             yahtzee: 0,
             chance: 0,
-            yahtzeeBonus: 0,
-            yahtzeeBonusHasBeenCounted: false
+            yahtzeeBonus: 0
         }
         this.calculate3OfAKind = this.calculate3OfAKind.bind(this);
         this.calculate4OfAKind = this.calculate4OfAKind.bind(this);
@@ -44,8 +43,7 @@ class LowerSection extends React.Component {
                 largeStraight: 0,
                 yahtzee: 0,
                 chance: 0,
-                yahtzeeBonus: 0,
-                yahtzeeBonusHasBeenCounted: false
+                yahtzeeBonus: 0
             })
         }
     }
@@ -198,6 +196,7 @@ class LowerSection extends React.Component {
     }
 
     calculateYahtzeeBonus(){
+        console.log(this.state.yahtzeeBonus)
         if(this.props.currentNums.length > 0){
             if(this.props.gamecontrol.yahtzee === true){
                 const value = this.props.currentNums
