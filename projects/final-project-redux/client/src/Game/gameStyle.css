@@ -524,7 +524,7 @@ button {
     .upperSectionContainer h3,
     .lowerSectionContainer h3 {
         font-size: 13px;
-        width: 110px;
+        width: 95px;
         font-weight: 400;
         letter-spacing: 1.5px;
     }
@@ -558,7 +558,7 @@ button {
     }
 
     .howToPlayDiv {
-        height: 588px;
+        height: 590px;
         padding: 20px 40px;
     }
 
@@ -631,7 +631,7 @@ button {
     }
 
     .howToPlayDiv {
-        height: 592px;
+        height: 600px;
     }
 
     .yahtzeeTitleDiv {
@@ -681,7 +681,7 @@ button {
     }
 
     .howToPlayDiv {
-        height: 663px;
+        height: 680px;
         padding: 20px 60px;
     }
 
@@ -875,7 +875,7 @@ button {
     }
 
     .howToPlayDiv {
-        height: 694px;
+        height: 705px;
         padding: 20px 120px;
     }
 
