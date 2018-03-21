@@ -44,13 +44,13 @@ class Highscores extends React.Component {
                 <div className="aboutDiv">
                     <h3>-About-</h3>
                     <p>
-                        - Final Project by Nate Jensen @ V School
+                        - Final Project by Nate Jensen @ V School.
                     </p>
                     <p>
-                        - Front-end made with React & Redux w/ session storage
+                        - Front-end made with React & Redux.
                     </p>
                     <p>
-                        - Back-end made with Express & MongoDB w/Mongoose
+                        - Back-end made with Express & MongoDB w/Mongoose.
                     </p>
                 </div>
                 <div className="highscoreContainer">
