@@ -30,7 +30,6 @@ class UpperSection extends React.Component{
         if(sessionStorage.getItem('scorecard')){
             const scoreCard = JSON.parse(sessionStorage.scorecard);
             const section = this.props.section;
-            console.log(scoreCard)
         }
     }
 

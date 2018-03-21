@@ -92,10 +92,10 @@ class Admin extends React.Component{
             <div className="adminPageContainer">
                 <div style={sideBar}>
                 { !this.state.showSidebar ?
-                    <button onClick={this.toggleSidebar}><i className="ion-ios-arrow-right"></i></button>
+                    <button onClick={this.toggleSidebar}><i className="ion-ios-arrow-left"></i></button>
                 :
                     <div className="activeBtn">
-                        <button onClick={this.toggleSidebar}><i className="ion-ios-arrow-left"></i></button>
+                        <button onClick={this.toggleSidebar}><i className="ion-ios-arrow-right"></i></button>
                         <Sidebar
                             handleChange={this.handleChange}
                             nameQuery={this.state.nameQuery}

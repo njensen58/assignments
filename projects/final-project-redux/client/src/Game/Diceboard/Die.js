@@ -7,12 +7,15 @@ class Die extends React.Component {
         this.state = {
             isLocked: false,
             lockedNum: 0,
-            hasSaved: false
+            hasSaved: false,
+            currentImg: ''
         }
         this.handleLock = this.handleLock.bind(this);
         this.rollsShouldEnd = this.rollsShouldEnd.bind(this);
         this.handleDiceImages = this.handleDiceImages.bind(this);
     }
+
+
 
     componentDidUpdate(){
         if(!this.state.isLocked && !this.state.hasSaved){
@@ -28,11 +31,12 @@ class Die extends React.Component {
                     hasSaved: false
                 })
             }
+            console.log('hey')
     }
 
     handleLock(){
-        if(this.props.info.rollCount > 0){  /* To make sure numbers cannot be selected before populated */
-            if(!this.state.isLocked){  /* Once a number is selected, it cannot be unselected */
+        if(this.props.info.rollCount > 0 && this.props.num > 0){  /* To make sure numbers cannot be selected before populated */
+            if(!this.state.isLocked){  /* Once a number is saved, it cannot be unsaved */
                 this.setState({
                     isLocked: true,
                     lockedNum: this.props.num
@@ -95,16 +99,13 @@ class Die extends React.Component {
     }
 
     render(){
-
         const selected = {
             backgroundImage: 'url(' + this.handleDiceImages() + ')',
             color: this.state.isLocked ? 'white' : "darkslategrey",
             backgroundSize: 'contain',
-
             backgroundColor: this.state.isLocked ? '#A8D0E6' : 'white'
-
         }
-        
+
 
         return (
 

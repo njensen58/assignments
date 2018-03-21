@@ -47,7 +47,7 @@ class Highscores extends React.Component {
                         - Final Project by Nate Jensen @ V School
                     </p>
                     <p>
-                        - Front-end made with React w/ session storage
+                        - Front-end made with React & Redux w/ session storage
                     </p>
                     <p>
                         - Back-end made with Express & MongoDB w/Mongoose
