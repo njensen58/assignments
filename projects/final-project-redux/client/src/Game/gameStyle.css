@@ -217,7 +217,18 @@ button {
     align-items: center;
 }
 
-.dieContainer div:hover {
+.diceDiv {
+    border: 1px solid #333;
+}
+
+.diceDiv img {
+    background-size: contain;
+    height: 100%;
+    width: 100%;
+    border-radius: 5px
+}
+
+.diceDiv:hover {
     border: 2px solid #EAE7DC;
     transition: .2s;
 }
@@ -249,6 +260,8 @@ button {
 .rollBtn:active {
     background-color: #644E5B;
 }
+
+
 
 
 /*---------------*/
@@ -592,6 +605,10 @@ button {
         letter-spacing: 7px;
     }
 
+    .diceDiv img {
+        border-radius: 6px
+    }
+
 }
 
 /*--------------------*/
@@ -641,6 +658,10 @@ button {
     .yahtzeeTitleDiv h1 {
         font-size: 27px;
         letter-spacing: 9px;
+    }
+
+    .diceDiv img {
+        border-radius: 7px
     }
 
 }
@@ -699,6 +720,10 @@ button {
 
     .howToPlayDiv span {
     letter-spacing: 1px;
+    }
+
+    .diceDiv img {
+        border-radius: 11px;
     }
 
 }
@@ -794,7 +819,6 @@ button {
     .dieContainer div {
         /* height: 35px;
         width: 35px; */
-        border: 1px solid #333;
         border-radius: 12px;
         margin: 5px;
         font-size: 30px;
@@ -965,6 +989,10 @@ button {
     .howToPlayDiv span {
         letter-spacing: 1.5px;
         font-size: 24px;
+    }
+
+    .diceDiv img {
+        border-radius: 15px;
     }
 
 }

@@ -31,12 +31,12 @@ class Die extends React.Component {
                     hasSaved: false
                 })
             }
-            console.log('hey')
+
     }
 
     handleLock(){
         if(this.props.info.rollCount > 0 && this.props.num > 0){  /* To make sure numbers cannot be selected before populated */
-            if(!this.state.isLocked){  /* Once a number is saved, it cannot be unsaved */
+            if(!this.state.isLocked){  /* Once a number is saved, it cannot be unselected */
                 this.setState({
                     isLocked: true,
                     lockedNum: this.props.num
@@ -79,7 +79,9 @@ class Die extends React.Component {
                 return require('../../resources/imgs/Dice5.svg');
             } else if(this.state.lockedNum === 6){
                 return require('../../resources/imgs/Dice6.svg');
-        }
+            } else {
+                return ''
+            }
     }
         if(!this.state.isLocked){
             if(this.props.num === 1){
@@ -94,13 +96,14 @@ class Die extends React.Component {
                 return require('../../resources/imgs/Dice5.svg');
             } else if(this.props.num === 6){
                 return require('../../resources/imgs/Dice6.svg');
+            } else {
+                return ''
             }
         }
     }
 
     render(){
         const selected = {
-            backgroundImage: 'url(' + this.handleDiceImages() + ')',
             color: this.state.isLocked ? 'white' : "darkslategrey",
             backgroundSize: 'contain',
             backgroundColor: this.state.isLocked ? '#A8D0E6' : 'white'
@@ -109,8 +112,14 @@ class Die extends React.Component {
 
         return (
 
-                <div style={selected} onClick={this.handleLock} >
+                <div className="diceDiv" onClick={this.handleLock} >
+                    {this.props.info.rollCount > 0 ||this.props.controls.allowSelection ?
+                    <img src={this.handleDiceImages()} style={selected}/>
+                    :
+                    <div>
 
+                    </div>
+                    }
                 </div>
         )
     }
