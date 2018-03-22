@@ -12,7 +12,7 @@ class Project extends React.Component {
 
     handleDisplayExpand(){
         this.setState({
-            dropDown: this.state.dropDown ? false : true
+            dropDown: !this.state.dropDown ? true : false
         })
     }
 
@@ -37,7 +37,7 @@ class Project extends React.Component {
                     ''
                     :
                 <div onClick={this.handleDisplayExpand}>
-                    <p>{this.props.description}</p>
+                    <p className="projectDescription">{this.props.description}</p>
                     <div className="projectImgsDiv">
                         {this.props.imgs.map(image => <button onClick={()=>this.handleImgOpen(image)}><img src={image} alt=""/></button>)}
                     </div>

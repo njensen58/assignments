@@ -24,15 +24,13 @@ function Navbar(props){
                 <Link
                     to="/"
                     style={navStyle}
-                    >/Home</Link>
+                    >/Home
+                </Link>
                 <Link
                     to="/myprojects"
                     style={navStyle}
-                    >/Projects</Link>
-                <Link
-                    to="/about"
-                    style={navStyle}
-                    >/About-Resume</Link>
+                    >/Projects
+                </Link>
             </div>
 
         </div>

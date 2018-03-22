@@ -79,7 +79,6 @@ body {
 }
 
 .homePageScroll {
-    height: 700px;
     overflow-y: scroll;
     padding-top: 70px;
     padding-bottom: 40px;
@@ -87,11 +86,9 @@ body {
 
 .homePageScroll::-webkit-scrollbar {
     background-color: #1119;
+    width: 0px;
 }
 
-.homePageScroll::-webkit-scrollbar-thumb {
-    background-color: #ddd6;
-}
 
 .headerBackground h1,
 .headerBackground h2 {
@@ -135,7 +132,6 @@ body {
 .bodyDiv h3 {
     margin: 0;
     padding-bottom: 5px;
-    font-weight: 300;
     color: white;
     font-size: 12px;
     border-bottom: 1px solid white;
@@ -177,12 +173,14 @@ body {
 }
 
 
-.bodyDiv h4 {
+.introRightSideContainer h4 {
     margin: 0;
     padding: 5px;
     font-size: 16px;
     border-bottom: 1px solid white;
     font-weight: 400;
+    color: white;
+    text-align: center;
 }
 
 .bodyDiv ul {
@@ -199,14 +197,29 @@ body {
     line-height: 30px;
 }
 
+.aboutMeTitleDiv {
+    grid-column: 1 / -1;
+    margin-top: 30px;
+}
 
+.aboutMeTitleDiv h3 {
+    border: none;
+    margin-top: 20px;
+    font-size: 18px;
+    letter-spacing: 2px;
+}
 
+.projectsBtnDiv {
+    grid-column: 1 / -1;
+    display: flex;
+    justify-content: center;
+    margin: 8px 0 15px 0;
+}
 
 
 /*=====LEFT TO RIGHT=====*/
 .homeFullContainer {
     grid-column: 1 / -1;
-    margin-top: 20px;
 }
 
 .homeFullContainer p {
@@ -216,7 +229,7 @@ body {
     font-size: 14px;
     border-top: 1px solid white;
     border-bottom: 1px solid white;
-    margin: 25px 0;
+    margin: 0 0 25px 0;
 }
 
 .homeSkillsTitle {
@@ -241,30 +254,69 @@ body {
     margin-left: 1px;
 }
 
+.homeSkillsLeft ul,
+.homeSkillsRight ul {
+    margin-bottom: 0;
+}
 
+.homeContactTitle {
+    grid-column: 1 / -1;
+    margin-top: 45px;
+}
 
+.homeContactTitle h3 {
+    font-size: 20px;
+    font-weight: 400;
+    letter-spacing: 2px;
+}
 
+.homeContactInfo {
+    grid-column: 1 / -1;
+    margin-bottom: 10px;
+}
 
-.projectsHeaderBackground div,
-.aboutHeader div {
-    background-color: #0008;
-    height: 450px;
-    text-align: center;
+.homeContactInfo ul {
+    padding: 10px;
+    margin: 0;
+}
+
+.iconsDiv {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+    justify-content: space-around;
+    margin-top: 10px;
+}
+
+.gitIcon:visited,
+.linkIcon:visited,
+.googIcon:visited,
+.instaIcon:visited {
+    color: #eee;
+}
+
+.gitIcon:hover {
+    color: #6e5494;
+}
+
+.linkIcon:hover {
+    color: #0077B5;
+}
+
+.googIcon:hover {
+    color: #dd4b39;
+}
+
+.instaIcon:hover {
+    color: #fbad50;
+}
+
+.icons {
+    font-size: 40px;
+    color: #eee;
+    transition: .4s;
 }
 
 
 
-
-
-
-.bodyHr {
-    width: 90%;
-    opacity: .7;
-}
 
 
 
@@ -273,24 +325,40 @@ body {
 /*---PROJECTS---*/
 /*--------------*/
 .projectsHeaderBackground {
-    background: url('./resources/amsterdam.jpg');
+    background: url('./resources/paris.jpg');
     background-size: cover;
-    height: 450px;
-    background-position: center;
-    margin-bottom: 10px;
+    height: 100%;
+    background-position: top;
+    background-attachment: fixed;
 }
 
-.projectsHeaderBackground h1 {
-    color: #e0ddd5;
+.projectsPageOverlay {
+    height: 100%;
+    background-color: #111111c9;
+}
+
+.projectsPageScroll {
+    overflow-y: scroll;
+    padding-top: 70px;
+    padding-bottom: 40px;
+}
+
+.projectsPageScroll::-webkit-scrollbar {
+    background-color: #1119;
+    width: 0px;
+}
+
+.projectsPageScroll h1 {
+    color: white;
     font-weight: lighter;
-    font-size: 65px;
+    font-size: 60px;
     letter-spacing: 3px;
+    padding: 70px 0;
+    text-align: center;
 }
 
 .mappedProjectsContainer {
-    margin-top: 10px;
-    padding: 10px;
-    background-color: #e0ddd5;
+    margin-top: 100px;
 }
 
 
@@ -304,18 +372,23 @@ body {
     margin: 10px;
     border-radius: 5px;
     background-color: #3339;
-    color: #e0ddd5;
     -webkit-box-shadow: 1px 2px 28px -3px rgba(28,28,28,1);
     -moz-box-shadow: 1px 2px 28px -3px rgba(28,28,28,1);
     box-shadow: 1px 2px 28px -3px rgba(28,28,28,1);
+    transition: .3s;
 }
 
-.tileContainer {
+.projectContainer:hover {
+    background-color: #5559;
+}
+
+h3.tileContainer {
     margin: 0;
     font-weight: 400;
     letter-spacing: 2px;
     font-size: 24px;
-    color: #e0ddd5;
+    color: white;
+    font-size: 18px;
 }
 
 .tileContainer button {
@@ -325,19 +398,21 @@ body {
     border-radius: 3px;
     outline: none;
     color: white;
-    background-color: #3339;
+    background-color: #1110;
     border: none;
 }
 
-.projectContainer p {
-    font-size: 16px;
+p.projectDescription {
+    font-size: 13px;
+    letter-spacing: 5px;
     font-weight: lighter;
-    letter-spacing: .5px;
+    letter-spacing: 1px;
+    color: white;
 }
 
 .projectImgsDiv {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
 }
 
 .projectImgsDiv button {
@@ -347,9 +422,9 @@ body {
 }
 
 .projectImgsDiv img {
-    width: 100px;
-    height: 100px;
-    border-radius: 5px;
+    width: 85px;
+    height: 85px;
+    border-radius: 3px;
 }
 
 .projectUrlBtnDiv {
@@ -374,147 +449,7 @@ body {
 
 
 
-/*---------------*/
-/*-----ABOUT-----*/
-/*---------------*/
-.aboutHeader {
-    background: url('./resources/paris.jpg');
-    background-size: cover;
-    height: 450px;
-    background-position: center;
-    margin-bottom: 20px;
-}
 
-.aboutHeader div {
-    color: #e0ddd5;
-    font-weight: lighter;
-    font-size: 65px;
-    letter-spacing: 3px;
-}
-
-.aboutHeader h1 {
-    font-size: 45px;
-    font-weight: 200;
-    letter-spacing: 3px;
-    color: #e0ddd5;
-}
-
-.aboutHeader button {
-    padding: 15px 20px;
-    font-size: 15px;
-    margin-top: 10px;
-    border-radius: 4px;
-    outline: none;
-    border: none;
-}
-
-.aboutInfoContainer {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: repeat(3, 200px);
-    padding: 0 10px;
-}
-
-.educationDiv,
-.skillsDiv,
-.contactDiv {
-    margin: 10px;
-    padding: 10px;
-    background-color: #e0ddd5;
-    -webkit-box-shadow: 1px 2px 7px 2px rgba(28,28,28,0.75);
-    -moz-box-shadow: 1px 2px 7px 2px rgba(28,28,28,0.75);
-    box-shadow: 1px 2px 7px 2px rgba(28,28,28,0.75);
-}
-
-.educationDiv h3,
-.skillsDiv h3,
-.contactDiv h3 {
-    margin: 0;
-    font-weight: 400;
-    letter-spacing: 1.5px;
-}
-
-.educationDiv {
-    grid-row: 3;
-    grid-column: 1 / -1;
-}
-
-.educateDivTop {
-    display: flex;
-    justify-content: space-between;
-}
-
-.schoolTitle {
-    font-size: 19px;
-    font-weight: 300;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    transition: .5s;
-}
-
-.schoolTitle a {
-    text-decoration: none;
-    color: black;
-
-}
-
-.schoolTitle a:hover {
-    border-bottom: 1px solid black;
-}
-
-.skillsDiv {
-    grid-row: 1;
-    grid-column: 1 / -1;
-}
-
-.contactDiv {
-    grid-row: 2;
-    grid-column: 1 / -1;
-}
-
-.contactDiv div {
-    display: flex;
-    justify-content: space-around;
-}
-
-.contactDiv ul {
-    list-style: circle;
-    padding: 0;
-}
-
-.skillsDiv div {
-    display: flex;
-    justify-content: space-around;
-}
-
-.skillsDiv ul {
-    list-style: circle;
-    padding: 0;
-}
-
-.gitIcon:visited,
-.linkIcon:visited,
-.googIcon:visited {
-    color: black;
-}
-
-.gitIcon:hover {
-    color: #6e5494;
-}
-
-.linkIcon:hover {
-    color: #0077B5;
-}
-
-.googIcon:hover {
-    color: #dd4b39;
-}
-
-.icons {
-    font-size: 45px;
-    color: black;
-    transition: .4s;
-}
 
 
 /*--------------*/
@@ -542,7 +477,104 @@ body {
 /*---------------*/
 /*----QUERIES----*/
 /*---------------*/
+/*-----400PX-----*/
+@media only screen and (min-width: 400px){
+    .navDiv {
+        position: relative;
+        top: 0;
+        background-color: #333;
+    }
 
+    .headerBackground h1 {
+        padding-top: 120px;
+    }
+
+    .bodyDiv {
+        margin-top: 200px;
+    }
+
+    .introLeftSideContainer h3 {
+        font-size: 15px;
+    }
+
+    .bodyDiv img {
+        width: 160px;
+        height: 160px;
+    }
+
+    .introRightSideContainer h4 {
+        font-size: 23px;
+        color: white;
+        text-align: center;
+    }
+
+    .introRightSideContainer ul {
+        padding: 10px 0;
+    }
+
+    .introRightSideContainer li {
+        font-size: 14px;
+        letter-spacing: 1px;
+    }
+
+    .aboutMeTitleDiv {
+        margin-top: 40px;
+    }
+
+    .aboutMeTitleDiv h3 {
+        font-size: 23px;
+        letter-spacing: 3px;
+    }
+
+    .homeFullContainer p {
+        padding: 10px;
+        font-size: 16px;
+    }
+
+    .homeSkillsTitle h3 {
+        font-size: 23px;
+        letter-spacing: 3px;
+        margin-top: 20px;
+    }
+
+    .homeSkillsLeft li,
+    .homeSkillsRight li {
+        font-size: 16px;
+    }
+
+    .homeContactTitle h3 {
+        font-size: 23px;
+        letter-spacing: 3px;
+    }
+
+    .homeContactInfo li {
+        font-size: 16px;
+    }
+
+    .iconsDiv {
+        justify-content: space-around;
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+
+    .footerDiv {
+        bottom: 0;
+        position: static;
+    }
+
+
+}
+
+
+/*-----500PX-----*/
+@media only screen and (min-width: 500px){
+
+}
+
+
+
+
+/*-----600PX-----*/
 @media only screen and (min-width: 600px){
     .projectsHeaderBackground h1 {
         font-size: 75px;
@@ -583,20 +615,10 @@ body {
         font-size: 18px;
     }
 
-    .skillsDiv {
-        grid-column: 1 / 3;
-    }
-    .contactDiv {
-        grid-column: 2 / -1;
-    }
-    .educationDiv {
-        grid-column: 1 / 3;
-    }
-
 }
 
 
-
+/*-----800PX-----*/
 @media only screen and (min-width: 800px){
     .projectsHeaderBackground h1 {
         font-size: 85px;
@@ -641,21 +663,10 @@ body {
         grid-template-rows: repeat(2, 200px);
     }
 
-    .skillsDiv {
-        grid-column: 1 / 3;
-    }
-    .contactDiv {
-        grid-row: 1;
-        grid-column: 3 / -1;
-    }
-    .educationDiv {
-        grid-row: 2;
-        grid-column: 2 / 4;
-    }
 }
 
 
-
+/*-----1200PX-----*/
 @media only screen and (min-width: 1200px){
     .tileContainer {
         font-size: 40px;
@@ -671,14 +682,4 @@ body {
         grid-template-rows: repeat(1, 200px);
     }
 
-    .skillsDiv {
-        grid-column: 1 / 2;
-    }
-    .contactDiv {
-        grid-column: 2 / 3;
-    }
-    .educationDiv {
-        grid-row: 1;
-        grid-column: 3 / 4;
-    }
 }

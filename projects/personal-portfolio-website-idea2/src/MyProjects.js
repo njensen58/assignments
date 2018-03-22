@@ -23,7 +23,7 @@ const projectsArr = [
         url: 'http://my-css-zen-garden-example.surge.sh/'
     },
     {
-        title: 'Mystic Mountain (Console RPG)',
+        title: 'Mystic Mountain RPG',
         description: 'A Retro style JavaScript RPG console game made in Node.js.  The link below will take you to the project on Github.  This game includes systems that generate random battle encounters or events, provides battle encounter user controls, and requires the user to play through 2 stages to win and receive a score.',
         imgs: [
             require('./resources/rpg1.png'),
@@ -41,6 +41,16 @@ const projectsArr = [
             require('./resources/trivia1.png')
         ],
         url: 'http://trivia-game-frontend-site.surge.sh'
+    },
+    {
+        title: 'Yahtzee-Clone',
+        description: 'A Full-Stack project using the MERN stack.  This was a passion project that was programmed and designed from scratch.  I first developed the dice system, and then the scorecard system.  Once they were both functioning, I put them together and used Redux with session storage to control the game.  All design work was done in CSS.  MongoDB/Mongoose with Express were used to savehighscores',
+        imgs: [
+            require('./resources/yahtzeeclone3.png'),
+            require('./resources/yahtzeeclone2.png'),
+            require('./resources/yahtzeeclone1.png')
+        ],
+        url: 'http://yahtzee-clone-app.surge.sh'
     }
 ]
 
@@ -58,15 +68,17 @@ function MyProjects(props){
     return (
         <div>
             <div className="projectsHeaderBackground">
-                <div>
-                    <h1>Projects</h1>
+                <div className="projectsPageOverlay">
+                    <div className="projectsPageScroll">
+                        <div>
+                            <h1>Projects</h1>
+                        </div>
+                        <div className="mappedProjectsContainer">
+                            {mappedProjects}
+                        </div>
+                    </div>
                 </div>
             </div>
-            <hr className="bodyHr"/>
-            <div className="mappedProjectsContainer">
-                {mappedProjects}
-            </div>
-            <hr className="bodyHr"/>
         </div>
     )
 
