@@ -36,13 +36,13 @@ class Project extends React.Component {
                 { this.state.dropDown === false ?
                     ''
                     :
-                <div onClick={this.handleDisplayExpand}>
+                <div>
                     <p className="projectDescription">{this.props.description}</p>
                     <div className="projectImgsDiv">
                         {this.props.imgs.map(image => <button onClick={()=>this.handleImgOpen(image)}><img src={image} alt=""/></button>)}
                     </div>
                     <div className="projectUrlBtnDiv">
-                        <button><a href={this.props.url}>Visit Project</a></button>
+                        <a href={this.props.url}>Visit Project</a>
                     </div>
                 </div>
                 }
