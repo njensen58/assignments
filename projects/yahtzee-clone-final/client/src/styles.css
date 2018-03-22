@@ -30,7 +30,7 @@
 /*-----HOMEPAGE------*/
 /*-------------------*/
 .homepageContainer {
-    background: url('https://cdn.pixabay.com/photo/2018/02/27/13/07/gambling-3185424_1280.jpg');
+    background: url('./resources/imgs/diceImg.jpg');
     background-size: cover;
     background-position: center;
     height: 98vh;
@@ -297,7 +297,7 @@
 
     .followMeDiv p,
     .aboutDiv p {
-        font-size: 12px;
+        font-size: 11px;
         padding: 2px 0;
     }
 
@@ -365,7 +365,7 @@
 
     .followMeDiv p,
     .aboutDiv p {
-        font-size: 13px;
+        font-size: 11px;
         padding: 3px 0;
     }
 
@@ -582,7 +582,7 @@
 
     .followMeDiv p,
     .aboutDiv p {
-        font-size: 19px;
+        font-size: 18px;
         padding: 8px 0;
     }
 

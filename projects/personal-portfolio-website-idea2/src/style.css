@@ -24,13 +24,13 @@ body {
     -moz-box-shadow: inset 1px 10px 40px 0px rgba(0,0,0,0.55);
     box-shadow: inset 1px 10px 40px 0px rgba(0,0,0,0.55);
     position: fixed;
-    top: 0;
+    bottom: 0;
 }
 
 .navLinks {
     display: flex;
     width: 100%;
-    font-size: 13px;
+    font-size: 12px;
 }
 
 .navDiv a {
@@ -68,12 +68,183 @@ body {
 .headerBackground {
     background: url('./resources/20170423_154859.jpg');
     background-size: cover;
-    height: 450px;
+    height: 100%;
     background-position: center;
-    margin-bottom: 10px
+    background-attachment: fixed;
 }
 
-.headerBackground div,
+.pageOverlay {
+    height: 100%;
+    background-color: #111111c9;
+}
+
+.homePageScroll {
+    height: 700px;
+    overflow-y: scroll;
+    padding-top: 70px;
+    padding-bottom: 40px;
+}
+
+.homePageScroll::-webkit-scrollbar {
+    background-color: #1119;
+}
+
+.homePageScroll::-webkit-scrollbar-thumb {
+    background-color: #ddd6;
+}
+
+.headerBackground h1,
+.headerBackground h2 {
+    margin: 0;
+    color: #eee;
+    text-align: center;
+}
+
+.headerBackground h1 {
+    font-size: 50px;
+    letter-spacing: 1px;
+    font-weight: 300;
+    padding-top: 100px;
+}
+
+.headerBackground h2 {
+    font-size: 15px;
+    letter-spacing: 2px;
+    margin-bottom: 15px;
+    font-weight: lighter;
+    padding-top: 30px;
+}
+
+.bodyDiv {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin-top: 170px;
+}
+
+
+/*=====LEFT SIDE=====*/
+.introLeftSideContainer {
+    grid-column: 1;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    border-right: .5px solid white;
+    margin-right: 1px;
+}
+
+.bodyDiv h3 {
+    margin: 0;
+    padding-bottom: 5px;
+    font-weight: 300;
+    color: white;
+    font-size: 12px;
+    border-bottom: 1px solid white;
+    font-weight: 400;
+    width: 100%;
+    text-align: center;
+}
+
+.bodyDiv img {
+    width: 120px;
+    height: 120px;
+    border-radius: 10px;
+    margin-top: 15px;
+}
+
+.bodyDiv button {
+    padding: 8px 12px;
+    font-size: 12px;
+    margin-top: 15px;
+    border-radius: 4px;
+    outline: none;
+    border: none;
+    background-color: #444;
+    color: #eee;
+}
+
+.bodyDiv button:hover {
+    background-color: #222;
+    color: #eee;
+}
+
+
+
+/*=====RIGHT SIDE=====*/
+.introRightSideContainer {
+    grid-column: 2;
+    border-left: .5px solid white;
+    margin-left: 1px;
+}
+
+
+.bodyDiv h4 {
+    margin: 0;
+    padding: 5px;
+    font-size: 16px;
+    border-bottom: 1px solid white;
+    font-weight: 400;
+}
+
+.bodyDiv ul {
+    list-style: none;
+    text-align: center;
+    color: white;
+    padding: 0;
+    margin-top: 0;
+    border-bottom: 1px solid white;
+}
+
+.bodyDiv li {
+    font-size: 13px;
+    line-height: 30px;
+}
+
+
+
+
+
+/*=====LEFT TO RIGHT=====*/
+.homeFullContainer {
+    grid-column: 1 / -1;
+    margin-top: 20px;
+}
+
+.homeFullContainer p {
+    padding: 10px;
+    color: white;
+    text-align: center;
+    font-size: 14px;
+    border-top: 1px solid white;
+    border-bottom: 1px solid white;
+    margin: 25px 0;
+}
+
+.homeSkillsTitle {
+    grid-column: 1 / -1;
+    text-align: center;
+}
+
+.homeSkillsTitle h3 {
+    font-size: 18px;
+    letter-spacing: 2px;
+    margin-top: 20px;
+    font-weight: 400;
+}
+
+.homeSkillsLeft {
+    border-right: 1px solid white;
+    margin-right: 1px;
+}
+
+.homeSkillsRight {
+    border-left: 1px solid white;
+    margin-left: 1px;
+}
+
+
+
+
+
 .projectsHeaderBackground div,
 .aboutHeader div {
     background-color: #0008;
@@ -85,67 +256,17 @@ body {
     flex-direction: column;
 }
 
-.headerBackground h1,
-.headerBackground h2 {
-    margin: 0;
-    color: #e0ddd5;
-    font-weight: lighter;
-    padding: 10px;
-}
 
-.headerBackground h1 {
-    font-size: 50px;
-    letter-spacing: 3px;
-    font-weight: 300;
-}
 
-.headerBackground h2 {
-    font-size: 15px;
-    letter-spacing: 4px;
-    margin-bottom: 15px;
-    font-weight: 200;
-}
+
+
 
 .bodyHr {
     width: 90%;
     opacity: .7;
 }
 
-.bodySection1 {
-    border-top: 1px solid #ddd;
-    background-color: #e0ddd5;
-    padding: 20px;
-    margin: 10px 0;
-}
 
-.bodySection1 h3 {
-    margin: 0;
-    padding-bottom: 20px;
-    font-weight: 300;
-}
-
-.introDiv {
-    display: flex;
-}
-
-.introDiv img {
-    width: 200px;
-    height: 200px;
-    border-radius: 10px;
-}
-
-.introDiv h4 {
-    margin: 0;
-    padding: 5px;
-}
-
-.introDiv ul {
-    list-style: circle;
-}
-
-.introDivSummary {
-    padding: 10px;
-}
 
 
 /*--------------*/
@@ -171,6 +292,8 @@ body {
     padding: 10px;
     background-color: #e0ddd5;
 }
+
+
 
 
 /*--------------*/
@@ -398,15 +521,17 @@ body {
 /*----FOOTER----*/
 /*--------------*/
 .footerDiv {
-    height: 50px;
+    height: 15px;
     background-color: #222;
     display: flex;
     justify-content: center;
     align-items: center;
     color: white;
-    font-size: 14px;
+    font-size: 8px;
     font-weight: 200;
-    margin-top: 10px;
+    position: fixed;
+    top: 0;
+    width: 100%;
 }
 
 

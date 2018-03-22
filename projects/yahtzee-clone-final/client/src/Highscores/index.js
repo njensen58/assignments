@@ -47,7 +47,7 @@ class Highscores extends React.Component {
                         - Final Project by Nate Jensen @ V School.
                     </p>
                     <p>
-                        - Front-end made with React & Redux.
+                        - Front-end made with React & Redux & designed with CSS.
                     </p>
                     <p>
                         - Back-end made with Express & MongoDB w/Mongoose.
