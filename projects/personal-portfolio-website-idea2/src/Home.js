@@ -41,6 +41,7 @@ class Home extends React.Component {
                             </div>
                             <div className="homeFullContainer">
                                 <p>
+                                    I have always loved to make things.
                                     I left a career in finance to pursue a creative career in web development and programming.
                                 </p>
                             </div>

@@ -44,7 +44,7 @@ const projectsArr = [
     },
     {
         title: 'Yahtzee-Clone',
-        description: 'A Full-Stack project using the MERN stack.  This was a passion project that was programmed and designed from scratch.  I first developed the dice system, and then the scorecard system.  Once they were both functioning, I put them together and used Redux with session storage to control the game.  All design work was done in CSS.  MongoDB/Mongoose with Express were used to savehighscores',
+        description: 'A Full-Stack project using the MERN stack.  This was a passion project that was programmed and designed from scratch.  I first developed the dice system, and then the scorecard system.  Once they were both functioning, I put them together and used Redux with session storage to control the game.  All design work was done in CSS.  MongoDB/Mongoose with Express were used to save highscores',
         imgs: [
             require('./resources/yahtzeeclone3.png'),
             require('./resources/yahtzeeclone2.png'),

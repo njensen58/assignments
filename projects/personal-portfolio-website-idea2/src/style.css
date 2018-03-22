@@ -102,6 +102,7 @@ body {
     letter-spacing: 1px;
     font-weight: 300;
     padding-top: 100px;
+    transition: .3s;
 }
 
 .headerBackground h2 {
@@ -110,6 +111,7 @@ body {
     margin-bottom: 15px;
     font-weight: lighter;
     padding-top: 30px;
+    transition: .3s;
 }
 
 .bodyDiv {
@@ -127,6 +129,7 @@ body {
     flex-direction: column;
     border-right: .5px solid white;
     margin-right: 1px;
+    transition: .3s;
 }
 
 .bodyDiv h3 {
@@ -138,6 +141,7 @@ body {
     font-weight: 400;
     width: 100%;
     text-align: center;
+    transition: .3s;
 }
 
 .bodyDiv img {
@@ -145,6 +149,7 @@ body {
     height: 120px;
     border-radius: 10px;
     margin-top: 15px;
+    transition: .3s;
 }
 
 .bodyDiv button {
@@ -156,6 +161,7 @@ body {
     border: none;
     background-color: #444;
     color: #eee;
+    transition: .3s;
 }
 
 .bodyDiv button:hover {
@@ -170,6 +176,7 @@ body {
     grid-column: 2;
     border-left: .5px solid white;
     margin-left: 1px;
+    transition: .3s;
 }
 
 
@@ -181,6 +188,7 @@ body {
     font-weight: 400;
     color: white;
     text-align: center;
+    transition: .3s;
 }
 
 .bodyDiv ul {
@@ -190,16 +198,19 @@ body {
     padding: 0;
     margin-top: 0;
     border-bottom: 1px solid white;
+    transition: .3s;
 }
 
 .bodyDiv li {
     font-size: 13px;
     line-height: 30px;
+    transition: .3s;
 }
 
 .aboutMeTitleDiv {
     grid-column: 1 / -1;
     margin-top: 30px;
+    transition: .3s;
 }
 
 .aboutMeTitleDiv h3 {
@@ -207,6 +218,7 @@ body {
     margin-top: 20px;
     font-size: 18px;
     letter-spacing: 2px;
+    transition: .3s;
 }
 
 .projectsBtnDiv {
@@ -214,12 +226,14 @@ body {
     display: flex;
     justify-content: center;
     margin: 8px 0 15px 0;
+    transition: .3s;
 }
 
 
 /*=====LEFT TO RIGHT=====*/
 .homeFullContainer {
     grid-column: 1 / -1;
+    transition: .3s;
 }
 
 .homeFullContainer p {
@@ -230,11 +244,13 @@ body {
     border-top: 1px solid white;
     border-bottom: 1px solid white;
     margin: 0 0 25px 0;
+    transition: .3s;
 }
 
 .homeSkillsTitle {
     grid-column: 1 / -1;
     text-align: center;
+    transition: .3s;
 }
 
 .homeSkillsTitle h3 {
@@ -242,48 +258,57 @@ body {
     letter-spacing: 2px;
     margin-top: 20px;
     font-weight: 400;
+    transition: .3s;
 }
 
 .homeSkillsLeft {
     border-right: 1px solid white;
     margin-right: 1px;
+    transition: .3s;
 }
 
 .homeSkillsRight {
     border-left: 1px solid white;
     margin-left: 1px;
+    transition: .3s;
 }
 
 .homeSkillsLeft ul,
 .homeSkillsRight ul {
     margin-bottom: 0;
+    transition: .3s;
 }
 
 .homeContactTitle {
     grid-column: 1 / -1;
     margin-top: 45px;
+    transition: .3s;
 }
 
 .homeContactTitle h3 {
     font-size: 20px;
     font-weight: 400;
     letter-spacing: 2px;
+    transition: .3s;
 }
 
 .homeContactInfo {
     grid-column: 1 / -1;
     margin-bottom: 10px;
+    transition: .3s;
 }
 
 .homeContactInfo ul {
     padding: 10px;
     margin: 0;
+    transition: .3s;
 }
 
 .iconsDiv {
     display: flex;
     justify-content: space-around;
     margin-top: 10px;
+    transition: .3s;
 }
 
 .gitIcon:visited,
@@ -479,6 +504,7 @@ p.projectDescription {
 /*---------------*/
 /*-----400PX-----*/
 @media only screen and (min-width: 400px){
+/*-----HOME-PAGE-----*/
     .navDiv {
         position: relative;
         top: 0;
@@ -487,6 +513,10 @@ p.projectDescription {
 
     .headerBackground h1 {
         padding-top: 120px;
+    }
+
+    .headerBackground h2 {
+        padding-top: 10px;
     }
 
     .bodyDiv {
@@ -568,6 +598,110 @@ p.projectDescription {
 
 /*-----500PX-----*/
 @media only screen and (min-width: 500px){
+/*-----HOME-PAGE-----*/
+    .headerBackground h1 {
+        font-size: 60px;
+    }
+
+    .headerBackground h2 {
+        font-size: 19px;
+    }
+
+    .introLeftSideContainer h3 {
+        font-size: 18px;
+    }
+
+    .bodyDiv img {
+        width: 200px;
+        height: 200px;
+    }
+
+    .introRightSideContainer h4 {
+        font-size: 25px;
+    }
+
+    .introRightSideContainer ul {
+        padding: 20px 0;
+    }
+
+    .introRightSideContainer li {
+        font-size: 16px;
+        letter-spacing: 1px;
+        padding: 2px 0;
+    }
+
+    .aboutMeTitleDiv {
+        margin-top: 50px;
+    }
+
+    .aboutMeTitleDiv h3 {
+        font-size: 25px;
+    }
+
+    .homeFullContainer p {
+        padding: 20px 50px;
+        font-size: 18px;
+    }
+
+    .projectsBtnDiv {
+        margin: 15px 0 27px 0;
+    }
+
+    .projectsBtnDiv button {
+        padding: 10px 15px;
+        letter-spacing: 1px;
+    }
+
+    .homeSkillsTitle h3 {
+        font-size: 25px;
+    }
+
+    .homeSkillsLeft li,
+    .homeSkillsRight li {
+        font-size: 18px;
+    }
+
+    .homeContactTitle h3 {
+        font-size: 25px;
+        margin-top: 20px;
+    }
+
+    .homeContactInfo li {
+        font-size: 18px;
+    }
+
+    .iconsDiv {
+        justify-content: space-around;
+        margin-left: 50px;
+        margin-right: 50px;
+    }
+
+    .icons {
+        font-size: 45px;
+    }
+
+/*--PROJECTS--*/
+    .projectsPageScroll h1 {
+        font-size: 65px;
+        letter-spacing: 5px;
+    }
+
+    h3.tileContainer {
+        font-size: 26px;
+        font-weight: lighter;
+        letter-spacing: 3px;
+    }
+
+    p.projectDescription {
+        font-size: 16px;
+        letter-spacing: 1.5px;
+    }
+
+    .projectImgsDiv {
+        display: flex;
+        justify-content: space-between;
+        margin: 0 35px;
+    }
 
 }
 
@@ -576,18 +710,108 @@ p.projectDescription {
 
 /*-----600PX-----*/
 @media only screen and (min-width: 600px){
-    .projectsHeaderBackground h1 {
-        font-size: 75px;
-        letter-spacing: 3px;
-        font-weight: 300;
-    }
-
+/*-----HOME-PAGE-----*/
     .headerBackground h1 {
-        font-size: 60px;
+        font-size: 65px;
+        letter-spacing: 3px;
     }
 
     .headerBackground h2 {
         font-size: 21px;
+    }
+
+    .bodyDiv img {
+        width: 230px;
+        height: 230px;
+    }
+
+    .introLeftSideContainer button {
+        padding: 15px 20px;
+        font-size: 16px;
+        font-weight: lighter;
+        letter-spacing: 1px;
+    }
+
+    .introRightSideContainer li {
+        font-size: 18px;
+        letter-spacing: 2px;
+        padding: 4px 0;
+    }
+
+    .aboutMeTitleDiv {
+        margin-top: 70px;
+    }
+
+    .aboutMeTitleDiv h3 {
+        font-size: 30px;
+    }
+
+    .homeFullContainer p {
+        /* padding: 20px 50px;
+        font-size: 18px; */
+    }
+
+    .projectsBtnDiv button {
+        margin: 20px 0 5px 0;
+        padding: 15px 20px;
+        font-size: 16px;
+        font-weight: lighter;
+    }
+
+    .homeSkillsTitle h3 {
+        font-size: 30px;
+    }
+
+    .homeSkillsLeft li,
+    .homeSkillsRight li {
+        font-size: 18px;
+        letter-spacing: 1px;
+    }
+
+    .homeContactTitle h3 {
+        font-size: 30px;
+        /* margin-top: 20px; */
+    }
+
+    .homeContactInfo li {
+        font-size: 18px;
+        letter-spacing: 1px;
+    }
+
+    .iconsDiv {
+        justify-content: space-around;
+        margin-left: 70px;
+        margin-right: 70px;
+    }
+
+    .icons {
+        font-size: 50px;
+    }
+
+
+
+/*-----PROJECTS-----*/
+    h3.tileContainer {
+        font-size: 30px;
+        font-weight: 400;
+        letter-spacing: 4px;
+    }
+
+    p.projectDescription {
+        font-size: 19px;
+        letter-spacing: 1.5px;
+    }
+
+    .projectImgsDiv {
+        /* display: flex;
+        justify-content: space-between;
+        margin: 0 35px; */
+    }
+
+    .projectsHeaderBackground h1 {
+        font-size: 75px;
+        letter-spacing: 5px;
+        font-weight: 300;
     }
 
     .tileContainer {
@@ -602,11 +826,6 @@ p.projectDescription {
         height: 150px;
     }
 
-    .projectContainer p {
-        font-size: 18px;
-        font-weight: 300;
-    }
-
     .projectUrlBtnDiv button {
         padding: 10px 20px;
     }
@@ -618,8 +837,37 @@ p.projectDescription {
 }
 
 
+
+/*-----700PX-----*/
+@media only screen and (min-width: 700px){
+    .bodyDiv img {
+        width: 260px;
+        height: 260px;
+    }
+
+    .introLeftSideContainer h3 {
+        font-size: 23px;
+        letter-spacing: .5px;
+    }
+
+    .introRightSideContainer h4 {
+        font-size: 28px;
+        letter-spacing: 2px;
+    }
+
+    .introRightSideContainer li {
+        font-size: 20px;
+        padding: 8px 0;
+    }
+}
+
+
+
+
+
 /*-----800PX-----*/
 @media only screen and (min-width: 800px){
+/*-----HOME-PAGE-----*/
     .projectsHeaderBackground h1 {
         font-size: 85px;
         letter-spacing: 5px;
@@ -634,18 +882,33 @@ p.projectDescription {
         font-size: 25px;
     }
 
+    .homePageScroll {
+        margin: 0 50px;
+    }
+
+
+/*-----PROJECTS-----*/
     .tileContainer {
         font-size: 35px;
+    }
+
+    h3.tileContainer {
+        font-size: 32px;
+    }
+
+    p.projectDescription {
+        font-size: 21px;
+    }
+
+    .projectImgsDiv {
+        display: flex;
+        justify-content: space-between;
+        margin: 0 35px;
     }
 
     .projectImgsDiv img {
         width: 200px;
         height: 200px;
-    }
-
-    .projectContainer p {
-        font-size: 21px;
-        font-weight: 300;
     }
 
     .projectUrlBtnDiv button {
@@ -666,8 +929,56 @@ p.projectDescription {
 }
 
 
+/*-----900PX-----*/
+@media only screen and (min-width: 900px){
+    .homePageScroll {
+        margin: 0 100px;
+    }
+
+    .headerBackground h1 {
+        font-size: 75px;
+        letter-spacing: 3px;
+    }
+
+    .projectsPageScroll {
+        margin: 0 50px;
+    }
+}
+
+/*-----1000PX-----*/
+@media only screen and (min-width: 1000px){
+    .homePageScroll {
+        margin: 0 150px;
+    }
+
+    .headerBackground h1 {
+        font-size: 80px;
+        letter-spacing: 5px;
+    }
+
+    .projectsPageScroll {
+        margin: 0 100px;
+    }
+}
+
+/*-----1100PX-----*/
+@media only screen and (min-width: 1100px){
+    .homePageScroll {
+        margin: 0 200px;
+    }
+
+    .projectsPageScroll {
+        margin: 0 150px;
+    }
+}
+
+
 /*-----1200PX-----*/
 @media only screen and (min-width: 1200px){
+    .homePageScroll {
+        margin: 0 250px;
+    }
+
     .tileContainer {
         font-size: 40px;
     }
@@ -681,5 +992,6 @@ p.projectDescription {
         grid-template-columns: 1fr 1fr 1fr;
         grid-template-rows: repeat(1, 200px);
     }
+
 
 }
