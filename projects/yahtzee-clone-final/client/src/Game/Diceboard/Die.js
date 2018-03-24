@@ -82,8 +82,7 @@ class Die extends React.Component {
             } else {
                 return ''
             }
-    }
-        if(!this.state.isLocked){
+        } else if(!this.state.isLocked){
             if(this.props.num === 1){
                 return require('../../resources/imgs/Dice1.svg');
             } else if(this.props.num === 2){

@@ -21,16 +21,22 @@ function Navbar(props){
                     <i className="ion-navicon"></i>
                  }
                 </div>
-                <Link
-                    to="/"
-                    style={navStyle}
-                    >/Home
-                </Link>
-                <Link
-                    to="/myprojects"
-                    style={navStyle}
-                    >/Projects
-                </Link>
+                <div onClick={props.handleNavExpand}>
+                    <Link
+                        to="/"
+                        style={navStyle}
+
+                        >/Home
+                    </Link>
+                </div>
+                <div onClick={props.handleNavExpand}>
+                    <Link
+                        to="/myprojects"
+                        style={navStyle}
+
+                        >/Projects
+                    </Link>
+                </div>
             </div>
 
         </div>

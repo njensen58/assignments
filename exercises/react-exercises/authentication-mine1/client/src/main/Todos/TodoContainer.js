@@ -6,11 +6,12 @@ import { editTodo, deleteTodo } from "../../redux/todos";
 class TodoContainer extends React.Component {
 
     handleCompleted(e){
-        this.props.editTodo(this.props.id, {completed: e.target.checked})
+        this.props.editTodo(this.props.todo._id, {completed: e.target.checked})
     }
 
     handleRemove(){
-        this.props.deleteTodo(this.props.id);
+        console.log(this.props)
+        this.props.deleteTodo(this.props.todo._id);
     }
 
     render() {

@@ -22,8 +22,8 @@ class Project extends React.Component {
 
     render(){
         return (
-            <div className="projectContainer">
-                <h3 className="tileContainer" onClick={this.handleDisplayExpand}>
+            <div className="projectContainer" onClick={this.handleDisplayExpand}>
+                <h3 className="tileContainer">
                     <button
                         >
                         { this.state.dropDown === false ?
@@ -34,7 +34,7 @@ class Project extends React.Component {
                     </button>{this.props.title}
                 </h3>
                 { this.state.dropDown === false ?
-                    ''
+                    null
                     :
                 <div>
                     <p className="projectDescription">{this.props.description}</p>

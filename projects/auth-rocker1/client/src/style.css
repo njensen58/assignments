@@ -1,0 +1,583 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Josefin Sans', sans-serif;
+    font-weight: lighter;
+    background: #8e9eab;
+    background: -webkit-linear-gradient(to right, #8e9eab50, #eef2f350);
+    background: linear-gradient(to right, #8e9eab50, #eef2f350);
+}
+
+a {
+    text-decoration: none;
+    color: white;
+    font-weight: lighter;
+    font-size: 15px;
+}
+
+
+
+/*-----------------*/
+/*-----NAVBAR------*/
+/*-----------------*/
+
+.navbarContainer {
+    display: flex;
+    background-color: #3335;
+    justify-content: space-between;;
+    align-items: center;
+    height: 30px;
+    color: #21403950;
+}
+
+.navbarContainer a {
+    padding: 8px 10px 7px 10px;
+    color: #21403990;
+    transition: .3s;
+}
+
+.navbarContainer a:hover,
+.navbarContainer span:hover {
+    background-color: white;
+}
+
+
+.navbarContainer span {
+    padding: 8px 10px 7px 10px;
+    transition: .3s;
+    font-size: 15px;
+}
+
+
+
+
+
+/*----------------------*/
+/*---TOPICS-CONTAINER---*/
+/*----------------------*/
+
+
+/*------------------*/
+/*----TOPIC_FORM----*/
+/*------------------*/
+.topicFormContainer {
+    background-color: #60BAA720;
+    display: grid;
+    grid-template-columns: 2fr 4fr 2fr;
+
+}
+
+.addTopicDiv {
+    display: flex;
+    justify-content: center;
+    grid-column: 2;
+}
+
+.topicFormContainer input {
+    margin: 10px;
+    padding: 3px;
+    width: 300px;
+    outline: none;
+    border: none;
+    color: #333;
+    font-size: 13px;
+    border-radius: 2px;
+}
+
+.topicFormContainer input::placeholder {
+    font-weight: lighter;
+    letter-spacing: 1px;
+}
+
+.topicFormContainer textarea {
+    border: none;
+    outline: none;
+    border-radius: 2px;
+    padding: 2px;
+    background-color: #eee;
+    color: #333;
+    font-size: 13px;
+}
+
+.topicFormContainer button {
+    height: 25px;
+    margin: 5px 0 3px 0;
+    padding: 5px 10px;
+    border-radius: 3px;
+    border: none;
+    outline: none;
+}
+
+.topicFormContainer button:hover {
+    background-color: #60BAA795;
+    color: white;
+}
+
+.topicFormContainer button:active {
+    color: black;
+}
+
+.topicFormContainer div {
+    transition: height .4s ease-out;
+    height: 35px;
+}
+
+
+/*-----------------------*/
+/*----TOPIC_CONTAINER----*/
+/*-----------------------*/
+
+
+.mappedTopicsDiv {
+    display: grid;
+    grid-template-columns: 1fr 10fr 1fr;
+    margin-bottom: 60px;
+    margin-top: 20px;
+}
+
+.topicContainer {
+    grid-column: 2;
+    width: 100%;
+    padding: 5px;
+    margin: 5px 0;
+    background-color: #D1F0F190;
+    border-radius: 1px;
+    -webkit-box-shadow: -1px 2px 6px -1px rgba(0,0,0,0.75);
+    -moz-box-shadow: -1px 2px 6px -1px rgba(0,0,0,0.75);
+    box-shadow: -1px 2px 6px -1px rgba(0,0,0,0.75);
+    transition: .3s;
+}
+
+.topicContainer:hover {
+    margin-top: 1px;
+    margin-bottom: 15px;
+    -webkit-box-shadow: -5px 19px 31px -7px rgba(51,51,51,0.44);
+    -moz-box-shadow: -5px 19px 31px -7px rgba(51,51,51,0.44);
+    box-shadow: -5px 19px 31px -7px rgba(51,51,51,0.44);
+}
+
+
+
+/*----SIMPLE_TOPIC----*/
+.simpleTopicDisplay {
+    display: grid;
+    grid-template-columns: 4fr 1fr;
+}
+
+.simpleTopicDisplay h2 {
+    margin: 0;
+    grid-column: 1;
+    font-size: 18px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-weight: 400;
+}
+
+.simpleTopicDisplay button,
+.detailedTopicDisplay button {
+    border: none;
+    outline: none;
+    border-radius: 2px;
+    text-align: center;
+    height: 20px;
+    background-color: #D1F0F150;
+}
+
+.simpleTopicDisplay div {
+    grid-column: 2;
+    display: flex;
+    flex-wrap: nowrap;
+    text-align: center;
+    font-size: 12px;
+    justify-content: flex-end;
+}
+
+.simpleTopicDisplay span {
+    padding: 0 5px;
+}
+
+.simpleTopicDisplay button:active {
+    background-color: lightblue;
+    color: white;
+}
+
+.simpleDescription p {
+    font-size: 12px;
+}
+
+/*----DETAILED_TOPIC----*/
+.detailedTopicDisplay {
+    padding: 8px;
+}
+
+.detailedTopicDisplay h2{
+    margin: 0;
+    font-size: 25px;
+    font-weight: lighter;
+    padding-bottom: 15px;
+}
+
+.detailedTopicDisplay p {
+    border-top: 1px solid #7777;
+    font-size: 12px;
+    padding: 15px 0 15px 0;
+    border-bottom: 1px solid #7777;
+    line-height: 18px;
+    margin: 0 3px 10px 3px;
+}
+
+.detailedTopicDisplay button {
+    display: inline-block;
+    margin-top: 10px;
+}
+
+.detailedTopicDisplay button:active {
+    background-color: lightblue;
+    color: white;
+}
+
+.detailedTopicHeaderDiv {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    border-bottom: 1px solid #7777;
+}
+
+.deleteBtn {
+    background-color: #D1F0F101;
+    margin-left: 10px;
+    color: #6669;
+    transition: .3s;
+}
+
+.deleteBtn:hover {
+    color: black;
+}
+
+.detailedTopicDisplay span {
+    padding: 5px;
+    font-size: 12px;
+}
+
+
+/*----------------------*/
+/*----TOPIC_COMMENTS----*/
+/*----------------------*/
+.commentsContainerDiv h3 {
+    font-weight: 300;
+    border-bottom: 1px solid #7777;
+    margin-top: 0;
+    margin: 0 10px;
+}
+
+.commentsContainer {
+    padding: 5px;
+    border: 1px solid black;
+    overflow-y: scroll;
+    height: 150px;
+    width: 100%;
+    background-color: #ffff;
+    border: .5px solid #7777;
+    border-radius: 4px;
+    font-size: 12px;
+    margin: 10px 0 0 0;
+}
+
+.commentsContainer input {
+    width: 100%;
+    position: relative;
+    bottom: 0;
+    outline: none;
+    border: none;
+    background-color: #D1F0F1;
+    margin-right: 5px;
+    padding: 5px;
+    border-radius: 3px;
+    margin-top: 5px;
+}
+
+.commentsContainer input::placeholder {
+    font-weight: 300;
+}
+
+.commentsContainer button {
+    border: .5px solid #7777;
+    border-radius: 2px;
+    border: none;
+    outline: none;
+    background-color: #D1F0F1;
+    margin-top: 5px;
+    transition: .3s;
+}
+
+.commentsContainer button:hover {
+    background-color: lightblue;
+}
+
+.showCommentsBtn {
+    margin: 3px 10px;
+    border-radius: 3px;
+    transition: .3s;
+}
+
+.showCommentsBtn:hover {
+    background-color: lightblue;
+}
+
+.hideCommentsBtn {
+    margin-bottom: 5px;
+    margin-right: 10px;
+    background-color: #D1F0F101;
+    border: none;
+    outline: none;
+}
+
+.addCommentDiv {
+    display: flex;
+}
+
+.commentContainer {
+    border-bottom: .5px solid #8889;
+    padding: 4px 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.commentContainer p {
+    margin: 1px;
+}
+
+.commentTime {
+    text-align: right;
+    font-size: 10px;
+    padding: 2px;
+}
+
+.dropdownBtn {
+    background-color: #D1F0F101;
+    border: none;
+    outline: none;
+    width: 100%;
+    text-align: center;
+}
+
+.icon {
+    font-size: 20px;
+    color: #333;
+}
+
+.votesAndIconsDiv {
+    display: flex;
+    justify-content: space-between;
+}
+
+.shareIconDiv {
+    padding-top: 5px;
+}
+
+.shareIconDiv a {
+    font-size: 18px;
+    padding: 5px 6px;
+    display: inline-block;
+    color: #3339;
+    transition: .3s;
+}
+
+.shareIcon1:hover {
+    color: #00aced;
+}
+
+.shareIcon2:hover {
+    color: #3b5998;
+}
+
+.shareIcon3:hover {
+    color: #ff4500;
+}
+
+
+/*--------------*/
+/*----FOOTER----*/
+/*--------------*/
+.footerDiv {
+    height: 25px;
+    font-size: 13px;
+    display: flex;
+    background-color: #D1F0F190;
+    color: #333;
+    margin-top: 10px;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    z-index: -1;
+}
+
+
+
+
+
+/*---------------*/
+/*----QUERIES----*/
+/*---------------*/
+
+@media only screen and (min-width: 450px){
+    .mappedTopicsDiv {
+        grid-template-columns: 3fr 10fr 3fr;
+    }
+
+    .topicContainer {
+        grid-column: 2;
+    }
+
+}
+
+
+
+
+@media only screen and (min-width: 600px){
+    .simpleTopicDisplay {
+        padding: 6px;
+    }
+
+    .simpleTopicDisplay h2 {
+        font-size: 21px;
+        letter-spacing: 1.5px;
+    }
+
+    .simpleDescription p {
+        font-size: 15px;
+        padding-left: 6px;
+    }
+
+    .simpleTopicDisplay span {
+        font-size: 15px;
+    }
+
+    .detailedTopicDisplay h2 {
+        font-size: 32px;
+        letter-spacing: 1px;
+        font-weight: 400;
+    }
+
+    .detailedTopicDisplay p {
+        font-size: 15px;
+        line-height: 19px;
+    }
+
+    .commentsContainer {
+        font-size: 14px;
+    }
+
+    .shareIconDiv a {
+        font-size: 20px;
+        padding: 5px 9px;
+    }
+}
+
+
+
+
+@media only screen and (min-width: 800px){
+    .mappedTopicsDiv {
+        grid-template-columns: 5fr 10fr 5fr;
+    }
+
+    .topicContainer {
+        grid-column: 2;
+    }
+
+    .simpleTopicDisplay {
+        padding: 7px;
+    }
+
+    .simpleTopicDisplay h2 {
+        font-size: 22px;
+    }
+
+    .simpleTopicDisplay span {
+        font-size: 20px;
+    }
+
+    .simpleDescription p {
+
+    }
+
+    .detailedTopicDisplay span {
+        font-size: 20px;
+    }
+
+    .detailedTopicDisplay h2 {
+        font-size: 35px;
+        letter-spacing: 1.5px;
+    }
+
+    .detailedTopicDisplay p {
+        font-size: 15px;
+        letter-spacing: .5px;
+        line-height: 20px;
+    }
+
+    .commentsContainer {
+        font-size: 14px;
+    }
+
+    .shareIcon {
+        font-size: 24px;
+        padding: 5px 15px;
+    }
+
+}
+
+
+@media only screen and (min-width: 1200px){
+    .mappedTopicsDiv {
+        grid-template-columns: 6fr 10fr 6fr;
+    }
+
+    .simpleTopicDisplay h2 {
+        font-size: 27px;
+        letter-spacing: 2px;
+    }
+
+    .simpleTopicDisplay span {
+        font-size: 19px;
+    }
+
+    .simpleDescription p {
+        font-size: 18px;
+    }
+
+    .detailedTopicDisplay h2 {
+        font-size: 42px;
+        letter-spacing: 2px;
+    }
+
+    .detailedTopicDisplay span {
+        font-size: 17px;
+    }
+
+    .detailedTopicDisplay p {
+        font-size: 18px;
+        letter-spacing: 1px;
+        line-height: 23px;
+    }
+
+    .commentsContainer {
+        font-size: 16px;
+    }
+
+    .shareIconDiv a {
+        font-size: 23px;
+        padding: 5px 12px;
+    }
+
+}
+
+
+/*--------*/

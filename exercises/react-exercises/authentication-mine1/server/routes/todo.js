@@ -40,7 +40,7 @@ todoRouter.put('/:id', (req, res) => {
 })
 
 todoRouter.delete('/:id', (req, res) => {
-    Todo.findByIdAndRemove( // change to findeOneAndRemove() to add user criteria
+    Todo.findOneAndRemove( // change to findeOneAndRemove() to add user criteria
         {_id: req.params.id, user: req.user._id}, (err, deletedTodo) => {
         if (err) return res.status(500).send(err);
         return res.send(deletedTodo);

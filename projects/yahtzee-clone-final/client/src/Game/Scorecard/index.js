@@ -45,7 +45,7 @@ class Scorecard extends React.Component {
                     />
                 </div>
                 <div className="yahtzeeTitleDiv">
-                    <h1>YAHTZEE</h1>
+                    <h1>YAHTZEE<span>.clone</span></h1>
                 </div>
                 <div className="totalScoreDiv">
                     <div>

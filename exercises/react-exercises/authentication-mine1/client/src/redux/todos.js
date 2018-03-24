@@ -2,14 +2,13 @@ import axios from 'axios';
 
 axios.interceptors.request.use(config => {
     const token = localStorage.token;
-
     config.headers.Authorization = `Bearer ${token}`;
     return config;
 })
 
 
 const SET_TODOS = "SET_TODOS";
-const todoUrl = "/todo/";
+const todoUrl = "/api/todo/";
 
 ///////////////////////////
 // Todos Action Creators //

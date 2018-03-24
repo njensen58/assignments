@@ -394,18 +394,25 @@ button {
     transition: .3s;
     border-bottom-left-radius: 15px;
     border-top-right-radius: 15px;
+    display: flex;
+    justify-content: center;
 }
 
 .yahtzeeTitleDiv h1 {
     margin: 0;
-    font-size: 24px;
+    font-size: 18px;
     display: flex;
     align-items: center;
     padding: 8px 3px;
     margin-top: 2px;
     font-style: italic;
     justify-content: center;
-    letter-spacing: 2px;
+    letter-spacing: 1px;
+}
+
+.yahtzeeTitleDiv span {
+    font-size: 10px;
+    transform: translateY(2px);
 }
 
 .yahtzeeTitleDiv:hover {
@@ -510,7 +517,16 @@ button {
         margin-left: 5px;
     }
 
+    .yahtzeeTitleDiv h1 {
+        font-size: 20px;
+        letter-spacing: 1.5px;
+    }
 
+    .yahtzeeTitleDiv span {
+        font-size: 10px;
+        transform: translateY(3px);
+        letter-spacing: .5px;
+    }
 
 
 }
@@ -594,15 +610,21 @@ button {
     }
 
     .yahtzeeTitleDiv {
-        transform: translateY(-24px);
+        transform: translateY(-22px);
     }
 
     .yahtzeeTitleDiv h1 {
         margin: 0;
-        font-size: 26px;
+        font-size: 25px;
         padding: 8px 3px;
         margin-top: 2px;
-        letter-spacing: 7px;
+        letter-spacing: 3px;
+    }
+
+    .yahtzeeTitleDiv span {
+        font-size: 12px;
+        transform: translateY(5px);
+        letter-spacing: 1px;
     }
 
     .diceDiv img {
@@ -724,6 +746,12 @@ button {
 
     .diceDiv img {
         border-radius: 11px;
+    }
+
+    .yahtzeeTitleDiv span {
+        font-size: 14px;
+        transform: translateY(4px);
+        letter-spacing: 2px;
     }
 
 }
@@ -856,6 +884,12 @@ button {
     .yahtzeeTitleDiv h1 {
         font-size: 32px;
         letter-spacing: 15px;
+    }
+
+    .yahtzeeTitleDiv span {
+        font-size: 14px;
+        transform: translateY(6px);
+        letter-spacing: 3px;
     }
 
 }
