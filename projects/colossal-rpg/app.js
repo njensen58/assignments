@@ -178,7 +178,7 @@ function attack(){
         attackPow = 10;
     }
     currentEnemy.health -= attackPow;
-    enemyAttack = currentEnemy.attackPow();
+    enemyAttack = currentEnemy.=attackPow();
     player.health -= enemyAttack;
         console.log("\n\n\n\n\n\n\n\n\n\n\n\n\n\t\t" + player.name + " hits the " + currentEnemy.type + " for " + attackPow);
         sleep.sleep(1);

@@ -8,7 +8,8 @@ import user from './auth';
 
 
 const reducer = combineReducers({
-    topics
+    topics,
+    user
 })
 
 

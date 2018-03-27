@@ -17,6 +17,7 @@ class TopicsContainer extends React.Component {
 
     componentDidMount(){
         this.props.getTopics().then(() => {
+            this.props.topics.topics.sort((a, b) => Number(b.votes) - Number(a.votes))
             this.setState({
                 topics: this.props.topics.topics
             })
@@ -25,17 +26,16 @@ class TopicsContainer extends React.Component {
 
     updateTopics(){
         this.props.getTopics().then(() => {
+            this.props.topics.topics.sort((a, b) => Number(b.votes) - Number(a.votes))
             this.setState({
-                topics: this.props.topics
+                topics: this.props.topics.topics
             })
         })
     }
 
     handleDelete(id){
         this.props.deleteTopic(id).then(() => {
-            this.setState({
-                topics: this.props.topics
-            })
+            this.updateTopics();
         })
     }
 

@@ -4,19 +4,19 @@ import { connect } from 'react-redux';
 import { logout } from './redux/auth'
 
 function Navbar(props){
-    console.log(props)
+    let authenticated = props.user.isAuthenticated;
     return (
         <div className="navbarContainer">
             <div>
-                <div><Link to="/login">Login</Link></div>
-                <div><Link to="/">Sign up</Link></div>
+                { authenticated ? null : <div><Link to="/login">Login</Link></div> }
+                { authenticated ? null : <div><Link to="/">Sign up</Link></div> }
             </div>
             <div>
                 <div><Link to="/topics">  /Topics</Link></div>
                 <div><Link to="/about">  /About</Link></div>
             </div>
             <div>
-                <button onClick={props.logout}>Logout</button>
+                {authenticated ? <button onClick={props.logout}>Logout</button> : null }
             </div>
         </div>
     )

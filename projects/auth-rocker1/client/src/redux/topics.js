@@ -6,7 +6,7 @@ axios.interceptors.request.use(config => {
     return config;
 })
 
-const orderTopicsByVote = topics => topics.sort((a, b) => Number(a.votes) < Number(b.votes));
+
 
 const initialState = {
     topics: []
@@ -18,7 +18,6 @@ const initialState = {
 export function getTopics(){
     return function(dispatch){
         return axios.get('/topics').then(response => {
-            orderTopicsByVote(response.data)
             dispatch({
                 type: 'GET_TOPICS',
                 topics: response.data
@@ -33,9 +32,6 @@ export function addTopic(newTopic){
             dispatch({
                 type: 'ADD_TOPIC',
                 newTopic: response.data
-            })
-            .catch(err => {
-                console.error(err);
             })
         })
     }

@@ -1,22 +1,21 @@
 import React from 'react';
 import CommentsContainer from './Comments';
+import { connect } from 'react-redux';
 
 function DetailedTopicDisplay(props){
+    let auth = props.isAuthenticated;
     return (
         <div>
             <div className="detailedTopicDisplay">
                 <div className="detailedTopicHeaderDiv">
                     <h2 onClick={props.handleShowDescription}>{props.info.title}</h2>
-                    <button
-                        onClick={()=>props.handleDelete(props.info._id)}
-                        className="deleteBtn">X
-                    </button>
+                    {auth ? <button onClick={()=>props.handleDelete(props.info._id)} className="deleteBtn">X</button> : null }
                 </div>
                 <div className="votesAndIconsDiv">
                     <div>
-                        <button onClick={()=>props.handleDownVote(props.info)}> - </button>
+                        {auth ? <button onClick={()=>props.handleDownVote(props.info)}> - </button> : null }
                         <span>Votes: {props.info.votes}</span>
-                        <button onClick={()=>props.handleUpVote(props.info)}> + </button>
+                        {auth ? <button onClick={()=>props.handleUpVote(props.info)}> + </button> : null }
                     </div>
                     <div className="shareIconDiv">
                         <a href="#" className="shareIcon1"><i className="ion-social-twitter"></i></a>
@@ -38,4 +37,4 @@ function DetailedTopicDisplay(props){
     )
 }
 
-export default DetailedTopicDisplay;
+export default connect(state=>state.user, {})(DetailedTopicDisplay);

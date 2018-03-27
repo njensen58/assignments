@@ -9,9 +9,7 @@ import './style.css';
 
 import App from './App';
 
-store.subscribe(() => {
-    console.log(store.getState());
-})
+
 
 
 ReactDOM.render(

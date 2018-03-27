@@ -1,14 +1,16 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
 function SimpleTopicDisplay(props){
+    let auth = props.user.isAuthenticated;
     return (
         <div>
             <div className="simpleTopicDisplay">
                 <h2 onClick={props.handleShowDescription}>{props.info.title}</h2>
                 <div>
-                    <button onClick={()=>props.handleDownVote(props.info)}> - </button>
+                    {auth ? <button onClick={()=>props.handleDownVote(props.info)}> - </button> : null }
                     <span>Votes: {props.info.votes}</span>
-                    <button onClick={()=>props.handleUpVote(props.info)}> + </button>
+                    {auth ? <button onClick={()=>props.handleUpVote(props.info)}> + </button> : null }
                 </div>
             </div>
             <div className="simpleDescription">
@@ -18,4 +20,4 @@ function SimpleTopicDisplay(props){
     )
 }
 
-export default SimpleTopicDisplay;
+export default connect(state=>state, {})(SimpleTopicDisplay);
