@@ -24,7 +24,7 @@ class Home extends React.Component {
                             <div className="introLeftSideContainer">
                                 <h3>Let me introduce myself...</h3>
                                 <img src={require('./resources/me.jpg')} alt="Me"/>
-                                <button>Download Resume</button>
+                                <a href="Nate-Jensen-Resume.pdf" download="Nate_Jensen_Resume.pdf"><button>Download Resume</button></a>
                             </div>
                             <div className="introRightSideContainer">
                                 <h4>I am a :</h4>
