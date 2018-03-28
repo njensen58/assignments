@@ -14,7 +14,6 @@ function App(props){
         <div>
             <Navbar />
                 <Switch>
-
                     <Route exact path="/" component={Signup} />
                     <Route path="/topics" component={TopicsContainer} />
                     <Route path="/login" component={Login} />

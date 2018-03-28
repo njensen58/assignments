@@ -1,28 +1,27 @@
-import React from 'react'
+import React from 'react';
 
-function SignupForm(props) {
+function SignupForm(props){
     return (
-        <div className="form-wrapper">
+        <div className="signupFormContainer">
             <form onSubmit={props.handleSubmit}>
-                <h3>Sign Up</h3>
                 <input
-                    onChange={props.handleChange}
-                    value={props.username}
-                    name="username"
                     type="text"
+                    value={props.value.username}
+                    onChange={props.handleChange}
+                    name="username"
                     placeholder="Username"
                 />
                 <input
+                    type="text"
+                    value={props.value.password}
                     onChange={props.handleChange}
-                    value={props.password}
                     name="password"
-                    type="password"
                     placeholder="Password"
                 />
-                <button type="submit">Create Account</button>
+                <button>Submit</button>
             </form>
         </div>
     )
 }
 
-export default SignupForm
+export default SignupForm;

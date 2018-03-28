@@ -1,12 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Array Cardio 💪</title>
-</head>
-<body>
-  <p><em>Psst: have a look at the JavaScript Console</em> 💁</p>
-  <script>
+
     // Get your shorts on - this is an array workout!
     // ## Array Cardio Day 1
 
@@ -29,31 +21,64 @@
 
     const people = ['Beck, Glenn', 'Becker, Carl', 'Beckett, Samuel', 'Beddoes, Mick', 'Beecher, Henry', 'Beethoven, Ludwig', 'Begin, Menachem', 'Belloc, Hilaire', 'Bellow, Saul', 'Benchley, Robert', 'Benenson, Peter', 'Ben-Gurion, David', 'Benjamin, Walter', 'Benn, Tony', 'Bennington, Chester', 'Benson, Leana', 'Bent, Silas', 'Bentsen, Lloyd', 'Berger, Ric', 'Bergman, Ingmar', 'Berio, Luciano', 'Berle, Milton', 'Berlin, Irving', 'Berne, Eric', 'Bernhard, Sandra', 'Berra, Yogi', 'Berry, Halle', 'Berry, Wendell', 'Bethea, Erin', 'Bevan, Aneurin', 'Bevel, Ken', 'Biden, Joseph', 'Bierce, Ambrose', 'Biko, Steve', 'Billings, Josh', 'Biondo, Frank', 'Birrell, Augustine', 'Black, Elk', 'Blair, Robert', 'Blair, Tony', 'Blake, William'];
 
-    // Array.prototype.filter()
-    // 1. Filter the list of inventors for those who were born in the 1500's
-
-    // Array.prototype.map()
-    // 2. Give us an array of the inventors' first and last names
-
-    // Array.prototype.sort()
-    // 3. Sort the inventors by birthdate, oldest to youngest
+    // // Array.prototype.filter()
+    // // 1. Filter the list of inventors for those who were born in the 1500's
+    // const bornIn1500 = arr => arr.filter(inventor => inventor.year > 1499 && inventor.year < 1600);
+    // console.table(bornIn1500(inventors))
+    //
+    // // Array.prototype.map()
+    // // 2. Give us an array of the inventors' first and last names
+    // const firstAndLastNames = arr => arr.map(inventor => `${inventor.first} ${inventor.last}`);
+    // console.log("First and Last names", firstAndLastNames(inventors));
+    //
+    // // Array.prototype.sort()
+    // // 3. Sort the inventors by birthdate, oldest to youngest
+    // const oldToYoung = arr => arr.sort((a, b) => a.year - b.year);
+    // console.log("Old To Young Sort", oldToYoung(inventors));
 
     // Array.prototype.reduce()
     // 4. How many years did all the inventors live?
+    // const totalYearsLived = arr => {
+    //     return arr.reduce((total, inventor) => total += inventor.passed - inventor.year, 0);
+    // }
+    // console.log("Total Years Lived", totalYearsLived(inventors))
 
     // 5. Sort the inventors by years lived
+    // const sortedByYearsLived = arr => arr.sort((a, b) => (a.passed - a.year) - (b.passed - b.year));
+    // console.log("Sorted by years lived", sortedByYearsLived(inventors));
 
     // 6. create a list of Boulevards in Paris that contain 'de' anywhere in the name
     // https://en.wikipedia.org/wiki/Category:Boulevards_in_Paris
+    // const category = document.querySelector('.mw-category');
+    // const links = [...category.querySelectorAll('a')];
+    //
+    // const de = links
+    //     .map(link => link.textContent)
+    //     .filter(streetName => streetName.indexOf('de') !== -1);
 
 
     // 7. sort Exercise
     // Sort the people alphabetically by last name
+    // const sortByLastName = people.sort((lastOne, nextOne) => {
+    //     const [aLast, aFirst] = lastOne.split(', ');
+    //     const [bLast, bFirst] = nextOne.split(', ');
+    //     return aLast > bLast ? 1 : -1;
+    // })
+    //
+    // console.log(sortByLastName);
 
     // 8. Reduce Exercise
     // Sum up the instances of each of these
-    const data = ['car', 'car', 'truck', 'truck', 'bike', 'walk', 'car', 'van', 'bike', 'walk', 'car', 'van', 'car', 'truck' ];
-
-  </script>
-</body>
-</html>
+    // const data = ['car', 'car', 'truck', 'truck', 'bike', 'walk', 'car', 'van', 'bike', 'walk', 'car', 'van', 'car', 'truck' ];
+    //
+    // const sumUpWords = arr => arr
+    //     .reduce((myObj, item) => {
+    //         if(!myObj[item]){
+    //             myObj[item] = 0
+    //         }
+    //         myObj[item]++
+    //         return myObj
+    //     }, {})
+    //
+    // console.log(sumUpWords(data))
+    //
