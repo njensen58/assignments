@@ -2,8 +2,9 @@ import React from 'react';
 import SignupForm from './SignupForm';
 import LoginForm from './LoginForm';
 import {connect} from 'react-redux';
-import {signup, login} from '../../redux/auth';
-import './authStyle.css';
+import {signup, login} from '../../redux/Auth';
+import './authStyles.css';
+
 
 
 class AuthFormContainer extends React.Component {
@@ -38,15 +39,21 @@ class AuthFormContainer extends React.Component {
 
     handleSubmit(e){
         e.preventDefault();
-        this.props.signup(this.state.user);
-        this.clearInputs();
+        if(this.state.user.username && this.state.user.password){
+            this.props.signup(this.state.user);
+            this.clearInputs();
+            this.props.history.push('/')
+        }
     }
 
 
     handleLogin(e){
         e.preventDefault();
-        this.props.login(this.state.user);
-        this.clearInputs();
+        if(this.state.user.username && this.state.user.password){
+            this.props.login(this.state.user);
+            this.clearInputs();
+            this.props.history.push('/')
+        }
     }
 
 
@@ -69,7 +76,8 @@ class AuthFormContainer extends React.Component {
 
     render(){
         const selected = {
-            backgroundColor: 'cornflowerblue'
+            backgroundColor: '#6288a5',
+            color: 'white'
         }
 
         return (

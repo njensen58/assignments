@@ -1,11 +1,13 @@
 import { combineReducers, createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
-import axios from 'axios';
 
-import user from './auth';
+
+import user from './Auth';
+import topStories from './TopStories';
 
 const rootReducer = combineReducers({
-    user
+    user,
+    topStories
 })
 
 

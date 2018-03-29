@@ -16,7 +16,7 @@ const initialState = {
 
 export function signup(userInfo){
     return dispatch => {
-        axios.post('/auth/signup', userInfo)
+        authAxios.post('/auth/signup', userInfo)
             .then(response => {
                 const {token, user} = response.data;
                 localStorage.token = token;
@@ -32,7 +32,7 @@ export function signup(userInfo){
 
 export function login(credentials){
     return dispatch => {
-        axios.post('/auth/login', credentials)
+        authAxios.post('/auth/login', credentials)
             .then(response => {
                 const {token, user} = response.data;
                 localStorage.token = token;

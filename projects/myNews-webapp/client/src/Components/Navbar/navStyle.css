@@ -1,4 +1,23 @@
 .navContainer {
-    height: 60px;
-    background-color: #3339;
+    height: 40px;
+    background-color: #aaa;
+}
+
+.navContainer {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.navContainer a {
+    text-decoration: none;
+    color: #333;
+    font-size: 12px;
+    margin: 0 10px;
+}
+
+
+
+.logout-nav {
+    margin: 0 10px;
 }

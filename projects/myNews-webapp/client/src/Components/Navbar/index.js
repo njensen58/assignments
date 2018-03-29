@@ -1,6 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {logout} from '../../redux/auth';
+import {logout} from '../../redux/Auth';
+import {Link} from 'react-router-dom';
 import './navStyle.css';
 
 class Navbar extends React.Component {
@@ -13,8 +14,22 @@ class Navbar extends React.Component {
     render(){
         let authenticated = this.props.user.isAuthenticated;
         return (
-            <div className="navContainer">
-                { authenticated ? <button onClick={this.props.logout}>Logout</button> : null }
+            <div>
+                { authenticated ?
+                    <div className="navContainer">
+                        <Link to="/">Home</Link>
+                        <Link to="/profile">Profile</Link>
+                        <button
+                            onClick={this.props.logout}
+                            className="logout-nav">Logout
+                        </button>
+                    </div>
+                :
+                    <div className="navContainer">
+                        <Link to="/">Home</Link>
+                        <Link to="/login">Login</Link>
+                    </div>
+                }
             </div>
         )
     }
