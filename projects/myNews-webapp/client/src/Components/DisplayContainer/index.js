@@ -67,7 +67,7 @@ class DisplayContainer extends React.Component {
                 />
             )
         })
-
+        console.log(this.props)
 
         let auth = this.props.user.isAuthenticated;
 
