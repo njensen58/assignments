@@ -3,15 +3,22 @@ import Story from './Story';
 import {connect} from 'react-redux';
 import {getTopStories} from '../../redux/TopStories';
 import SearchForm from './SearchForm';
+import DrawerUndockedExample from './Drawer';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import darkBaseTheme from 'material-ui/styles/baseThemes/darkBaseTheme';
+import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import './displayStyle.css';
 
 class DisplayContainer extends React.Component {
     constructor(){
         super();
         this.state = {
-            stories: []
+            stories: [],
+            sidebar: false
         }
+        this.toggleSidebar = this.toggleSidebar.bind(this);
     }
+
 
     componentDidMount(){
         this.props.getTopStories().then(() => {
@@ -19,6 +26,13 @@ class DisplayContainer extends React.Component {
                 stories: this.props.topStories
             })
         })
+    }
+
+
+    toggleSidebar(){
+        this.setState(prevState => ({
+            sidebar: !prevState.sidebar ? true : false
+        }))
     }
 
 
@@ -38,14 +52,21 @@ class DisplayContainer extends React.Component {
             )
         })
 
+
+
         let auth = this.props.user.isAuthenticated;
 
         return (
-            <div>
+            <div className="displayDiv">
                 <div>
+                    <MuiThemeProvider muiTheme={getMuiTheme(darkBaseTheme)}>
+                        <DrawerUndockedExample />
+                    </MuiThemeProvider>
+                </div>
+                <div className="searchFormDiv">
                     { auth ? <SearchForm /> : null }
                 </div>
-                <h1>Top Stories</h1>
+                    <h1 className="displayHeadTitle">Top Stories</h1>
                 <div className="displayContainer">
                     {mappedStories}
                 </div>

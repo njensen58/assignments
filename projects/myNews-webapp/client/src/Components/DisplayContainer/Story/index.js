@@ -13,17 +13,21 @@ class Story extends React.Component {
     render(){
         return (
             <div className="storyContainer">
-                <div className="timeContainer">
-                    <p>{moment().format('MMM Do YYYY',this.props.publishedTime)}</p>
-                </div>
-                <div>
-                    <img src={this.props.urlToImage} alt={this.props.title} />
-                </div>
                 <div>
                     <h1>{this.props.title}</h1>
                 </div>
-                <p>{this.props.description}</p>
-                <a href={this.props.url}>Go to story</a> - <span>{this.props.source}</span>
+                <div className="storyImgContainer">
+                    <img src={this.props.urlToImage} alt={this.props.title} />
+                </div>
+                <div className="timeContainer">
+                    <span>{moment().format('MMM Do YYYY',this.props.publishedTime)}</span>
+                </div>
+                <div>
+                    <p>{this.props.description}</p>
+                </div>
+                <div>
+                    <a href={this.props.url}>Go to story</a> - <span>{this.props.source}</span>
+                </div>
             </div>
         )
     }
