@@ -5,6 +5,7 @@ import MenuItem from 'material-ui/MenuItem';
 import {connect} from 'react-redux';
 import history from '../../../../history';
 import {logout} from '../../../../redux/Auth';
+import {getTopStories} from '../../../../redux/News';
 
 const style = {
   display: 'inline-block',
@@ -17,6 +18,7 @@ class MenuExampleSimple extends React.Component{
         super();
         this.goToLogin = this.goToLogin.bind(this);
         this.goToHome = this.goToHome.bind(this);
+        this.countrySelect = this.countrySelect.bind(this);
     }
 
     goToLogin(){
@@ -28,14 +30,45 @@ class MenuExampleSimple extends React.Component{
         this.props.handleClose();
     }
 
+    countrySelect(country){
+        this.props.getTopStories(country);
+        this.props.updateDisplay();
+        this.props.handleClose();
+    }
+
     render(){
         let auth = this.props.user.isAuthenticated;
+        const style = {
+              display: 'inline-block',
+              margin: '16px 32px 16px 0',
+        }
+        
         return (
           <div>
             <Paper style={style}>
               <Menu>
                 { auth ? null : <MenuItem primaryText="Login" onClick={this.goToLogin}/> }
                  <MenuItem primaryText="Home" onClick={this.goToHome}/>
+                { auth ?
+                     <MenuItem
+                     primaryText="Top Stories"
+                     menuItems={[
+                         <div>
+                         <MenuItem primaryText="Canada" onClick={()=>this.countrySelect('ca')}/>
+                         <MenuItem primaryText="Germany" onClick={()=>this.countrySelect('de')}/>
+                         <MenuItem primaryText="France" onClick={()=>this.countrySelect('fr')}/>
+                         <MenuItem primaryText="United Kingdom" onClick={()=>this.countrySelect('gb')}/>
+                         <MenuItem primaryText="Hong Kong" onClick={()=>this.countrySelect('hk')}/>
+                         <MenuItem primaryText="Japan" onClick={()=>this.countrySelect('jp')}/>
+                         <MenuItem primaryText="Mexico" onClick={()=>this.countrySelect('mx')}/>
+                         <MenuItem primaryText="Netherlands" onClick={()=>this.countrySelect('nl')}/>
+                         <MenuItem primaryText="United States" onClick={()=>this.countrySelect('us')}/>
+                         </div>
+                     ]}
+                />
+                :
+                null
+                }
                 { auth ? <MenuItem primaryText="Sign out" onClick={this.props.logout}/> : null }
               </Menu>
             </Paper>
@@ -43,4 +76,4 @@ class MenuExampleSimple extends React.Component{
         )
     };
 }
-export default connect(state=>state,{logout})(MenuExampleSimple);
+export default connect(state=>state,{logout, getTopStories})(MenuExampleSimple);

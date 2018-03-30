@@ -1,4 +1,6 @@
 import React from 'react';
+import {connect} from 'react-redux';
+import {getSearchStories} from '../../../redux/News'
 
 class SearchForm extends React.Component {
     constructor(){
@@ -25,8 +27,12 @@ class SearchForm extends React.Component {
 
     handleSubmit(e){
         e.preventDefault();
-        this.clearInputs();
-    }
+        if(this.state.input.length > 0){
+                this.props.updateDisplay(this.state.input);
+                this.clearInputs();
+            }
+        }
+
 
     render(){
         return (
@@ -34,7 +40,7 @@ class SearchForm extends React.Component {
                 <form onSubmit={this.handleSubmit}>
                     <input
                         type="text"
-                        placeholder="Search"
+                        placeholder="Search All News"
                         value={this.state.input}
                         onChange={this.handleChange}
                         name="input"
@@ -46,4 +52,4 @@ class SearchForm extends React.Component {
     }
 }
 
-export default SearchForm;
+export default connect(state=>state, {getSearchStories})(SearchForm);

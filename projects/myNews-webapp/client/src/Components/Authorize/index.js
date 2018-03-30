@@ -74,6 +74,7 @@ class AuthFormContainer extends React.Component {
     }
 
 
+
     render(){
         const selected = {
             backgroundColor: '#6288a5',
@@ -82,6 +83,9 @@ class AuthFormContainer extends React.Component {
 
         return (
             <div className="authContainer">
+                <div>
+                    <button onClick={()=>this.props.history.push('/')}>Back</button>
+                </div>
                 <div className="authTitleContainer">
                 { !this.state.loginToggle ?
                     <div>

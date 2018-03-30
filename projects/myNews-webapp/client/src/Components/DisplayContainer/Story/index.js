@@ -1,5 +1,7 @@
 import React from 'react';
+import MdPhoto from 'react-icons/lib/md/insert-photo'
 const moment = require('moment');
+
 
 
 class Story extends React.Component {
@@ -17,7 +19,11 @@ class Story extends React.Component {
                     <h1>{this.props.title}</h1>
                 </div>
                 <div className="storyImgContainer">
+                    {this.props.urlToImage !== null ?
                     <img src={this.props.urlToImage} alt={this.props.title} />
+                    :
+                    <MdPhoto style={{width: '50px', height: '50px', minWidth: '50px'}}/>
+                    }
                 </div>
                 <div className="timeContainer">
                     <span>{moment().format('MMM Do YYYY',this.props.publishedTime)}</span>

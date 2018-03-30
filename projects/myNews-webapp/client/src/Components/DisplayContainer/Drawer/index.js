@@ -1,6 +1,5 @@
 import React from 'react';
 import Drawer from 'material-ui/Drawer';
-import MenuItem from 'material-ui/MenuItem';
 import RaisedButton from 'material-ui/RaisedButton';
 import MenuExampleSimple from './MenuExampleSimple';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
@@ -44,17 +43,16 @@ export default class DrawerUndockedExample extends React.Component {
         />
         <Drawer
           docked={false}
-          width={200}
+          width={170}
           open={this.state.open}
           onRequestChange={(open) => this.setState({open})}
         >
-        {/*  <MenuItem onClick={this.handleClose}>Menu Item</MenuItem>
-    <MenuItem onClick={this.handleClose}>Menu Item 2</MenuItem>*/}
-              <MuiThemeProvider muiTheme={getMuiTheme(darkBaseTheme)}>
-                  <MenuExampleSimple
-                      handleClose={this.handleClose}
-                  />
-              </MuiThemeProvider>
+        <MuiThemeProvider muiTheme={getMuiTheme(darkBaseTheme)}>
+            <MenuExampleSimple
+                handleClose={this.handleClose}
+                updateDisplay={this.props.updateDisplay}
+            />
+        </MuiThemeProvider>
         </Drawer>
       </div>
     );

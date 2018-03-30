@@ -8,7 +8,6 @@ import store from './redux';
 import './generalStyle.css';
 
 
-
 ReactDOM.render(
     <Provider store={store}>
         <Router history={history}>

@@ -3,11 +3,13 @@ import thunk from 'redux-thunk';
 
 
 import user from './Auth';
-import topStories from './TopStories';
+import news from './News';
+
+
 
 const rootReducer = combineReducers({
     user,
-    topStories
+    news
 })
 
 

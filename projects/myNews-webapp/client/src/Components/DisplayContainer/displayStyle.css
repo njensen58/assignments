@@ -11,6 +11,7 @@
     font-weight: lighter;
     margin-top: 0px;
     padding-top: 30px;
+    grid-column: 2;
 }
 
 .displayContainer {
@@ -39,7 +40,7 @@
     font-weight: lighter;
     border: 1px solid #3339;
     border-radius: 4px;
-    width: 180px;
+    width: 70%;
     margin-right: 10px;
     outline: none;
     display: inline-block;
@@ -95,5 +96,4 @@
 
 .storyImgContainer img {
     width: 100%;
-
 }
