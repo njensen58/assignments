@@ -32,7 +32,7 @@ class Story extends React.Component {
                     <p>{this.props.description}</p>
                 </div>
                 <div>
-                    <a href={this.props.url}>Go to story</a> - <span>{this.props.source}</span>
+                    <a href={this.props.url} target="_blank">Go to story</a> - <span>{this.props.source}</span>
                 </div>
             </div>
         )

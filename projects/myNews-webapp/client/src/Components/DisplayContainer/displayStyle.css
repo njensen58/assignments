@@ -1,5 +1,6 @@
 .displayDiv {
-
+    background-color: #bbb9;
+    padding-bottom: 40px;
 }
 
 .displayDiv button {
@@ -55,14 +56,22 @@
 }
 
 .storyContainer {
-    border-radius: 2px;
+    border-radius: 3px;
     margin: 5px;
     padding: 5px;
     grid-column: 2;
-    background-color: #ddd;
+    background-color:#F8F8FF;
     -webkit-box-shadow: -1px 1px 8px 1px rgba(0,0,0,0.62);
     -moz-box-shadow: -1px 1px 8px 1px rgba(0,0,0,0.62);
     box-shadow: -1px 1px 8px 1px rgba(0,0,0,0.62);
+    transition: .3s;
+}
+
+.storyContainer:hover {
+    -webkit-box-shadow: 0px 0px 43px 1px rgba(0,0,0,0.43);
+    -moz-box-shadow: 0px 0px 43px 1px rgba(0,0,0,0.43);
+    box-shadow: 0px 0px 43px 1px rgba(0,0,0,0.43);
+    margin-bottom: 10px;
 }
 
 .timeContainer {
@@ -96,4 +105,57 @@
 
 .storyImgContainer img {
     width: 100%;
+}
+
+
+@media only screen and (min-width: 400px){
+    .displayContainer {
+        grid-template-columns: 4fr 20fr 1fr;
+    }
+
+    .searchFormDiv {
+        grid-template-columns: 5fr 20fr 1fr;
+    }
+
+    .storyContainer h1 {
+        font-size: 18px;
+    }
+
+
+}
+
+@media only screen and (min-width: 500px){
+    .displayContainer {
+        grid-template-columns: 4fr 20fr 2fr;
+    }
+
+    .searchFormDiv {
+        grid-template-columns: 6fr 20fr 1fr;
+    }
+
+    .storyContainer h1 {
+        font-size: 20px;
+    }
+
+}
+
+
+
+@media only screen and (min-width: 800px){
+    .displayHeadTitle {
+        width: 100%;
+    }
+
+    .displayContainer {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        padding: 0 20px 0 50px;
+    }
+
+    .storyContainer {
+        width: 40%;
+
+    }
 }

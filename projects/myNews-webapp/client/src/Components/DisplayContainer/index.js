@@ -1,7 +1,7 @@
 import React from 'react';
 import Story from './Story';
 import {connect} from 'react-redux';
-import {getTopStories, getSearchStories} from '../../redux/News';
+import {getTopStories, getSearchStories, getSourceStories} from '../../redux/News';
 import SearchForm from './SearchForm';
 import DrawerUndockedExample from './Drawer';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
@@ -19,6 +19,7 @@ class DisplayContainer extends React.Component {
         this.toggleSidebar = this.toggleSidebar.bind(this);
         this.updateDisplay = this.updateDisplay.bind(this);
         this.updateDisplayOnSearch = this.updateDisplayOnSearch.bind(this);
+        this.updateDisplayOnSourceSelect = this.updateDisplayOnSourceSelect.bind(this);
     }
 
     componentDidMount(){
@@ -39,6 +40,14 @@ class DisplayContainer extends React.Component {
 
     updateDisplayOnSearch(userInput){
         this.props.getSearchStories(userInput).then(()=>{
+            this.setState({
+                stories: this.props.news.news
+            })
+        })
+    }
+
+    updateDisplayOnSourceSelect(source){
+        this.props.getSourceStories(source).then(()=>{
             this.setState({
                 stories: this.props.news.news
             })
@@ -67,7 +76,7 @@ class DisplayContainer extends React.Component {
                 />
             )
         })
-        console.log(this.props)
+
 
         let auth = this.props.user.isAuthenticated;
 
@@ -75,7 +84,7 @@ class DisplayContainer extends React.Component {
             <div className="displayDiv">
                 <div>
                     <MuiThemeProvider muiTheme={getMuiTheme(darkBaseTheme)}>
-                        <DrawerUndockedExample updateDisplay={this.updateDisplay}/>
+                        <DrawerUndockedExample updateDisplay={this.updateDisplay} updateDisplayOnSourceSelect={this.updateDisplayOnSourceSelect}/>
                     </MuiThemeProvider>
                 </div>
                 <div className="searchFormDiv">
@@ -90,4 +99,4 @@ class DisplayContainer extends React.Component {
     }
 }
 
-export default connect(state=>state, {getTopStories, getSearchStories})(DisplayContainer);
+export default connect(state=>state, {getTopStories, getSearchStories, getSourceStories})(DisplayContainer);

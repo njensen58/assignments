@@ -8,9 +8,16 @@ authAxios.interceptors.request.use(config => {
 })
 
 const initialState = {
-    username: '',
-    password: '',
-    isAuthenticated: false
+    user: {
+        username: '',
+        password: '',
+        _id: ''
+    },
+    authErrCode: {
+        signup: '',
+        signin: ''
+    },
+    isAuthenticated: false,
 }
 
 
@@ -25,6 +32,7 @@ export function signup(userInfo){
             })
             .catch(err => {
                 console.error(err);
+                dispatch(signupError("signup", err.response.status));
             })
     }
 }
@@ -61,16 +69,37 @@ export function logout(){
 }
 
 
+function signupError(key, errCode){
+    return {
+        type: "SIGNUP_ERROR",
+        key,
+        errCode
+    }
+}
+
+
 function reducer(state = initialState, action){
     switch(action.type){
         case "AUTHENTICATE":
             return {
                 ...state,
                 ...action.user,
-                isAuthenticated: true
+                isAuthenticated: true,
+                authErrCode: {
+                    signup: '',
+                    signin: ''
+                }
             }
         case "LOGOUT":
             return initialState
+        case "SIGNUP_ERROR":
+            return {
+                ...state,
+                authErrCode: {
+                    ...state.authErrCode,
+                    [action.key]: action.errCode
+                }
+            }
         default:
             return state
     }

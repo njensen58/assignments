@@ -46,6 +46,17 @@ export function getSearchStories(userInput){
     }
 }
 
+export function getSourceStories(userInput){
+    return dispatch => {
+        return newsAxios.get(`https://newsapi.org/v2/top-headlines?sources=${userInput}`).then(response => {
+            let filteredArticles = response.data.articles.filter(article => article.description !== null && article.urlToImage !== null && article.source.name !== 'Liveleak.com')
+            dispatch({
+                type: "GET_SOURCE_STORIES",
+                news: filteredArticles
+            })
+        })
+    }
+}
 
 function reducer(state = initialState, action){
     switch(action.type){
@@ -54,6 +65,10 @@ function reducer(state = initialState, action){
                 news: action.news
             }
         case "GET_SEARCH_STORIES":
+            return {
+                news: action.news
+            }
+        case "GET_SOURCE_STORIES":
             return {
                 news: action.news
             }

@@ -41,8 +41,10 @@ class AuthFormContainer extends React.Component {
         e.preventDefault();
         if(this.state.user.username && this.state.user.password){
             this.props.signup(this.state.user);
-            this.clearInputs();
-            this.props.history.push('/')
+            if(this.props.user.isAuthenticated){
+                this.clearInputs();
+                this.props.history.push('/')
+            }
         }
     }
 
@@ -51,8 +53,10 @@ class AuthFormContainer extends React.Component {
         e.preventDefault();
         if(this.state.user.username && this.state.user.password){
             this.props.login(this.state.user);
-            this.clearInputs();
-            this.props.history.push('/')
+            if(this.props.user.isAuthenticated){
+                this.clearInputs();
+                this.props.history.push('/')
+            }
         }
     }
 
@@ -81,6 +85,14 @@ class AuthFormContainer extends React.Component {
             color: 'white'
         }
 
+        let authErrCode = this.props.user.authErrCode.signup;
+        let errMsg = '';
+        if (authErrCode < 500 && authErrCode > 399){
+            errMsg = "Invalid username or password!";
+        } else if (authErrCode > 499){
+            errMsg = "Server Error!";
+        }
+
         return (
             <div className="authContainer">
                 <div>
@@ -105,6 +117,7 @@ class AuthFormContainer extends React.Component {
                         value={this.state.user}
                         handleChange={this.handleChange}
                         handleSubmit={this.handleSubmit}
+                        errMsg={errMsg}
                     />
                 :
                     <LoginForm

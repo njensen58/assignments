@@ -51,6 +51,7 @@ export default class DrawerUndockedExample extends React.Component {
             <MenuExampleSimple
                 handleClose={this.handleClose}
                 updateDisplay={this.props.updateDisplay}
+                updateDisplayOnSourceSelect={this.props.updateDisplayOnSourceSelect}
             />
         </MuiThemeProvider>
         </Drawer>
