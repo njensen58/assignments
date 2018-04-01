@@ -1,5 +1,8 @@
 import React from 'react';
-import MdPhoto from 'react-icons/lib/md/insert-photo'
+import MdPhoto from 'react-icons/lib/md/insert-photo';
+import Paper from 'material-ui/Paper';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+
 const moment = require('moment');
 
 
@@ -15,9 +18,8 @@ class Story extends React.Component {
     render(){
         return (
             <div className="storyContainer">
-                <div>
-                    <h1>{this.props.title}</h1>
-                </div>
+                <MuiThemeProvider>
+                <Paper zDepth={1}>
                 <div className="storyImgContainer">
                     {this.props.urlToImage !== null ?
                     <img src={this.props.urlToImage} alt={this.props.title} />
@@ -29,11 +31,16 @@ class Story extends React.Component {
                     <span>{moment().format('MMM Do YYYY',this.props.publishedTime)}</span>
                 </div>
                 <div>
+                    <h1>{this.props.title}</h1>
+                </div>
+                <div>
                     <p>{this.props.description}</p>
                 </div>
                 <div>
                     <a href={this.props.url} target="_blank">Go to story</a> - <span>{this.props.source}</span>
                 </div>
+                </Paper>
+                </MuiThemeProvider>
             </div>
         )
     }

@@ -62,7 +62,7 @@ class DisplayContainer extends React.Component {
 
 
     render(){
-        const mappedStories = this.state.stories.map(story => {
+        const mappedStories = this.state.stories.map((story, i) => {
             return (
                 <Story
                     author={story.author}
@@ -72,7 +72,7 @@ class DisplayContainer extends React.Component {
                     urlToImage={story.urlToImage}
                     publishedTime={story.publishedAt}
                     source={story.source.name}
-                    key={story.title + story.author}
+                    key={story.title + i}
                 />
             )
         })
