@@ -52,11 +52,12 @@ class AuthFormContainer extends React.Component {
     handleLogin(e){
         e.preventDefault();
         if(this.state.user.username && this.state.user.password){
-            this.props.login(this.state.user);
+            this.props.login(this.state.user).then(()=> {
             if(this.props.user.isAuthenticated){
                 this.clearInputs();
                 this.props.history.push('/')
             }
+        })
         }
     }
 

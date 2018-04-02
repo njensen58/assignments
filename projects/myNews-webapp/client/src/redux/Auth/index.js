@@ -40,7 +40,7 @@ export function signup(userInfo){
 
 export function login(credentials){
     return dispatch => {
-        authAxios.post('/auth/login', credentials)
+        return authAxios.post('/auth/login', credentials)
             .then(response => {
                 const {token, user} = response.data;
                 localStorage.token = token;

@@ -12,11 +12,12 @@ newsAxios.interceptors.request.use(config => {
     return config;
 })
 
+
+
 const initialState = {
     news: [],
     currentCountry: 'us'
 }
-
 
 
 export function getTopStories(newCountry){

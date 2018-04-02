@@ -19,7 +19,7 @@ class Story extends React.Component {
         return (
             <div className="storyContainer">
                 <MuiThemeProvider>
-                <Paper zDepth={1}>
+                <Paper zDepth={1} className="paper">
                 <div className="storyImgContainer">
                     {this.props.urlToImage !== null ?
                     <img src={this.props.urlToImage} alt={this.props.title} />

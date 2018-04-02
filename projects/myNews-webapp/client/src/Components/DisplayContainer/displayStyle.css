@@ -92,13 +92,13 @@
     justify-content: center;
     align-items: center;
     margin: 10px 5px 5px 5px;
-    padding-top: 5px;
 }
 
 .storyImgContainer img {
     width: 100%;
-
+    border-radius: 5px;
 }
+
 .storyContainer a {
     padding: 5px;
 }
@@ -114,7 +114,7 @@
     }
 
     .storyImgContainer {
-        padding-top: 5px;
+
     }
 
     .storyContainer h1 {
@@ -124,6 +124,10 @@
     .storyContainer {
         margin-left: 0;
         margin-right: 20px;
+    }
+
+    .paper {
+        padding: 1px 8px 8px 8px;
     }
 
 }

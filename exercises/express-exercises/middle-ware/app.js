@@ -3,12 +3,15 @@ const bodyParser = require('body-parser');
 const app = express();
 const movieRoutes = require('./routes/movies')
 
+
 app.use(bodyParser.json());
+
 
 app.use((req, res, next) => {
     req.didIFart = {someoneFarted: true};
     next();
 })
+
 
 app.use('/movies', movieRoutes);
 

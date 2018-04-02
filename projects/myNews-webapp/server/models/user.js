@@ -13,13 +13,12 @@ const userSchema = new Schema({
         type: String,
         required: true
     },
-    firstname: {
-        type: String,
-    },
+    firstname: String,
     isAdmin: {
         type: Boolean,
         default: false
-    }
+    },
+    favSource: String
 })
 
 ///////////////////////////////////////////////

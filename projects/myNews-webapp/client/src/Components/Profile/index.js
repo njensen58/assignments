@@ -23,6 +23,14 @@ class Profile extends React.Component{
                     <button onClick={this.goToHome}>Home</button>
                 </div>
                 Hello {this.props.username}!
+                <div>
+                    <select>
+                        <option value="">1</option>
+                        <option value="">2</option>
+                        <option value="">3</option>
+                        <option value="">4</option>
+                    </select>
+                </div>
             </div>
         )
     }
