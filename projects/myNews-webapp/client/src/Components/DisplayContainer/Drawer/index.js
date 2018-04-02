@@ -10,6 +10,8 @@ import history from '../../../history';
 import {connect} from 'react-redux';
 import {logout} from '../../../redux/Auth';
 import {getTopStories} from '../../../redux/News';
+import {countries} from '../../../resources/countrySources';
+import {sources} from '../../../resources/countrySources';
 
 class DrawerUndockedExample extends React.Component {
   constructor(props) {
@@ -60,6 +62,18 @@ class DrawerUndockedExample extends React.Component {
 
       let auth = this.props.user.isAuthenticated;
 
+      const mappedCountryIcons = countries.map(country => {
+          return (
+              <MenuItem primaryText={country.c} onClick={()=>this.countrySelect(country.co)} />
+          )
+      })
+
+      const mappedSourceIcons = sources.map(source => {
+          return (
+              <MenuItem primaryText={source.s} onClick={()=>this.sourceSelect(source.co)} />
+          )
+      })
+
     return (
       <div>
         <RaisedButton
@@ -81,56 +95,19 @@ class DrawerUndockedExample extends React.Component {
                  <div>
                      <MenuItem primaryText="Profile" onClick={this.goToProfile}/>
 
-                      <MenuItem
-                          primaryText="Top Stories"
-                          menuItems={[
-                              <div>
-                              <MenuItem primaryText="Argentina" onClick={()=>this.countrySelect('ar')} />
-                              <MenuItem primaryText="Belgium" onClick={()=>this.countrySelect('be')} />
-                              <MenuItem primaryText="Brazil" onClick={()=>this.countrySelect('br')} />
-                              <MenuItem primaryText="Canada" onClick={()=>this.countrySelect('ca')} />
-                              <MenuItem primaryText="Cuba" onClick={()=>this.countrySelect('cu')} />
-                              <MenuItem primaryText="France" onClick={()=>this.countrySelect('fr')} />
-                              <MenuItem primaryText="Germany" onClick={()=>this.countrySelect('de')} />
-                              <MenuItem primaryText="Hong Kong" onClick={()=>this.countrySelect('hk')} />
-                              <MenuItem primaryText="Ireland" onClick={()=>this.countrySelect('ie')} />
-                              <MenuItem primaryText="Israel" onClick={()=>this.countrySelect('il')} />
-                              <MenuItem primaryText="Japan" onClick={()=>this.countrySelect('jp')} />
-                              <MenuItem primaryText="Mexico" onClick={()=>this.countrySelect('mx')} />
-                              <MenuItem primaryText="Netherlands" onClick={()=>this.countrySelect('nl')} />
-                              <MenuItem primaryText="Norway" onClick={()=>this.countrySelect('no')} />
-                              <MenuItem primaryText="United Kingdom" onClick={()=>this.countrySelect('gb')} />
-                              <MenuItem primaryText="United States" onClick={()=>this.countrySelect('us')} />
-                              </div>
-                          ]}
-                      />
+                     <MenuItem
+                         primaryText="Top Stories"
+                         menuItems={[
+                             <div>
+                             {mappedCountryIcons}
+                             </div>
+                         ]}
+                     />
                      <MenuItem
                          primaryText="News Sources"
                          menuItems={[
                              <div>
-                             <MenuItem primaryText="ABC News" onClick={()=>this.sourceSelect('abc-news')} />
-                             <MenuItem primaryText="Al Jazeera" onClick={()=>this.sourceSelect('al-jazeera-english')} />
-                             <MenuItem primaryText="BBC News" onClick={()=>this.sourceSelect('bbc-news')} />
-                             <MenuItem primaryText="BBC Sports" onClick={()=>this.sourceSelect('bbc-sport')} />
-                             <MenuItem primaryText="Buzzfeed" onClick={()=>this.sourceSelect('buzzfeed')} />
-                             <MenuItem primaryText="CBS News" onClick={()=>this.sourceSelect('cbs-news')} />
-                             <MenuItem primaryText="CNN" onClick={()=>this.sourceSelect('cnn')} />
-                             <MenuItem primaryText="Daily Mail" onClick={()=>this.sourceSelect('daily-mail')} />
-                             <MenuItem primaryText="ESPN" onClick={()=>this.sourceSelect('espn')} />
-                             <MenuItem primaryText="Google News" onClick={()=>this.sourceSelect('google-news')} />
-                             <MenuItem primaryText="Hacker News" onClick={()=>this.sourceSelect('hacker-news')} />
-                             <MenuItem primaryText="IGN" onClick={()=>this.sourceSelect('IGN')} />
-                             <MenuItem primaryText="Le Monde" onClick={()=>this.sourceSelect('le-monde')} />
-                             <MenuItem primaryText="MSNBC" onClick={()=>this.sourceSelect('msnbc')} />
-                             <MenuItem primaryText="NBC" onClick={()=>this.sourceSelect('nbc-news')} />
-                             <MenuItem primaryText="Huffington Post" onClick={()=>this.sourceSelect('the-huffington-post')} />
-                             <MenuItem primaryText="National Geographic" onClick={()=>this.sourceSelect('national-geographic')} />
-                             <MenuItem primaryText="New York Times" onClick={()=>this.sourceSelect('the-new-york-times')} />
-                             <MenuItem primaryText="Wall Street Journal" onClick={()=>this.sourceSelect('the-wall-street-journal')} />
-                             <MenuItem primaryText="Washington Post" onClick={()=>this.sourceSelect('the-washington-post')} />
-                             <MenuItem primaryText="USA Today" onClick={()=>this.sourceSelect('usa-today')} />
-                             <MenuItem primaryText="Wired" onClick={()=>this.sourceSelect('wired')} />
-                             <MenuItem primaryText="Vice News" onClick={()=>this.sourceSelect('vice-news')} />
+                             {mappedSourceIcons}
                              </div>
                          ]}
                      />
