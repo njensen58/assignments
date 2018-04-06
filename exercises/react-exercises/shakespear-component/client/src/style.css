@@ -1,0 +1,21 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #3339;
+}
+
+.displayContainer {
+    display: grid;
+    grid-template-columns: 4fr 2fr;
+}
+
+.displayFormContainer {
+    grid-column: 2;
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}

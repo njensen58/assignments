@@ -24,6 +24,7 @@ class Profile extends React.Component{
                 </div>
                 Hello {this.props.username}!
                 <div>
+                    <h3>Choose Default News Source</h3>
                     <select>
                         <option value="">1</option>
                         <option value="">2</option>

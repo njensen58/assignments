@@ -10,8 +10,8 @@ import history from '../../../history';
 import {connect} from 'react-redux';
 import {logout} from '../../../redux/Auth';
 import {getTopStories} from '../../../redux/News';
-import {countries} from '../../../resources/countrySources';
-import {sources} from '../../../resources/countrySources';
+import {countries, sources} from '../../../resources/countrySources';
+
 
 class DrawerUndockedExample extends React.Component {
   constructor(props) {
