@@ -19,3 +19,15 @@ body {
     justify-content: center;
     margin-top: 20px;
 }
+
+form {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+form input {
+    width: 150px;
+    margin: 10px 0;
+}

@@ -5,6 +5,7 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import moment from 'moment';
 import FaStar from 'react-icons/lib/fa/star';
 import axios from 'axios';
+import Stars from './Stars';
 
 class Review extends React.Component {
     constructor(){
@@ -27,22 +28,21 @@ class Review extends React.Component {
     render(){
 
         const myPaper = {
-            margin: '10px',
-            padding: '10px'
+            margin: '10px 10px',
+            padding: '5px 10%'
         }
 
         return (
             <MuiThemeProvider>
-                <Paper zDepth={2} style={myPaper}>
+                <Paper zDepth={2} style={myPaper} rounded={true}>
                     <div style={{display: 'flex', justifyContent: 'flex-end'}}>
-                        <span>{moment().format('MMM Do YYYY', this.props.date)}</span>
+                        <span style={{fontSize: '13px'}}>{moment().format('MMM Do YYYY', this.props.date)}</span>
                     </div>
-                    <div style={{display: 'inline-block'}}>
-                        <h1 style={{fontWeight: '300', letterSpacing: '1px'}}>{this.props.author}</h1>
+                    <div style={{display: 'flex', justifyContent: 'space-between'}}>
+                        <h1 style={{fontWeight: '300', letterSpacing: '1px', marginTop: '5px', borderBottom: '1px solid black'}}>{this.props.author}</h1> <Stars rating={this.props.rating}/>
                     </div>
-                    <span><FaStar style={{color: 'gold', paddingRight: '5px'}}/>{this.props.rating}</span>
                     <div>
-                        <p>{this.state.reviewBody}</p>
+                        <p style={{margin: '0 0 10px 0'}}>{this.state.reviewBody}</p>
                     </div>
                 </Paper>
             </MuiThemeProvider>

@@ -1,6 +1,7 @@
 import React from 'react';
 import config from '../../config';
 import Review from './Review';
+import SearchForm from './SearchForm';
 const axios = require('axios');
 
 
@@ -9,8 +10,11 @@ class Display extends React.Component {
     constructor(){
         super();
         this.state = {
-            reviews: []
+            reviews: [],
+            input: '',
+            ratingInput: ''
         }
+        this.handleChange = this.handleChange.bind(this);
     }
 
     componentDidMount(){
@@ -20,9 +24,20 @@ class Display extends React.Component {
         })
     }
 
+    handleChange(e){
+        this.setState({
+            [e.target.name]: e.target.value
+        })
+    }
+
     render(){
 
-        const mappedReviews = this.state.reviews.map(review => {
+        const mappedReviews = this.state.reviews
+            .filter(review => review.author
+            .toLowerCase()
+            .slice(0, this.state.input.length) === this.state.input.toLowerCase())
+            .filter(review => review.rating.toString().slice(0, this.state.ratingInput.length) === this.state.ratingInput.toString())
+            .map(review => {
             return (
                 <Review
                     author={review.author}
@@ -40,10 +55,11 @@ class Display extends React.Component {
                     {mappedReviews}
                 </div>
                 <div className="displayFormContainer">
-                    <form>
-                        <input type="text"/>
-                        <button>Search</button>
-                    </form>
+                    <SearchForm
+                        value={this.state.input}
+                        handleChange={this.handleChange}
+                        ratingInput={this.state.ratingInput}
+                    />
                 </div>
             </div>
         )
