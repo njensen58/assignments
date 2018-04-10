@@ -1,4 +1,5 @@
 import React from 'react';
+import wood from './resources/wood.jpg';
 
 class Log extends React.Component {
     constructor(){
@@ -14,7 +15,7 @@ class Log extends React.Component {
 
     componentWillUpdate(){
         if(this.props.frogY > this.state.y - 25 && this.props.frogY < this.state.y + 25){
-            if(this.props.frogX > this.state.x + 35 || this.props.frogX < this.state.x - 35){
+            if(this.props.frogX > this.state.x + 30 || this.props.frogX < this.state.x - 30){
                    this.props.startOver();
                }
             }
@@ -57,7 +58,8 @@ class Log extends React.Component {
         const logStyle = {
             height: '50px',
             width: '70px',
-            backgroundColor: '#6D5227',
+            background: 'url(' + wood + ')',
+            backgroundSize: 'cover',
             position: 'absolute',
             left: this.state.x,
             borderRadius: '15px',

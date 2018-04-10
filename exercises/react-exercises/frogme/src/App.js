@@ -2,6 +2,9 @@ import React from 'react';
 import Frog from './Frog';
 import Enemy from './Enemy';
 import Log from './Log';
+import grass from './resources/grass.jpeg';
+import water from './resources/water.jpg';
+import frog from './resources/frog.png';
 
 
 class App extends React.Component {
@@ -11,7 +14,6 @@ class App extends React.Component {
             frogX: 125,
             frogY: 448,
             stageOver: false,
-            finishedFrogs: [],
             score: 0,
             lives: 5,
             died: false,
@@ -136,34 +138,51 @@ class App extends React.Component {
             <div className="gameContainer">
                 {!this.state.gameOver ?
                     <div>
+                        <h1 style={{fontWeight: 'lighter', letterSpacing: '1px'}}>FROG.me</h1>
                 <div className="gameBoard">
-                    <div style={{backgroundColor: 'forestgreen', gridRow: '2', gridColumn: '1 / -1'}}></div>
-                    <div style={{backgroundColor: 'forestgreen', gridRow: '4', gridColumn: '1 / -1'}}></div>
-                    <div style={{backgroundColor: 'forestgreen', gridRow: '6', gridColumn: '1 / -1'}}></div>
-                    <div style={{backgroundColor: 'forestgreen', gridRow: '8', gridColumn: '1 / -1'}}></div>
-                    <div style={{backgroundColor: 'forestgreen', gridRow: '10', gridColumn: '1 / -1'}}></div>
-                    <div style={{backgroundColor: 'dodgerblue', gridRow: '3', gridColumn: '1 / -1', position: 'relative'}}></div>
+                    <div style={{position: 'absolute', height: '50px', width: '50px', borderRight: '1px solid black'}}></div>
+                    <div style={{position: 'absolute', height: '50px', width: '50px', borderRight: '1px solid black', marginLeft: '51px', backgroundImage: this.state.score >= 1 ? 'url(' + frog + ')' : null, backgroundSize: 'cover'}}>
+
+                    </div>
+                    <div style={{position: 'absolute', height: '50px', width: '50px', borderRight: '1px solid black', marginLeft: '102px', backgroundImage: this.state.score >= 2 ? 'url(' + frog + ')' : null, backgroundSize: 'cover'}}>
+
+                    </div>
+                    <div style={{position: 'absolute', height: '50px', width: '50px', borderRight: '1px solid black', marginLeft: '153px', backgroundImage: this.state.score >= 3 ? 'url(' + frog + ')' : null, backgroundSize: 'cover'}}>
+
+                    </div>
+                    <div style={{position: 'absolute', height: '50px', width: '50px', borderRight: '1px solid black', marginLeft: '204px', backgroundImage: this.state.score >= 4 ? 'url(' + frog + ')' : null, backgroundSize: 'cover'}}>
+
+                    </div>
+                    <div style={{position: 'absolute', height: '50px', width: '50px', borderRight: '1px solid black', marginLeft: '255px', backgroundImage: this.state.score >= 5 ? 'url(' + frog + ')' : null, backgroundSize: 'cover'}}>
+
+                    </div>
+                    <div style={{background: `url(` + grass + ')', gridRow: '2', gridColumn: '1 / -1'}}></div>
+                    <div style={{background: `url(` + grass + ')', gridRow: '4', gridColumn: '1 / -1'}}></div>
+                    <div style={{background: `url(` + grass + ')', gridRow: '6', gridColumn: '1 / -1'}}></div>
+                    <div style={{background: `url(` + grass + ')', gridRow: '8', gridColumn: '1 / -1'}}></div>
+                    <div style={{background: `url(` + grass + ')', gridRow: '10', gridColumn: '1 / -1'}}></div>
+                    <div style={{background: 'url(' + water + ')', gridRow: '3', gridColumn: '1 / -1', position: 'relative', backgroundSize: 'cover'}}></div>
                     <Log
                         frogX={this.state.frogX}
                         frogY={this.state.frogY}
                         logY={logY.one}
                         startOver={this.startOver}
                     />
-                    <div style={{backgroundColor: 'dodgerblue', gridRow: '5', gridColumn: '1 / -1', position: 'relative'}}></div>
+                <div style={{background: 'url(' + water + ')', gridRow: '5', gridColumn: '1 / -1', position: 'relative', backgroundSize: 'cover'}}></div>
                     <Log
                         frogX={this.state.frogX}
                         frogY={this.state.frogY}
                         logY={logY.two}
                         startOver={this.startOver}
                     />
-                    <div style={{backgroundColor: 'dodgerblue', gridRow: '7', gridColumn: '1 / -1', position: 'relative'}}></div>
+                <div style={{background: 'url(' + water + ')', gridRow: '7', gridColumn: '1 / -1', position: 'relative', backgroundSize: 'cover'}}></div>
                     <Log
                         frogX={this.state.frogX}
                         frogY={this.state.frogY}
                         logY={logY.three}
                         startOver={this.startOver}
                     />
-                    <div style={{backgroundColor: 'dodgerblue', gridRow: '9', gridColumn: '1 / -1', position: 'relative'}}></div>
+                <div style={{background: 'url(' + water + ')', gridRow: '9', gridColumn: '1 / -1', position: 'relative', backgroundSize: 'cover'}}></div>
                     <Log
                         frogX={this.state.frogX}
                         frogY={this.state.frogY}
@@ -218,7 +237,7 @@ class App extends React.Component {
                 </div>
                 </div>
                 :
-                <div>Game Over Fucker</div>
+                <div>Game Over Bitch</div>
                 }
             </div>
         )

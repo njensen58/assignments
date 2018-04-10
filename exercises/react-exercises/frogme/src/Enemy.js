@@ -50,13 +50,13 @@ class Enemy extends React.Component {
             <div style={{
                      height: '50px',
                      width: '50px',
-                     backgroundColor: 'darkred',
                      position: 'absolute',
                      top: this.state.startY,
                      left: this.state.x,
                      transition: '.5s',
                      borderRadius: '4px'
                  }}>
+                 <div className="crab"></div>
             </div>
         )
     }
