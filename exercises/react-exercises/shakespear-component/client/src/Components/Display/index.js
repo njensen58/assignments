@@ -30,13 +30,23 @@ class Display extends React.Component {
         })
     }
 
+    handleSort = () => {
+        this.setState(prevState => ({
+            reviews: prevState.reviews.sort((a, b) => b.rating - a.rating)
+        }))
+    }
+
     render(){
 
         const mappedReviews = this.state.reviews
             .filter(review => review.author
             .toLowerCase()
             .slice(0, this.state.input.length) === this.state.input.toLowerCase())
-            .filter(review => review.rating.toString().slice(0, this.state.ratingInput.length) === this.state.ratingInput.toString())
+            .filter(review =>
+                this.state.ratingInput.length > 0 ?
+                review.rating.toString().slice(0, 1) === this.state.ratingInput
+                :
+                review.rating)
             .map(review => {
             return (
                 <Review
@@ -59,6 +69,7 @@ class Display extends React.Component {
                         value={this.state.input}
                         handleChange={this.handleChange}
                         ratingInput={this.state.ratingInput}
+                        handleSort={this.handleSort}
                     />
                 </div>
             </div>

@@ -23,6 +23,7 @@ class SearchForm extends React.Component {
                         max="5"
                     />
                 </form>
+                <button onClick={this.props.handleSort}>Sort</button>
             </div>
         )
     }
