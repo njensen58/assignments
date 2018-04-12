@@ -27,6 +27,9 @@ class App extends React.Component {
         this.gameOver = this.gameOver.bind(this);
     }
 
+
+    /*Checks to see if the player died which sets stageOver to true,*/
+        /*and this moves the frog back to beginning position*/
     componentWillUpdate(){
         if(this.state.stageOver){
             this.setState({
@@ -66,6 +69,7 @@ class App extends React.Component {
         }
     }
 
+    /* FROG CONTROLS */
     handleMoveUp(){
         if(!this.state.stageOver){
             if(this.state.frogY >= 25){
@@ -82,6 +86,7 @@ class App extends React.Component {
         }
     }
 
+    /* FROG CONTROLS */
     handleMoveRight(){
         if(this.state.frogX > -25 && this.state.frogX < 250){
             this.setState(prevState => ({
@@ -90,6 +95,7 @@ class App extends React.Component {
         }
     }
 
+    /* FROG CONTROLS */
     handleMoveLeft(){
         if(this.state.frogX < 325 && this.state.frogX > 10){
             this.setState(prevState => ({
@@ -98,6 +104,9 @@ class App extends React.Component {
         }
     }
 
+
+
+    /* Moves frog to starting position*/
     startOver(){
         this.setState({
             frogX: 125,
@@ -112,83 +121,143 @@ class App extends React.Component {
         })
     }
 
+
+
     render(){
+    /* y axis positions for 4 enemies and 4 logs*/
         const enemyPositionsY = {
             one: 48,
             two: 148,
             three: 248,
             four: 348
         }
-
+    /*Enemy starting x axis positions so they start at different places*/
         const enemyPositionsX = {
             one: 50,
             two: 200,
             three: 150,
-            four: 50
+            four: 0
         }
-
         const logY = {
             one: 100,
             two: 200,
             three: 300,
             four: 400
         }
+        const scoreStyle = {
+            position: 'absolute',
+            height: '50px',
+            width: '50px',
+            borderRight: '1px solid black',
+            backgroundSize: 'cover'
+        }
 
         return (
             <div className="gameContainer">
                 {!this.state.gameOver ?
-                    <div>
-                        <h1 style={{fontWeight: 'lighter', letterSpacing: '1px'}}>FROG.me</h1>
+                <div>
+                    <h1 style={{fontWeight: 'lighter', letterSpacing: '1px', textAlign: 'center'}}>
+                        {this.state.score < 6 ? 'FROG.me' : 'Holy shit, 6 frogs!'}
+                    </h1>
                 <div className="gameBoard">
-                    <div style={{position: 'absolute', height: '50px', width: '50px', borderRight: '1px solid black'}}></div>
-                    <div style={{position: 'absolute', height: '50px', width: '50px', borderRight: '1px solid black', marginLeft: '51px', backgroundImage: this.state.score >= 1 ? 'url(' + frog + ')' : null, backgroundSize: 'cover'}}>
 
-                    </div>
-                    <div style={{position: 'absolute', height: '50px', width: '50px', borderRight: '1px solid black', marginLeft: '102px', backgroundImage: this.state.score >= 2 ? 'url(' + frog + ')' : null, backgroundSize: 'cover'}}>
 
+                    {/** The next 6 divs are just to add a frog image to the top of the page if you score*/}
+                    <div style={{
+                            ...scoreStyle,
+                            marginLeft: '1px',
+                            backgroundImage: this.state.score >= 1 ? 'url(' + frog + ')' : null}}>
                     </div>
-                    <div style={{position: 'absolute', height: '50px', width: '50px', borderRight: '1px solid black', marginLeft: '153px', backgroundImage: this.state.score >= 3 ? 'url(' + frog + ')' : null, backgroundSize: 'cover'}}>
+                    <div style={{
+                            ...scoreStyle,
+                            marginLeft: '51px',
+                            backgroundImage: this.state.score >= 2 ? 'url(' + frog + ')' : null}}>
+                    </div>
+                    <div style={{
+                            ...scoreStyle,
+                            marginLeft: '102px',
+                            backgroundImage: this.state.score >= 3 ? 'url(' + frog + ')' : null}}>
+                    </div>
+                    <div style={{
+                            ...scoreStyle,
+                            marginLeft: '153px',
+                            backgroundImage: this.state.score >= 4 ? 'url(' + frog + ')' : null}}>
+                    </div>
+                    <div style={{
+                            ...scoreStyle,
+                            marginLeft: '204px',
+                            backgroundImage: this.state.score >= 5 ? 'url(' + frog + ')' : null}}>
+                    </div>
+                    <div style={{
+                            ...scoreStyle,
+                            marginLeft: '255px',
+                            backgroundImage: this.state.score >= 6 ? 'url(' + frog + ')' : null}}>
+                    </div>
 
-                    </div>
-                    <div style={{position: 'absolute', height: '50px', width: '50px', borderRight: '1px solid black', marginLeft: '204px', backgroundImage: this.state.score >= 4 ? 'url(' + frog + ')' : null, backgroundSize: 'cover'}}>
 
-                    </div>
-                    <div style={{position: 'absolute', height: '50px', width: '50px', borderRight: '1px solid black', marginLeft: '255px', backgroundImage: this.state.score >= 5 ? 'url(' + frog + ')' : null, backgroundSize: 'cover'}}>
-
-                    </div>
+                    {/*Grass divs corresponding to grid set by .gameBoard in css file*/}
                     <div style={{background: `url(` + grass + ')', gridRow: '2', gridColumn: '1 / -1'}}></div>
                     <div style={{background: `url(` + grass + ')', gridRow: '4', gridColumn: '1 / -1'}}></div>
                     <div style={{background: `url(` + grass + ')', gridRow: '6', gridColumn: '1 / -1'}}></div>
                     <div style={{background: `url(` + grass + ')', gridRow: '8', gridColumn: '1 / -1'}}></div>
                     <div style={{background: `url(` + grass + ')', gridRow: '10', gridColumn: '1 / -1'}}></div>
-                    <div style={{background: 'url(' + water + ')', gridRow: '3', gridColumn: '1 / -1', position: 'relative', backgroundSize: 'cover'}}></div>
-                    <Log
-                        frogX={this.state.frogX}
-                        frogY={this.state.frogY}
-                        logY={logY.one}
-                        startOver={this.startOver}
-                    />
-                <div style={{background: 'url(' + water + ')', gridRow: '5', gridColumn: '1 / -1', position: 'relative', backgroundSize: 'cover'}}></div>
-                    <Log
-                        frogX={this.state.frogX}
-                        frogY={this.state.frogY}
-                        logY={logY.two}
-                        startOver={this.startOver}
-                    />
-                <div style={{background: 'url(' + water + ')', gridRow: '7', gridColumn: '1 / -1', position: 'relative', backgroundSize: 'cover'}}></div>
-                    <Log
-                        frogX={this.state.frogX}
-                        frogY={this.state.frogY}
-                        logY={logY.three}
-                        startOver={this.startOver}
-                    />
-                <div style={{background: 'url(' + water + ')', gridRow: '9', gridColumn: '1 / -1', position: 'relative', backgroundSize: 'cover'}}></div>
-                    <Log
-                        frogX={this.state.frogX}
-                        frogY={this.state.frogY}
-                        logY={logY.four}
-                        startOver={this.startOver}
-                    />
+
+
+                    {/*Water Divs and log Components.  Log and enemy components are given frogX and frogY so collisions can be determined*/}
+                    <div style={{
+                            background: 'url(' + water + ')',
+                            gridRow: '3',
+                            gridColumn: '1 / -1',
+                            position: 'relative',
+                            backgroundSize: 'cover'}}>
+                    </div>
+                        <Log
+                            frogX={this.state.frogX}
+                            frogY={this.state.frogY}
+                            logY={logY.one}
+                            startOver={this.startOver}
+                        />
+                    <div style={{
+                            background: 'url(' + water + ')',
+                            gridRow: '5',
+                            gridColumn: '1 / -1',
+                            position: 'relative',
+                            backgroundSize: 'cover'}}>
+                    </div>
+                        <Log
+                            frogX={this.state.frogX}
+                            frogY={this.state.frogY}
+                            logY={logY.two}
+                            startOver={this.startOver}
+                        />
+                    <div style={{
+                            background: 'url(' + water + ')',
+                            gridRow: '7',
+                            gridColumn: '1 / -1',
+                            position: 'relative',
+                            backgroundSize: 'cover'}}>
+                    </div>
+                        <Log
+                            frogX={this.state.frogX}
+                            frogY={this.state.frogY}
+                            logY={logY.three}
+                            startOver={this.startOver}
+                        />
+                    <div style={{
+                            background: 'url(' + water + ')',
+                            gridRow: '9',
+                            gridColumn: '1 / -1',
+                            position: 'relative',
+                            backgroundSize: 'cover'}}>
+                    </div>
+                        <Log
+                            frogX={this.state.frogX}
+                            frogY={this.state.frogY}
+                            logY={logY.four}
+                            startOver={this.startOver}
+                        />
+
+                    {/*Game Container Div that holds frog and enemies*/}
                     <div style={{
                              position: 'relative',
                              height: '500px',
@@ -197,10 +266,12 @@ class App extends React.Component {
                              borderRadius: '3px',
                              gridColumn: '1 / -1'
                          }}>
+
                         <Frog
                             frogY={this.state.frogY}
                             frogX={this.state.frogX}
                         />
+
                         <Enemy
                             startPosY={enemyPositionsY.one}
                             startPosX={enemyPositionsX.one}
@@ -231,13 +302,27 @@ class App extends React.Component {
                         />
                     </div>
                 </div>
-                <div style={{display: 'flex', flexDirection: 'column'}}>
+                <div style={{display: 'flex', justifyContent: 'space-between'}}>
+                    <button
+                        style={{bottom: '0', left: '0', padding: '17px', opacity: '.5', borderRadius: '4px'}}
+                        onClick={this.handleMoveLeft}
+                    > L </button>
+                    <button
+                        style={{bottom: '0', left: '30%', padding: '17px', opacity: '.5', borderRadius: '4px'}}
+                        onClick={this.handleMoveUp}
+                    > U </button>
+                    <button
+                        style={{bottom: '0', right: '0', padding: '17px', opacity: '.5', borderRadius: '4px'}}
+                        onClick={this.handleMoveRight}
+                    > R </button>
+                </div>
+                <div style={{display: 'flex', flexDirection: 'row', justifyContent: 'space-between'}}>
                     <p>Score: {this.state.score}</p>
                     <p>Lives: {this.state.lives}</p>
                 </div>
                 </div>
                 :
-                <div>Game Over Bitch</div>
+                <div>Game Over</div>
                 }
             </div>
         )

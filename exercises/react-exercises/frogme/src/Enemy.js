@@ -11,6 +11,8 @@ class Enemy extends React.Component {
         this.enemyMovement = this.enemyMovement.bind(this);
     }
 
+    /*This checks on every update to see if a collision has occured with frog.  + and - 38 is
+    because the enemy is 50px wide and this.state.x is the center of the enemy*/
     componentWillUpdate(){
         if(((this.state.x + 38 > this.props.frogX) && (this.state.x - 38 < this.props.frogX)) && ((this.props.startPosY + 38 > this.props.frogY) && (this.props.startPosY - 38 < this.props.frogY))){
             this.props.startOver();
@@ -18,6 +20,7 @@ class Enemy extends React.Component {
     }
 
     componentDidMount(){
+        {/*creates random speed for enemy and sets is staring position passed from parent*/}
         let velocity = Math.floor(Math.random() * (200 - 100)) + 100;
         this.setState({
             startY: this.props.startPosY,
