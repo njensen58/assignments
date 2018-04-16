@@ -1,0 +1,18 @@
+* {
+    box-sizing: border-box;
+}
+
+h1 {
+    text-align: center;
+    text-decoration: underline;
+}
+
+.inputDivs {
+    margin: 10px;
+    display: flex;
+    justify-content: center;
+}
+
+.inputDivs input {
+    margin: 0 5px;
+}
