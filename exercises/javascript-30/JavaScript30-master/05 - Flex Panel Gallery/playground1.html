@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+        }
+
+        .panelsContainer {
+            display: flex;
+        }
+
+        .panel {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+            justify-content: space-evenly;
+            align-items: center;
+            width: 100%;
+            background-size: cover;
+            color: white;
+            font-size: 25px;
+            font-family: sans-serif;
+            font-weight: 300;
+            letter-spacing: 2px;
+            transition:
+                font-size 0.5s cubic-bezier(0.76, -1.07, 0.13, 2.29),
+                flex 0.7s cubic-bezier(0.45,-0.29, 0.57, 1.35);
+        }
+
+        .panel1 {
+            background-image: url(https://images.unsplash.com/photo-1517476417305-21d49f984355?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=3f86c41b2363dff6436d3f94f0d12994&auto=format&fit=crop&w=1504&q=80);
+        }
+
+        .panel2 {
+            background-image: url(https://images.unsplash.com/photo-1507830075634-ce51e8b19328?ixlib=rb-0.3.5&s=fc5eb149332b3aa72b998b47a87ec871&auto=format&fit=crop&w=1500&q=80);
+        }
+
+        .panel3 {
+            background-image: url(https://images.unsplash.com/photo-1454982523318-4b6396f39d3a?ixlib=rb-0.3.5&s=724c4db1cdf956ceaf1db98f7e27603a&auto=format&fit=crop&w=1500&q=80);
+        }
+
+        .panel > * {
+            transition: transform .5s;
+        }
+
+        .panel.active {
+            flex: 5;
+            font-size: 1.5em;
+        }
+
+        .panel > *:first-child { transform: translateY(-1000%);}
+        .panel.open-active > *:first-child { transform: translateY(0)}
+        .panel > *:last-child { transform: translateY(1000%);}
+        .panel.open-active > *:last-child { transform: translateY(0)}
+
+    </style>
+
+    <div class="panelsContainer">
+        <div class="panel panel1">
+            <p>Hello</p>
+            <p>Hi</p>
+            <p>Howdy</p>
+        </div>
+        <div class="panel panel2">
+            <p>Hello</p>
+            <p>Hi</p>
+            <p>Howdy</p>
+        </div>
+        <div class="panel panel3">
+            <p>Hello</p>
+            <p>Hi</p>
+            <p>Howdy</p>
+        </div>
+    </div>
+
+
+    <script>
+        const panels = document.querySelectorAll('.panel');
+
+        function activePanel(){
+            this.classList.toggle('active');
+        }
+
+        function openPanel(e){
+            if(e.propertyName.includes('flex')){
+                this.classList.toggle('open-active');
+            }
+        }
+
+        panels.forEach(panel => panel.addEventListener('click', activePanel))
+        panels.forEach(panel => panel.addEventListener('transitionend', openPanel))
+
+    </script>
+</body>
+</html>
