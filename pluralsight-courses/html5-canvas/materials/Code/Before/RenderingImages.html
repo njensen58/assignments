@@ -1,0 +1,64 @@
+<!doctype html>
+<html>
+    <head>
+	    <script>
+			var canvas, ctx;
+			window.onload = function() {
+				canvas = document.getElementById('myCanvas');
+				ctx = canvas.getContext('2d');
+
+				let img = new Image();
+				img.onload = function() {
+					drawImage(img);
+				};
+				img.src = 'Images/HTML5.png';
+
+				let wallpaper = new Image();
+				wallpaper.onload = function() {
+					// drawWallPaper(wallpaper);
+				};
+				wallpaper.src = 'Images/wallpaper.jpg';
+			};
+
+            function drawWallPaper(img){
+                let pattern = ctx.createPattern(img, 'repeat');
+                ctx.fillStyle = pattern;
+                ctx.rect(50, 50, 400, 300);
+                ctx.fill();
+            }
+
+            function showCanvasAsImage() {
+                let dataUrl = canvas.toDataURL();
+                window.open(dataUrl, 'Canvas as Image', 'width=300', 'height=300');
+            }
+
+
+            function drawImage(img) {
+                let destX = 10;
+                let destY = 20;
+                let destWidth = 212;
+                let destHeight = 212;
+
+                ctx.drawImage(img, destX, destY, destWidth, destHeight);
+
+                let sourceX = 0;
+                let sourceY = 0;
+                let sourceWidth = 212;
+                let sourceHeight = 110;
+
+                destX = 250;
+                destY = 20;
+                destWidth = 212;
+                destHeight = 50;
+
+                ctx.drawImage(img, sourceX, sourceY, sourceWidth, sourceHeight, destX, destY, destWidth, destHeight);
+            }
+
+		</script>
+	</head>
+	<body>
+		<button onclick="showCanvasAsImage()">Show Canvas as Image</button>
+		<br />
+	    <canvas id="myCanvas" width="600" height="600" />
+	</body>
+</html>

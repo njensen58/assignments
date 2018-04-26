@@ -1,0 +1,39 @@
+<!doctype html>
+<html>
+    <head>
+	    <script>
+			window.onload = () => {
+				let canvas = document.getElementById('myCanvas');
+				let ctx = canvas.getContext('2d');
+
+				let scores = [100, 90, 85, 45, 72, 88];
+				let width = 50;
+				let currX = 50;
+				let base = 200;
+
+                for (let i=0;i<scores.length;i++) {
+                    let h = scores[i];
+                    let y = canvas.height - h;
+                    ctx.fillStyle = 'cornflowerblue';
+                    ctx.fillRect(currX, y, width, h);
+
+                    ctx.fillStyle = 'silver';
+                    ctx.beginPath();
+                    ctx.arc(currX + width / 2, y, 15, 0, 2 * Math.PI, false);
+                    ctx.fill();
+                    ctx.strokeStyle = 'darkslategrey';
+                    ctx.lineWidth = 2;
+                    ctx.stroke(); // ends the path
+
+                    currX += width + 10;
+                }
+
+
+
+			};
+		</script>
+	</head>
+	<body>
+	    <canvas id="myCanvas" width="400" height="200" />
+	</body>
+</html>

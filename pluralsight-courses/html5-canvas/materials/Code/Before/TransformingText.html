@@ -1,0 +1,30 @@
+<!doctype html>
+<html>
+    <head>
+	    <script>
+			window.onload = () => {
+				const canvas = document.getElementById('myCanvas');
+				const ctx = canvas.getContext('2d');
+
+				ctx.font = '30px sans-serif';
+                ctx.fillText('Regular Text', 100, 50);
+
+                ctx.save();
+                    ctx.translate(100, 240);
+                    ctx.rotate(-0.5 * Math.PI);
+
+                    let rText = 'Rotated Text';
+                    ctx.fillText(rText, 0, 0);
+                ctx.restore();
+
+                let rWidth = ctx.measureText(rText).width;
+                ctx.fillText('Regular text', 100, rWidth + 120);
+
+			};
+
+		</script>
+	</head>
+	<body>
+	    <canvas id="myCanvas" width="600" height="600" />
+	</body>
+</html>

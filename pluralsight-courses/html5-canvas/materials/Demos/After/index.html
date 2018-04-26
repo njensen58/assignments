@@ -1,0 +1,25 @@
+<!doctype html>
+<html>
+    <head>
+		<script>
+			window.onload = function() {
+				//Step 2: Find the canvas
+				var canvas = document.getElementById('myCanvas');
+				//Step 3: Access the 2d context (pen/brush)
+				var ctx = canvas.getContext('2d');
+				//Step 4: Render graphics (x, y, width, height)
+				ctx.fillStyle = 'Green';
+				ctx.fillRect(300, 200, 200, 100);
+				
+				ctx.fillStyle = 'Navy';
+				//(x, y, radius, startAngle, endAngle, antiClockwise)
+				ctx.arc(100, 100, 50, 0, 2 * Math.PI, false);
+				ctx.fill();
+			};
+		</script>
+	</head>
+	<body>
+		<!-- Step 1: Define canvas element -->
+		<canvas id="myCanvas" width="600" height="400" style="background-color:#efefef;" />
+	</body>
+</html>

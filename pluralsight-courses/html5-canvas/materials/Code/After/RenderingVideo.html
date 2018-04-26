@@ -1,0 +1,48 @@
+<!doctype html>
+<html>
+    <head>
+	    <script>
+			var timerID;
+			window.onload = function() {
+				canvas = document.getElementById('myCanvas');
+				ctx = canvas.getContext('2d');		
+
+				var video = document.getElementById('video');
+				
+				video.addEventListener('play', function() {
+					video.currentTime = 10.0;
+					timerID = window.setInterval(function() {
+						ctx.drawImage(video, 5, 5, 270, 125);
+					}, 30);
+				});
+				
+				video.addEventListener('pause', function() {
+					stopTimer();
+				});
+				
+				video.addEventListener('ended', function() {
+					stopTimer();
+				});
+			};	
+
+			function stopTimer() {
+				window.clearInterval(timerID);  
+			}
+			
+			
+		</script>
+	</head>
+	<body>
+		Video:
+		<br />
+		<video id="video" controls="true" width="270" height="200" 
+			   autoplay="true">
+		  <source src="http://dl.dropbox.com/u/6037348/HTML5AndJavaScript/RealSteel.mp4"   
+			      type='video/mp4' />
+		</video>
+		<br />
+		Canvas:
+		<br />
+		<canvas id="myCanvas" width="270" height="200" />
+	</body>
+</html>

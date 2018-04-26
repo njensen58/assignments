@@ -1,0 +1,32 @@
+<!doctype html>
+<html>
+    <head>
+	    <script>
+			window.onload = function() {
+				var canvas = document.getElementById('myCanvas');
+				var ctx = canvas.getContext('2d');
+
+                // ctx.strokeStyle = 'darkslategrey';
+                // ctx.fillStyle = 'cornflowerblue';
+                // let text = 'Hello World';
+                // ctx.font = '40px sans-serif';
+                // ctx.fillText(text, 50, 50);
+                // ctx.strokeText(text, 50, 50);
+
+                let fontSize = 10;
+                for(let i = 0; i <= 20; i+=5){
+                    let text = 'Canvas Text! ' + fontSize;
+                    ctx.font = fontSize + 'px sans-serif';
+                    let y = ctx.measureText(text).width;
+                    ctx.fillText(text, 10, y);
+                    fontSize += 5;
+                }
+
+			};
+
+		</script>
+	</head>
+	<body>
+	    <canvas id="myCanvas" width="600" height="600" />
+	</body>
+</html>

@@ -1,0 +1,26 @@
+<!doctype html>
+<html>
+    <head>
+	    <script>
+			window.onload = () => {
+                const canvas = document.getElementById('myCanvas');
+                const ctx = canvas.getContext('2d');
+
+                const scores = [100, 90, 85, 45, 72, 88];
+                const width = 50;
+                let currX = 50;
+                let base = 200;
+
+                ctx.fillStyle = 'green';
+                for(let i = 0; i < scores.length; i++){
+                    let h = scores[i];
+                    ctx.fillRect(currX, canvas.height - h, width, h);
+                    currX += width + 10;
+                }
+			};
+		</script>
+	</head>
+	<body>
+	    <canvas id="myCanvas" width="400" height="200" />
+	</body>
+</html>

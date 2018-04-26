@@ -1,0 +1,36 @@
+<!doctype html>
+<html>
+    <head>
+	    <script>
+			window.onload = () => {
+				let canvas = document.getElementById('myCanvas');
+				let ctx = canvas.getContext('2d');
+
+				//Using arcTo for rounded corners
+                ctx.beginPath();
+                ctx.moveTo(80, 50);
+
+                //top right
+                ctx.arcTo(210, 50, 210, 70, 20);
+                        // x, y, x2, y2, radius
+
+                //bottom right
+                ctx.arcTo(210, 200, 160, 200, 20);
+
+                //bottom left
+                ctx.arcTo(60, 200, 60, 180, 20);
+
+                //top left
+                ctx.arcTo(60, 50, 100, 50, 20);
+
+                ctx.lineWidth = 4;
+                ctx.stroke()
+                ctx.fillStyle = 'cornflowerblue';
+                ctx.fill();
+			};
+		</script>
+	</head>
+	<body>
+	    <canvas id="myCanvas" width="400" height="220" />
+	</body>
+</html>

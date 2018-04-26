@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        let radius = 50;
+        let posY = 70;
+        let posX = radius;
+        let speed = 8;
+        let canvas, ctx, canvasWidth, canvasHeight;
+        let dir = 1;
+        window.requestAnimFrame = function() {
+            return window.requestAnimationFrame ||
+                   window.webkitRequestAnimationFrame ||
+                   window.mozRequestAnimationFrame ||
+                   window.oRequestAnimationFrame ||
+                   window.msRequestAnimationFrame ||
+                   function(callback){
+                       window.setTimeout(callback, 1000/ 60)
+                   };
+        }();
+
+        window.onload = () => {
+            canvas = document.getElementById('my-canvas');
+            canvasWidth = canvas.width;
+            canvasHeight = canvas.height;
+            ctx = canvas.getContext('2d');
+            // window.setInterval(() => { animate() }, 60);
+            animate();
+        };
+
+        const animate = () => {
+            update();
+            draw();
+            requestAnimFrame(animate);
+        }
+
+        const update = () => {
+            // Move to right until we reach canvas width
+            if (dir > 0){
+                dir = (posX < canvasWidth - radius) ? 1 : -1;
+            }
+            // Move to left until we reach 0
+            if (dir < 0) {
+                dir = (posX > 0 + radius) ? -1 : 1;
+            }
+            posX += speed * dir;
+        }
+
+        const draw = () => {
+            ctx.clearRect(0, 0, canvasWidth, canvasHeight);
+
+            ctx.fillStyle = 'cornflowerblue'
+            ctx.beginPath();
+            ctx.arc(posX, posY, radius, 0, 2 * Math.PI, false);
+            ctx.fill();
+        }
+
+    </script>
+</head>
+<body>
+
+    <canvas id="my-canvas" width="500px" height="500px"></canvas>
+</body>
+</html>

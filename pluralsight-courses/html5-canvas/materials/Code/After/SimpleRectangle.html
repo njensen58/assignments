@@ -1,0 +1,20 @@
+<!doctype html>
+<html>
+    <head>
+	    <script>
+			window.onload = function() {
+				var canvas = document.getElementById('myCanvas');
+				var ctx = canvas.getContext('2d');
+				
+				ctx.fillStyle = 'green';
+				ctx.strokeStyle = 'black';
+				ctx.rect(10,10,100,200);
+				ctx.fill();
+				ctx.stroke();
+			};
+		</script>
+	</head>
+	<body>
+	    <canvas id="myCanvas" width="400" height="400" />
+	</body>
+</html>

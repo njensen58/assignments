@@ -1,0 +1,126 @@
+<!doctype html>
+<html>
+    <head>
+		<link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.0/themes/ui-lightness/jquery-ui.css" rel="Stylesheet" type="text/css" />
+		<style type="text/css">
+			td:nth-child(odd) {
+			   width:10px;   
+			}
+
+			td:nth-child(even) {
+			   width:50px;
+			   text-align:left;
+			}
+
+			input[type="text"] {
+			   margin-left:7px;
+			   border:0px ;
+			   background-color:#fff;
+			   width:50px;
+			   font-size:10pt;
+			}
+
+			div {
+			   margin-left:0px;
+			   text-align:center; 
+			   font-size:10pt;    
+			}
+
+			div.fixedNum {
+			   margin-left:-6px;   
+			}
+
+			.ui-spinner {position: relative; border: 0px solid white; }
+			.ui-spinner-buttons {position: absolute}
+			.ui-spinner-button {overflow: hidden}
+		</style>
+		<script src="http://code.jquery.com/jquery.js"></script>
+        <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.0/jquery-ui.min.js"></script>
+		<script src="https://raw.github.com/btburnett3/jquery.ui.spinner/master/ui.spinner.min.js"></script>
+	    <script>			
+			var canvas, ctx, x, y;
+			$(document).ready(function() {
+				canvas = document.getElementById('myCanvas');
+				ctx = canvas.getContext('2d');
+				x = canvas.width/2 - 50;
+				y = canvas.height/2 - 50;
+				
+				$('input').spinner({ min: -100, max: 100, step: 0.5 });
+				$('input').change(draw);
+				$('#reset').click(function() {
+					$('#scale-x').val(1);
+					$('#skew-x').val(0); 
+					$('#skew-y').val(0);
+					$('#scale-y').val(1);
+					$('#translate-x').val(0);
+					$('#translate-y').val(0);
+					draw();
+				});
+				
+				draw();
+			});
+
+			function draw() {
+				var scaleX = $('#scale-x').val();
+				var skewX =  $('#skew-x').val(); 
+				var skewY =  $('#skew-y').val();
+				var scaleY = $('#scale-y').val();
+				var tx =     $('#translate-x').val();
+				var ty =     $('#translate-y').val();
+				
+				ctx.save();
+				ctx.clearRect(0, 0, canvas.width, canvas.height);
+				ctx.setTransform(scaleX, skewX, skewY, scaleY, tx, ty);
+				ctx.fillStyle = 'navy';
+				ctx.fillRect(0, 0, 200, 100);
+				ctx.restore();
+			}
+		</script>
+	</head>
+	<body>
+        <table style="width:400px;margin: 10px;">
+           <tr>
+               <td><div>scale-x</div></td>
+               <td>
+                   <input type="text" id="scale-x" value="1" />
+               </td>
+               <td><div>skew-y</div></td>
+               <td>
+                   <input type="text" id="skew-y" value="0" />
+               </td>
+               <td><div>translate-x</div></td>
+               <td>
+                   <input type="text" id="translate-x" value="0" />
+               </td>
+               <td>
+                   <div id="reset" style="text-decoration:underline;cursor:pointer;">Reset</div>
+               </td>
+           </tr>
+           <tr>
+               <td><div>skew-x</div></td>
+               <td>
+                   <input type="text" id="skew-x" value="0" />
+               </td>
+               <td><div>scale-y</div></td>
+               <td>
+                   <input type="text" id="scale-y" value="1" />
+               </td>
+               <td><div>translate-y</div></td>
+               <td>
+                   <input type="text" id="translate-y" value="0" />
+               </td>
+               <td>&nbsp;</td>
+           </tr>
+           <tr>
+               <td>&nbsp;</td>
+               <td><div class="fixedNum">0</div></td>
+               <td>&nbsp;</td>
+               <td><div class="fixedNum">0</div></td>
+               <td>&nbsp;</td>
+               <td><div class="fixedNum">1</div></td>
+               <td>&nbsp;</td>
+           </tr>
+        </table>
+        <canvas id="myCanvas" width="400" height="300" style="margin-left:10px;" />	
+    </body>
+</html>

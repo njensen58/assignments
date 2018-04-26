@@ -1,3 +1,4 @@
+
 var data = [
     {
         name: 'john',
@@ -63,32 +64,53 @@ var submitBtn = document.getElementById('submitBtn');
 var greaterAgeInput = document.getElementById('greaterAgeInput');
 var greaterAgeBtn = document.getElementById('greaterAgeBtn');
 
+var lessAgeInput = document.getElementById('lessAgeInput');
+var lessAgeBtn = document.getElementById('lessAgeBtn');
+
 var list = document.getElementById('list');
 
 submitBtn.addEventListener('click', filterFavColor);
 greaterAgeBtn.addEventListener('click', filteredGreaterAge);
+lessAgeBtn.addEventListener('click', filteredLessAge)
 
 
 function filterFavColor(){
-    var filteredPeople = data.filter(function(person){
-        return person.color === nameInput.value
-    })
+        var filteredPeople = data.filter(function(person){
+                return person.color === nameInput.value
+        })
 
-    for(var i = 0; i < filteredPeople.length; i++){
-        let item = document.createElement('li');
-        item.textContent = filteredPeople[i].name
-        list.appendChild(item);
-    }
+        for(var i = 0; i < filteredPeople.length; i++){
+                let item = document.createElement('li');
+                item.textContent = filteredPeople[i].name
+                list.appendChild(item);
+        }
 }
-
-
 
 
 function filteredGreaterAge(){
+        var filteredPeople = data.filter(function(person){
+            return person.age >= greaterAgeInput.value;
+        })
 
+        for(var i = 0; i < filteredPeople.length; i++){
+            let item = document.createElement('li');
+            item.textContent = filteredPeople[i].name
+            list.appendChild(item);
+        }
 }
 
 
+function filteredLessAge(){
+    var filteredPeople = data.filter(function(person) {
+        return person.age <= lessAgeInput.value;
+    })
+
+     for(var i = 0; i < filteredPeople.length; i++){
+         var item = document.createElement('li');
+         item.textContent = filteredPeople[i].name;
+         list.appendChild(item);
+     }
+}
 
 
 

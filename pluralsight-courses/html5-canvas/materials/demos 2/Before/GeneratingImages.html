@@ -1,0 +1,51 @@
+<!doctype html>
+<html>
+    <head>
+	    <script>
+			let canvas, ctx;
+			window.onload = () => {
+				canvas = document.getElementById('myCanvas');
+				ctx = canvas.getContext('2d');
+				generateImage();
+			};
+
+			function generateImage() {
+				let height = canvas.height;
+				let width = canvas.width;
+
+                let pixelData = ctx.createImageData(width, height);
+                let xCenter = width / 2;
+                let yCenter = height / 2;
+                let pixelPos = 0;
+
+                for(let y = 0; y < pixelData.height; y++){ // rows
+                    for(let x = 0; x < pixelData.width; x++){ // columns
+                        let xOffset = x - xCenter;
+                        let yOffset = y - yCenter;
+                        let delta = Math.abs(xOffset) + Math.abs(yOffset);
+                        let tangent = Math.tan(delta / 10);
+
+                        let r = tangent * 255;
+                        let g = 125 + tangent * 80;
+                        let b = 235 + tangent * 20;
+
+                        // get to the pixel data and assign the RGB;
+
+                        pixelData.data[pixelPos++] = Math.max(0, Math.min(255, r));
+                        pixelData.data[pixelPos++] = Math.max(0, Math.min(255, g));
+                        pixelData.data[pixelPos++] = Math.max(0, Math.min(255, b));
+                        pixelData.data[pixelPos++] = 255;
+
+                    }
+                }
+                console.log(pixelData.data)
+
+                ctx.putImageData(pixelData, 0, 0);
+
+			}
+		</script>
+	</head>
+	<body>
+		<canvas id="myCanvas" width="600" height="600" />
+    </body>
+</html>

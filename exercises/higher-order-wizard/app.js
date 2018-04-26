@@ -30,9 +30,9 @@ var wizards = [
 
 
 // 1 Log to the console every wizards name.
-//wizards.forEach(function(wizard){
-//    console.log(wizard.name);
-//})
+wizards.forEach(function(wizard){
+   console.log(wizard.name);
+})
 
 // 2 Add a .isAlive = true property to every wizard.
 wizards.forEach(function(wizard){

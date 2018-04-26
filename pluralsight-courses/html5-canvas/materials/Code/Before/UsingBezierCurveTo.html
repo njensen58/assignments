@@ -1,0 +1,28 @@
+<!doctype html>
+<html>
+    <head>
+	    <script>
+			window.onload = () => {
+				const canvas = document.getElementById('myCanvas');
+				const ctx = canvas.getContext('2d');
+
+				ctx.strokeStyle = 'dodgerblue';
+				ctx.lineWidth = 2;
+
+                ctx.beginPath();
+                ctx.moveTo(50, 50);
+                ctx.bezierCurveTo(50, 400, 400, 400, 400, 50);
+                ctx.lineTo(50, 50);
+
+                ctx.stroke();
+                ctx.fillStyle = 'silver';
+                ctx.fill();
+
+			};
+
+		</script>
+	</head>
+	<body>
+	    <canvas id="myCanvas" width="600" height="600" />
+	</body>
+</html>
