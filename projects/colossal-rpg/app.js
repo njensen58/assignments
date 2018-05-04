@@ -178,7 +178,7 @@ function attack(){
         attackPow = 10;
     }
     currentEnemy.health -= attackPow;
-    enemyAttack = currentEnemy.=attackPow();
+    enemyAttack = currentEnemy.attackPow();
     player.health -= enemyAttack;
         console.log("\n\n\n\n\n\n\n\n\n\n\n\n\n\t\t" + player.name + " hits the " + currentEnemy.type + " for " + attackPow);
         sleep.sleep(1);
@@ -314,6 +314,7 @@ var player = {
     loot: [' Potion']
 };
 
+
 function EasyEnemyGenerator(type, health, loot, attackPow){
     this.type = type;
     this.health = health;
@@ -412,14 +413,14 @@ var event14 = ['\n\n\n\n\n\n\tYou got rick-rolled\n\t\tNever gonna give you up, 
         mysticMountainImg()
     ask.keyIn("\n\t[GUIDE] Wonderful, you are quite brave.  Welcome to the Mystic Mountain. \n\t\t\t(press any key to continue) ");
         sleep.sleep(3);
-    ask.keyIn("\n\n\t\t[GUIDE] In order to escape to a higher level of this mountain you will need to obtain the 'Lair Key', \n\t\t\twhich unlocks access to the path out of here.\n\t\t\t\t(press any key to continue)'");
-
-    ask.keyIn("\n\t[GUIDE] The Dragon King rules these depths. \n\t\t(press any key to continue) ");
-    console.log("\n\t\tThere are many other creatures that live down here.");
-        sleep.sleep(2);
-    console.log("\n\t\t[GUIDE] Some creatures you encounter will drop a special item, \n\t\t\twhich will count towards your final score if you make it out of this mountain alive.");
-        sleep.sleep(4);
-    ask.keyIn("\n\t\t\t[GUIDE] That should be all you need to know to begin, \n\t\t\t\tso when you are ready to start your journey, (press any key to continue)");
+    // ask.keyIn("\n\n\t\t[GUIDE] In order to escape to a higher level of this mountain you will need to obtain the 'Lair Key', \n\t\t\twhich unlocks access to the path out of here.\n\t\t\t\t(press any key to continue)'");
+    //
+    // ask.keyIn("\n\t[GUIDE] The Dragon King rules these depths. \n\t\t(press any key to continue) ");
+    // console.log("\n\t\tThere are many other creatures that live down here.");
+    //     sleep.sleep(2);
+    // console.log("\n\t\t[GUIDE] Some creatures you encounter will drop a special item, \n\t\t\twhich will count towards your final score if you make it out of this mountain alive.");
+    //     sleep.sleep(4);
+    // ask.keyIn("\n\t\t\t[GUIDE] That should be all you need to know to begin, \n\t\t\t\tso when you are ready to start your journey, (press any key to continue)");
 
 
         ask.setDefaultOptions({
@@ -459,7 +460,6 @@ var event14 = ['\n\n\n\n\n\n\tYou got rick-rolled\n\t\tNever gonna give you up, 
         if(choice === 'item'){
             usePotion();
         }
-
     }
 
 
