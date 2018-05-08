@@ -9,7 +9,7 @@ btn.addEventListener("click", counter);
 
 setTimeout(function(){
     btn.removeEventListener("click", counter);
-}, 10000);
+}, 1000);
 
 function counter() {
     count++;
@@ -23,3 +23,8 @@ const timing = setInterval(function(){
     if(timerCount <= 0)
         clearInterval(timing);
 }, 1000);
+
+
+
+
+// -- //
