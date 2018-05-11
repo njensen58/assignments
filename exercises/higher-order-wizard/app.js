@@ -39,6 +39,7 @@ wizards.forEach(function(wizard){
     wizard.isAlive = true;
 })
 
+
 // 3 Make an array of all the Wizards the are "neutral good".
 var neutralGood = wizards.filter(function(wizard){
     return wizard.alignment === "neutral good";
