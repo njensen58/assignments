@@ -27,16 +27,16 @@ const some = (arr, callback) => {
     return false;
 }
 
-console.log(some(["ben", "jacob", "bob"], (name)=>{
+console.log(some(["ben", "jacob", "bob"], (name) => {
   return name === "jacob";
 }));
 
-console.log(some(["ben", "jacob", "bob"], (name)=>{
+console.log(some(["ben", "jacob", "bob"], (name) => {
   return name === "frank";
 }));
 
 
-Array.prototype.every = function(callback) => {
+Array.prototype.every = function(callback)  {
     for(let i = 0; i < this.length; i++){
         if(!callback(this[i])){
             return false;

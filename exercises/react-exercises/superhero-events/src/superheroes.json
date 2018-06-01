@@ -1,0 +1,14 @@
+{
+    "superHeroes": [
+        {
+            "name": "Deadpool",
+            "imgUrl": "https://www.telegraph.co.uk/content/dam/films/2017/01/04/deadpool_trans_NvBQzQNjv4BqZgEkZX3M936N5BQK4Va8RWtT0gK_6EfZT336f62EI5U.jpg?imwidth=900",
+            "catchPhrase": "Whose kitty litter did I just shit in?"
+        },
+        {
+            "name": "Iron Man",
+            "imgUrl": "https://ctd-thechristianpost.netdna-ssl.com/en/full/30892/iron-man-4.jpg?w=655&h=375",
+            "catchPhrase": "I'm Iron Man!"
+        }
+    ]
+}

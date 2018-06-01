@@ -1,45 +1,32 @@
-import React from 'react';
-import Book from './Book';
+import React, { Component } from 'react';
 
-// I used the node.js native 'fetch' for the api request.  It's just like axios.get, except you have
-// to turn the response into JSON by using .json() before you are able to use it.
+import Header from './Components/Header';
+import Home from './Components/Home';
+import About from './Components/About';
+import Services from "./Components/Services";
+import Contact from './Components/Contact';
+import Footer from './Components/Footer';
 
-class App extends React.Component {
-    state = {
-        data: []
-    }
 
-    getData = () => {
-        fetch ('https://www.googleapis.com/books/v1/volumes?q=golden&key=AIzaSyA3ib7OFX6-fUqJzf3mHWyit8ZjuXo-AYk')
-            .then(res => res.json())
-            .then(res => {
-                this.setState({
-                    data: res.items
-                })
-            })
-    }
+import { Route, Switch } from 'react-router-dom';
 
-    render(){
-        const mappedData = this.state.data.map(book => {
-            return (
-                <Book
-                    title={book.volumeInfo.title}
-                    author={book.volumeInfo.authors}
-                    description={book.volumeInfo.description}
-                    pageCount={book.volumeInfo.pageCount}
-                    thumbnail={book.volumeInfo.imageLinks}
-                    >
-                </Book>
-            )
-        })
-        return (
-            <div>
-                <h1>ALL THE BOOKS!</h1>
-                <button onClick={this.getData}>Get Data</button>
-                {mappedData}
-            </div>
-        )
-    }
+import './App.css';
+
+class App extends Component {
+  render() {
+    return (
+      <div className="App">
+      <Header />
+        <Switch>
+        <Route exact path="/" component={ Home }/>
+        <Route path="/about" component={ About }/>
+        <Route path="/services" component={ Services}/>
+        <Route path="/contact" component={ Contact }/>
+        </Switch>
+      <Footer />
+      </div>
+    );
+  }
 }
 
 export default App;

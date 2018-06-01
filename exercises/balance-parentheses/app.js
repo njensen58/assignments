@@ -7,7 +7,7 @@ const hasParenthesis = str => {
     for(let i = 0; i < newArr.length; i++){
         if(newArr[i] === '('){
             openCount++;
-        }else if(newArr[i] === ')'){
+        } else if(newArr[i] === ')'){
             closeCount++;
             if(closeCount > openCount) {
                 return false;
@@ -24,3 +24,6 @@ console.log(hasParenthesis("(()adf)")); // -> true
 console.log(hasParenthesis("(dfasdf)))")); // -> false
 console.log(hasParenthesis(")()(")); // -> false
 console.log(hasParenthesis("())(")); // -> false
+console.log(hasParenthesis(")()()(")); // -> false
+console.log(hasParenthesis("!)]()[d()&$0(")); // -> false
+console.log(hasParenthesis("([(380)!]{})(!!!bkd())")); // -> true

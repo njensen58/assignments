@@ -26,13 +26,7 @@ var playerHealthMinus;
 
 
 function walk(){
-    var enemyChance = Math.floor(Math.random() * 2);
-     if(enemyChance === 1){
-        encounter();
-    } else if(enemyChance === 0){
-        walkingMov();
-        randomEvent();
-    }
+
 };
 
 function encounter(){

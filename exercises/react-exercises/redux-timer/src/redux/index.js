@@ -4,7 +4,6 @@ export function startTimer(){
     }
 }
 
-
 export function resetTimer(){
     return {
         type: "RESET_TIMER"

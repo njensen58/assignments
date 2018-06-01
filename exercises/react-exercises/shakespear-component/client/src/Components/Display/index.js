@@ -44,7 +44,7 @@ class Display extends React.Component {
             .slice(0, this.state.input.length) === this.state.input.toLowerCase())
             .filter(review =>
                 this.state.ratingInput.length > 0 ?
-                review.rating.toString().slice(0, 1) === this.state.ratingInput
+                review.rating.toString().slice(0, 1) === this.state.ratingInput.toString()
                 :
                 review.rating)
             .map(review => {

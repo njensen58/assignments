@@ -5,7 +5,7 @@ function FormList(props){
         return (
                 <li key={name + '-' + i}>{name}</li>
         )
-    }
+    })
       return (
           <div>
             <h1>~ {props.value}</h1>
@@ -15,7 +15,6 @@ function FormList(props){
                 </ul>
           </div>
       )
-    });
 }
 
 export default FormList;

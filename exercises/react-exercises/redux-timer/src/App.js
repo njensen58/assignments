@@ -4,7 +4,7 @@ import { startTimer, resetTimer, makeLap } from './redux';
 import TimerDisplay from './TimerDisplay';
 import TimerButtons from './TimerButtons';
 
-let timerStart = '';
+
 
 class App extends React.Component {
     constructor(){
@@ -13,17 +13,18 @@ class App extends React.Component {
         this.handleStop = this.handleStop.bind(this);
         this.handleReset = this.handleReset.bind(this);
         this.handleLap = this.handleLap.bind(this);
+        this.timerStart;
     }
 
     handleStart(){
-        if(timerStart === ''){
-            timerStart = setInterval(this.props.startTimer, 1000)
+        if(!this.timerStart){
+            this.timerStart = setInterval(this.props.startTimer, 1000)
         }
     }
 
     handleStop(){
-        clearInterval(timerStart);
-        timerStart = '';
+        clearInterval(this.timerStart);
+        this.timerStart = null;
     }
 
     handleReset(){
