@@ -15,25 +15,23 @@ console.log(stringifyUrl("http://localhost:8080/monkeys", {color: "black", speci
 
 
 
-// P2
 
+// // PT 2
+//
 const deStringifyUrl = url => {
-    const queryIndex = url.indexOf("?");
+    const queryIndex = url.indexOf("?")
     const queryString = url.slice(queryIndex + 1)
-    const queryArr = queryString.split('&');
+    const queryArr = queryString.split('&')
     let query = {}
     for(let property of queryArr){
-        let keyValueArray = property.split('=');
-        query[keyValueArray[0]] = keyValueArray[1];
+        let keyValueArray = property.split('=')
+        query[keyValueArray[0]] = keyValueArray[1]
     }
-    return query;
+    return query
 }
 
 console.log(deStringifyUrl("http://localhost:8080/monkeys?color=black&species=howler")); // {color: "black", species: "howler"}
 console.log(deStringifyUrl("http://localhost:8080/monkeys?color=black&species=howler&size=huge"));
 
-
-
-
-
+//
 //

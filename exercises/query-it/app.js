@@ -20,9 +20,11 @@ const filterDatabase = (obj, database) => {
         queryKeysArr.push(key)
         queryValuesArr.push(obj[key])
     }
+    console.log(queryKeysArr)
+    console.log(queryValuesArr)
     if(queryKeysArr.length <= 0){
         return database;
-    }else {
+    } else {
         for(let j = 0; j < database.length; j++){
             for(let key in database){
                 searchKeysArr.push(key);
@@ -37,5 +39,5 @@ const filterDatabase = (obj, database) => {
 
 
 // console.log(filterDatabase({}, database)); // returns entire database array
-console.log(filterDatabase({dolphin: "squeak!"}));  //returns empty array
-console.log(filterDatabase({firstName: "Jack", age: 2}));  //returns [{firstName: "Jack", lastName: "Smith", age: 2}, {firstName: "Jack", lastName: "White", age: 2}]
+console.log(filterDatabase({dolphin: "squeak!"}, database));  //returns empty array
+console.log(filterDatabase({firstName: "Jack", age: 2}, database));  //returns [{firstName: "Jack", lastName: "Smith", age: 2}, {firstName: "Jack", lastName: "White", age: 2}]
