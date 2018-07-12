@@ -12,11 +12,24 @@ export const getDecks = () => {
     }
 }
 
+export const addDeck = deck => {
+    return dispatch => {
+        axios.post('/deck', deck).then(res => {
+            dispatch({
+                type: "ADD_DECK",
+                deck: res.data
+            })
+        })
+    }
+}
+
 
 const deckReducer = (state = [], action) => {
     switch(action.type){
         case "GET_DECKS":
             return [...action.decks]
+        case "ADD_DECK":
+            return [...state, action.deck]
         default:
             return state
     }
