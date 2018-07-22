@@ -4,13 +4,18 @@ const Schema = mongoose.Schema;
 const cardSchema = new Schema({
     englishWord: {
         type: String,
-        required: true
+        required: true,
+        lowercase: true
     },
     foreignWord: {
         type: String,
-        required: true
+        required: true,
+        lowercase: true
     },
-    language: String,
+    language: {
+        type: String,
+        lowercase: true
+    },
     difficulty: {
         type: String,
         enum: ['beginner', 'intermediate', 'advanced'],
@@ -18,7 +23,8 @@ const cardSchema = new Schema({
     },
     learned: {
         type: Boolean,
-        default: false
+        default: false,
+        lowercase: true
     },
     deck: {
         type: Schema.Types.ObjectId,

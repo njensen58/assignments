@@ -1,9 +1,13 @@
 import React from 'react'
 
 const AddNewCardForm = props => {
-    const { handleSubmit, inputs, handleChange } = props
+    const { handleSubmit, inputs, handleChange, isToggled } = props
+    const toggleStyle = {
+        transform: isToggled ? 'translateX(0px)' : 'translateX(300px)'
+    }
+
     return (
-        <form onSubmit={ handleSubmit }>
+        <form onSubmit={ handleSubmit } className="add-card-form" style={ toggleStyle }>
             <input
                 type="text"
                 onChange={ handleChange }
@@ -23,7 +27,8 @@ const AddNewCardForm = props => {
                 name="language"
                 placeholder="Language"/>
             <select name="difficulty" onChange={ handleChange }>
-                <option default value="beginner">Beginner</option>
+                <option>- Difficulty -</option>
+                <option value="beginner">Beginner</option>
                 <option value="intermediate">Intermediate</option>
                 <option value="advanced">Advanced</option>
             </select>

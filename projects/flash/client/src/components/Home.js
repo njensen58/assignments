@@ -3,7 +3,7 @@ import React from 'react'
 const Home = props => {
     return (
         <div>
-            Home Page
+            Home Page to either Login or Signup ( eventually )
         </div>
     )
 }

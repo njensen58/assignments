@@ -4,7 +4,8 @@ import { Switch, Route, withRouter } from 'react-router-dom'
 import DeckContainer from './components/DeckContainer'
 import Navbar from './components/Navbar'
 import Home from './components/Home'
-import Footer from './components/Footer'
+import DeckManager from './components/DeckManager'
+
 
 const App = props => {
     return (
@@ -13,8 +14,8 @@ const App = props => {
                 <Switch>
                     <Route exact path="/" component={ Home } />
                     <Route path="/decks" component={ DeckContainer } />
+                    <Route path="/deckmanager" component={ DeckManager } />
                 </Switch>
-            <Footer />
         </div>
     )
 }

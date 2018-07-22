@@ -5,7 +5,7 @@ export default class Form extends Component {
         super(props);
         this.state = { inputs: this.props.inputs }
     }
-    
+
     handleChange = e => {
         const { name, value } = e.target
         this.setState(prevState => ({
@@ -16,10 +16,23 @@ export default class Form extends Component {
         }))
     }
 
+    validateInputs = obj => {
+        for(let key in obj){
+            if(obj[key] === ''){
+                return false
+            }
+        }
+        return true
+    }
+
     handleSubmit = e => {
         e.preventDefault();
-        this.props.submit( this.state.inputs )
-        this.props.reset && this.setState({ inputs: this.props.inputs })
+        if(this.validateInputs(this.state.inputs)){
+            this.props.submit( this.state.inputs )
+            this.props.reset && this.setState({ inputs: this.props.inputs })
+        } else {
+            alert("all fields are required")
+        }
     }
 
     render(){

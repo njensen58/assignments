@@ -4,7 +4,8 @@ const Schema = mongoose.Schema
 const deckSchema = new Schema({
     subject: {
         type: String,
-        required: true
+        required: true,
+        lowercase: true
     }
 })
 

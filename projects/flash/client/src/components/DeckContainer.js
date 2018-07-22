@@ -9,7 +9,6 @@ import Form from '../shared/Form'
 import Deck from './Deck'
 
 
-
 class DeckContainer extends Component {
     constructor(props){
         super(props);
@@ -22,7 +21,7 @@ class DeckContainer extends Component {
     componentDidMount(){
         // Grab the new deck if one is not chosen, or reload current chosen deck
         !this.state.deckChosen && this.props.getDecks()
-        this.props.cards.length > 0 && this.setState({ deckChosen: true })
+        //this.props.cards.length > 0 && this.setState({ deckChosen: true })
     }
 
     loadCards = deckID => {
@@ -48,27 +47,27 @@ class DeckContainer extends Component {
     render(){
         const { decks } = this.props
         return (
-            <div>
+            <div className="decks-container">
                 { !this.state.deckChosen
                     ?   <div>
+                            <Form
+                                reset
+                                inputs={{ subject: '' }}
+                                render={ props => <AddNewDeckForm {...props}/> }
+                                submit={inputs => this.props.addDeck( inputs )}
+                            />
                             <div>
-                                <Form
-                                    reset
-                                    inputs={{ subject: '' }}
-                                    render={ props => <AddNewDeckForm {...props}/> }
-                                    submit={inputs => this.props.addDeck( inputs )}
-                                />
+                                <h2> Decks </h2>
+                                 { decks.map(deck => <Deck {...deck} key={ deck._id } loadCards={ this.loadCards }/>) }
                             </div>
-                            <h2>Your Decks</h2>
-                            { decks.map(deck => <Deck {...deck} key={ deck._id } loadCards={ this.loadCards }/>) }
                         </div>
+
                     :   <CardContainer deck={ this.deckID } backToDecks={ this.backToDecks }/>
                 }
             </div>
         )
     }
 }
-
 
 
 export default connect(state=>state, { getDecks, getCards, resetCards, addDeck })(DeckContainer)
