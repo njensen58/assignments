@@ -3,10 +3,10 @@
 
 
 
-
-
-
-const initState = {}
+const initState = {
+    rollCount: 0,
+    currentRoll: []
+}
 
 
 

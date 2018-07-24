@@ -3,7 +3,9 @@
 
 
 
-const initState = {}
+const initState = {
+    
+}
 
 
 const gameControlsReducer = (state = initState, action) => {
