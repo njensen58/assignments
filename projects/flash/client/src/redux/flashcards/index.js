@@ -2,7 +2,7 @@ import axios from 'axios'
 
 
 const shuffle = arr => {
-  var currentIndex = arr.length, temporaryValue, randomIndex;
+  let currentIndex = arr.length, temporaryValue, randomIndex;
 
   // While there remain elements to shuffle...
   while (0 !== currentIndex) {

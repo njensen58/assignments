@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import NavMenu from './NavMenu'
-import menuIcon from '../resources/_ionicons_svg_md-menu.svg'
+
 
 class Navbar extends Component {
     constructor(){

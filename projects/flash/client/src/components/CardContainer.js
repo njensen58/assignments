@@ -50,6 +50,7 @@ class CardContainer extends Component {
         return (
             <div className="cards-container">
                 <Toggle render={({ isToggled, toggle }) =>
+                    <div>
                     <React.Fragment>
                         <div>
                             <button onClick={ ()=> this.props.backToDecks( this.props.deck ) }>Back to Decks</button>
@@ -58,14 +59,19 @@ class CardContainer extends Component {
                             <Form
                                  reset
                                  inputs={{ englishWord: '', foreignWord: '', language: '', difficulty: '' }}
-                                 render={ props => <AddNewCardForm {...props} isToggled={ isToggled }/> }
+                                 render={ props => <AddNewCardForm {...props} isToggled={ isToggled } toggle={ toggle}/> }
                                  submit={ inputs => this.handleAddCard( inputs ) }
                                  isToggled={ isToggled }
                             />
                     </React.Fragment>
-                }/>
-                <h1>{ currentDeck.subject }</h1>
-                <Card {...this.state.chosenCard } generateCard={ this.generateCard } />
+                    <h1>{ currentDeck.subject }</h1>
+                    <Card 
+                        {...this.state.chosenCard } 
+                        generateCard={ this.generateCard } 
+                        i={this.state.i}
+                        currentDeck={ currentDeck }/>
+                    </div>
+                }/>  
             </div>
         )
     }

@@ -1,14 +1,18 @@
 import React, { Component } from 'react'
+import { getDecks } from '../redux/decks'
 import { connect } from 'react-redux'
 
 class DeckManager extends Component {
+    componentDidMount(){
+        this.props.getDecks()
+    }
     render(){
         return (
             <div>
-                Eventually will be for deleting decks / and for editing/deleting specific cards
+                { this.props.decks.map(deck => <div><h3>{ deck.subject }</h3></div>) }
             </div>
         )
     }
 }
 
-export default connect(null, {})(DeckManager)
+export default connect(state=>state, { getDecks })(DeckManager)

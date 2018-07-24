@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
 import Paper from '@material-ui/core/Paper';
 
 class Card extends Component {
@@ -25,17 +26,18 @@ class Card extends Component {
         return (
             <React.Fragment>
                 <Paper className="card-container" onClick={ this.toggle }>
-                    <div className="card-face" onClick={ this.toggle }>
+                    <div className="card-face">
                     { !this.state.toggled
-                        ?   <div>
+                        ?   <div onClick={ this.toggle }>
                                 <span> Tap to flip </span>
-                                <h1 onClick={ this.toggle }>{ englishWord }</h1>
+                                <h1>{ englishWord }</h1>
                             </div>
-                        :   <div>
+                        :   <div onClick={ this.toggle }>
                                 <span> Tap to flip </span>
-                                <h1 onClick={ this.toggle }>{ foreignWord }</h1>
+                                <h1>{ foreignWord }</h1>
                             </div>
                     }
+                        <p>{ `${this.props.i === 0 ? this.props.cards.length : this.props.i} / ${this.props.cards.length}` }</p>
                     </div>
                 </Paper>
                 <div className="new-cardbtn-container">
@@ -46,4 +48,4 @@ class Card extends Component {
     }
 }
 
-export default Card;
+export default connect(state=>state, {} )(Card);

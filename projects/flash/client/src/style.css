@@ -39,14 +39,14 @@ a {
     width: 100vw;
     margin-top: 2px;
     transition: .4s;
-    padding-top: 440px;
+    padding-top: 150px;
 }
 
 .nav-menu > a {
-    font-weight: 400;
+    font-weight: 300;
     text-transform: uppercase;
-    font-size: 20px;
-    padding: 15px;
+    font-size: 26px;
+    padding: 25px 10px;
     margin: 0 25px;
     border-radius: 2px;
     transition: .3s;
@@ -56,12 +56,12 @@ a {
 }
 
 .nav-menu > a:hover {
-    background-color: #ddd;
-    color: #222;
+    background-color: #222;
+   
 }
 
 .nav-menu > a:visited {
-
+    color: #ddd9;
 }
 
 .nav-banner {
@@ -96,8 +96,9 @@ a {
 /* holds all decks*/
 .decks-container {
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    flex-direction: row;
+    justify-content: center;
+    padding-top: 15px;
 }
 
 .decks-container div div h2 {
@@ -108,13 +109,29 @@ a {
 /* holds individual deck content*/
 .deck-container {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
+    justify-content: space-around;
     background-color: #ddd;
     border: 1px solid #444;
     border-radius: 4px;
     padding: 10px 20px;
     margin: 5px 0;
+    height: 100px;
+    width: 200px;
+}
+
+.deck-container h3 {
+    font-style: italic;
+}
+
+.deck-container button {
+    padding: 5px 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    outline: none;
+    border-radius: 4px;
 }
 
 /* holds all cards */
@@ -125,10 +142,13 @@ a {
     flex-direction: column;
 }
 
+.cards-container div h1 {
+    text-align: center;
+}
+
 /* holds individual card content */
 .card-container {
     height: 250px;
-    padding: 20px;
     margin-top: 80px;
     width: 300px;
 }
@@ -136,22 +156,36 @@ a {
 .card-face {
     display: flex;
     flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+    z-index: 2;
+    padding: 5px;
 }
 
 .card-face div span {
     width: 100%;
-    text-align: center;
+    display: flex;
+    justify-content: center;
+    color: #5559;
+}
+
+.card-face div h1 {
+    
 }
 
 .new-cardbtn-container {
     border-radius: 3px;
-    border: 1px solid #555;
     margin-top: 50px;
+    display: flex;
+    justify-content: center;
 }
 
 .new-cardbtn-container > button {
     padding: 10px 30px;
     border-radius: 3px;
+    outline: none;
+
 }
 
 
@@ -167,7 +201,7 @@ a {
     height: 50vh;
     padding: 5px;
     background-color: #333;
-    bottom: 0;
+    top: 40px;
 }
 
 .add-card-form input,
