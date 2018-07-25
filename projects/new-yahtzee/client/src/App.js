@@ -1,18 +1,24 @@
 import React from 'react'
 import { Switch, Route} from 'react-router-dom'
-import AuthContainer from './components/AuthContainer'
+import { connect } from 'react-redux'
+import AuthContainer from './components/Auth'
 import GameBoard from './components/GameBoard'
+import Navbar from './components/Navbar'
 
-const App = () => {
+
+const App = props => {
+    const { user } = props
     return (
         <div>
-            New Yahtzee
-            <Switch>
-                <Route exact path="/" component={ AuthContainer }/>
-                <Route path="/game" component={ GameBoard }/>
-            </Switch>
+            <Navbar />
+            { !user.isAuthenticated 
+                ? <AuthContainer /> 
+                :   <Switch>
+                        <Route path="/" component={ GameBoard }/> 
+                    </Switch>
+            }
         </div>
     )
 }
 
-export default App
+export default connect(state=>({user: state.user}), {})(App)

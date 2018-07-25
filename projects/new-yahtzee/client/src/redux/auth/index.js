@@ -1,14 +1,19 @@
 import axios from 'axios'
+import { generateDicebox } from '../dicebox'
+import { generateStatCard } from '../stats'
+const authAxios = axios.create()
 
 
 export const signup = userInfo => {
     return dispatch => {
-        axios.post('/auth/signup', userInfo)
+        authAxios.post('/auth/signup', userInfo)
             .then(res => {
                 const{ token, user } = res.data
                 localStorage.setItem("token", token)
                 localStorage.setItem("user", user)
                 dispatch( authenticate(user) )
+                dispatch( generateDicebox(user) )
+                dispatch( generateStatCard(user) )
             })
             .catch(err => {
                 console.log(err)
@@ -18,7 +23,7 @@ export const signup = userInfo => {
 
 export const login = userInfo => {
     return dispatch => {
-        axios.post('/auth/login', userInfo)
+        authAxios.post('/auth/login', userInfo)
             .then(res => {
                 const{ token, user } = res.data
                 localStorage.setItem("token", token)
@@ -39,14 +44,6 @@ export const logout = () => {
     }
 }
 
-
-
-const initState = {  
-    username: "",
-    isAdmin: false,
-    isAuthenticated: false
-}
-
 const authenticate = user => {
     return {
         type: "AUTHENTICATE",
@@ -54,6 +51,12 @@ const authenticate = user => {
     }
 }
 
+
+const initState = {  
+    username: "",
+    isAdmin: false,
+    isAuthenticated: false
+}
 
 
 const authReducer = (state = initState, action) => {

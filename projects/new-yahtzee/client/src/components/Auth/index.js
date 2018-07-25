@@ -1,13 +1,14 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import Form from '../shared/Form'
-import Toggle from '../shared/Toggle'
+import Form from '../../shared/Form'
+import Toggle from '../../shared/Toggle'
 import AuthForm from './AuthForm'
-import { signup, login } from '../redux/auth'
+import { signup, login } from '../../redux/auth'
 
 
 const AuthContainer = props => {
     const { signup, login } = props
+    console.log(props)
     return (
         <div>
             <Toggle render={({ isToggled, toggle }) =>
@@ -16,11 +17,11 @@ const AuthContainer = props => {
                     ? <div onClick={ toggle }>
                         <span style={{ backgroundColor: '#333', color: "cornflowerblue"}}>Sign Up</span>
                         <span>Login</span>
-                        </div>
+                      </div>
                     : <div onClick={ toggle }>
                         <span>Sign Up</span>
                         <span style={{ backgroundColor: '#333', color: "cornflowerblue"}}>Login</span>
-                        </div>
+                      </div>
                 }
                 { isToggled 
                     ?   <label> Sign Up

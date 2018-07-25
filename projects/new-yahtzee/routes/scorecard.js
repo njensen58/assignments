@@ -10,4 +10,14 @@ scorecardRouter.post('/', (req, res) => {
     })
 })
 
+scorecardRouter.put('/:id', (req, res) => {
+    Scorecard.findByIdAndUpdate({_id: req.params.id},
+        req.body, 
+        {new: true}, 
+        (err, updatedScorecard) => {
+            if (err) return res.status(500).send(err)
+            return res.status(200).send(updatedScorecard)
+    })
+})
+
 module.exports = scorecardRouter

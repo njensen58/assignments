@@ -29,6 +29,7 @@ app.use('/highscores', require('./routes/highscores'))
 app.use('/api/highscores', require('./routes/highscores'))
 app.use('/api/stats', require('./routes/stats'))
 app.use('/api/scorecard', require('./routes/scorecard'))
+app.use('/api/dicebox', require('./routes/dicebox'))
 
 
 

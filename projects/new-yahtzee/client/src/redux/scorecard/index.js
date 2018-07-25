@@ -1,78 +1,29 @@
 import axios from 'axios'
 
-const initState = {
-    twos: {
-        selected: false,
-        score: 0
-    },
-    threes: {
-        selected: false,
-        score: 0
-    },
-    fours: {
-        selected: false,
-        score: 0
-    },
-    fives: {
-        selected: false,
-        score: 0
-    },
-    sixes: {
-        selected: false,
-        score: 0
-    },
-    threeOfAKind: {
-        selected: false,
-        score: 0
-    },
-    fourOfAKind: {
-        selected: false,
-        score: 0
-    },
-    smallStraight: {
-        selected: false,
-        score: 0
-    },
-    largeStraight: {
-        selected: false,
-        score: 0
-    },
-    fullHouse: {
-        selected: false,
-        score: 0
-    },
-    bonus: {
-        selected: false,
-        score: 0
-    },
-    yahtzee: {
-        selected: false,
-        score: 0
-    },
-    chance: {
-        selected: false,
-        score: 0
-    },
-    lowerBonus: {
-        selected: false,
-        score: 0
-    },
-    upperBonus: {
-        selected: false,
-        score: 0
-    }
-}
+const scorecardAxios = axios.create();
+
+scorecardAxios.interceptors.request.use((config)=>{  
+    const token = localStorage.getItem("token");
+    config.headers.Authorization = `Bearer ${token}`;
+    return config;
+})
 
 
-export const resetScorecard = () => {
-    return {
-        type: "RESET_SCORECARD"
+export const checkGameInProgress = id => {
+    return dispatch => {
+        scorecardAxios.get(`/${id}`)
+            .then(res => {
+                console.log(res)
+            })
+            .catch(err => {
+                console.log(err)
+            })
     }
 }
 
 export const saveHighscore = (score, user) => {
     return dispatch => {
-        axios.post('/api/highscores', {score, user})
+        scorecardAxios.post('/api/highscores', {score, user})
             .then(res => {
                 console.log("new score: " + score)
             })
@@ -82,11 +33,26 @@ export const saveHighscore = (score, user) => {
     }
 }
 
+export const updateScorecard = (id, updates) => {
+    return dispatch => {
+        scorecardAxios.put(`/api/highscores/${id}`, updates)
+            .then(res => {
+                dispatch({
+                    type: "UPDATE_SCORECARD",
+                    updatedCard: res.data
+                })
+            })
+            .catch(err => {
+                console.log(err)
+            })
+    }
+}
 
-const scorecardReducer = (state = initState, action) => {
+
+const scorecardReducer = (state = {}, action) => {
     switch(action.type){
-        case "RESET_SCORECARD":
-            return initState
+        case "UPDATE_SCORECARD":
+            return action.updatedCard
         default:
             return state
     }

@@ -1,0 +1,35 @@
+.navbar {
+    width: 250px;
+    height: 100vh;
+    background-color: #36504f80;
+    position: absolute;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: .4s;
+    z-index: 2;
+}
+
+.page-overlay {
+    z-index: 1;
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    background-color: #3337;
+    transition: .4s;
+}
+
+.menu-icon {
+    position: fixed;
+    bottom: 0px;
+    width: 100%;
+    height: 30px;
+}
+
+.menu-icon button {
+    width: 100%;
+    background-color: #36504f80;
+    height: 100%;
+    border: none;
+}

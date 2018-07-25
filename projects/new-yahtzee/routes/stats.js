@@ -10,6 +10,14 @@ statsRouter.get('/:id', (req, res) => {
     })
 })
 
+statsRouter.post('/', (req, res) => {
+    const newStats = new Stats()
+    newStats.user = req.body.user
+    newStats.save((err, stats) => {
+        if (err) return res.status(500).send(err)
+        return res.status(200).send(stats)
+    })
+})
 
 
 module.exports = statsRouter
