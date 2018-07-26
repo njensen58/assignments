@@ -9,11 +9,25 @@ scorecardAxios.interceptors.request.use((config)=>{
 })
 
 
-export const checkGameInProgress = id => {
+
+const setScorecard = scorecard => {
+    return {
+        type: "SET_SCORECARD",
+        scorecard
+    }
+}
+
+
+export const checkGameInProgress = user => {
     return dispatch => {
-        scorecardAxios.get(`/${id}`)
+        scorecardAxios.get(`/api/scorecard/${user._id}`)
             .then(res => {
-                console.log(res)
+                console.log(res.data)
+                if(res.data.active){
+                    dispatch( setScorecard(res.data) )
+                } else {
+                    dispatch( generateScorecard( user._id ))
+                }
             })
             .catch(err => {
                 console.log(err)
@@ -21,17 +35,16 @@ export const checkGameInProgress = id => {
     }
 }
 
-export const saveHighscore = (score, user) => {
+export const generateScorecard = user => {
+    console.log(user)
     return dispatch => {
-        scorecardAxios.post('/api/highscores', {score, user})
+        scorecardAxios.post('/api/scorecard', {user: user})
             .then(res => {
-                console.log("new score: " + score)
-            })
-            .catch(err => {
-                console.log(err)
+                dispatch( setScorecard(res.data) )
             })
     }
 }
+
 
 export const updateScorecard = (id, updates) => {
     return dispatch => {
@@ -49,8 +62,11 @@ export const updateScorecard = (id, updates) => {
 }
 
 
+
 const scorecardReducer = (state = {}, action) => {
     switch(action.type){
+        case "SET_SCORECARD":
+            return action.scorecard
         case "UPDATE_SCORECARD":
             return action.updatedCard
         default:

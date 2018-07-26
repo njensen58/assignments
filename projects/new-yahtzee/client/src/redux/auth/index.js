@@ -1,6 +1,7 @@
 import axios from 'axios'
 import { generateDicebox } from '../dicebox'
 import { generateStatCard } from '../stats'
+import { generateScorecard } from '../scorecard'
 const authAxios = axios.create()
 
 
@@ -14,6 +15,7 @@ export const signup = userInfo => {
                 dispatch( authenticate(user) )
                 dispatch( generateDicebox(user) )
                 dispatch( generateStatCard(user) )
+                dispatch( generateScorecard(user) )
             })
             .catch(err => {
                 console.log(err)
