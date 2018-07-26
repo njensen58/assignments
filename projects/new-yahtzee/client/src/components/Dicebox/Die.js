@@ -3,8 +3,8 @@ import { connect } from 'react-redux'
 
 const Die = props => {
     return (
-        <div>
-            Die
+        <div style={ props.devStyles.die }>
+            {props.die.value}
         </div>
     )
 }

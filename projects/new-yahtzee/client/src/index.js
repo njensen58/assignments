@@ -6,7 +6,9 @@ import store from './redux'
 import App from './App'
 import './globalStyle.css'
 
-
+store.subscribe(() => {
+    console.log(store.getState())
+})
 
 ReactDOM.render(
     <Provider store={ store }>

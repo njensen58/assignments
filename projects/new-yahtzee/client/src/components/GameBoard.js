@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
-import { checkGameInProgress } from '../redux/scorecard'
+import { checkGameInProgress } from '../redux/gamecontrols'
+import Dicebox from './Dicebox'
 
 // Needs to check if user currently has
     // - game in progress
@@ -11,16 +12,16 @@ import { checkGameInProgress } from '../redux/scorecard'
 
 class GameBoard extends Component {
 
-    // componentDidMount(){
-    //     this.props.checkGameInProgress( this.props.user._id, this.props.user )
-    // }
+    componentDidMount(){
+        this.props.checkGameInProgress( this.props.user )
+    }
 
     render(){
         console.log(this.props)
         return (
             <div>
                 Gameboard
-                <button onClick={() => this.props.checkGameInProgress(this.props.user) }> click me dammit </button>
+                <Dicebox />
             </div>
         )
     }

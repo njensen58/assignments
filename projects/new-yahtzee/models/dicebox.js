@@ -11,14 +11,57 @@ const diceboxSchema = new Schema({
         type: Number,
         default: 0
     },
-    currentRoll: {
-        type: [Number],
-        default: []
+    die1: {
+        value: {
+            type: Number,
+            default: 0
+        },
+        selected: {
+            type: Boolean,
+            default: false
+        }
     },
-    savedDie: {
-        type: [Number],
-        default: []
-    }
+    die2: {
+        value: {
+            type: Number,
+            default: 0
+        },
+        selected: {
+            type: Boolean,
+            default: false
+        }
+    },
+    die3: {
+        value: {
+            type: Number,
+            default: 0
+        },
+        selected: {
+            type: Boolean,
+            default: false
+        }
+    },
+    die4: {
+        value: {
+            type: Number,
+            default: 0
+        },
+        selected: {
+            type: Boolean,
+            default: false
+        }
+    },
+    die5: {
+        value: {
+            type: Number,
+            default: 0
+        },
+        selected: {
+            type: Boolean,
+            default: false
+        }
+    } 
+
 })
 
 module.exports = mongoose.model("Dicebox", diceboxSchema)

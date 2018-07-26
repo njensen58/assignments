@@ -10,7 +10,7 @@ scorecardAxios.interceptors.request.use((config)=>{
 
 
 
-const setScorecard = scorecard => {
+export const setScorecard = scorecard => {
     return {
         type: "SET_SCORECARD",
         scorecard
@@ -18,27 +18,12 @@ const setScorecard = scorecard => {
 }
 
 
-export const checkGameInProgress = user => {
-    return dispatch => {
-        scorecardAxios.get(`/api/scorecard/${user._id}`)
-            .then(res => {
-                console.log(res.data)
-                if(res.data.active){
-                    dispatch( setScorecard(res.data) )
-                } else {
-                    dispatch( generateScorecard( user._id ))
-                }
-            })
-            .catch(err => {
-                console.log(err)
-            })
-    }
-}
+
 
 export const generateScorecard = user => {
     console.log(user)
     return dispatch => {
-        scorecardAxios.post('/api/scorecard', {user: user})
+        scorecardAxios.post('/api/scorecard', {user: user._id})
             .then(res => {
                 dispatch( setScorecard(res.data) )
             })
