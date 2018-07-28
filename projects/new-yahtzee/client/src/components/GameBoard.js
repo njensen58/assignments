@@ -28,11 +28,20 @@ class GameBoard extends Component {
     }
 
     render(){
+
+        const devStyles = {
+            constainer: {
+                display: 'flex',
+                justifyContent: 'center'
+            }
+        }
+
         return (
-            <div>
-                Gameboard
-                { this.state.isLoading ? "Loading" : <Scorecard /> }
-                { this.state.isLoading ? "Loading" : <Dicebox />  }
+            <div >
+                <div style={ devStyles.container }>
+                    <Scorecard /> 
+                    <Dicebox />  
+                </div>
             </div>
         )
     }

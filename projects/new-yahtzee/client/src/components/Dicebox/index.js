@@ -28,6 +28,7 @@ class Dicebox extends Component {
         // Function to submit score will reset scorecount to 0.
         const { dice } = this.props
 
+        // Persist value of previously selected die while updating open die values //
         let die1, die2, die3, die4, die5;
         die1 = dice.die1.selected ? dice.die1 : { value: Math.floor(Math.random() * 6 + 1), selected: false }
         die2 = dice.die2.selected ? dice.die2 : { value: Math.floor(Math.random() * 6 + 1), selected: false }

@@ -1,58 +1,40 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { connect } from 'react-redux'
 import { saveDie } from '../../redux/dicebox'
 
 
 
-class Die extends Component {
-    constructor(props){
-        super(props)
-        this.state = {
-            selected: props.die.selected,
-        }
-    }
+const Die = ({ die, saveDie, user, name }) =>{
 
-    // componentDidMount(){
-    //     this.setState({
-    //         selected: this.props.die.selected
-    //     })
-    // }
-
-    selectDie = () => {
+    // Update db if user select/deselect die
+    const selectDie = () => {
         const updatedDie = {
-            value: this.props.die.value,
-            selected: !this.props.die.selected
+            value: die.value,
+            selected: !die.selected
         }
-        this.props.saveDie(this.props.user, {[this.props.name]: updatedDie})
-        this.setState(prevState => ({
-            selected: !prevState.selected
-        }))
+        saveDie(user, { [name]: updatedDie })
     } 
     
+    // UI change on die select
+    const colorSelect = () => die.selected ? "cornflowerblue" : 'white'
 
-    colorSelect = () => {
-        return this.props.die.selected ? "cornflowerblue" : 'white'
-    }
-
-    render(){
-        const devStyles = {
-            die: {
-                border: '1px solid black',
-                borderRadius: "3px",
-                width: '100%',
-                display: 'flex',
-                justifyContent: 'center',
-                alignItems: 'center',
-                backgroundColor: this.colorSelect()
-            }
+    const devStyles = {
+        die: {
+            border: '1px solid black',
+            borderRadius: "3px",
+            width: '100%',
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            backgroundColor: colorSelect()
         }
-
-        return (
-            <div style={ devStyles.die } onClick={ this.selectDie }>
-                {this.props.die.value}
-            </div>
-        )
     }
+
+    return (
+        <div style={ devStyles.die } onClick={ selectDie }>
+            {die.value}
+        </div>
+    )
 }
 
 export default connect(state=>state, { saveDie })(Die)

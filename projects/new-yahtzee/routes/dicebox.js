@@ -30,9 +30,12 @@ diceboxRouter.put('/:id', (req, res) => {
 })
 
 diceboxRouter.put('/die/:id', (req, res) => {
-    Dicebox.findOneAndUpdate({user: req.params.id}, req.body, {new: true}, (err, updatedDie) => {
-        if (err) return res.status(500).send(err)
-        return res.status(201).send(updatedDie)
+    Dicebox.findOneAndUpdate({user: req.params.id}, 
+        req.body, 
+        {new: true}, 
+        (err, updatedDie) => {
+            if (err) return res.status(500).send(err)
+            return res.status(201).send(updatedDie)
     })
 })
 
