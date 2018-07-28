@@ -23,6 +23,8 @@ const Navbar = props => {
     const { user, logout } = props
 
     return (
+        <React.Fragment>
+        { user.isAuthenticated &&
         <Toggle render={({ isToggled, toggle }) => 
             <React.Fragment>
                 <div className="menu-icon">
@@ -37,6 +39,8 @@ const Navbar = props => {
                 </div>
             </React.Fragment>
         } />
+        }
+        </React.Fragment>
     )
 }
 

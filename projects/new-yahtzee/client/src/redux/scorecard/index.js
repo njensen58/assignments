@@ -21,7 +21,6 @@ export const setScorecard = scorecard => {
 
 
 export const generateScorecard = user => {
-    console.log(user)
     return dispatch => {
         scorecardAxios.post('/api/scorecard', {user: user._id})
             .then(res => {
@@ -33,7 +32,7 @@ export const generateScorecard = user => {
 
 export const updateScorecard = (id, updates) => {
     return dispatch => {
-        scorecardAxios.put(`/api/highscores/${id}`, updates)
+        scorecardAxios.put(`/api/scorecard/${id}`, updates)
             .then(res => {
                 dispatch({
                     type: "UPDATE_SCORECARD",

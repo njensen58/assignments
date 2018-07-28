@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux';
 import { checkGameInProgress } from '../redux/gamecontrols'
 import Dicebox from './Dicebox'
+import Scorecard from './Scorecard'
 
 // Needs to check if user currently has
     // - game in progress
@@ -11,17 +12,27 @@ import Dicebox from './Dicebox'
             // Before old score card is disposed( probably when game over occurs ) save score in stats to preserve record.
 
 class GameBoard extends Component {
+    constructor(){
+        super()
+        this.state = {
+            isLoading: true
+        }
+    }
 
     componentDidMount(){
-        this.props.checkGameInProgress( this.props.user )
+        this.props.checkGameInProgress( this.props.user ).then(() => {
+            this.setState({
+                isLoading: false
+            })
+        })
     }
 
     render(){
-        console.log(this.props)
         return (
             <div>
                 Gameboard
-                <Dicebox />
+                { this.state.isLoading ? "Loading" : <Scorecard /> }
+                { this.state.isLoading ? "Loading" : <Dicebox />  }
             </div>
         )
     }

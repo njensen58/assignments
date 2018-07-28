@@ -8,11 +8,9 @@ diceboxAxios.interceptors.request.use((config)=>{
     return config;
 })
 
-
+// INIT STATE //
 const initState = {
     rollCount: 0,
-    currentRoll: [],
-    savedDie: [],
     die1: {
         value: 0,
         selected: false
@@ -35,7 +33,7 @@ const initState = {
     }
 }
 
-
+// Only used on signup to create user's single dicebox
 export const generateDicebox = user => {
     return dispatch => {
         diceboxAxios.post('/api/dicebox', {user: user._id})
@@ -51,9 +49,10 @@ export const generateDicebox = user => {
     }
 }
 
+// Get most recent die and roll onload
 export const checkDieStatus = user => {
     return dispatch => {
-        return diceboxAxios.get(`/api/dicebox/${user._id}`)
+        diceboxAxios.get(`/api/dicebox/${user._id}`)
             .then(res => {
                 dispatch({
                     type: "CHECK_DIE_STATUS",
@@ -66,12 +65,29 @@ export const checkDieStatus = user => {
     }
 }
 
-export const roll = (user, newDicebox)=> {
+// Update db with current roll results
+export const roll = (user, updatedDice) => {
     return dispatch => {
-        return diceboxAxios.put(`/api/dicebox/${user._id}`, {user, newDicebox})
+        diceboxAxios.put(`/api/dicebox/${user._id}`, {user, updatedDice})
             .then(res => {
                 dispatch({
                     type: "ROLL",
+                    dicebox: res.data
+                })
+            })
+            .catch(err => {
+                console.log(err)
+            })
+    }
+}
+
+// change specific die 'seleted' status to true/false
+export const saveDie = (user, die) => {
+    return dispatch => {
+        diceboxAxios.put(`/api/dicebox/die/${user._id}`, die)
+            .then(res => {
+                dispatch({
+                    type: "SAVE_DIE",
                     dicebox: res.data
                 })
             })
@@ -93,6 +109,8 @@ const dieReducer = (state = initState, action) =>{
         case "CHECK_DIE_STATUS":
             return action.dicebox
         case "ROLL":
+            return action.dicebox
+        case "SAVE_DIE":
             return action.dicebox
         default:
             return state

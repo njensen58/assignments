@@ -6,6 +6,7 @@ import { checkGameInProgress } from '../gamecontrols'
 const authAxios = axios.create()
 
 
+// User signup & create all user assets in db
 export const signup = userInfo => {
     return dispatch => {
         authAxios.post('/auth/signup', userInfo)
@@ -24,6 +25,7 @@ export const signup = userInfo => {
     }
 }
 
+// User login and check any previous game status
 export const login = userInfo => {
     return dispatch => {
         authAxios.post('/auth/login', userInfo)

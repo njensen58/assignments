@@ -1,6 +1,7 @@
 import axios from 'axios'
-import { setScorecard, generateScorecard } from '../scorecard'
+import scorecardReducer, { setScorecard, generateScorecard } from '../scorecard'
 import { retrieveStats } from '../stats'
+import { checkDieStatus } from '../dicebox';
 
 const gamecontrolAxios = axios.create()
 
@@ -14,9 +15,11 @@ gamecontrolAxios.interceptors.request.use((config)=>{
 
 const initState = {}
 
+
+// Get status of scorecard, retrieve user assets onload
 export const checkGameInProgress = user => {
     return dispatch => {
-        gamecontrolAxios.get(`/api/scorecard/${user._id}`)
+        return gamecontrolAxios.get(`/api/scorecard/${user._id}`)
             .then(res => {
                 if(res.data[0].active){
                     dispatch( setScorecard(res.data) )
@@ -24,6 +27,7 @@ export const checkGameInProgress = user => {
                     dispatch( generateScorecard( user ))
                 }
                 dispatch( retrieveStats( user ) )
+                dispatch( checkDieStatus( user ))
             })
             .catch(err => {
                 console.log(err)
@@ -31,7 +35,7 @@ export const checkGameInProgress = user => {
     }
 }
 
-
+// Save highscore following game end
 export const saveHighscore = (score, user) => {
     return dispatch => {
         gamecontrolAxios.post('/api/highscores', {score, user})
