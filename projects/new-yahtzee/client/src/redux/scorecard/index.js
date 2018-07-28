@@ -9,14 +9,27 @@ scorecardAxios.interceptors.request.use((config)=>{
     return config;
 })
 
-
-
-export const setScorecard = scorecard => {
-    return {
-        type: "SET_SCORECARD",
-        scorecard
-    }
+const initState = {
+    ones:          { score: 0, selected: false },
+    twos:          { score: 0, selected: false },
+    threes:        { score: 0, selected: false },
+    fours:         { score: 0, selected: false },
+    fives:         { score: 0, selected: false },
+    sixes:         { score: 0, selected: false },
+    threeOfAKind:  { score: 0, selected: false },
+    fourOfAKind:   { score: 0, selected: false },
+    smallStraight: { score: 0, selected: false },
+    largeStraight: { score: 0, selected: false },
+    fullHouse:     { score: 0, selected: false },
+    chance:        { score: 0, selected: false },
+    yahtzee:       { score: 0, selected: false },
+    bonus:         { score: 0, selected: false },
+    lowerBonus:    { score: 0, selected: false },
+    upperBonus:    { score: 0, selected: false }
+    // leftTotal:    { score: 0, selected: false },
+    // rightTotal:    { score: 0, selected: false }
 }
+
 
 // When user clicks on score box -> reveal current score options before score confirm/save
 export const validatePoints = (arr, scoreType) => {
@@ -34,20 +47,20 @@ export const validatePoints = (arr, scoreType) => {
             return { result: arr.reduce((total, number) => Number(number) === 5 ? total += 5 : total, 0), type: "default"}
         case "sixes":
             return { result: arr.reduce((total, number) => Number(number) === 6 ? total += 6 : total, 0), type: "default"}
-
-        case "3ofK":
+        // 3 OF A KIND //
+        case "threeOfAKind":
             const calculate3ofAKind = arr => {
                 const obj = arr.reduce((obj, num) => { if(!obj[num]){ obj[num] = 1} else { obj[num]++ } return obj }, {})
                 for(let key in obj){
-                    if(obj[key] === 3){
+                    if(obj[key] >= 3){
                         return key * 3
                     }   
                 }
                 return 0 
             }
             return { type: "default", result: calculate3ofAKind(arr)}
-
-        case "4ofK":
+        // 4 OF A KIND //
+        case "fourOfAKind":
             const calculate4ofAKind = arr => {
                 const obj = arr.reduce((obj, num) => { if(!obj[num]){ obj[num] = 1} else { obj[num]++ } return obj }, {})
                 for(let key in obj){
@@ -58,8 +71,8 @@ export const validatePoints = (arr, scoreType) => {
                 return 0
             }
             return { type: "default", result: calculate4ofAKind(arr) }
-
-        case "smStrt":
+        // SMALL STRAIGHT //
+        case "smallStraight":
             const calculateSmStrt = arr => {
                 const sorted = arr.sort((a, b) => a - b)
                 let count = 0;
@@ -71,8 +84,8 @@ export const validatePoints = (arr, scoreType) => {
                 return count >= 3 ? 30 : 0
             }
             return { type: "default", result: calculateSmStrt(arr) }
-
-        case "lgStrt":
+        // LARGE STRAIGHT //
+        case "largeStraight":
             const calculateLgStrt = arr => {
                 const sorted = arr.sort((a, b) => a - b)
                 let count = 0;
@@ -84,19 +97,36 @@ export const validatePoints = (arr, scoreType) => {
                 return count >= 4 ? 40 : 0
             }
             return { type: "default", result: calculateLgStrt(arr) }
-        case "flHs":
-            return ""
-        case "chnc":
+        case "fullHouse":
+        //     const calculateFullHouse = arr => {
+        //         const obj = arr.reduce((obj, num) => { if( !obj[num] ){ obj[num] = 1 } else { obj[num]++ } return obj }, {})
+        //         if(Array.from(Object.keys(obj).length === 2 && ))
+                
+        //         return 0
+        //     }
+        // return { type: "default", result: calculateFullHouse(arr) }
+        case "chance":
             return { result: arr.reduce((total, number) => total += number ,0), type: "default"}
-        case "yahz":
-            return ""
-        case "yahzb":
+        case "yahtzee":
+            const calculateYahtzee = arr => {
+                const obj = arr.reduce((obj, num) => { if( !obj[num] ){ obj[num] = 1 } else { obj[num]++ } return obj }, {})
+                return Array.from(Object.keys(obj)).length === 1 ? 50 : 0
+            }
+            return { type: "default", result: calculateYahtzee(arr) }
+        case "bonus":
             return ""
         default: 
             return "error in validating points"
     }
 }
 
+
+export const setScorecard = scorecard => {
+    return {
+        type: "SET_SCORECARD",
+        scorecard
+    }
+}
 
 export const generateScorecard = user => {
     return dispatch => {
@@ -107,11 +137,9 @@ export const generateScorecard = user => {
     }
 }
 
-
-
-export const updateScorecard = (id, updates) => {
+export const updateScorecard = (user, updates) => {
     return dispatch => {
-        scorecardAxios.put(`/api/scorecard/${id}`, updates)
+        scorecardAxios.put(`/api/scorecard/${user._id}`, updates)
             .then(res => {
                 dispatch({
                     type: "UPDATE_SCORECARD",
@@ -125,8 +153,7 @@ export const updateScorecard = (id, updates) => {
 }
 
 
-
-const scorecardReducer = (state = {}, action) => {
+const scorecardReducer = (state = initState, action) => {
     switch(action.type){
         case "SET_SCORECARD":
             return action.scorecard
@@ -136,6 +163,5 @@ const scorecardReducer = (state = {}, action) => {
             return state
     }
 }
-
 
 export default scorecardReducer

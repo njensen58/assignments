@@ -28,50 +28,50 @@ export const leftRows = [
     },
     { name: "Left Bonus",
        _id: uuidv1(),
-       scoreType: 'bonus'      
-    },
-    { name: "Left Total",
-       _id: uuidv1(),
-       scoreType: 'lTot'      
+       scoreType: 'upperBonus'      
     }
+    // { name: "Left Total",
+    //    _id: uuidv1(),
+    //    scoreType: 'leftTotal'      
+    // }
 ]
 
 
 export const rightRows = [
     { name: "3 of a Kind",
        _id: uuidv1(),
-       scoreType:"3ofK"      
+       scoreType:"threeOfAKind"      
     },
     { name: "4 of a Kind",
        _id: uuidv1(),
-       scoreType:"4ofK"      
+       scoreType:"fourOfAKind"      
     },
     { name: "Small Straight",
        _id: uuidv1(),
-       scoreType:"smStrt"      
+       scoreType:"smallStraight"      
     },
     { name: "Large Straight",
        _id: uuidv1(),
-       scoreType:"lgStrt"      
+       scoreType:"largeStraight"      
     },
     { name: "Full House",
        _id: uuidv1(),
-       scoreType:"flHs"      
+       scoreType:"fullHouse"      
     },
     { name: "Chance",
        _id: uuidv1(),
-       scoreType:"chnc"      
+       scoreType:"chance"      
     },
     { name: "Yahtzee",
        _id: uuidv1(),
-       scoreType:"yahz"      
+       scoreType:"yahtzee"      
     },
     { name: "Yahtzee Bonus",
        _id: uuidv1(),
-       scoreType:"yahzb"      
-    },
-    { name: "Right Total",
-       _id: uuidv1(),
-       scoreType:"rTot"      
+       scoreType:"lowerBonus"      
     }
+    // { name: "Right Total",
+    //    _id: uuidv1(),
+    //    scoreType:"rightTotal"      
+    // }
 ]

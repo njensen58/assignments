@@ -12,19 +12,8 @@ import Scorecard from './Scorecard'
             // Before old score card is disposed( probably when game over occurs ) save score in stats to preserve record.
 
 class GameBoard extends Component {
-    constructor(){
-        super()
-        this.state = {
-            isLoading: true
-        }
-    }
-
     componentDidMount(){
-        this.props.checkGameInProgress( this.props.user ).then(() => {
-            this.setState({
-                isLoading: false
-            })
-        })
+        this.props.checkGameInProgress( this.props.user )
     }
 
     render(){

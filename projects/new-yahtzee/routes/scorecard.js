@@ -18,8 +18,10 @@ scorecardRouter.post('/', (req, res) => {
     })
 })
 
+
+// Updates db with current score selections
 scorecardRouter.put('/:id', (req, res) => {
-    Scorecard.findByIdAndUpdate({_id: req.params.id},
+    Scorecard.findOneAndUpdate({user: req.params.id},
         req.body, 
         {new: true}, 
         (err, updatedScorecard) => {

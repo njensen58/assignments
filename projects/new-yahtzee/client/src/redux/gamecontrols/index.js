@@ -22,7 +22,7 @@ export const checkGameInProgress = user => {
         return gamecontrolAxios.get(`/api/scorecard/${user._id}`)
             .then(res => {
                 if(res.data[0].active){
-                    dispatch( setScorecard(res.data) )
+                    dispatch( setScorecard(res.data[0]) )
                 } else {
                     dispatch( generateScorecard( user ))
                 }
