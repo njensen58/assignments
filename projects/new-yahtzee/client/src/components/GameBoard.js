@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
-import { checkGameInProgress } from '../redux/gamecontrols'
+import { checkGameInProgress, gameControlToggler } from '../redux/gamecontrols'
 import Dicebox from './Dicebox'
 import Scorecard from './Scorecard'
 
@@ -14,6 +14,7 @@ import Scorecard from './Scorecard'
 class GameBoard extends Component {
     componentDidMount(){
         this.props.checkGameInProgress( this.props.user )
+        this.props.gameControlToggler( this.props.dice.rollCount )
     }
 
     render(){
@@ -36,4 +37,4 @@ class GameBoard extends Component {
     }
 }
 
-export default connect(state=>state, { checkGameInProgress } )( GameBoard )
+export default connect(state=>state, { checkGameInProgress, gameControlToggler } )( GameBoard )

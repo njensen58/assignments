@@ -1,7 +1,8 @@
 import axios from 'axios'
-import scorecardReducer, { setScorecard, generateScorecard } from '../scorecard'
+import { setScorecard, generateScorecard } from '../scorecard'
 import { retrieveStats } from '../stats'
 import { checkDieStatus } from '../dicebox';
+import store from '../../redux'
 
 const gamecontrolAxios = axios.create()
 
@@ -11,9 +12,31 @@ gamecontrolAxios.interceptors.request.use((config)=>{
     return config;
 })
 
+console.log(store)
 
 
-const initState = {}
+const initState = {
+    allowPointSelection: false,
+    allowRoll: false
+}
+
+// If you reset on rollCount 3, the refresh does not set allow Roll to false, it defaults to initState
+
+
+export const gameControlToggler = rollCount => {
+    switch(rollCount){
+        case 0:
+            return { type: "ALLOW_ROLL" }
+        case 1:
+        case 2:
+            return { type: "ALLOW_ROLL" }
+        case 3:
+            return { type: "ALLOW_SELECTION" }
+        default:
+            return initState
+    }
+}
+
 
 
 // Get status of scorecard, retrieve user assets onload
@@ -52,6 +75,16 @@ export const saveHighscore = (score, user) => {
 
 const gameControlsReducer = (state = initState, action) => {
     switch(action.type){
+        case "ALLOW_ROLL":
+            return {    
+                allowPointSelection: false, 
+                allowRoll: true
+            }
+        case "ALLOW_SELECTION":
+            return {
+                allowPointSelection: true, 
+                allowRoll: false 
+            }
         default:
             return state
     }

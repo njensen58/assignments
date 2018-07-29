@@ -4,15 +4,18 @@ import { saveDie } from '../../redux/dicebox'
 
 
 
-const Die = ({ die, saveDie, user, name }) =>{
+const Die = ({ die, saveDie, user, name, dice }) => {
 
-    // Update db if user select/deselect die
+    // Update db if user select/deselect die 
+    // Checks if roll count is 0 and will disallow die selection
     const selectDie = () => {
+        if(dice.rollCount !== 0){
         const updatedDie = {
-            value: die.value,
-            selected: !die.selected
+                value: die.value,
+                selected: !die.selected
+            }
+            saveDie(user, { [name]: updatedDie })
         }
-        saveDie(user, { [name]: updatedDie })
     } 
     
     // UI change on die select

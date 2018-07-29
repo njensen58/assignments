@@ -97,8 +97,18 @@ export const saveDie = (user, die) => {
     }
 }
 
-export const generateRandomDie = () => {
 
+// Return dice state to initState on score selection / newGame
+export const resetDie = user => {
+    return dispatch => {
+        diceboxAxios.put(`/api/dicebox/${user._id}`, {updatedDice: initState})
+            .then(res => {
+                dispatch({ type: "RESET_DIE" })
+            })
+            .catch(err => {
+                console.log(err)
+            })
+    }
 }
 
 
@@ -112,6 +122,8 @@ const dieReducer = (state = initState, action) =>{
             return action.dicebox
         case "SAVE_DIE":
             return action.dicebox
+        case "RESET_DIE":
+            return initState
         default:
             return state
     }

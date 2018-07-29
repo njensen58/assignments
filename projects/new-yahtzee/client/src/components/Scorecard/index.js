@@ -6,22 +6,24 @@ const devStyles = {
     container: {
         display: 'grid',
         gridTemplateColumns: '1fr 1fr',
-        border: '1px solid black'
+        border: '1px solid black',
+        margin: '0 10px'
     },
     upper: {
         display: 'flex',
         flexDirection: 'column',
         gridColumn: '1',
         border: '1px solid black',
-        marginRight: '5px'
+        marginRight: '5px',
+        width: '150px'
     },
     lower: {
         display: 'flex',
         flexDirection: 'column',
         gridColumn: '2',
         border: '1px solid black',
-        marginLeft: '5px'
-            
+        marginLeft: '5px',
+        width: '150px'
     },
     flex: {
         display: 'flex',

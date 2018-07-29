@@ -1,26 +1,25 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
 import { validatePoints, updateScorecard } from '../../redux/scorecard'
+import { resetDie } from '../../redux/dicebox'
 
 class ScoreItem extends Component { 
     constructor(props){
         super(props)
         this.state = {
-            toggle: props.scorecard[this.props.scoreType].selected || false,
+            toggle: this.props.scorecard[props.scoreType].selected,
             total: {
-                result: "",
+                result: 0,
                 type: ""
             }
         }
     }
 
-    componentDidMount = () => {
+    componentDidMount(){
         this.setState({
             toggle: this.props.scorecard[this.props.scoreType].selected,
             total: {
-                result: this.props.scorecard[this.props.scoreType].selected 
-                            ? this.props.scorecard[this.props.scoreType].score
-                            : 0,
+                result: this.props.scorecard[this.props.scoreType].score,
                 type: ""
             }
         })
@@ -28,12 +27,14 @@ class ScoreItem extends Component {
 
     // calculates current worth of selected score slot depending on the current die
     togglePoints = scoreType => {
-        const { validatePoints, dice: { die1, die2, die3, die4, die5 }} = this.props
-        const total = validatePoints([die1.value, die2.value, die3.value, die4.value, die5.value], scoreType)
-        this.setState(prevState => ({
-            total: total,
-            toggle: !prevState.toggle
-        }))
+        if(this.props.controls.allowPointSelection){
+            const { validatePoints, dice: { die1, die2, die3, die4, die5 }} = this.props
+            const total = validatePoints([die1.value, die2.value, die3.value, die4.value, die5.value], scoreType)
+            this.setState(prevState => ({
+                total: total,
+                toggle: !prevState.toggle
+            }))
+        }
    }
 
    // saves value to result of the toggle validatePoints as score value for the type, and sets the scoreType status to true
@@ -46,6 +47,8 @@ class ScoreItem extends Component {
             }
         }
         this.props.updateScorecard(this.props.user, updatedCard)
+        // Selecting the score is not updating dice on rollCount 3
+        this.props.resetDie(this.props.user)
    }
 
 
@@ -93,4 +96,4 @@ class ScoreItem extends Component {
     }
 }
 
-export default connect(state=>state, { validatePoints, updateScorecard })( ScoreItem ) 
+export default connect(state=>state, { validatePoints, updateScorecard, resetDie })( ScoreItem ) 

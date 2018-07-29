@@ -1,4 +1,5 @@
 import axios from 'axios'
+import { resetDie } from '../dicebox';
 
 
 const scorecardAxios = axios.create();
@@ -137,6 +138,10 @@ export const generateScorecard = user => {
     }
 }
 
+
+// Figure out a way to toggle close open point displays on point selection 
+
+
 export const updateScorecard = (user, updates) => {
     return dispatch => {
         scorecardAxios.put(`/api/scorecard/${user._id}`, updates)
@@ -145,6 +150,8 @@ export const updateScorecard = (user, updates) => {
                     type: "UPDATE_SCORECARD",
                     updatedCard: res.data
                 })
+                dispatch (resetDie(user) )
+                dispatch({ type: "ALLOW_ROLL" })
             })
             .catch(err => {
                 console.log(err)
