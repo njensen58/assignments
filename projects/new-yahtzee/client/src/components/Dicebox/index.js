@@ -45,11 +45,9 @@ class Dicebox extends Component {
                 die5
             }
 
-            if(this.props.dice.rollCount !== 3){
-                newDicebox.rollCount = this.props.dice.rollCount += 1
-            } else {
-                newDicebox.rollCount = 0
-            }
+            if(this.props.dice.rollCount < 3){
+                newDicebox.rollCount += 1
+            } 
 
             this.props.roll( this.props.user, newDicebox)
             this.props.gameControlToggler(newDicebox.rollCount)
@@ -60,6 +58,7 @@ class Dicebox extends Component {
         return(
             <div>
                 <button style={ devStyles.rollBtn } onClick={ this.submitRoll }> Roll </button>
+                <span>Roll: { this.props.dice.rollCount }/3</span>
                 <div style={devStyles.dicebox}>
                     <Die die={this.props.dice.die1} name="die1"/>
                     <Die die={this.props.dice.die2} name="die2"/>

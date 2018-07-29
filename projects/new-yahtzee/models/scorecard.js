@@ -12,6 +12,16 @@ const scorecardSchema = new Schema({
         type: Boolean,
         default: true
     },
+    ones: {
+        score: {
+            type: Number,
+            default: 0
+        },
+        selected: {
+            type: Boolean,
+            default: false
+        }
+    },
     twos: {
         score: {
             type: Number,

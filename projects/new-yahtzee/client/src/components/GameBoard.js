@@ -14,7 +14,6 @@ import Scorecard from './Scorecard'
 class GameBoard extends Component {
     componentDidMount(){
         this.props.checkGameInProgress( this.props.user )
-        this.props.gameControlToggler( this.props.dice.rollCount )
     }
 
     render(){

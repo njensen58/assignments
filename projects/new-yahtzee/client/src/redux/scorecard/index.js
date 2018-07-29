@@ -99,13 +99,15 @@ export const validatePoints = (arr, scoreType) => {
             }
             return { type: "default", result: calculateLgStrt(arr) }
         case "fullHouse":
-        //     const calculateFullHouse = arr => {
-        //         const obj = arr.reduce((obj, num) => { if( !obj[num] ){ obj[num] = 1 } else { obj[num]++ } return obj }, {})
-        //         if(Array.from(Object.keys(obj).length === 2 && ))
+            const calculateFullHouse = arr => {
+                const obj = arr.reduce((obj, num) => { if( !obj[num] ){ obj[num] = 1 } else { obj[num]++ } return obj }, {})
+                for(let key in obj){
+                    
+                }
                 
-        //         return 0
-        //     }
-        // return { type: "default", result: calculateFullHouse(arr) }
+                return 0
+            }
+        return { type: "default", result: calculateFullHouse(arr) }
         case "chance":
             return { result: arr.reduce((total, number) => total += number ,0), type: "default"}
         case "yahtzee":
@@ -139,9 +141,9 @@ export const generateScorecard = user => {
 }
 
 
-// Figure out a way to toggle close open point displays on point selection 
+ 
 
-
+// On score select, save points, reset die, and allow new roll
 export const updateScorecard = (user, updates) => {
     return dispatch => {
         scorecardAxios.put(`/api/scorecard/${user._id}`, updates)
@@ -152,6 +154,22 @@ export const updateScorecard = (user, updates) => {
                 })
                 dispatch (resetDie(user) )
                 dispatch({ type: "ALLOW_ROLL" })
+            })
+            .catch(err => {
+                console.log(err)
+            })
+    }
+}
+
+// Update db score amount for clicked item, but maintain selected as false
+export const updateScoreSelect = (user, updates) => {
+    return dispatch => {
+        scorecardAxios.put(`/api/scorecard/${user._id}`, updates)
+            .then(res => {
+                dispatch({
+                    type: "UPDATE_SCORECARD",
+                    updatedCard: res.data
+                })
             })
             .catch(err => {
                 console.log(err)

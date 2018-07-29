@@ -1,4 +1,5 @@
 import axios from 'axios'
+import { gameControlToggler } from '../gamecontrols'
 
 const diceboxAxios = axios.create()
 
@@ -54,10 +55,12 @@ export const checkDieStatus = user => {
     return dispatch => {
         diceboxAxios.get(`/api/dicebox/${user._id}`)
             .then(res => {
+                console.log(res.data)
                 dispatch({
                     type: "CHECK_DIE_STATUS",
                     dicebox: res.data
                 })
+                dispatch( gameControlToggler(res.data.rollCount) )
             })
             .catch(err => {
                 console.log(err)

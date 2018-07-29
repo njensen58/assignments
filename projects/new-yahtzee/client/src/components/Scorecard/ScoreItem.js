@@ -1,13 +1,13 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
-import { validatePoints, updateScorecard } from '../../redux/scorecard'
+import { validatePoints, updateScorecard, updateScoreSelect } from '../../redux/scorecard'
 import { resetDie } from '../../redux/dicebox'
 
 class ScoreItem extends Component { 
     constructor(props){
         super(props)
         this.state = {
-            toggle: this.props.scorecard[props.scoreType].selected,
+            toggle: this.props.scorecard[this.props.scoreType].selected,
             total: {
                 result: 0,
                 type: ""
@@ -15,40 +15,37 @@ class ScoreItem extends Component {
         }
     }
 
-    componentDidMount(){
-        this.setState({
-            toggle: this.props.scorecard[this.props.scoreType].selected,
-            total: {
-                result: this.props.scorecard[this.props.scoreType].score,
-                type: ""
-            }
-        })
-    }
-
     // calculates current worth of selected score slot depending on the current die
     togglePoints = scoreType => {
-        if(this.props.controls.allowPointSelection){
+        if(this.props.controls.allowPointSelection && !this.state.toggle){
             const { validatePoints, dice: { die1, die2, die3, die4, die5 }} = this.props
             const total = validatePoints([die1.value, die2.value, die3.value, die4.value, die5.value], scoreType)
             this.setState(prevState => ({
-                total: total,
+                total: total, // this is an object with a result and type key from redux
                 toggle: !prevState.toggle
             }))
+            const updatedCard = {
+                [scoreType]: { 
+                    score: total.result,
+                    selected: false 
+                }
+            }
+            this.props.updateScoreSelect(this.props.user, updatedCard)
         }
    }
 
    // saves value to result of the toggle validatePoints as score value for the type, and sets the scoreType status to true
    updateScore = scoreType => {
-        const updatedCard = {
-            toggle: this.state.toggle,
-            [scoreType]: { 
-                score: this.state.total.result, 
-                selected: true 
+       if(this.props.controls.allowPointSelection){
+            const updatedCard = {
+                [scoreType]: { 
+                    score: this.state.total.result, 
+                    selected: true 
+                }
             }
+            // Update scorecard in db and reset dicebox
+            this.props.updateScorecard(this.props.user, updatedCard)
         }
-        this.props.updateScorecard(this.props.user, updatedCard)
-        // Selecting the score is not updating dice on rollCount 3
-        this.props.resetDie(this.props.user)
    }
 
 
@@ -83,10 +80,13 @@ class ScoreItem extends Component {
 
                 <h2 style={ devStyles.title }>{ name }</h2>
                 <div style={ devStyles.display } >
-                    {   this.state.toggle && 
+                    {/* If the user has toggled the points or if the scorecard section has a 
+                        saved score entry, show the score currently saved in the db        */}
+
+                    {   ( this.state.toggle || this.props.scorecard[scoreType].selected ) &&
                             <React.Fragment>
-                                <h3>{ this.state.total.result }</h3> 
-                                <button onClick={() => this.updateScore( scoreType ) }>Click me</button>
+                                <h3>{ this.props.scorecard[scoreType].score }</h3> 
+                                { !this.props.scorecard[scoreType].selected && <button onClick={() => this.updateScore( scoreType ) }>Click me</button> }
                             </React.Fragment>
                     }
                 </div>
@@ -96,4 +96,4 @@ class ScoreItem extends Component {
     }
 }
 
-export default connect(state=>state, { validatePoints, updateScorecard, resetDie })( ScoreItem ) 
+export default connect(state=>state, { validatePoints, updateScorecard, resetDie, updateScoreSelect })( ScoreItem ) 

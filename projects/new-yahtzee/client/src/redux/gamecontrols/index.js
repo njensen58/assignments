@@ -22,7 +22,6 @@ const initState = {
 
 // If you reset on rollCount 3, the refresh does not set allow Roll to false, it defaults to initState
 
-
 export const gameControlToggler = rollCount => {
     switch(rollCount){
         case 0:
@@ -45,12 +44,13 @@ export const checkGameInProgress = user => {
         return gamecontrolAxios.get(`/api/scorecard/${user._id}`)
             .then(res => {
                 if(res.data[0].active){
+                    dispatch( checkDieStatus( user ))
                     dispatch( setScorecard(res.data[0]) )
                 } else {
+                    dispatch( checkDieStatus( user ))
                     dispatch( generateScorecard( user ))
                 }
                 dispatch( retrieveStats( user ) )
-                dispatch( checkDieStatus( user ))
             })
             .catch(err => {
                 console.log(err)

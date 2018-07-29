@@ -2,7 +2,7 @@ import axios from 'axios'
 import { generateDicebox } from '../dicebox'
 import { generateStatCard } from '../stats'
 import { generateScorecard } from '../scorecard'
-import { checkGameInProgress } from '../gamecontrols'
+import { checkGameInProgress, gameControlToggler } from '../gamecontrols'
 const authAxios = axios.create()
 
 
@@ -11,13 +11,14 @@ export const signup = userInfo => {
     return dispatch => {
         authAxios.post('/auth/signup', userInfo)
             .then(res => {
-                const{ token, user } = res.data
+                const{ token, user } = res.data 
                 localStorage.setItem("token", token)
                 localStorage.setItem("user", user)
                 dispatch( authenticate(user) )
                 dispatch( generateDicebox(user) )
                 dispatch( generateStatCard(user) )
                 dispatch( generateScorecard(user) )
+                dispatch( gameControlToggler(0) )
             })
             .catch(err => {
                 console.log(err)
