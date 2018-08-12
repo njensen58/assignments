@@ -4,11 +4,16 @@ import { resetDie } from '../dicebox';
 
 const scorecardAxios = axios.create();
 
+
 scorecardAxios.interceptors.request.use((config)=>{  
     const token = localStorage.getItem("token");
     config.headers.Authorization = `Bearer ${token}`;
     return config;
 })
+
+
+
+
 
 const initState = {
     ones:          { score: 0, selected: false },
@@ -24,11 +29,7 @@ const initState = {
     fullHouse:     { score: 0, selected: false },
     chance:        { score: 0, selected: false },
     yahtzee:       { score: 0, selected: false },
-    bonus:         { score: 0, selected: false },
-    lowerBonus:    { score: 0, selected: false },
-    upperBonus:    { score: 0, selected: false }
-    // leftTotal:    { score: 0, selected: false },
-    // rightTotal:    { score: 0, selected: false }
+    bonus:         { score: 0, selected: false }
 }
 
 
@@ -98,25 +99,35 @@ export const validatePoints = (arr, scoreType) => {
                 return count >= 4 ? 40 : 0
             }
             return { type: "default", result: calculateLgStrt(arr) }
+        // FULL HOUSE //
         case "fullHouse":
             const calculateFullHouse = arr => {
                 const obj = arr.reduce((obj, num) => { if( !obj[num] ){ obj[num] = 1 } else { obj[num]++ } return obj }, {})
                 for(let key in obj){
-                    
+                    if(obj[key] === 2){
+                        for(let key2 in obj){
+                            if(obj[key2] === 3){
+                                return 40
+                            }
+                        }
+                    }
                 }
-                
                 return 0
             }
         return { type: "default", result: calculateFullHouse(arr) }
+        // CHANCE //
         case "chance":
             return { result: arr.reduce((total, number) => total += number ,0), type: "default"}
+        // YAHTZEE //
         case "yahtzee":
             const calculateYahtzee = arr => {
                 const obj = arr.reduce((obj, num) => { if( !obj[num] ){ obj[num] = 1 } else { obj[num]++ } return obj }, {})
                 return Array.from(Object.keys(obj)).length === 1 ? 50 : 0
             }
             return { type: "default", result: calculateYahtzee(arr) }
+        // YAHTZEE BONUS
         case "bonus":
+            // Code to only allow yahtzee bonus selection if current yahtzee && yahtzee score is over 1
             return ""
         default: 
             return "error in validating points"
@@ -146,7 +157,7 @@ export const generateScorecard = user => {
 // On score select, save points, reset die, and allow new roll
 export const updateScorecard = (user, updates) => {
     return dispatch => {
-        scorecardAxios.put(`/api/scorecard/${user._id}`, updates)
+        return scorecardAxios.put(`/api/scorecard/${user._id}`, updates)
             .then(res => {
                 dispatch({
                     type: "UPDATE_SCORECARD",

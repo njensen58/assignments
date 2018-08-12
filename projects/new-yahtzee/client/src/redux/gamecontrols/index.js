@@ -2,7 +2,6 @@ import axios from 'axios'
 import { setScorecard, generateScorecard } from '../scorecard'
 import { retrieveStats } from '../stats'
 import { checkDieStatus } from '../dicebox';
-import store from '../../redux'
 
 const gamecontrolAxios = axios.create()
 
@@ -12,15 +11,14 @@ gamecontrolAxios.interceptors.request.use((config)=>{
     return config;
 })
 
-console.log(store)
-
 
 const initState = {
     allowPointSelection: false,
-    allowRoll: false
+    allowRoll: false,
+    gameOver: false,
 }
 
-// If you reset on rollCount 3, the refresh does not set allow Roll to false, it defaults to initState
+
 
 export const gameControlToggler = rollCount => {
     switch(rollCount){
@@ -35,7 +33,6 @@ export const gameControlToggler = rollCount => {
             return initState
     }
 }
-
 
 
 // Get status of scorecard, retrieve user assets onload
@@ -71,6 +68,25 @@ export const saveHighscore = (score, user) => {
     }
 }
 
+// Checks to see if all 13 required score sections have been filled to end game
+export const checkGameOver = scorecard => {
+        let gameOver = false
+        let count = 0
+        for(let key in scorecard){
+            if(scorecard[key].selected){
+                count++
+            }
+        }
+        if(count === 13){
+            gameOver = true
+        }
+        return {
+            type: "CHECK_GAME_OVER",
+            gameOver
+        }
+}
+
+
 
 
 const gameControlsReducer = (state = initState, action) => {
@@ -78,12 +94,20 @@ const gameControlsReducer = (state = initState, action) => {
         case "ALLOW_ROLL":
             return {    
                 allowPointSelection: false, 
-                allowRoll: true
+                allowRoll: true,
+                gameOver: false
             }
         case "ALLOW_SELECTION":
             return {
                 allowPointSelection: true, 
-                allowRoll: false 
+                allowRoll: false,
+                gameOver: false
+            }
+        case "CHECK_GAME_OVER":
+            return {
+                allowPointSelection: state.allowPointSelection, 
+                allowRoll: state.allowRoll,
+                gameOver: action.gameOver
             }
         default:
             return state

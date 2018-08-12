@@ -25,15 +25,7 @@ export const leftRows = [
     { name: "Sixes",
        _id: uuidv1(),
        scoreType: 'sixes'      
-    },
-    { name: "Left Bonus",
-       _id: uuidv1(),
-       scoreType: 'upperBonus'      
     }
-    // { name: "Left Total",
-    //    _id: uuidv1(),
-    //    scoreType: 'leftTotal'      
-    // }
 ]
 
 
@@ -68,10 +60,6 @@ export const rightRows = [
     },
     { name: "Yahtzee Bonus",
        _id: uuidv1(),
-       scoreType:"lowerBonus"      
+       scoreType: "bonus"      
     }
-    // { name: "Right Total",
-    //    _id: uuidv1(),
-    //    scoreType:"rightTotal"      
-    // }
 ]

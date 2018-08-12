@@ -1,9 +1,9 @@
 var readline = require('readline-sync');
 
-var input = readline.question('What phrase would you like me to encrypt? ').toLowerCase();
-var shift = parseInt(readline.question('How many letters would you like me to shift? '));
+var input = readline.question('What phrase would you like me to encrypt? ').toLowerCase()
+var shift = parseInt(readline.question('How many letters would you like me to shift? '))
 
-var alphabet = 'abcdefghijklmnopqrstuvwxyz';
+var alphabet = 'abcdefghijklmnopqrstuvwxyz'
 
 
 function encrypt(input, shift){
@@ -14,19 +14,20 @@ function encrypt(input, shift){
         // check to see if the input character exists within the alphabet
         if(alphabet.indexOf(input[i]) !== -1){
             // if so, store that letter's index number in the alphabet.
-            var alphaIndex = alphabet.indexOf(input[i]);
+            var alphaIndex = alphabet.indexOf(input[i])
             // add the shifted character into the string.
-            newStr += alphabet[(alphaIndex + shift) % 26];
+            newStr += alphabet[(alphaIndex + shift) % 26]
         } else {
             // if the character is not in the alphabet, add it to the string. (white space, special characters)
-            newStr += input[i];
+            newStr += input[i]
         }
     }
     // return final string
     return newStr;
 }
 
-console.log(encrypt(input, shift));
+
+console.log(encrypt(input, shift))
 
 
 

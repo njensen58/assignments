@@ -151,26 +151,6 @@ const scorecardSchema = new Schema({
             type: Boolean,
             default: false
         }
-    },
-    lowerBonus: {
-        score: {
-            type: Number,
-            default: 0
-        },
-        selected: {
-            type: Boolean,
-            default: false
-        }
-    },
-    upperBonus: {
-        score: {
-            type: Number,
-            default: 0
-        },
-        selected: {
-            type: Boolean,
-            default: false
-        }
     }
 })
 

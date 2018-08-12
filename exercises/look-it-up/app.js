@@ -13,4 +13,5 @@ function addEntry(word, definition){
 addEntry("Hello", "A greeting");
 addEntry("Hello", "A greeting");
 addEntry("Aloha", "A greeting");
+addEntry("Goodbye", "A farewell")
 console.log(dictionary);

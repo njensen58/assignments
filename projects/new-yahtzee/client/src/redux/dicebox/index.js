@@ -55,7 +55,6 @@ export const checkDieStatus = user => {
     return dispatch => {
         diceboxAxios.get(`/api/dicebox/${user._id}`)
             .then(res => {
-                console.log(res.data)
                 dispatch({
                     type: "CHECK_DIE_STATUS",
                     dicebox: res.data
