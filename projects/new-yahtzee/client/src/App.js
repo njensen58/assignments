@@ -4,7 +4,8 @@ import { connect } from 'react-redux'
 import AuthContainer from './components/Auth'
 import GameBoard from './components/GameBoard'
 import Navbar from './components/Navbar'
-
+import HighScores from './components/HighScores'
+import Stats from './components/Stats'
 
 const App = props => {
     const { user } = props
@@ -14,7 +15,9 @@ const App = props => {
             { !user.isAuthenticated 
                 ? <AuthContainer /> 
                 :   <Switch>
-                        <Route path="/" component={ GameBoard }/> 
+                        <Route exact path="/" component={ GameBoard }/> 
+                        <Route path="/highscores" component={ HighScores }/>
+                        <Route path="/stats" component={ Stats }/>
                     </Switch>
             }
         </div>

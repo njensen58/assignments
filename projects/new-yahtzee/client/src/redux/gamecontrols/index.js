@@ -40,6 +40,7 @@ export const checkGameInProgress = user => {
     return dispatch => {
         return gamecontrolAxios.get(`/api/scorecard/${user._id}`)
             .then(res => {
+                console.log(res.data)
                 if(res.data[0].active){
                     dispatch( checkDieStatus( user ))
                     dispatch( setScorecard(res.data[0]) )
@@ -77,7 +78,7 @@ export const checkGameOver = scorecard => {
                 count++
             }
         }
-        if(count === 13){
+        if(count === 2){
             gameOver = true
         }
         return {

@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { withRouter } from 'react-router-dom'
 import { validatePoints, updateScorecard, updateScoreSelect } from '../../redux/scorecard'
+import { saveUserStats } from '../../redux/stats'
 import { checkGameOver } from '../../redux/gamecontrols'
 import { resetDie } from '../../redux/dicebox'
 
@@ -11,6 +13,7 @@ class ScoreItem extends Component {
         toggle: false,
     }
 
+    // @: Toggle off open point windows
     componentWillReceiveProps(){
         if(!this.props.controls.allowPointSelection && this.state.toggle){
             this.setState({
@@ -19,17 +22,8 @@ class ScoreItem extends Component {
         }
     }
 
-    // componentDidMount(){
-    //     if(!this.props.scorecard[this.props.scoreType] && this.state.toggle){
-    //         this.setState(prevState => ({
-    //             toggle: false
-    //         }))
-    //     }
-    // }
-   
-
     // @: Purpose: calculates current worth of selected score slot depending on the current die //
-    // @: if statement is to disallow toggling if points saved or aleady toggled during Point selection phase 
+    // @: if statement is to disallow toggling if points saved && aleady toggled during Point selection phase 
     togglePoints = scoreType => {
         if(this.props.controls.allowPointSelection && (!this.state.toggle && !this.props.scorecard[scoreType].selected)){
             const { validatePoints, dice: { die1, die2, die3, die4, die5 }} = this.props
@@ -45,7 +39,7 @@ class ScoreItem extends Component {
         }
    }
 
-   // saves value to result of the toggle validatePoints as score value for the type, and sets the scoreType status to true //
+   // @: saves value to result of the toggle validatePoints as score value for the type, and sets the scoreType status to true //
     updateScore = scoreType => {
         if(this.props.controls.allowPointSelection){
             const { validatePoints, dice: { die1, die2, die3, die4, die5 }} = this.props
@@ -57,15 +51,18 @@ class ScoreItem extends Component {
                 }
             }
             // Update scorecard in db and reset dicebox && Check if game is over
-            this.props.updateScorecard(this.props.user, updatedCard)
+            this.props.updateScorecard( this.props.user, updatedCard )
                     .then(() => {
                         this.props.checkGameOver( this.props.scorecard )
                         if(this.props.controls.gameOver){
                               // End game, save scorecard stats in stats model
+                            this.props.saveUserStats( this.props.scorecard )
                               // Delete scorecard and generate new one for user
+                              
                               // reset dice 
+                            this.props.resetDie(this.props.user )
                               // Direct user to enter new score.
-                              // Re-direct to highscore page
+                            this.props.history.push( '/highscores' )
                         }
                     })
         }
@@ -126,4 +123,6 @@ class ScoreItem extends Component {
     }
 }
 
-export default connect(state=>state, { validatePoints, updateScorecard, resetDie, updateScoreSelect, checkGameOver })( ScoreItem ) 
+export default withRouter(connect(state=>state, 
+    { validatePoints, updateScorecard, resetDie, 
+        updateScoreSelect, checkGameOver, saveUserStats })( ScoreItem )) 

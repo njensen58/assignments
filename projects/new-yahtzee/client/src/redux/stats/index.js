@@ -39,13 +39,26 @@ export const retrieveStats = user => {
     }
 }
 
+export const saveUserStats = scorecard => {
+    console.log(scorecard)
+    return dispatch => {
+        statsAxios.post(`/api/stats/${scorecard.user}`, scorecard)
+            .then(res => {
+                dispatch(retrieveStats())
+            })
+            .catch(err => {
+                console.log(err)
+            })
+    }
+}
+
 
 const statsReducer = (state = {}, action) => {
     switch(action.type){
         case "GENERATE_STAT_CARD":
             return action.statCard
         case "RETRIEVE_STATS":
-            return action.stats
+            return action.stats[0]
         default:
             return state
     }

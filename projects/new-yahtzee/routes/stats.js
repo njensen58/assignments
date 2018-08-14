@@ -19,5 +19,16 @@ statsRouter.post('/', (req, res) => {
     })
 })
 
+statsRouter.post('/:id', (req, res) => { 
+
+    Stats.findOneAndUpdate(
+        {user: req.params.id}, 
+        {$push: {"prevcards": req.body}},
+        {new: true},
+    (err, updatedStatcard) => {
+        if (err) return res.status(500).send(err)
+        return res.status(200).send(updatedStatcard)
+    })
+})
 
 module.exports = statsRouter

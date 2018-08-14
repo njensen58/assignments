@@ -15,6 +15,13 @@ const statSchema = new Schema({
     losses: {
         type: Number,
         default: 0
+    },
+    prevcards: {
+        type: [
+            {
+                type: Object
+            }
+        ],
     }
 })
 
