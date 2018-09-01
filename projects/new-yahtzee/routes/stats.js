@@ -19,11 +19,11 @@ statsRouter.post('/', (req, res) => {
     })
 })
 
-statsRouter.post('/:id', (req, res) => { 
+statsRouter.put('/:id', (req, res) => { 
 
     Stats.findOneAndUpdate(
         {user: req.params.id}, 
-        {$push: {"prevcards": req.body}},
+        {$push: {"prevcards": req.body._id}},
         {new: true},
     (err, updatedStatcard) => {
         if (err) return res.status(500).send(err)

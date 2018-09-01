@@ -42,7 +42,7 @@ export const retrieveStats = user => {
 export const saveUserStats = scorecard => {
     console.log(scorecard)
     return dispatch => {
-        statsAxios.post(`/api/stats/${scorecard.user}`, scorecard)
+        statsAxios.put(`/api/stats/${scorecard.user}`, scorecard)
             .then(res => {
                 dispatch(retrieveStats())
             })

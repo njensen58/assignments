@@ -16,13 +16,10 @@ const statSchema = new Schema({
         type: Number,
         default: 0
     },
-    prevcards: {
-        type: [
-            {
-                type: Object
-            }
-        ],
-    }
+    prevcards: [{
+        type: Schema.Types.ObjectId,
+        ref: "Scorecard"
+    }]
 })
 
 module.exports = mongoose.model("Stats", statSchema)

@@ -16,8 +16,6 @@ console.log(every([1,2,'3'], (num)=>{
 }))
 
 
-
-
 const some = (arr, callback) => {
     for(let i = 0; i < arr.length; i++){
         if(callback(arr[i])){
@@ -26,6 +24,7 @@ const some = (arr, callback) => {
     }
     return false;
 }
+
 
 console.log(some(["ben", "jacob", "bob"], (name) => {
   return name === "jacob";

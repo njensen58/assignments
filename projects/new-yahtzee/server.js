@@ -10,22 +10,22 @@ app.use(bodyParser.json())
 app.use(morgan('dev'))
 
 
-mongoose.connect('mongodb://localhost/yahmix', () => {
+mongoose.connect('mongodb://localhost:27017/yahmix',{ useNewUrlParser: true }, () => {
     console.log(`Connected to the data stream sir!`)
 })
 
 
-// Auth Routes
+// // Auth Routes
 app.use('/api', expressJwt({secret: process.env.SECRET}))
 app.use('/auth', require('./routes/auth'))
 
 
 
-// General Information
+// // General Information
 app.use('/highscores', require('./routes/highscores'))
 
 
-// User Specific Information
+// // User Specific Information
 app.use('/api/highscores', require('./routes/highscores'))
 app.use('/api/stats', require('./routes/stats'))
 app.use('/api/scorecard', require('./routes/scorecard'))
