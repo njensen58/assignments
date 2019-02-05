@@ -7,24 +7,39 @@ var alphabet = 'abcdefghijklmnopqrstuvwxyz'
 
 
 function encrypt(input, shift){
-    // declare an empty string to build upon
-    var newStr = '';
-    // loop through the user's input
+    var result = ""
+    var alphabet = 'abcdefghijklmnopqrstuvwxyz'
     for(var i = 0; i < input.length; i++){
-        // check to see if the input character exists within the alphabet
         if(alphabet.indexOf(input[i]) !== -1){
-            // if so, store that letter's index number in the alphabet.
-            var alphaIndex = alphabet.indexOf(input[i])
-            // add the shifted character into the string.
-            newStr += alphabet[(alphaIndex + shift) % 26]
+            var index = alphabet.indexOf(input[i])
+            result += alphabet[(index + shift) % 26] 
         } else {
-            // if the character is not in the alphabet, add it to the string. (white space, special characters)
-            newStr += input[i]
+            result += input[i]
         }
     }
-    // return final string
-    return newStr;
+    return result
 }
+
+
+// function encrypt(input, shift){
+//     // declare an empty string to build upon
+//     var newStr = '';
+//     // loop through the user's input
+//     for(var i = 0; i < input.length; i++){
+//         // check to see if the input character exists within the alphabet
+//         if(alphabet.indexOf(input[i]) !== -1){
+//             // if so, store that letter's index number in the alphabet.
+//             var alphaIndex = alphabet.indexOf(input[i])
+//             // add the shifted character into the string.
+//             newStr += alphabet[(alphaIndex + shift) % 26]
+//         } else {
+//             // if the character is not in the alphabet, add it to the string. (white space, special characters)
+//             newStr += input[i]
+//         }
+//     }
+//     // return final string
+//     return newStr;
+// }
 
 
 console.log(encrypt(input, shift))

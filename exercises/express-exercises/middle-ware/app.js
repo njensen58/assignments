@@ -4,16 +4,22 @@ const app = express();
 const movieRoutes = require('./routes/movies')
 
 
-app.use(bodyParser.json());
 
+app.use(express.json());
 
-app.use((req, res, next) => {
-    req.didIFart = {someoneFarted: true};
-    next();
+app.use((req, res, next) => require('./other')(req, res, next))
+
+app.get('/', (req, res) => {
+    return res.send(req.someStuff)
 })
 
+// app.use((req, res, next) => {
+//     req.body.didIFart = {someoneFarted: true};
+//     next();
+// })
 
-app.use('/movies', movieRoutes);
+
+
 
 
 app.listen(4000, () => {

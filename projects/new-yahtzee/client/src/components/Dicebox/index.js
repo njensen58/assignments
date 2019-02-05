@@ -30,11 +30,11 @@ class Dicebox extends Component {
 
             // Persist value of previously selected die while updating open die values //
             let die1, die2, die3, die4, die5;
-            die1 = dice.die1.selected ? dice.die1 : { value: Math.floor(Math.random() * 6 + 1), selected: false }
-            die2 = dice.die2.selected ? dice.die2 : { value: Math.floor(Math.random() * 6 + 1), selected: false }
-            die3 = dice.die3.selected ? dice.die3 : { value: Math.floor(Math.random() * 6 + 1), selected: false }
-            die4 = dice.die4.selected ? dice.die4 : { value: Math.floor(Math.random() * 6 + 1), selected: false }
-            die5 = dice.die5.selected ? dice.die5 : { value: Math.floor(Math.random() * 6 + 1), selected: false }
+            die1 = dice.die1.selected ? dice.die1 : { value: Math.floor(Math.random() *  1), selected: false }
+            die2 = dice.die2.selected ? dice.die2 : { value: Math.floor(Math.random() *  1), selected: false }
+            die3 = dice.die3.selected ? dice.die3 : { value: Math.floor(Math.random() *  1), selected: false }
+            die4 = dice.die4.selected ? dice.die4 : { value: Math.floor(Math.random() *  1), selected: false }
+            die5 = dice.die5.selected ? dice.die5 : { value: Math.floor(Math.random() *  1), selected: false }
 
             const newDicebox = {
                 rollCount: this.props.dice.rollCount,

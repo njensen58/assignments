@@ -11,6 +11,7 @@ scorecardRouter.get('/:id', (req, res) => {
 
 scorecardRouter.post('/', (req, res) => {
     const newScorecard = new Scorecard()
+    console.log(newScorecard)
     newScorecard.user = req.body.user
     newScorecard.save((err, scorecard) => {
         if (err) return res.status(500).send(err)

@@ -10,7 +10,7 @@ app.use(bodyParser.json())
 app.use(morgan('dev'))
 
 
-mongoose.connect('mongodb://localhost:27017/yahmix',{ useNewUrlParser: true }, () => {
+mongoose.connect('mongodb://localhost/yahmix', () => {
     console.log(`Connected to the data stream sir!`)
 })
 
@@ -27,7 +27,6 @@ app.use('/highscores', require('./routes/highscores'))
 
 // // User Specific Information
 app.use('/api/highscores', require('./routes/highscores'))
-app.use('/api/stats', require('./routes/stats'))
 app.use('/api/scorecard', require('./routes/scorecard'))
 app.use('/api/dicebox', require('./routes/dicebox'))
 

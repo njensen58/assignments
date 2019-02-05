@@ -1,55 +1,46 @@
 * {
     box-sizing: border-box;
     font-size: 0px;
-}
-
-body {
-    margin-top: 10px;
-    margin-left: 10px;
-    margin-right: 0;
+    margin: 0;
 }
 
 .pink {
     height: 150px;
     width: 100%;
     background-color: #F5C6D6;
-    border-right: 10px solid white;
+    border: 5px solid white;
 }
 
 .purple {
     height: 150px;
     width: 25%;
     background-color: #EE2E84;
-    margin-top: 10px;
     display: inline-block;
-    border-right: 10px solid white;
+    border: 5px solid white;
 }
 
 .blue {
     height: 150px;
     width: 50%;
     background-color: #85CFD8;
-    margin-top: 10px;
     display: inline-block;
-    border-right: 10px solid white;
+    border: 5px solid white;
 }
 
 .green {
     height: 150px;
     width: 75%;
     background-color: #8DC63F;
-    margin-top: 10px;
     display: inline-block;
-    border-right: 10px solid white;
+    border: 5px solid white;
 }
 
 .orange {
     height: 150px;
     width: 25%;
     background-color: #E76E34;
-    margin-top: 10px;
     display: inline-block;
-    border-right: 10px solid white;
+    border: 5px solid white;
 }
 
 @media only screen and (max-width: 768px) {

@@ -24,4 +24,4 @@ const gameOfThrees = (n, counter) => {
     }
 }
 
-console.log(gameOfThrees(500000, 0))
+console.log(gameOfThrees(10000, 0))

@@ -428,7 +428,7 @@ var event14 = ['\n\n\n\n\n\n\tYou got rick-rolled\n\t\tNever gonna give you up, 
 
 
     while(stage1 === false){
-        var choice = ask.question("\n\n\n\n\t[GUIDE] Type 'w' to continue walking, 'print' to check your status, or 'item' to use an item: ");
+        var choice = ask.question("\n\n\n\n\t[GUIDE] Type 'w' tao continue walking, 'print' to check your status, or 'item' to use an item: ");
         if(choice === 'w'){
             walk();
             if(currentEnemy.health <= 0 && player.health > 0){

@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 import { validatePoints, updateScorecard, updateScoreSelect } from '../../redux/scorecard'
-import { saveUserStats } from '../../redux/stats'
 import { checkGameOver } from '../../redux/gamecontrols'
 import { resetDie } from '../../redux/dicebox'
 
@@ -26,22 +25,30 @@ class ScoreItem extends Component {
     // @: if statement is to disallow toggling if points saved && aleady toggled during Point selection phase 
     togglePoints = scoreType => {
         if(this.props.controls.allowPointSelection && (!this.state.toggle && !this.props.scorecard[scoreType].selected)){
-            const { validatePoints, dice: { die1, die2, die3, die4, die5 }} = this.props
-            const total = validatePoints([die1.value, die2.value, die3.value, die4.value, die5.value], scoreType)
-            this.setState(prevState => ({ toggle: !prevState.toggle }))
-            const updatedCard = {
-                [scoreType]: { 
-                    score: total.result,
-                    selected: false 
-                }
+            // Only toggle bonus points if yahtzee score has occurred
+            if(this.props.scorecard.yahtzee.score < 0 && scoreType === 'bonus'){
+                return
             }
-            this.props.updateScoreSelect(this.props.user, updatedCard)
-        }
-   }
+                const { validatePoints, dice: { die1, die2, die3, die4, die5 }} = this.props
+                const total = validatePoints([die1.value, die2.value, die3.value, die4.value, die5.value], scoreType, this.props.scorecard)
+                this.setState(prevState => ({ toggle: !prevState.toggle }))
+                const updatedCard = {
+                    [scoreType]: { 
+                        score: total.result,
+                        selected: false 
+                    }
+                }
+                this.props.updateScoreSelect(this.props.user, updatedCard)
+        }   
+    }
 
    // @: saves value to result of the toggle validatePoints as score value for the type, and sets the scoreType status to true //
     updateScore = scoreType => {
         if(this.props.controls.allowPointSelection){
+            // Only allow bonus score if yahtzee score
+            if(this.props.scorecard.yahtzee.score < 0 && scoreType === 'bonus'){
+                return
+            }
             const { validatePoints, dice: { die1, die2, die3, die4, die5 }} = this.props
             const total = validatePoints([die1.value, die2.value, die3.value, die4.value, die5.value], scoreType)
             const updatedCard = {
@@ -55,10 +62,8 @@ class ScoreItem extends Component {
                     .then(() => {
                         this.props.checkGameOver( this.props.scorecard )
                         if(this.props.controls.gameOver){
-                              // End game, save scorecard stats in stats model
-                            this.props.saveUserStats( this.props.scorecard )
-                              // Delete scorecard and generate new one for user
-                              
+                              // set current scorecard active status to false
+                                // Generate new scorecard for user one for user - On new Game click
                               // reset dice 
                             this.props.resetDie(this.props.user )
                               // Direct user to enter new score.
@@ -66,7 +71,6 @@ class ScoreItem extends Component {
                         }
                     })
         }
-        
     }
 
 
@@ -117,7 +121,6 @@ class ScoreItem extends Component {
                             </React.Fragment>
                     }
                 </div>
-                
             </div>
         )
     }
@@ -125,4 +128,4 @@ class ScoreItem extends Component {
 
 export default withRouter(connect(state=>state, 
     { validatePoints, updateScorecard, resetDie, 
-        updateScoreSelect, checkGameOver, saveUserStats })( ScoreItem )) 
+        updateScoreSelect, checkGameOver })( ScoreItem )) 

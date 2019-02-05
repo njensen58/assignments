@@ -10,8 +10,8 @@ const stringifyUrl = (endpoint, query) => {
     return endpoint + queryStr.slice(0, -1)
 }
 
-console.log(stringifyUrl("http://localhost:8080/monkeys", {color: "black", species: "howler"})); //returns "http://localhost:8080/monkeys?color=black&species=howler"
-console.log(stringifyUrl("http://localhost:8080/monkeys", {color: "black", species: "howler", size: "huge"}));
+// console.log(stringifyUrl("http://localhost:8080/monkeys", {color: "black", species: "howler"})); //returns "http://localhost:8080/monkeys?color=black&species=howler"
+// console.log(stringifyUrl("http://localhost:8080/monkeys", {color: "black", species: "howler", size: "huge"}));
 
 
 
@@ -27,6 +27,10 @@ const deStringifyUrl = url => {
         let keyValueArray = property.split('=')
         query[keyValueArray[0]] = keyValueArray[1]
     }
+    // for(let i = 0; i < queryArr.length; i++){
+    //     let keyValueArray = queryArr[i].split('=')
+    //     query[keyValueArray[0]] = keyValueArray[1]
+    // }
     return query
 }
 

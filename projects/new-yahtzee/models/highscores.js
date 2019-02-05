@@ -11,15 +11,11 @@ const highscoreSchema = new Schema({
         type: Number,
         default: 0
     },
-    stats: {
-        type: Schema.Types.ObjectId,
-        ref: "Stats",
-        required: true
-    },
     date: {
         type: Date,
         default: Date.now
     }
 })
+
 
 module.exports = mongoose.model('Highscores', highscoreSchema)

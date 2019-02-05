@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { setScorecard, generateScorecard } from '../scorecard'
+import { setScorecard, generateScorecard, updateScorecard } from '../scorecard'
 import { retrieveStats } from '../stats'
 import { checkDieStatus } from '../dicebox';
 
@@ -80,6 +80,10 @@ export const checkGameOver = scorecard => {
         }
         if(count === 2){
             gameOver = true
+            scorecard.active = false
+            const user = {}
+            user._id = scorecard.user
+            updateScorecard( user, scorecard )
         }
         return {
             type: "CHECK_GAME_OVER",

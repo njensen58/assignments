@@ -124,7 +124,7 @@ const scorecardSchema = new Schema({
     },
     bonus: {
         score: {
-            type: [Number],
+            type: Number,
             default: []
         },
         selected: {

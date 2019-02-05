@@ -34,7 +34,7 @@ const initState = {
 
 
 // When user clicks on score box -> reveal current score options before score confirm/save
-export const validatePoints = (arr, scoreType) => {
+export const validatePoints = (arr, scoreType, scorecard) => {
     // conditional switch to check score type, and run the appropriate function.
     switch(scoreType){
         case "ones":
@@ -127,8 +127,12 @@ export const validatePoints = (arr, scoreType) => {
             return { type: "default", result: calculateYahtzee(arr) }
         // YAHTZEE BONUS
         case "bonus":
+            if(calculateYahtzee(arr) === 50){
+                return { type: "default", result: scorecard.bonus.score + 100 }
+            } else {
+                return { type: "default", result: scorecard.bonus.score }
+            }
             // Code to only allow yahtzee bonus selection if current yahtzee && yahtzee score is over 1
-            return ""
         default: 
             return "error in validating points"
     }
